@@ -6,40 +6,20 @@
       "name": "Chris Cox",
       "title": "Lead Child & Youth Program Coordinator",
       "organization": "JTSI Contractor",
-      "bio": "Chris Cox leads the Iowa Army National Guard Child & Youth Program. He grew up in a Guard family and knows firsthand how much encouragement matters. Chris loves building experiences where military-connected youth can be themselves, learn new skills, and feel proud of the role they play at home.",
+      "bio": "Chris Cox leads the Iowa Army National Guard Child & Youth Program. He grew up in a Guard family and knows firsthand how much encouragement matters. Based out of Camp Dodge, Chris partners with Erin to plan statewide programs and cover regional events so every Guard family feels supported.",
       "phone": "515-727-3064",
       "email": "christopher.j.cox18.ctr@army.mil",
-      "headshot": "/assets/img/team/chris_cox_headshot.jpg",
-      "social": [
-        {
-          "label": "Facebook",
-          "url": "https://www.facebook.com/iowacyp"
-        },
-        {
-          "label": "Instagram",
-          "url": "https://www.instagram.com/iowacyp/"
-        }
-      ]
+      "headshot": "/assets/img/team/chris_cox_headshot.jpg"
     },
     {
       "id": "T002",
       "name": "Erin Coogler",
       "title": "Child & Youth Program Coordinator",
       "organization": "JTSI Contractor",
-      "bio": "Erin Coogler is a Program Coordinator who brings a child-development background and a big heart for Guard families. She designs camps, kits, and trainings that feel welcoming, practical, and fun—so every young person walks away more confident and connected.",
+      "bio": "Erin Coogler is a Program Coordinator who brings a child-development background and a big heart for Guard families. Working alongside Chris at Camp Dodge, she helps design statewide camps, kits, and trainings—and meets families on the road when regional events pop up.",
       "phone": "515-252-4050",
       "email": "iaarngcyp@gmail.com",
-      "headshot": "/assets/img/team/erin_headshot.jpg",
-      "social": [
-        {
-          "label": "Facebook",
-          "url": "https://www.facebook.com/iowacyp"
-        },
-        {
-          "label": "Instagram",
-          "url": "https://www.instagram.com/iowacyp/"
-        }
-      ]
+      "headshot": "/assets/img/team/erin_headshot.jpg"
     }
   ]
 }

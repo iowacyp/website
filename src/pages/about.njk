@@ -197,10 +197,20 @@ permalink: /about/index.html
             </div>
           </div>
           <p class="text-gray-700 text-sm leading-relaxed">{{ member.bio }}</p>
-          <ul class="text-sm text-gray-700 space-y-1">
-            <li><span class="font-semibold text-slate-800">Email:</span> <a class="text-primary hover:underline" href="mailto:{{ member.email }}">{{ member.email }}</a></li>
-            <li><span class="font-semibold text-slate-800">Phone:</span> <a class="text-primary hover:underline" href="tel:{{ member.phone | replace('-', '') }}">{{ member.phone }}</a></li>
-          </ul>
+          <div class="flex flex-wrap items-center gap-3 pt-1">
+            <a class="contact-link" href="mailto:{{ member.email }}">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M20 4H4a2 2 0 00-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18v-9.764l7.382 5.768a1 1 0 001.236 0L20 8.236V18H4z"/>
+              </svg>
+              <span>{{ member.email }}</span>
+            </a>
+            <a class="contact-link" href="tel:{{ member.phone | replace('-', '') }}">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M16.487 15.56l-2.675-.305a1 1 0 00-.85.287l-1.02 1.046a11.055 11.055 0 01-4.53-4.53l1.046-1.02a1 1 0 00.287-.85l-.305-2.675A1.5 1.5 0 007.96 6H5.5A1.5 1.5 0 004 7.5C4 15.032 9.968 21 17.5 21a1.5 1.5 0 001.5-1.5V17.04a1.5 1.5 0 00-1.013-1.48z"/>
+              </svg>
+              <span>{{ member.phone }}</span>
+            </a>
+          </div>
           {% if member.social %}
             <div class="flex flex-wrap gap-3 pt-2">
               {% for social in member.social %}

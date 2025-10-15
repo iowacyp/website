@@ -33,7 +33,10 @@ permalink: /contact/index.html
         <h2 class="text-2xl font-semibold text-slate-900">We’re a call or message away</h2>
         <p class="text-gray-700">Email: <a class="text-primary font-semibold" href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></p>
         <p class="text-gray-700">Phone: <a class="text-primary font-semibold" href="tel:{{ site.contactPhone | replace('-', '') }}">{{ site.contactPhone }}</a></p>
-        <p class="text-sm text-gray-600">We reply within two business days. Need help right now? Call the Iowa National Guard Warrior &amp; Family Services office.</p>
+        <p class="text-sm text-gray-600">
+          We reply within two business days. Need help right now?
+          <a class="text-primary font-semibold" href="https://www.iowanationalguard.com/member-and-family-services/" target="_blank" rel="noopener">Visit the Iowa National Guard Warrior &amp; Family Services branch</a>.
+        </p>
       </article>
       <article class="content-card space-y-4 h-full md:flex md:items-center md:gap-6" data-reveal>
         <img src="/assets/img/contact_location.jpg" alt="Iowa Gold Star Military Museum exterior" class="w-full md:w-40 h-40 object-cover rounded-2xl border border-primary/20" loading="lazy" decoding="async">
@@ -52,8 +55,8 @@ permalink: /contact/index.html
   <div class="container space-y-10">
     <div class="max-w-3xl space-y-4">
       <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Meet your points of contact</p>
-      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Connect directly with program leads across Iowa</h2>
-      <p class="text-slate-700 leading-relaxed">Each teammate below covers specific regions or specialties. Reach out to the person closest to your family or request a warm handoff.</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Connect directly with the coordinators supporting Iowa CYP</h2>
+      <p class="text-slate-700 leading-relaxed">Chris and Erin both work out of Camp Dodge and team up on statewide programming. Reach out and we’ll cover your regional needs or loop in partners who can help.</p>
     </div>
     <div class="grid gap-6 md:grid-cols-2">
       {% for member in team.members %}
@@ -69,9 +72,19 @@ permalink: /contact/index.html
             </div>
           </div>
           <p class="text-sm text-gray-700 leading-relaxed">{{ member.bio }}</p>
-          <div class="text-sm text-gray-700 space-y-1">
-            <p>Email: <a class="text-primary font-semibold" href="mailto:{{ member.email }}">{{ member.email }}</a></p>
-            <p>Phone: <a class="text-primary font-semibold" href="tel:{{ member.phone | replace('-', '') }}">{{ member.phone }}</a></p>
+          <div class="flex flex-wrap items-center gap-3 pt-1">
+            <a class="contact-link" href="mailto:{{ member.email }}">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M20 4H4a2 2 0 00-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18v-9.764l7.382 5.768a1 1 0 001.236 0L20 8.236V18H4z"/>
+              </svg>
+              <span>{{ member.email }}</span>
+            </a>
+            <a class="contact-link" href="tel:{{ member.phone | replace('-', '') }}">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M16.487 15.56l-2.675-.305a1 1 0 00-.85.287l-1.02 1.046a11.055 11.055 0 01-4.53-4.53l1.046-1.02a1 1 0 00.287-.85l-.305-2.675A1.5 1.5 0 007.96 6H5.5A1.5 1.5 0 004 7.5C4 15.032 9.968 21 17.5 21a1.5 1.5 0 001.5-1.5V17.04a1.5 1.5 0 00-1.013-1.48z"/>
+              </svg>
+              <span>{{ member.phone }}</span>
+            </a>
           </div>
           {% if member.social %}
             <div class="flex flex-wrap gap-3 pt-1">
@@ -86,20 +99,32 @@ permalink: /contact/index.html
   </div>
 </section>
 
-<section class="container pb-20 space-y-10" data-reveal>
-  <div class="content-card md:flex md:items-center md:justify-between md:gap-8 space-y-6 md:space-y-0">
-    <div class="space-y-3">
-      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Stay in the loop</p>
-      <h2 class="text-2xl font-semibold text-slate-900">Get event updates and resource drops</h2>
-      <p class="text-gray-700">We’ll send a quick note when registrations open or new supports launch.</p>
+<section class="bg-white py-16" data-reveal>
+  <div class="container space-y-10">
+    <div class="content-card md:flex md:items-center md:justify-between md:gap-8 space-y-6 md:space-y-0">
+      <div class="space-y-3">
+        <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Stay in the loop</p>
+        <h2 class="text-2xl font-semibold text-slate-900">Get event updates and resource drops</h2>
+        <p class="text-gray-700">We’ll send a quick note when registrations open or new supports launch.</p>
+      </div>
+      <a class="btn" href="{{ site.links.eventsSubscribe }}">Subscribe to updates</a>
     </div>
-    <a class="btn" href="{{ site.links.eventsSubscribe }}">Subscribe to updates</a>
-  </div>
-  <div class="space-y-3">
-    <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Follow Iowa CYP</p>
-    <div class="flex flex-wrap gap-4 text-gray-700">
-      <a class="text-primary font-semibold" href="{{ site.social.facebook }}" target="_blank" rel="noopener">Facebook</a>
-      <a class="text-primary font-semibold" href="{{ site.social.instagram }}" target="_blank" rel="noopener">Instagram</a>
+    <div class="space-y-3">
+      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Follow Iowa CYP</p>
+      <div class="flex flex-wrap gap-4 text-gray-700">
+        <a class="social-link text-primary hover:text-secondary" href="{{ site.social.facebook }}" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987H8.078v-2.89h2.36V9.797c0-2.332 1.393-3.623 3.523-3.623 1.021 0 2.088.183 2.088.183v2.292h-1.177c-1.161 0-1.523.721-1.523 1.459v1.752h2.594l-.414 2.89h-2.18v6.987C18.343 21.128 22 16.99 22 12z" />
+          </svg>
+          <span>Facebook</span>
+        </a>
+        <a class="social-link text-primary hover:text-secondary" href="{{ site.social.instagram }}" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M7 2c-2.757 0-5 2.243-5 5v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm0 2h10c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3zm10 1a1 1 0 110 2 1 1 0 010-2zM12 7c-2.757 0-5 2.243-5 5s2.243 5 5 5 5-2.243 5-5-2.243-5-5-5zm0 2a3 3 0 110 6 3 3 0 010-6z" />
+          </svg>
+          <span>Instagram</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>

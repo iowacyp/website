@@ -274,6 +274,29 @@ footer a {
   @apply opacity-100;
 }
 
+.social-link {
+  @apply inline-flex items-center gap-2 font-semibold transition;
+}
+
+.social-link svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+  display: block;
+}
+
+.contact-link {
+  @apply inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-4 py-2 text-sm font-semibold transition;
+  @apply hover:bg-primary/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+}
+
+.contact-link svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+  display: block;
+}
+
 /* Parallax helper */
 .parallax { background-attachment: fixed; background-size: cover; background-position: center; }
 .section { @apply py-12; }
