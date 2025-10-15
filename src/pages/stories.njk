@@ -170,7 +170,7 @@ permalink: /stories/index.html
     </div>
     <article class="content-card bg-white/5 border-white/20 backdrop-blur text-white space-y-4">
       <div class="aspect-video rounded-3xl overflow-hidden border border-white/30">
-        <video controls preload="metadata" poster="/assets/img/stories/news_story.png" class="w-full h-full">
+        <video controls preload="metadata" poster="/assets/img/stories/news_story.png" class="w-full h-full" playsinline>
           <source src="/assets/video/news_interview.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -227,7 +227,7 @@ permalink: /stories/index.html
           <iframe src="{{ embedUrl }}" title="Iowa CYP Overview" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
         </div>
       {% else %}
-        <video class="w-full rounded-xl" controls poster="/assets/img/stories/news_story.png">
+        <video class="w-full rounded-xl" controls poster="/assets/img/stories/news_story.png" playsinline>
           <source src="/assets/video/news_interview.mp4" type="video/mp4">
           Sorry, your browser does not support embedded video.
         </video>

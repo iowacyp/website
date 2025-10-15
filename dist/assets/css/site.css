@@ -543,9 +543,6 @@ video {
   white-space: nowrap;
   border-width: 0;
 }
-.pointer-events-none {
-  pointer-events: none;
-}
 .fixed {
   position: fixed;
 }
@@ -1612,13 +1609,48 @@ footer a:hover {
   width: auto;
 }
 
+.hero-video-wrapper {
+  position: absolute;
+  inset: 0px;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.hero-video-poster {
+  position: absolute;
+  inset: 0px;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .hero-video {
-  transform: scale(1.18);
-  transform-origin: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100vh * 16 / 9);
+  width: calc(100dvh * 16 / 9);
+  height: 100vh;
+  height: 100dvh;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: none;
+  max-height: none;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border: 0;
 }
 
 .hero-video[aria-hidden="true"] {
   display: none;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .hero-video {
+    width: 100vw;
+    height: calc(100vw * 9 / 16);
+  }
 }
 
 /* Feature tiles */
@@ -1914,7 +1946,7 @@ footer a:hover {
 @media (prefers-reduced-motion: reduce) {
   .parallax { background-attachment: scroll; }
   .hero-video {
-    transform: none;
+    display: none;
   }
   .reveal-on-scroll {
     opacity: 1;
@@ -1925,9 +1957,6 @@ footer a:hover {
 
 @media (max-width: 768px) {
   .parallax { background-attachment: scroll; }
-  .hero-video {
-    transform: scale(1.1);
-  }
 }
 .drawer-link {
   display: block;
