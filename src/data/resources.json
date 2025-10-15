@@ -1,0 +1,116 @@
+{
+  "items": [
+    {
+      "id": "R001",
+      "label": "Scholarship Database",
+      "url": "https://onedrive.live.com/:x:/g/personal/78FBADA0C39648B6/QbZIlsOgrfsggHhwAAAAAAAA2mQHBZUkPzVGnQ?resid=78FBADA0C39648B6!112&ithint=file%2Cxlsx&migratedtospo=true&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy83OGZiYWRhMGMzOTY0OGI2L1FiWklsc09ncmZzZ2dIaHdBQUFBQUFBQTJtUUhCWlVrUHpWR25R",
+      "summary": "Curated listings of scholarships for Iowa military-connected youth.",
+      "image": null,
+      "notes": "Acknowledgments: Emily Williams (Military Youth & Family Support VISTA) and Kristen Ferullo (Navy School Liaison) for their collaboration."
+    },
+    {
+      "id": "R002",
+      "label": "Iowa National Guard Mobile App (iOS)",
+      "url": "https://apps.apple.com/us/app/iowa-national-guard/id6446351421",
+      "summary": "Download the Iowa National Guard mobile app for iPhone to access news, events, and resources.",
+      "image": "/assets/img/resources/resource_arngapp.webp",
+      "notes": "Ensure App Store badge follows branding."
+    },
+    {
+      "id": "R003",
+      "label": "Iowa National Guard Mobile App (Android)",
+      "url": "https://play.google.com/store/apps/details?id=com.m360mobile.iowa&pcampaignid=web_share",
+      "summary": "Download the Iowa National Guard mobile app for Android to stay connected with updates and tools.",
+      "image": "/assets/img/resources/resource_arngapp.webp",
+      "notes": "Verify Google Play badge assets are current."
+    },
+    {
+      "id": "R004",
+      "label": "Tutor.com (Military)",
+      "url": "https://military.tutor.com/home",
+      "summary": "24/7 online tutoring and homework help for military families.",
+      "image": "/assets/img/resources/resource_tutorcom.png",
+      "notes": "Note any usage rights for screenshots or logos."
+    },
+    {
+      "id": "R005",
+      "label": "Military OneSource",
+      "url": "https://www.militaryonesource.mil/",
+      "summary": "Comprehensive support services for military members and families.",
+      "image": "/assets/img/resources/resource_mos.png",
+      "notes": "Check if a youth-program subpage is preferred."
+    },
+    {
+      "id": "R006",
+      "label": "American Red Cross - Military Families",
+      "url": "https://www.redcross.org/about-us/our-work/military-families.html",
+      "summary": "Programs and services supporting military families through the American Red Cross.",
+      "image": "/assets/img/resources/resource_redcross.png",
+      "notes": "Confirm link anchors correctly on mobile."
+    },
+    {
+      "id": "R007",
+      "label": "BGCA Mission Youth Outreach",
+      "url": "https://www.bgca.org/about-us/military/mission-youth-outreach-2025/",
+      "summary": "Boys & Girls Clubs programming tailored to military-connected youth.",
+      "image": "/assets/img/partners/partner_bgca.png",
+      "notes": "Add primary BGCA military page if needed."
+    },
+    {
+      "id": "R008",
+      "label": "Child Care Aware (Army)",
+      "url": "https://www.childcareaware.org/fee-assistancerespite/military-families/army/",
+      "summary": "Child care fee assistance and respite programs for Army families.",
+      "image": "/assets/img/resources/resource_cca.webp",
+      "notes": "Monitor for URL updates each fiscal year."
+    },
+    {
+      "id": "R009",
+      "label": "Hy-Vee KidsFit",
+      "url": "https://kidsfitwellnessclub.org/",
+      "summary": "Wellness challenges and resources for youth and families from Hy-Vee KidsFit.",
+      "image": "/assets/img/resources/resource_hyvee.png",
+      "notes": "Request partner logo approval if highlighted."
+    },
+    {
+      "id": "R010",
+      "label": "Our Military Kids",
+      "url": "https://www.ourmilitarykids.org/",
+      "summary": "Activity grants supporting children of deployed Guard and Reserve members.",
+      "image": "/assets/img/resources/resource_omk.svg",
+      "notes": "Capture any application deadlines in notes."
+    },
+    {
+      "id": "R011",
+      "label": "ARNG Child & Youth Services",
+      "url": "https://arngcys.com/",
+      "summary": "National Guard Child & Youth Services hub for programs and resources.",
+      "image": null,
+      "notes": "Confirm regional contacts referenced on site."
+    },
+    {
+      "id": "R012",
+      "label": "Iowa National Guard Warrior & Family Services",
+      "url": "https://www.iowanationalguard.com/member-and-family-services/",
+      "summary": "Comprehensive services and support for Iowa Guard members and families.",
+      "image": "/assets/img/resources/resource_arngapp.webp",
+      "notes": "Check for deeper links to specific services."
+    },
+    {
+      "id": "R013",
+      "label": "Upwards Drill-Time Child Care",
+      "url": "https://upwards.com/",
+      "summary": "Pilot program providing no-cost childcare for military families during drill weekends and battle assemblies.",
+      "image": "/assets/img/resources/resource_upwards.svg",
+      "notes": null
+    },
+    {
+      "id": "R014",
+      "label": "Crisis Text Line",
+      "url": "https://www.crisistextline.org/",
+      "summary": "Free, 24/7, confidential text-based mental health support for anyone in crisis. Text HELLO to 741741 to connect with a trained Crisis Counselor.",
+      "image": "/assets/img/resources/resource_crisistextline.png",
+      "notes": "Verify inclusion of text number (741741) and ensure ADA-compliant contrast on graphics."
+    }
+  ]
+}

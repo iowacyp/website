@@ -1,0 +1,25 @@
+<footer class="mt-16 border-t border-secondary/40 bg-primary text-white">
+  <div class="container py-10 grid gap-8 md:grid-cols-3">
+    <div>
+      <h2 class="font-light text-lg tracking-[0.3em] uppercase mb-3 text-white">About Iowa CYP</h2>
+      <p class="text-white/90">Fostering community, resilience, and positive development among Iowa's military-connected children and families.</p>
+    </div>
+    <div>
+      <h2 class="font-light text-lg tracking-[0.3em] uppercase mb-3 text-white">Connect</h2>
+      <ul class="space-y-1 text-white/90">
+        <li><a class="text-white hover:text-secondary" href="{{ site.social.facebook }}" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a class="text-white hover:text-secondary" href="{{ site.social.instagram }}" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="font-light text-lg tracking-[0.3em] uppercase mb-3 text-white">Contact</h2>
+      <p class="text-white/90">Office: {{ site.officeLocation }}</p>
+      <p class="text-white/90">Phone: <a class="text-white hover:text-secondary" href="tel:{{ site.contactPhone | replace('-', '') }}">{{ site.contactPhone }}</a></p>
+      <p class="text-white/90">Email: <a class="text-white hover:text-secondary" href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></p>
+      <p class="text-white/90">Subscribe: <a class="text-white hover:text-secondary" href="{{ site.links.eventsSubscribe }}">Join our mailing list</a></p>
+    </div>
+  </div>
+  <div class="border-t border-secondary/40 py-4 text-center text-sm text-white/60">
+    © <span id="year"></span> {{ site.name }}
+  </div>
+</footer>

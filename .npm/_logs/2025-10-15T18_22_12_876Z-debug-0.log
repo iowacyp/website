@@ -1,0 +1,17 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@10.9.3
+2 info using node@v22.20.0
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/cox/Documents/iowacyp/.npmrc
+5 silly config load:file:/usr/local/etc/npmrc
+6 verbose title npm run build:css
+7 verbose argv "run" "build:css"
+8 verbose logfile logs-max:10 dir:/Users/cox/Documents/iowacyp/.npm/_logs/2025-10-15T18_22_12_876Z-
+9 verbose logfile /Users/cox/Documents/iowacyp/.npm/_logs/2025-10-15T18_22_12_876Z-debug-0.log
+10 silly logfile done cleaning log files
+11 verbose cwd /Users/cox/Documents/iowacyp
+12 verbose os Darwin 25.0.0
+13 verbose node v22.20.0
+14 verbose npm  v10.9.3
+15 verbose exit 0
+16 info ok

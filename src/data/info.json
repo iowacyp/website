@@ -1,0 +1,40 @@
+{
+  "vision": "Every Iowa Guard kid feels seen, supported, and ready for what's next — and leaders can point to stronger, steadier families because of it.",
+  "mission": "Show up for Guard-connected kids and caregivers with year-round experiences, practical resources, and caring adults so home life stays steady through every drill, mobilization, and return.",
+  "strategicInfrastructure": [
+    {
+      "title": "Partnership Cultivation",
+      "description": "Grow local and statewide partners who help us stretch funding, add fresh experiences, and keep families covered."
+    },
+    {
+      "title": "Storytelling & Advocacy",
+      "description": "Share real Guard family stories so decision-makers understand the wins, the gaps, and why support matters."
+    },
+    {
+      "title": "Data Collection & Outcome Reporting",
+      "description": "Track participation and outcomes so we can show readiness, resilience, and retention gains."
+    },
+    {
+      "title": "Marketing & Visibility",
+      "description": "Keep families and leaders in the loop with clear, consistent updates and event branding."
+    }
+  ],
+  "coreValues": [
+    {
+      "title": "Mission Ready",
+      "description": "What we do at camp, in schools, and online directly supports Guard families and the Guard mission."
+    },
+    {
+      "title": "Hospitality Hearted",
+      "description": "We welcome every family member like they're walking into our own living room."
+    },
+    {
+      "title": "Problem Solvers",
+      "description": "We listen, adapt, and create what families actually need in a fast-changing world."
+    },
+    {
+      "title": "Trustworthy",
+      "description": "We steward trust, time, and funding with excellence."
+    }
+  ]
+}

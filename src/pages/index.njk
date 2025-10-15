@@ -1,0 +1,141 @@
+---
+layout: layouts/base.njk
+title: Helping Military Youth Thrive | Iowa CYP
+description: Iowa CYP connects military-connected youth and families with programs, events, and resources that build resilience, leadership, and community across Iowa.
+permalink: /
+---
+<section class="relative isolate">
+  <div class="relative min-h-[90vh] overflow-hidden">
+    <div class="absolute inset-0">
+      <iframe
+        class="hero-video absolute inset-0 w-full h-full object-cover pointer-events-none"
+        src="https://www.youtube.com/embed/y8qR00ZHSNQ?autoplay=1&mute=1&controls=0&loop=1&playlist=y8qR00ZHSNQ&modestbranding=1&rel=0&playsinline=1&enablejsapi=1"
+        title="Iowa CYP Overview"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen
+        data-yt-player="hero"
+        frameborder="0"
+        aria-hidden="true"
+      ></iframe>
+    </div>
+    <div class="absolute inset-0 bg-slate-900/70"></div>
+    <div class="container relative min-h-[90vh] flex items-center justify-center text-center">
+      <div class="max-w-3xl text-white space-y-6 drop-shadow-[0_6px_24px_rgba(0,0,0,0.55)]" data-reveal>
+        <h1 class="text-3xl md:text-4xl font-semibold uppercase tracking-[0.4em] text-white flex flex-col gap-2">
+          <span>Helping</span>
+          <span>Military</span>
+          <span>Youth</span>
+          <span>Thrive</span>
+        </h1>
+        <p class="text-base md:text-xl text-white/90 leading-relaxed">For over 20 years, we have been dedicated to empowering military youth with the tools to learn, grow, and succeed.</p>
+        <div class="flex flex-wrap justify-center gap-4 pt-2">
+          <a class="hero-cta" href="/about/">Learn More</a>
+          <a class="hero-cta-secondary" href="{{ site.links.eventsSubscribe }}">Subscribe to Events</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white py-20" data-reveal>
+  <div class="container text-center space-y-6">
+    <p class="text-sm uppercase tracking-[0.4em] text-primary/80">Serving Iowa Guard Families</p>
+    <h2 class="text-3xl md:text-4xl font-semibold text-slate-900 max-w-3xl mx-auto">We rally around Guard kids and the adults who love them—before, during, and after the call comes.</h2>
+    <p class="text-slate-800 max-w-2xl mx-auto">Camps, kits, coaching, and everyday touchpoints are built with parent input so youth grow confidence, friendships, and steady routines no matter where duty takes your family.</p>
+  </div>
+</section>
+
+<section class="bg-primary/5 py-20" data-reveal>
+  <div class="container space-y-12">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3 [grid-auto-rows:1fr]">
+      {% for program in programs.items %}
+        {% if program.featured %}
+          <article class="feature-card">
+            {% if program.image %}
+              <img src="{{ program.image }}" alt="{{ program.name }}" loading="lazy" decoding="async">
+            {% endif %}
+            <div class="feature-body">
+              <h3>{{ program.name }}</h3>
+              <p>{{ program.description }}</p>
+              {% if program.cta %}
+                <a class="link-underline" href="{{ program.cta.url }}">{{ program.cta.label }}</a>
+              {% endif %}
+            </div>
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="text-center">
+      <a class="hero-cta inline-flex items-center justify-center px-6 py-3 rounded-full bg-slate-900 text-white font-semibold shadow-lg shadow-slate-900/25 transition hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-xl" href="/events/">Browse all programs</a>
+    </div>
+  </div>
+</section>
+
+<section class="parallax section text-white relative" style="background-image: url('/assets/img/team/team_office_photo.jpg');" data-reveal>
+  <div class="absolute inset-0 bg-primary/60"></div>
+  <div class="container relative grid gap-12 md:grid-cols-2 md:items-center py-20">
+    <div>
+      <h2 class="text-2xl md:text-3xl font-semibold text-white">What Guides Our Work</h2>
+      <p class="mt-3 text-white/90">{{ info.mission }}</p>
+    </div>
+    <div class="bg-white/12 backdrop-blur rounded-2xl p-6 border border-white/25 text-white">
+      <h3 class="text-xl font-semibold text-white mb-2">Where We're Headed</h3>
+      <p class="text-white">{{ info.vision }}</p>
+    </div>
+  </div>
+</section>
+
+{% set quoteHighlight = quotes.items | selectattr('id', 'equalto', 'Q001') | list | first %}
+{% if quoteHighlight %}
+<section class="bg-white py-16" data-reveal>
+  <div class="container text-center">
+    <div class="max-w-3xl mx-auto space-y-4" data-reveal>
+      <blockquote class="text-2xl md:text-3xl italic text-primary leading-relaxed">&ldquo;{{ quoteHighlight.text }}&rdquo;</blockquote>
+      {% if quoteHighlight.role %}
+        <p class="text-sm uppercase tracking-[0.3em] text-slate-500">{{ quoteHighlight.role }}</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="relative isolate overflow-hidden rounded-[3rem] mx-4 md:mx-auto md:w-[calc(100%-2rem)] my-16" data-reveal>
+  <img src="/assets/img/programs/family_events_fall_festival.jpg" alt="Iowa CYP families" class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async">
+  <div class="absolute inset-0 bg-slate-900/45"></div>
+  <div class="relative container py-24 text-center text-white space-y-6">
+    <h2 class="text-3xl md:text-4xl font-semibold tracking-[0.35em] text-white">Partner With Us</h2>
+    <p class="max-w-2xl mx-auto text-white/90 text-base md:text-lg leading-relaxed">From packing adventure kits to hosting family nights, community partners and volunteers help us keep Iowa Guard families encouraged and ready. Bring your time, skills, or resources and we’ll put them to good use.</p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a class="hero-cta" href="/support/">Get Involved</a>
+      {% if site.links.programOverviewVideo %}
+        <a class="hero-cta-secondary" href="{{ site.links.programOverviewVideo }}" target="_blank" rel="noopener">Watch Overview</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="bg-white py-20" data-reveal>
+  <div class="container grid gap-12 md:grid-cols-[1.2fr_1fr] items-center">
+    <div>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mb-4">Quick Access Resources</h2>
+      <p class="text-slate-800 mb-6">Need support fast? These partners offer tutoring help, counseling, deployment prep, and more. You can always explore the full directory for extra options.</p>
+      <a class="btn" href="/resources/">Browse all resources</a>
+    </div>
+    <div class="grid gap-4">
+      {% set highlightIds = ['R013', 'R007', 'R008'] %}
+      {% for resource in resources.items %}
+        {% if resource.id in highlightIds %}
+          <a class="resource-card flex items-center gap-4" href="{{ resource.url }}" target="_blank" rel="noopener">
+            {% if resource.image %}
+              <img src="{{ resource.image }}" alt="" class="h-12 w-12 object-contain rounded-lg bg-white border border-slate-200" loading="lazy" decoding="async">
+            {% endif %}
+            <div>
+              <h3 class="font-semibold text-slate-900">{{ resource.label }}</h3>
+              <p class="text-sm text-gray-600">{{ resource.summary }}</p>
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

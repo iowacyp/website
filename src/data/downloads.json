@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "id": "G003",
+      "title": "State Teen Panel Application Packet",
+      "description": "Eligibility details, time commitment, and application materials for Iowa CYP's State Teen Panel.",
+      "file": "/assets/files/stp_application_packet.pdf"
+    },
+    {
+      "id": "G101",
+      "title": "MOMC Classroom Kit Overview",
+      "description": "Share this one-page overview with schools requesting Month of the Military Child celebration kits.",
+      "file": "/assets/files/momc_overview.png"
+    },
+    {
+      "id": "G102",
+      "title": "MOMC Celebration Flyer",
+      "description": "Printable flyer to promote Purple Up and classroom celebrations across Iowa.",
+      "file": "/assets/files/momc_flyer.png"
+    },
+    {
+      "id": "G201",
+      "title": "Iowa CYP Rack Card",
+      "description": "Two-sided rack card summarizing key programs for outreach tables and welcome packets.",
+      "file": "/assets/files/2025_cyp_rack_card.pdf"
+    },
+    {
+      "id": "G202",
+      "title": "2025 Annual Report",
+      "description": "Year-in-review report highlighting statewide impact, partnerships, and program metrics.",
+      "file": "/assets/files/2025_Annual_Report.pdf"
+    }
+  ]
+}

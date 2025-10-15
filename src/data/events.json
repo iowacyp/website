@@ -1,0 +1,81 @@
+{
+  "events": [
+    {
+      "title": "Fall Family Festival",
+      "date": "2025-10-25",
+      "time": "2:00 PM - 4:00 PM",
+      "displayDate": "October 25, 2025",
+      "location": "Camp Dodge - Pool Pavilion, 7105 NW 70th Ave, Johnston, IA",
+      "ctaLabel": "Register",
+      "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdkB7oVnbLtNZAPZSFWqEu3Tsw_5G9Cd3buAjWyQ3DSzL6iaw/viewform?usp=share_link&ouid=100941830380849796397",
+      "notes": "Ticket limit: 500 participants.",
+      "image": "/assets/img/events/FallFest2.jpg"
+    },
+    {
+      "title": "Cookies with Santa",
+      "date": "2025-12-13",
+      "time": "12:00 PM - 1:30 PM",
+      "displayDate": "December 13, 2025",
+      "location": "Camp Dodge - Gold Star Museum, 7105 NW 70th Ave, Johnston, IA",
+      "ctaLabel": "Register",
+      "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdJ-pmJZ_TR5habbSDL0fXfFVgds3c8q48ZDirfkQt_ml6Sgw/viewform?usp=share_link&ouid=100941830380849796397",
+      "notes": "Ticket limit: 300 participants.",
+      "image": "/assets/img/events/Cookies-with-Santa.jpg"
+    },
+    {
+      "title": "Military Family Event: Davenport",
+      "date": "2026-01-18",
+      "time": "6:00 PM - 8:00 PM",
+      "displayDate": "January 18, 2026",
+      "location": "The Fun Station, 400 S 14th Ave, Eldridge, IA 52748",
+      "ctaLabel": "Register",
+      "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdYCAqOna1vVK55GhN6U8Ggisx81sEPAKdS8YlecW9aaIeI1g/viewform?usp=share_link&ouid=100941830380849796397",
+      "notes": "Ticket limit: 50 participants.",
+      "image": "/assets/img/events/MFE-Davenport.jpg"
+    },
+    {
+      "title": "Military Family Event: Cedar Rapids",
+      "date": "2026-02-15",
+      "time": "6:00 PM - 8:00 PM",
+      "displayDate": "February 15, 2026",
+      "location": "The Fun Station, 200 Collins Rd NE, Cedar Rapids, IA",
+      "ctaLabel": "Register",
+      "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfEguzvj86P5ai4jTZRX1qel5P9k8F6u7bqEaCGTUts6vM0_w/viewform?usp=share_link&ouid=100941830380849796397",
+      "notes": "Ticket limit: 50 participants.",
+      "image": "/assets/img/programs/family_events_fall_festival.jpg"
+    },
+    {
+      "title": "Military Family Event: Sioux City",
+      "date": "2026-04-05",
+      "time": "11:00 AM - 1:00 PM",
+      "displayDate": "April 5, 2026",
+      "location": "Drop Zone, 3840 Stadium Dr, Sioux City, IA 51106",
+      "ctaLabel": "Register",
+      "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSefViH-KPAXAZ0oHB4bZWqKwqdtUH1qMW9BskeU0N2pNbn-tw/viewform?usp=share_link&ouid=100941830380849796397",
+      "notes": "Ticket limit: 60 participants.",
+      "image": "/assets/img/stories/IMG_7033.jpg"
+    },
+    {
+      "title": "Military Family Ball",
+      "date": "2026-04-18",
+      "time": "4:30 PM - 7:00 PM",
+      "displayDate": "April 18, 2026",
+      "location": "Camp Dodge - Pool Pavilion, 7105 NW 70th Ave, Johnston, IA",
+      "ctaLabel": "Register",
+      "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSefViH-KPAXAZ0oHB4bZWqKwqdtUH1qMW9BskeU0N2pNbn-tw/viewform?usp=share_link&ouid=100941830380849796397",
+      "notes": "Ticket limit: 100 families.",
+      "image": "/assets/img/programs/family_ball_dance.jpg"
+    },
+    {
+      "title": "Military Family Event: Des Moines",
+      "date": "2026-05-17",
+      "time": "6:00 PM - 8:00 PM",
+      "displayDate": "May 17, 2026",
+      "location": "Emerge Academy, 2100 SE Gateway Dr Suite 200, Grimes, IA",
+      "ctaLabel": "Register",
+      "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdgOv8A6xckq1eLLU_wy1hDt3e9OAbwEHUOh0B4YuaY62pjbA/viewform?usp=share_link&ouid=100941830380849796397",
+      "notes": "Ticket limit: 110 participants.",
+      "image": "/assets/img/stories/IMG_0693.jpg"
+    }
+  ]
+}

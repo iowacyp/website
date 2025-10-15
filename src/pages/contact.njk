@@ -1,0 +1,105 @@
+---
+layout: layouts/base.njk
+title: Contact Iowa CYP | Connect with the Team
+description: Reach the Iowa Child & Youth Program team for event questions, partnership opportunities, or support for Iowa National Guard families.
+permalink: /contact/index.html
+---
+<section class="relative isolate overflow-hidden" data-reveal>
+  <div class="absolute inset-0">
+    <img
+      src="/assets/img/contact_location.jpg"
+      alt="Exterior of the Iowa CYP office at Camp Dodge"
+      class="absolute inset-0 h-full w-full object-cover"
+      loading="lazy"
+      decoding="async"
+    >
+  </div>
+  <div class="absolute inset-0 bg-slate-900/70"></div>
+  <div class="relative container min-h-[60vh] py-24 flex items-center">
+    <div class="max-w-3xl text-white space-y-6 drop-shadow-[0_6px_24px_rgba(0,0,0,0.55)]">
+      <p class="text-sm uppercase tracking-[0.35em] text-secondary">Contact Iowa CYP</p>
+      <h1 class="text-3xl md:text-4xl font-semibold text-white">Reach the team that walks alongside Iowa Guard families</h1>
+      <p class="text-white/90 text-base md:text-lg leading-relaxed">Send a note for event help, school support, partnership ideas, or anything family-related. We’ll route your message to the teammate who can respond fastest.</p>
+      <a class="hero-cta" href="mailto:{{ site.contactEmail }}">Email the team</a>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white py-16" data-reveal>
+  <div class="container space-y-10">
+    <div class="grid gap-6 md:grid-cols-[minmax(0,1fr)_0.9fr]">
+      <article class="content-card space-y-4 h-full" data-reveal>
+        <p class="text-sm uppercase tracking-[0.35em] text-primary/70">General contact</p>
+        <h2 class="text-2xl font-semibold text-slate-900">We’re a call or message away</h2>
+        <p class="text-gray-700">Email: <a class="text-primary font-semibold" href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></p>
+        <p class="text-gray-700">Phone: <a class="text-primary font-semibold" href="tel:{{ site.contactPhone | replace('-', '') }}">{{ site.contactPhone }}</a></p>
+        <p class="text-sm text-gray-600">We reply within two business days. Need help right now? Call the Iowa National Guard Warrior &amp; Family Services office.</p>
+      </article>
+      <article class="content-card space-y-4 h-full md:flex md:items-center md:gap-6" data-reveal>
+        <img src="/assets/img/contact_location.jpg" alt="Iowa Gold Star Military Museum exterior" class="w-full md:w-40 h-40 object-cover rounded-2xl border border-primary/20" loading="lazy" decoding="async">
+        <div class="space-y-3">
+          <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Visit us</p>
+          <h2 class="text-2xl font-semibold text-slate-900">Camp Dodge, Johnston</h2>
+          <p class="text-gray-700">{{ site.officeLocation }}</p>
+          <p class="text-sm text-gray-600">We’re beside the Iowa Gold Star Military Museum inside Camp Dodge. Bring a valid ID for gate access.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="bg-primary/5 py-20" data-reveal>
+  <div class="container space-y-10">
+    <div class="max-w-3xl space-y-4">
+      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Meet your points of contact</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Connect directly with program leads across Iowa</h2>
+      <p class="text-slate-700 leading-relaxed">Each teammate below covers specific regions or specialties. Reach out to the person closest to your family or request a warm handoff.</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2">
+      {% for member in team.members %}
+        <article class="content-card h-full space-y-4" data-reveal>
+          <div class="flex items-center gap-4">
+            {% if member.headshot %}
+              <img src="{{ member.headshot }}" alt="{{ member.name }}" class="h-16 w-16 rounded-full object-cover border border-primary/30" loading="lazy" decoding="async">
+            {% endif %}
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900">{{ member.name }}</h3>
+              <p class="text-sm text-primary uppercase tracking-wide">{{ member.title }}</p>
+              <p class="text-xs text-gray-600">{{ member.organization }}</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-700 leading-relaxed">{{ member.bio }}</p>
+          <div class="text-sm text-gray-700 space-y-1">
+            <p>Email: <a class="text-primary font-semibold" href="mailto:{{ member.email }}">{{ member.email }}</a></p>
+            <p>Phone: <a class="text-primary font-semibold" href="tel:{{ member.phone | replace('-', '') }}">{{ member.phone }}</a></p>
+          </div>
+          {% if member.social %}
+            <div class="flex flex-wrap gap-3 pt-1">
+              {% for social in member.social %}
+                <a class="text-sm font-semibold text-primary hover:underline" href="{{ social.url }}" target="_blank" rel="noopener">{{ social.label }}</a>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="container pb-20 space-y-10" data-reveal>
+  <div class="content-card md:flex md:items-center md:justify-between md:gap-8 space-y-6 md:space-y-0">
+    <div class="space-y-3">
+      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Stay in the loop</p>
+      <h2 class="text-2xl font-semibold text-slate-900">Get event updates and resource drops</h2>
+      <p class="text-gray-700">We’ll send a quick note when registrations open or new supports launch.</p>
+    </div>
+    <a class="btn" href="{{ site.links.eventsSubscribe }}">Subscribe to updates</a>
+  </div>
+  <div class="space-y-3">
+    <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Follow Iowa CYP</p>
+    <div class="flex flex-wrap gap-4 text-gray-700">
+      <a class="text-primary font-semibold" href="{{ site.social.facebook }}" target="_blank" rel="noopener">Facebook</a>
+      <a class="text-primary font-semibold" href="{{ site.social.instagram }}" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</section>

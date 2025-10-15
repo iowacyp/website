@@ -1,0 +1,91 @@
+---
+layout: layouts/base.njk
+title: Join the Iowa CYP List | Event & Program Updates
+description: Sign up to receive Iowa CYP program announcements, camp registration alerts, and family resources in your inbox.
+permalink: /subscribe/index.html
+---
+<section class="relative isolate overflow-hidden" data-reveal>
+  <div class="absolute inset-0">
+    <img
+      src="/assets/img/programs/family_events_fall_festival.jpg"
+      alt="Families gathered at an Iowa CYP fall festival"
+      class="absolute inset-0 h-full w-full object-cover"
+      loading="lazy"
+      decoding="async"
+    >
+  </div>
+  <div class="absolute inset-0 bg-slate-900/65"></div>
+  <div class="relative container min-h-[55vh] py-20 flex items-center">
+    <div class="max-w-3xl text-white space-y-6 drop-shadow-[0_6px_24px_rgba(0,0,0,0.55)]">
+      <p class="text-sm uppercase tracking-[0.35em] text-secondary">Stay in the loop</p>
+      <h1 class="text-3xl md:text-4xl font-semibold text-white">Join the Iowa CYP email list</h1>
+      <p class="text-white/90 text-base md:text-lg leading-relaxed">Be first to know when camp registration opens, when adventure kits ship, and when partner events pop up near you.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white py-16" data-reveal>
+  <div class="container max-w-3xl space-y-12">
+    <div class="space-y-4 text-center">
+      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">What you can expect</p>
+      <p class="text-slate-700 leading-relaxed">Monthly roundups with quick registration reminders, statewide resource drops, and a peek at new programming—plus urgent alerts when spots are limited.</p>
+    </div>
+    <form name="event-updates" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="content-card space-y-6" data-reveal>
+      <input type="hidden" name="form-name" value="event-updates">
+      <p class="hidden">
+        <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+      </p>
+
+      <div class="space-y-2">
+        <label class="block text-sm font-semibold text-slate-800" for="email">Email</label>
+        <input id="email" name="email" type="email" required autocomplete="email" class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
+      </div>
+
+      <div class="space-y-2">
+        <label class="block text-sm font-semibold text-slate-800" for="branch">Branch of Service</label>
+        <select id="branch" name="branch" required class="w-full rounded-2xl border border-slate-300 px-4 py-3 bg-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
+          <option value="" disabled selected>Select a branch</option>
+          <option>Army National Guard</option>
+          <option>Air National Guard</option>
+          <option>Army Reserve</option>
+          <option>Active Duty</option>
+          <option>Veteran</option>
+          <option>Other / Civilian Partner</option>
+        </select>
+      </div>
+
+      <div class="space-y-2">
+        <label class="block text-sm font-semibold text-slate-800" for="city">Closest City to Home</label>
+        <select id="city" name="city" required class="w-full rounded-2xl border border-slate-300 px-4 py-3 bg-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
+          <option value="" disabled selected>Select a city</option>
+          <option>Des Moines</option>
+          <option>Sioux City</option>
+          <option>Council Bluffs</option>
+          <option>Waterloo</option>
+          <option>Cedar Rapids</option>
+          <option>Davenport</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="space-y-2">
+        <label class="inline-flex items-start gap-3 text-sm text-slate-700">
+          <input type="checkbox" name="consent" required class="mt-1 h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary/50">
+          <span>I agree to receive email updates from Iowa CYP. I understand I can unsubscribe at any time.</span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn w-full md:w-auto">Submit</button>
+    </form>
+  </div>
+</section>
+
+<section class="container pb-20" data-reveal>
+  <div class="content-card md:flex md:items-center md:justify-between md:gap-8 space-y-6 md:space-y-0">
+    <div class="space-y-3">
+      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Prefer text or phone?</p>
+      <p class="text-gray-700 leading-relaxed">Call us at <a class="text-primary font-semibold" href="tel:{{ site.contactPhone | replace('-', '') }}">{{ site.contactPhone }}</a> and we’ll plug you into the notification style that works best for your family.</p>
+    </div>
+    <a class="btn-secondary" href="mailto:{{ site.contactEmail }}?subject=Update%20Preferences">Email preferences</a>
+  </div>
+</section>

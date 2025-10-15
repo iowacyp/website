@@ -1,0 +1,45 @@
+{
+  "officeLocation": "Camp Dodge Rec Hall - 7105 NW 78th Ave Bldg 3585, Johnston IA 50131",
+  "members": [
+    {
+      "id": "T001",
+      "name": "Chris Cox",
+      "title": "Lead Child & Youth Program Coordinator",
+      "organization": "JTSI Contractor",
+      "bio": "Chris Cox leads the Iowa Army National Guard Child & Youth Program. He grew up in a Guard family and knows firsthand how much encouragement matters. Chris loves building experiences where military-connected youth can be themselves, learn new skills, and feel proud of the role they play at home.",
+      "phone": "515-727-3064",
+      "email": "christopher.j.cox18.ctr@army.mil",
+      "headshot": "/assets/img/team/chris_cox_headshot.jpg",
+      "social": [
+        {
+          "label": "Facebook",
+          "url": "https://www.facebook.com/iowacyp"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/iowacyp/"
+        }
+      ]
+    },
+    {
+      "id": "T002",
+      "name": "Erin Coogler",
+      "title": "Child & Youth Program Coordinator",
+      "organization": "JTSI Contractor",
+      "bio": "Erin Coogler is a Program Coordinator who brings a child-development background and a big heart for Guard families. She designs camps, kits, and trainings that feel welcoming, practical, and fun—so every young person walks away more confident and connected.",
+      "phone": "515-252-4050",
+      "email": "iaarngcyp@gmail.com",
+      "headshot": "/assets/img/team/erin_headshot.jpg",
+      "social": [
+        {
+          "label": "Facebook",
+          "url": "https://www.facebook.com/iowacyp"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/iowacyp/"
+        }
+      ]
+    }
+  ]
+}

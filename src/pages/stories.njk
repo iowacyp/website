@@ -1,0 +1,271 @@
+---
+layout: layouts/base.njk
+title: Stories of Impact | Iowa CYP Families
+description: Real stories from Iowa National Guard children, teens, and caregivers who found connection and resilience through Iowa CYP.
+permalink: /stories/index.html
+---
+{% set heroHighlights = [
+  {
+    "title": "Guard kids stay connected",
+    "description": "Adventure Kits keep conversations going during drill weekends and deployments."
+  },
+  {
+    "title": "Camp changes the tone",
+    "description": "Mentors, shared traditions, and leadership roles rebuild confidence fast."
+  },
+  {
+    "title": "Families find their circle",
+    "description": "Seasonal gatherings and Yellow Ribbon weekends offer instant understanding."
+  },
+  {
+    "title": "Teens lead the way",
+    "description": "State Teen Panel members bring new ideas and keep peers involved statewide."
+  }
+] %}
+
+{% set storyHighlights = [
+  {
+    "title": "Adventure Kits spark resilience at home",
+    "quoteId": "Q001",
+    "body": "Families across Iowa use the quarterly Online Adventure Kits to keep conversations going during long trainings and deployments. Hands-on activities make it easier for kids to talk about feelings, try new skills, and feel connected to the Guard community.",
+    "programs": "Online Adventure Kits",
+    "image": "/assets/img/programs/adventure_kits.jpg"
+  },
+  {
+    "title": "Summer Camp restores confidence",
+    "quoteId": "Q008",
+    "body": "A parent told us camp 'brightened our daughter's smile again.' Between shared traditions, mentor support, and daily leadership challenges, campers leave knowing they are part of something bigger than themselves.",
+    "programs": "Summer Camp, State Teen Panel",
+    "image": "/assets/img/programs/summer_camp_group.jpg"
+  },
+  {
+    "title": "Community events keep families connected",
+    "quoteId": "Q005",
+    "body": "Seasonal gatherings like the Fall Family Festival, Cookies with Santa, and regional MFEs bring Guard families together. Partners provide activities, meals, and welcoming spaces so every age group can celebrate alongside people who understand military life.",
+    "programs": "Military Family Events, Yellow Ribbon",
+    "image": "/assets/img/programs/family_events_fall_festival.jpg"
+  }
+] %}
+
+{% set storyRhythms = [
+  {
+    "title": "When orders drop",
+    "body": "Orientation nights, Yellow Ribbon workshops, and family readiness touchpoints help everyone map out the next few months together.",
+    "quoteId": "Q005"
+  },
+  {
+    "title": "During the long stretch",
+    "body": "Online Adventure Kits, check-in calls, and teen panel meetups keep Guard kids practicing resilience in between texts and video chats with their service member.",
+    "quoteId": "Q001"
+  },
+  {
+    "title": "Coming back together",
+    "body": "Camp reunions, resource referrals, and community celebrations make reintegration feel less overwhelming and remind families they’re not doing it alone.",
+    "quoteId": "Q009"
+  }
+] %}
+
+{% set storyQuoteIds = ['Q001', 'Q005', 'Q008', 'Q009'] %}
+
+<section class="bg-white pt-20 pb-16" data-reveal>
+  <div class="container grid gap-12 lg:grid-cols-[minmax(0,1fr)_0.85fr] lg:items-center">
+    <div class="space-y-6">
+      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Stories of Impact</p>
+      <h1 class="text-3xl md:text-4xl font-semibold text-slate-900">Family voices that shape how Iowa CYP shows up</h1>
+      <p class="text-slate-700 text-base md:text-lg leading-relaxed">Every camp recap, porch drop-off, and teen leadership story keeps us focused on what Guard-connected youth really need. Explore the moments below and pass them along to partners who want to understand the work.</p>
+      <ul class="grid gap-4 sm:grid-cols-2">
+        {% for insight in heroHighlights %}
+          <li class="rounded-3xl border border-primary/20 bg-primary/5 p-4 space-y-2">
+            <p class="text-xs uppercase tracking-[0.35em] text-primary/80 font-semibold">{{ insight.title }}</p>
+            <p class="text-sm text-slate-700 leading-relaxed">{{ insight.description }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+      <div class="flex flex-wrap gap-3">
+        <a class="hero-cta" href="#family-snapshots">Explore family snapshots</a>
+        <a class="hero-cta-secondary" href="#share-story">Share your story</a>
+      </div>
+    </div>
+    <figure class="relative">
+      <img src="/assets/img/stories/1o4a5684.jpg" alt="Guard youth sharing stories during an Iowa CYP gathering" class="rounded-[2.5rem] border border-white shadow-xl w-full object-cover">
+      <figcaption class="absolute bottom-4 left-4 rounded-full bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-primary shadow">Guard family weekend</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="family-snapshots" class="bg-primary/5 py-16" data-reveal>
+  <div class="container space-y-10">
+    <div class="max-w-3xl space-y-4">
+      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Family snapshots</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Programs that keep momentum strong at home</h2>
+      <p class="text-slate-700 leading-relaxed">These quick reads show how practical support—kits, camps, and community touchpoints—can shift the energy at home and keep Guard kids feeling steady.</p>
+    </div>
+    <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+      {% for story in storyHighlights %}
+        {% set highlightQuote = quotes.items | selectattr('id', 'equalto', story.quoteId) | list | first %}
+        <article class="content-card h-full flex flex-col gap-5" data-reveal>
+          {% if story.image %}
+            <img src="{{ story.image }}" alt="" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
+          {% endif %}
+          <div class="space-y-3">
+            <h3 class="text-xl font-semibold text-slate-900">{{ story.title }}</h3>
+            <p class="text-sm text-gray-700 leading-relaxed">{{ story.body }}</p>
+            {% if highlightQuote %}
+              <blockquote class="text-sm italic text-primary/90 leading-relaxed">
+                &ldquo;{{ highlightQuote.text }}&rdquo;
+                {% if highlightQuote.role %}
+                  <span class="block text-xs uppercase tracking-wide text-primary/70 mt-3 not-italic">{{ highlightQuote.role }}</span>
+                {% endif %}
+              </blockquote>
+            {% endif %}
+          </div>
+          <p class="text-xs uppercase tracking-wide text-slate-500 mt-auto">Programs featured: {{ story.programs }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="bg-white py-16" data-reveal>
+  <div class="container space-y-10">
+    <div class="max-w-3xl space-y-4">
+      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Guard family rhythm</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Support that meets families in every phase</h2>
+      <p class="text-slate-700 leading-relaxed">Deployments and trainings reshape home life more than once. Here’s what families notice as Iowa CYP weaves in encouragement, information, and community throughout the cycle.</p>
+    </div>
+    <div class="grid gap-6 lg:grid-cols-3">
+      {% for moment in storyRhythms %}
+        {% set momentQuote = quotes.items | selectattr('id', 'equalto', moment.quoteId) | list | first %}
+        <article class="content-card h-full space-y-4" data-reveal>
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold">{{ loop.index }}</span>
+            <h3 class="text-lg font-semibold text-slate-900">{{ moment.title }}</h3>
+          </div>
+          <p class="text-sm text-slate-700 leading-relaxed">{{ moment.body }}</p>
+          {% if momentQuote %}
+            <blockquote class="text-sm italic text-primary/90 leading-relaxed">
+              &ldquo;{{ momentQuote.text }}&rdquo;
+              {% if momentQuote.role %}
+                <span class="block text-xs uppercase tracking-wide text-primary/70 mt-3 not-italic">{{ momentQuote.role }}</span>
+              {% endif %}
+            </blockquote>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="bg-slate-900 text-white py-20" data-reveal>
+  <div class="container grid gap-12 lg:grid-cols-[minmax(0,1fr)_0.95fr] lg:items-center">
+    <div class="space-y-5">
+      <p class="text-sm uppercase tracking-[0.35em] text-secondary">Community spotlight</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-white">News story: Community lifts families during deployment</h2>
+      <p class="text-white/85 leading-relaxed">Program Director Chris Cox sat down with local news to share how partners step in when Guard families face deployments. The feature highlights a free horse camp hosted by Jester Park Equestrian Center that gave military youth room to breathe, laugh, and stay connected while a parent was away.</p>
+      <ul class="space-y-3 text-sm text-white/80">
+        <li><span class="font-semibold text-white">Why it mattered:</span> Volunteers, donors, and Jester Park covered every cost so Guard kids could simply show up.</li>
+        <li><span class="font-semibold text-white">What families said:</span> Time with the horses eased anxiety and sparked conversations about deployment in a safe setting.</li>
+        <li><span class="font-semibold text-white">How to use it:</span> Share this clip with civic groups and potential sponsors who want real examples of community impact.</li>
+      </ul>
+    </div>
+    <article class="content-card bg-white/5 border-white/20 backdrop-blur text-white space-y-4">
+      <div class="aspect-video rounded-3xl overflow-hidden border border-white/30">
+        <video controls preload="metadata" poster="/assets/img/stories/news_story.png" class="w-full h-full">
+          <source src="/assets/video/news_interview.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <p class="text-white/80 text-sm leading-relaxed">Full interview: Chris Cox explains how community partners like Jester Park Equestrian Center rally around Guard families to keep kids grounded during deployment.</p>
+    </article>
+  </div>
+</section>
+
+<section class="bg-white py-20" data-reveal>
+  <div class="container grid gap-12 lg:grid-cols-[minmax(0,1fr)_0.95fr] lg:items-center">
+    <article class="content-card space-y-5 h-full order-last lg:order-first">
+      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Parent perspective</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Finding friendship after a cross-country move</h2>
+      <p class="text-slate-700 leading-relaxed">When one Guard family relocated from Texas to Iowa, their daughter wondered who would understand what military life felt like. In this short clip, her mom shares how a familiar face from an Iowa CYP program turned into instant camaraderie—and how that connection steadied their whole household.</p>
+      <ul class="space-y-3 text-sm text-slate-700">
+        <li><span class="font-semibold text-slate-900">Shared experience:</span> A fellow military youth spotted her at camp and reminded her she wasn’t starting over alone.</li>
+        <li><span class="font-semibold text-slate-900">Ripple effect:</span> Confidence followed her home, making the new duty station feel less overwhelming.</li>
+        <li><span class="font-semibold text-slate-900">Takeaway:</span> CYP friendships can outlast moves and mobilizations, giving kids anchors no matter the zip code.</li>
+      </ul>
+    </article>
+    <div class="content-card h-full space-y-4">
+      <div class="aspect-video rounded-3xl overflow-hidden border border-slate-200">
+        <iframe
+          src="https://www.youtube.com/embed/rZL1KANrLt4"
+          title="Guard parent testimonial"
+          class="w-full h-full"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed">Use this testimony when talking with school counselors, partner organizations, or potential sponsors who want to understand the on-the-ground impact of CYP relationships.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white py-16" data-reveal>
+  <div class="container grid gap-8 md:grid-cols-[1.2fr_1fr] items-start">
+    <article class="content-card space-y-4 h-full">
+      <h2 class="text-2xl font-semibold text-slate-900">Mission in Motion</h2>
+      <p class="text-gray-700 leading-relaxed">{{ info.mission }}</p>
+      <ul class="list-disc list-inside text-sm text-gray-700 space-y-2">
+        {% for pillar in info.strategicInfrastructure %}
+          <li><span class="font-semibold text-slate-800">{{ pillar.title }}:</span> {{ pillar.description }}</li>
+        {% endfor %}
+      </ul>
+    </article>
+    <article class="content-card bg-slate-900 text-white border-slate-900 space-y-4 h-full" data-reveal>
+      <h2 class="text-xl font-semibold">See the program in action</h2>
+      {% if site.links.programOverviewVideo %}
+        {% set embedUrl = site.links.programOverviewVideo | replace('https://youtu.be/', 'https://www.youtube.com/embed/') %}
+        <div class="aspect-video rounded-xl overflow-hidden border border-white/20">
+          <iframe src="{{ embedUrl }}" title="Iowa CYP Overview" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+        </div>
+      {% else %}
+        <video class="w-full rounded-xl" controls poster="/assets/img/stories/news_story.png">
+          <source src="/assets/video/news_interview.mp4" type="video/mp4">
+          Sorry, your browser does not support embedded video.
+        </video>
+      {% endif %}
+      <p class="text-white/80 text-sm">Share this overview with partners and community members to invite new champions into the work.</p>
+    </article>
+  </div>
+</section>
+
+<section class="bg-primary/5 py-16" data-reveal>
+  <div class="container space-y-10">
+    <div class="max-w-3xl space-y-4">
+      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Voices you can trust</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Why consistent support matters statewide</h2>
+      <p class="text-slate-700 leading-relaxed">Parents, teens, and caregivers keep us honest. These quotes highlight what sticks with them long after an event or program ends.</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2">
+      {% for quote in quotes.items %}
+        {% if quote.id in storyQuoteIds %}
+          <figure class="content-card h-full space-y-4" data-reveal>
+            <blockquote class="text-primary text-lg italic leading-relaxed">&ldquo;{{ quote.text }}&rdquo;</blockquote>
+            {% if quote.role %}
+              <figcaption class="text-xs uppercase tracking-wide text-slate-500">{{ quote.role }}</figcaption>
+            {% endif %}
+          </figure>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="share-story" class="container pb-20" data-reveal>
+  <div class="content-card bg-primary text-white border-primary md:p-10 space-y-4">
+    <h2 class="text-2xl font-semibold">Share your Iowa CYP story</h2>
+    <p class="text-white/90">We feature fresh voices each season. Send a quick note or ask for a call—photos welcome! We’ll coordinate next steps together.</p>
+    <div class="flex flex-wrap gap-3">
+      <a class="btn-secondary" href="mailto:{{ site.contactEmail }}?subject=Share%20My%20Iowa%20CYP%20Story">Email the team</a>
+      <a class="hero-cta-secondary bg-white/10 border border-white/30 text-white" href="{{ site.links.eventsSubscribe }}">Subscribe for updates</a>
+    </div>
+  </div>
+</section>

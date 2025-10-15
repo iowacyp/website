@@ -1,0 +1,79 @@
+{
+  "items": [
+    {
+      "id": "P001",
+      "name": "Adventure Kits",
+      "type": "Program Series",
+      "targetAudience": "Ages 6-14 military-connected youth",
+      "description": "Adventure Kits deliver seasonal STEM projects, health tips, and hands-on challenges Guard families open anytime with videos and supplies ready.",
+      "cta": {
+        "label": "Sign Up",
+        "url": "https://iowacyp.com/adventure-kits-form"
+      },
+      "image": "/assets/img/programs/adventure_kits.jpg",
+      "featured": true
+    },
+    {
+      "id": "P002",
+      "name": "Summer Camp",
+      "type": "Camp",
+      "targetAudience": "Middle and high school military youth",
+      "description": "Weeklong Summer Camp challenges Guard teens with team adventures, leadership labs, and mentor support that build lifelong friendships and confidence.",
+      "cta": {
+        "label": "Get Updates",
+        "url": "/subscribe/"
+      },
+      "image": "/assets/img/programs/summer_camp_group.jpg",
+      "featured": true
+    },
+    {
+      "id": "P003",
+      "name": "Month of the Military Child",
+      "type": "Campaign",
+      "targetAudience": "Military kids, families, educators",
+      "description": "Every April, the military community unites to support and celebrate military children and their families during Month of the Military Child. Nationwide, people wear purple to honor the sacrifices military youth make throughout their parents' careers. In Iowa, we provide classrooms with celebration kits, including Purple Up wristbands, so military children can share in the celebration with their classmates.",
+      "cta": {
+        "label": "Request a Kit",
+        "url": "https://iowacyp.com/momc-request"
+      },
+      "image": "/assets/img/programs/momc_purple_up.jpg"
+    },
+    {
+      "id": "P004",
+      "name": "Military Family Events",
+      "type": "Program",
+      "targetAudience": "Military families statewide",
+      "description": "Military Family Events gather Guard households for regional celebrations, workshops, and volunteer-led activities that strengthen community across Iowa all year.",
+      "cta": {
+        "label": "View Events",
+        "url": "https://iowacyp.com/family-events"
+      },
+      "image": "/assets/img/programs/family_events_fall_festival.jpg",
+      "featured": true
+    },
+    {
+      "id": "P005",
+      "name": "Yellow Ribbon",
+      "type": "Workshop",
+      "targetAudience": "Youth experiencing deployment",
+      "description": "Youth attending these events are given the tools to navigate through the deployment process. At these events youth are given the opportunity to connect with others going through similar life challenges. If you are experiencing a deployment and want to find out more about this program, contact your local Yellow Ribbon team.",
+      "cta": {
+        "label": "Contact Yellow Ribbon",
+        "url": "mailto:benjamin.f.winnike.mil@army.mil"
+      },
+      "image": "/assets/img/programs/yellow_ribbon.jpg"
+    },
+    {
+      "id": "P006",
+      "name": "State Teen Panel",
+      "type": "Mentorship",
+      "targetAudience": "Military-connected teens ages 13-17",
+      "description": "A leadership and service program that brings together military-connected teens from across Iowa to represent the voices of their peers, develop leadership skills, and support youth initiatives throughout the state.",
+      "cta": {
+        "label": "Join Today",
+        "url": "https://iowacyp.com/STP"
+      },
+      "image": "/assets/img/programs/stp_panel_group.jpg"
+    }
+  ]
+}

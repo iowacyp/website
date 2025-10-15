@@ -1,0 +1,60 @@
+{
+  "items": [
+    {
+      "id": "Q001",
+      "text": "The support these kids receive is incredible--it reminds them they're not alone. Military life is tough, and we're grateful for CYP helping our children feel seen and supported through it all.",
+      "author": null,
+      "role": "ARNG Parent",
+      "section": "stories",
+      "useCase": "general"
+    },
+    {
+      "id": "Q004",
+      "text": "Month of the Military Child reminds us that purple is more than a color--it's our community.",
+      "author": null,
+      "role": null,
+      "section": "stories",
+      "useCase": "MOMC feature"
+    },
+    {
+      "id": "Q005",
+      "text": "They are there to support the family from the youngest member to the oldest member.",
+      "author": null,
+      "role": "ARNG Parent",
+      "section": "programs",
+      "useCase": "Family Events overview"
+    },
+    {
+      "id": "Q006",
+      "text": "The sense of community and connection with other military children has been such a help. It showed me what we can overcome together and gave me invaluable leadership skills, helping me mature and feel more connected to my military peers.",
+      "author": null,
+      "role": "STP Member",
+      "section": "partners",
+      "useCase": "STP recruitment page"
+    },
+    {
+      "id": "Q007",
+      "text": "Yellow Ribbon workshops connect kids who are facing the same challenges.",
+      "author": null,
+      "role": null,
+      "section": "programs",
+      "useCase": "general"
+    },
+    {
+      "id": "Q008",
+      "text": "This camp brightened our daughter's smile again. The friendships and support she found reminded her she's not alone--something every military kid deserves.",
+      "author": null,
+      "role": "ARNG Parent",
+      "section": "programs",
+      "useCase": "Summer camp"
+    },
+    {
+      "id": "Q009",
+      "text": "Being a military kid in Iowa can be tough, but this community has been nothing short of amazing. The bonds, support, and love our kids find here remind them they're never alone.",
+      "author": null,
+      "role": "ARNG Parent",
+      "section": "general",
+      "useCase": "general"
+    }
+  ]
+}

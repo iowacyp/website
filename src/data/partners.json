@@ -1,0 +1,60 @@
+{
+  "items": [
+    {
+      "id": "PR001",
+      "name": "EveryStep",
+      "description": "EveryStep provided amazing resources during our annual Iowa Remembers Retreat for military youth who have lost a loved one.",
+      "website": "https://www.everystep.org/",
+      "logo": "/assets/img/partners/partner_everystep.png"
+    },
+    {
+      "id": "PR002",
+      "name": "City Serve (Capitol City Church)",
+      "description": "Capitol City Church assembled a volunteer team to support large-scale events like the Fall Family Festival and Cookies with Santa.",
+      "website": "https://www.capitolcitychurch.com/",
+      "logo": "/assets/img/partners/partner_cityserve.png"
+    },
+    {
+      "id": "PR003",
+      "name": "Pay It Forward Always",
+      "description": "Pay It Forward Always enriched summer camp with a legacy-rock painting activity that strengthened community-building efforts.",
+      "website": "https://www.facebook.com/itstartswithyoupayitforward/",
+      "logo": "/assets/img/partners/partner_payitforwardalways.png"
+    },
+    {
+      "id": "PR004",
+      "name": "USO Iowa",
+      "description": "USO supplied creative craft kits and team-building materials that helped youth build connection, creativity, and fun.",
+      "website": "https://iowa.uso.org/",
+      "logo": "/assets/img/partners/partner_uso.png"
+    },
+    {
+      "id": "PR005",
+      "name": "Grand View Christian School",
+      "description": "Grand View Christian School partners with CYP to provide facility space and support for youth programming.",
+      "website": "https://grandviewchristianschool.org/",
+      "logo": "/assets/img/partners/partner_grandviewchristian.png"
+    },
+    {
+      "id": "PR007",
+      "name": "Project Food and Fellowship (Iowa Select Farms)",
+      "description": "Iowa Select Farms donated take-home activities and meals through Project Food and Fellowship to support military families in Iowa.",
+      "website": "https://www.iowaselect.com/foundation/food-and-fellowship/",
+      "logo": "/assets/img/partners/partner_projectfoodfellowship.png"
+    },
+    {
+      "id": "PR008",
+      "name": "Jester Park Equestrian Center",
+      "description": "Jester Park Equestrian Center hosted a free horseback riding camp for over 50 military youth, teaching grooming, saddling, and riding skills.",
+      "website": "https://www.polkcountyiowa.gov/conservation/jester-park-equestrian-center/",
+      "logo": "/assets/img/partners/partner_jesterpark.png"
+    },
+    {
+      "id": "PR009",
+      "name": "BGCA Mission Youth Outreach",
+      "description": "Boys & Girls Clubs programming tailored to military-connected youth.",
+      "website": "https://www.bgca.org/about-us/military/mission-youth-outreach-2025/",
+      "logo": "/assets/img/partners/partner_bgca.png"
+    }
+  ]
+}

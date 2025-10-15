@@ -1,0 +1,32 @@
+Iowa National Guard Child & Youth Program — Typography Spec
+Updated: 2025-10-14
+
+Primary Headline Font: League Spartan
+ - Weights: 600, 700
+ - Use for: H1–H3, buttons, badges, short callouts
+ - Source: Google Fonts
+
+Body Font: Source Sans 3
+ - Weights: 400, 600 (optional)
+ - Use for: paragraph text, UI labels, captions
+ - Source: Google Fonts
+
+Color Tokens:
+ - CYP Red: #cb3d4e
+ - CYP Blue: #012d6b
+
+Web Implementation:
+ - Include branding_fonts.css, or copy into your design system
+ - Use .text-red/.text-blue for quick accents
+ - Headings are uppercase by default for brand consistency
+
+Accessibility Notes:
+ - Aim for 4.5:1 contrast for body text, 3:1 for large headings
+ - Avoid placing red text on blue backgrounds (and vice versa) for readability
+
+File Map:
+ - branding_fonts.css — ready-to-use CSS
+ - branding_fonts.jpg — visual specimen sheet
+ - branding_fonts.txt — this reference
+
+Contact: Design Team

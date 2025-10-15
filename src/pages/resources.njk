@@ -1,0 +1,101 @@
+---
+layout: layouts/base.njk
+title: Resources for Military Families | Iowa CYP
+description: Quick links to scholarships, counseling, childcare, and support resources for Iowa National Guard children, teens, and families.
+permalink: /resources/index.html
+---
+<section class="relative isolate overflow-hidden" data-reveal>
+  <div class="absolute inset-0">
+    <img
+      src="/assets/img/programs/yellow_ribbon.jpg"
+      alt="Iowa CYP team member sharing resources with Guard families during Yellow Ribbon"
+      class="absolute inset-0 h-full w-full object-cover"
+      loading="lazy"
+      decoding="async"
+    >
+  </div>
+  <div class="absolute inset-0 bg-slate-900/70"></div>
+  <div class="relative container min-h-[60vh] py-24 flex items-center">
+    <div class="max-w-3xl text-white space-y-6 drop-shadow-[0_6px_24px_rgba(0,0,0,0.55)]">
+      <p class="text-sm uppercase tracking-[0.35em] text-secondary">Resource Hub</p>
+      <h1 class="text-3xl md:text-4xl font-semibold text-white">Quick support for Guard-connected kids, teens, and caregivers</h1>
+      <p class="text-white/90 text-base md:text-lg leading-relaxed">Need a quick answer or a steady shoulder? These links point to the partners families lean on most. Everything opens in a new tab so you can keep exploring here.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white py-16" data-reveal>
+  <div class="container space-y-12">
+    <div class="max-w-3xl space-y-4">
+      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Top resources</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Trusted partners families call first</h2>
+      <p class="text-slate-700 leading-relaxed">Browse by topic—from deployment prep to tutoring—and share links directly with the families you support.</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      {% for resource in resources.items %}
+        <article class="content-card flex gap-4 h-full" data-reveal>
+          {% if resource.image %}
+            <img src="{{ resource.image }}" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
+          {% endif %}
+          <div class="space-y-2">
+            <h3 class="text-lg font-semibold text-slate-900">
+              <a href="{{ resource.url }}" target="_blank" rel="noopener">{{ resource.label }}</a>
+            </h3>
+            <p class="text-sm text-gray-700 leading-relaxed">{{ resource.summary }}</p>
+            <a class="text-sm font-semibold text-primary inline-flex items-center gap-2" href="{{ resource.url }}" target="_blank" rel="noopener">Open resource<span aria-hidden="true">&rarr;</span></a>
+            {% if resource.notes %}
+              <p class="text-xs text-gray-500">{{ resource.notes }}</p>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="bg-primary/5 py-20" data-reveal>
+  <div class="container space-y-10">
+    <article class="content-card md:flex md:items-center md:justify-between md:gap-12" data-reveal>
+      <div class="space-y-4">
+        <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Scholarships &amp; grants</p>
+        <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Funding pathways for military-connected students</h2>
+        <p class="text-gray-700 leading-relaxed">We keep track of scholarships and grants for Guard-connected students heading to college, trade schools, or certification programs. Share the database with families or ask us for a custom pull.</p>
+      </div>
+      {% if site.links.scholarshipDatabase %}
+        <a class="btn" href="{{ site.links.scholarshipDatabase }}" target="_blank" rel="noopener">Open the scholarship database</a>
+      {% else %}
+        <p class="text-sm text-gray-700">Scholarship database link coming soon. <a class="text-primary font-semibold" href="mailto:{{ site.contactEmail }}?subject=Scholarship%20Database%20Request">Email us to request the latest spreadsheet.</a></p>
+      {% endif %}
+    </article>
+  </div>
+</section>
+
+<section class="bg-white py-16" data-reveal>
+  <div class="container space-y-10">
+    <div class="max-w-3xl space-y-4">
+      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Downloadable guides</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Share-ready flyers, checklists, and talking points</h2>
+      <p class="text-slate-700 leading-relaxed">Send these PDFs to families, school staff, or partners when you want to spread the word about upcoming opportunities and year-round support.</p>
+    </div>
+    <div class="grid gap-4 md:grid-cols-2">
+      {% for download in downloads.items %}
+        <article class="content-card flex flex-col gap-3 h-full" data-reveal>
+          <h3 class="text-lg font-semibold text-slate-900">{{ download.title }}</h3>
+          <p class="text-sm text-gray-700 leading-relaxed">{{ download.description }}</p>
+          <a class="btn-secondary w-fit" href="{{ download.file }}" target="_blank" rel="noopener">Download</a>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="container pb-20" data-reveal>
+  <div class="content-card md:flex md:items-center md:justify-between md:gap-8 space-y-6 md:space-y-0">
+    <div class="space-y-4">
+      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Need something else?</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Tell us what resource you wish existed</h2>
+      <p class="text-gray-700 leading-relaxed">We’ll connect you with the right teammate or build a new tool if there’s a gap.</p>
+    </div>
+    <a class="btn" href="mailto:{{ site.contactEmail }}?subject=Resource%20Request">Email the team</a>
+  </div>
+</section>

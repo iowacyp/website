@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title or site.shortName }}</title>
+  <meta name="description" content="{{ description or site.tagline }}">
+  <link rel="canonical" href="{{ site.domain }}{{ page.url }}">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/pwa/icon-192.png">
+  <meta name="theme-color" content="#1f4d7a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta property="og:title" content="{{ title or site.shortName }}">
+  <meta property="og:description" content="{{ description or site.tagline }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.domain }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.domain }}/assets/img/hero/poster.jpg">
+  <meta property="og:site_name" content="{{ site.shortName }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ title or site.shortName }}">
+  <meta name="twitter:description" content="{{ description or site.tagline }}">
+  <meta name="twitter:image" content="{{ site.domain }}/assets/img/hero/poster.jpg">
+</head>
+<body class="font-sans text-slate-900 bg-bg">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:p-2 bg-primary text-white shadow-md">Skip to content</a>
+  {% include "partials/header.njk" %}
+  <main id="main">
+    {{ content | safe }}
+  </main>
+  {% include "partials/footer.njk" %}
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

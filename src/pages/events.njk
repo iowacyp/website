@@ -1,0 +1,102 @@
+---
+layout: layouts/base.njk
+title: Upcoming Events & Programs | Iowa CYP
+description: Discover Iowa CYP events including summer camp, adventure kits, Month of the Military Child celebrations, family gatherings, and Yellow Ribbon support.
+permalink: /events/index.html
+---
+<section class="relative isolate overflow-hidden" data-reveal>
+  <div class="absolute inset-0">
+    <img
+      src="/assets/img/events/FallFest2.jpg"
+      alt="Guard families gathered at an Iowa CYP fall event"
+      class="absolute inset-0 h-full w-full object-cover"
+      loading="lazy"
+      decoding="async"
+    >
+  </div>
+  <div class="absolute inset-0 bg-slate-900/65"></div>
+  <div class="relative container min-h-[60vh] py-24 flex items-center">
+    <div class="max-w-3xl text-white space-y-6 drop-shadow-[0_6px_24px_rgba(0,0,0,0.55)]">
+      <p class="text-sm uppercase tracking-[0.35em] text-secondary">Events &amp; Programs</p>
+      <h1 class="text-3xl md:text-4xl font-semibold text-white">Upcoming opportunities for Iowa Guard families</h1>
+      <p class="text-white/90 text-base md:text-lg leading-relaxed">New registrations pop up all year. Subscribe for alerts so you can jump on camps, adventure kits, and family gatherings before spots fill.</p>
+      <div class="flex flex-wrap gap-3">
+        <a class="hero-cta" href="{{ site.links.eventsSubscribe }}">Subscribe for updates</a>
+        <a class="hero-cta-secondary" href="mailto:{{ site.contactEmail }}?subject=Question%20about%20Iowa%20CYP%20Events">Email a question</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white py-16" id="upcoming" data-reveal>
+  <div class="container space-y-12">
+    <div class="max-w-3xl space-y-4">
+      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Registration alerts</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Upcoming events</h2>
+      <p class="text-slate-700 leading-relaxed">We keep this list updated weekly. Bookmark it, share it with your unit, and reach out if you need help signing up.</p>
+    </div>
+    <div id="eventsList" class="grid gap-6 md:grid-cols-2" aria-live="polite" aria-busy="false">
+      {% for event in events.events %}
+        <article class="content-card h-full flex flex-col gap-4" data-reveal>
+          {% if event.image %}
+            <img src="{{ event.image }}" alt="{{ event.title }}" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
+          {% endif %}
+          <div class="space-y-2">
+            <h3 class="text-xl font-semibold text-primary">{{ event.title }}</h3>
+            <p class="text-gray-700">
+              {% if event.displayDate %}
+                <time datetime="{{ event.date }}">{{ event.displayDate }}</time>
+              {% elif event.date %}
+                <time datetime="{{ event.date }}">{{ event.date }}</time>
+              {% endif %}
+              {% if event.time %}<span class="text-gray-500"> &middot; {{ event.time }}</span>{% endif %}
+            </p>
+            {% if event.location %}
+              <p class="text-sm text-gray-600">{{ event.location }}</p>
+            {% endif %}
+            {% if event.notes %}
+              <p class="text-sm text-gray-600 leading-relaxed">{{ event.notes }}</p>
+            {% endif %}
+          </div>
+          {% if event.ctaUrl %}
+            {% set eventCtaLabel = event.ctaLabel or 'Learn More' %}
+            {% set isExternal = event.ctaUrl and event.ctaUrl[0] != '/' %}
+            <a class="btn w-fit" href="{{ event.ctaUrl }}"{% if isExternal %} target="_blank" rel="noopener"{% endif %}>
+              {{ eventCtaLabel }}
+              {% if isExternal %}<span class="sr-only">(opens in new tab)</span>{% endif %}
+            </a>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <a class="btn" href="{{ site.links.eventsSubscribe }}">Get event emails</a>
+      <a class="btn-secondary" href="mailto:{{ site.contactEmail }}?subject=Iowa%20CYP%20Event%20Question">Ask the team</a>
+    </div>
+  </div>
+</section>
+
+<section class="bg-primary/5 py-20" data-reveal>
+  <div class="container space-y-12">
+    <header class="max-w-3xl space-y-4">
+      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Program spotlights</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Experiences Guard-connected youth ask for again and again</h2>
+      <p class="text-slate-700 leading-relaxed">Adventure kits, camps, and leadership tracks keep Guard-connected youth plugged in all year long. These highlights give partners and caregivers a quick look at what sets Iowa CYP apart.</p>
+    </header>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {% for program in programs.items %}
+        <article class="content-card flex flex-col gap-4 h-full" data-reveal>
+          <div class="space-y-2">
+            <p class="text-xs uppercase tracking-[0.4em] text-secondary font-semibold">{{ program.type }}</p>
+            <h3 class="text-xl font-semibold text-slate-900">{{ program.name }}</h3>
+            <p class="text-sm text-gray-600">Ideal for: {{ program.targetAudience }}</p>
+          </div>
+          <p class="text-gray-700 text-sm leading-relaxed">{{ program.description }}</p>
+          {% if program.cta %}
+            <a class="btn-secondary w-fit" href="{{ program.cta.url }}">{{ program.cta.label }}</a>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

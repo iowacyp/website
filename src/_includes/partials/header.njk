@@ -1,0 +1,39 @@
+{% set navItems = [
+  { "label": "Home", "url": "/" },
+  { "label": "About", "url": "/about/" },
+  { "label": "Stories", "url": "/stories/" },
+  { "label": "Events", "url": "/events/" },
+  { "label": "Support Us", "url": "/support/" },
+  { "label": "Resources", "url": "/resources/" },
+  { "label": "Contact", "url": "/contact/" }
+] %}
+<header class="nav border-b border-secondary/40 bg-primary sticky top-0 z-50 shadow-sm">
+  <div class="container flex items-center justify-between gap-6 py-3">
+    <a href="/" class="flex items-center gap-3">
+      <img src="/assets/img/branding_symbol.png" alt="{{ site.name }} emblem" class="h-10 w-auto drop-shadow-sm">
+      <div class="flex flex-col leading-none uppercase tracking-[0.3em] text-white">
+        <span class="text-[0.7rem]">Iowa</span>
+        <span class="text-base font-semibold">CYP</span>
+      </div>
+    </a>
+    <button id="navToggle" class="menu-toggle" aria-expanded="false" aria-controls="mobileNav">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="menu-toggle__lines" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+<div id="navOverlay" class="fixed inset-0 bg-[#1f4d7a]/80 backdrop-blur-sm hidden z-[110]" data-nav-overlay aria-hidden="true"></div>
+<aside id="mobileNav" class="fixed inset-y-0 right-0 w-80 max-w-full bg-white shadow-[0_0_60px_rgba(0,0,0,0.35)] transform translate-x-full transition-transform duration-300 ease-out flex flex-col z-[120] overflow-y-auto" data-nav-drawer aria-label="Primary">
+  <div class="flex items-center justify-between px-8 py-6 border-b border-secondary/40">
+    <span class="text-xs uppercase tracking-[0.4em] text-primary/80">Menu</span>
+    <button class="menu-close" type="button" data-nav-close aria-label="Close navigation">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <nav class="px-8 py-10 space-y-6 text-left">
+    {% for item in navItems %}
+      {% set isCurrent = page.url and page.url == item.url %}
+      <a href="{{ item.url }}" class="drawer-link" data-nav-focus {% if isCurrent %}aria-current="page"{% endif %}>{{ item.label }}</a>
+    {% endfor %}
+  </nav>
+</aside>
