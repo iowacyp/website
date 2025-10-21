@@ -20,7 +20,7 @@ permalink: /contact/index.html
       <p class="text-sm uppercase tracking-[0.35em] text-secondary">Contact Iowa CYP</p>
       <h1 class="text-3xl md:text-4xl font-semibold text-white">Reach the team that walks alongside Iowa Guard families</h1>
       <p class="text-white/90 text-base md:text-lg leading-relaxed">Send a note for event help, school support, partnership ideas, or anything family-related. We’ll route your message to the teammate who can respond fastest.</p>
-      <a class="hero-cta" href="mailto:{{ site.contactEmail }}">Email the team</a>
+      <a class="hero-cta" href="#general-contact">Email the team</a>
     </div>
   </div>
 </section>
@@ -28,14 +28,15 @@ permalink: /contact/index.html
 <section class="bg-white py-16" data-reveal>
   <div class="container space-y-10">
     <div class="grid gap-6 md:grid-cols-[minmax(0,1fr)_0.9fr]">
-      <article class="content-card space-y-4 h-full" data-reveal>
+      <article id="general-contact" class="content-card space-y-4 h-full" data-reveal>
         <p class="text-sm uppercase tracking-[0.35em] text-primary/70">General contact</p>
         <h2 class="text-2xl font-semibold text-slate-900">We’re a call or message away</h2>
         <p class="text-gray-700">Email: <a class="text-primary font-semibold" href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></p>
         <p class="text-gray-700">Phone: <a class="text-primary font-semibold" href="tel:{{ site.contactPhone | replace('-', '') }}">{{ site.contactPhone }}</a></p>
         <p class="text-sm text-gray-600">
           We reply within two business days. Need help right now?
-          <a class="text-primary font-semibold" href="https://www.iowanationalguard.com/member-and-family-services/" target="_blank" rel="noopener">Visit the Iowa National Guard Warrior &amp; Family Services branch</a>.
+          <a class="text-primary font-semibold" href="tel:5157273629">Call Warrior &amp; Family Services at 515-727-3629</a> or
+          <a class="text-primary font-semibold" href="https://www.iowanationalguard.com/member-and-family-services/" target="_blank" rel="noopener">visit their website</a>.
         </p>
       </article>
       <article class="content-card space-y-4 h-full md:flex md:items-center md:gap-6" data-reveal>
@@ -60,8 +61,8 @@ permalink: /contact/index.html
     </div>
     <div class="grid gap-6 md:grid-cols-2">
       {% for member in team.members %}
-        <article class="content-card h-full space-y-4" data-reveal>
-          <div class="flex items-center gap-4">
+        <article class="content-card h-full space-y-5" data-reveal>
+          <div class="flex items-center gap-5">
             {% if member.headshot %}
               <img src="{{ member.headshot }}" alt="{{ member.name }}" class="h-16 w-16 rounded-full object-cover border border-primary/30" loading="lazy" decoding="async">
             {% endif %}

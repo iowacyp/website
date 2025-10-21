@@ -5,7 +5,7 @@
       "label": "Scholarship Database",
       "url": "https://onedrive.live.com/:x:/g/personal/78FBADA0C39648B6/QbZIlsOgrfsggHhwAAAAAAAA2mQHBZUkPzVGnQ?resid=78FBADA0C39648B6!112&ithint=file%2Cxlsx&migratedtospo=true&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy83OGZiYWRhMGMzOTY0OGI2L1FiWklsc09ncmZzZ2dIaHdBQUFBQUFBQTJtUUhCWlVrUHpWR25R",
       "summary": "Curated listings of scholarships for Iowa military-connected youth.",
-      "image": null,
+      "image": "/assets/img/resources/resource_scholarships.svg",
       "notes": "Acknowledgments: Emily Williams (Military Youth & Family Support VISTA) and Kristen Ferullo (Navy School Liaison) for their collaboration."
     },
     {
@@ -19,7 +19,7 @@
     {
       "id": "R003",
       "label": "Iowa National Guard Mobile App (Android)",
-      "url": "https://play.google.com/store/apps/details?id=com.m360mobile.iowa&pcampaignid=web_share",
+      "url": "https://play.google.com/store/apps/details?id=com.m360mobile.iowa",
       "summary": "Download the Iowa National Guard mobile app for Android to stay connected with updates and tools.",
       "image": "/assets/img/resources/resource_arngapp.webp",
       "notes": "Verify Google Play badge assets are current."
@@ -85,7 +85,7 @@
       "label": "ARNG Child & Youth Services",
       "url": "https://arngcys.com/",
       "summary": "National Guard Child & Youth Services hub for programs and resources.",
-      "image": null,
+      "image": "/assets/img/resources/resource_arngcys.svg",
       "notes": "Confirm regional contacts referenced on site."
     },
     {

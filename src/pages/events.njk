@@ -7,8 +7,8 @@ permalink: /events/index.html
 <section class="relative isolate overflow-hidden" data-reveal>
   <div class="absolute inset-0">
     <img
-      src="/assets/img/events/FallFest2.jpg"
-      alt="Guard families gathered at an Iowa CYP fall event"
+      src="/assets/img/stories/1o4a5684.jpg"
+      alt="Guard youth connecting during an Iowa CYP weekend"
       class="absolute inset-0 h-full w-full object-cover"
       loading="lazy"
       decoding="async"
@@ -22,7 +22,7 @@ permalink: /events/index.html
       <p class="text-white/90 text-base md:text-lg leading-relaxed">New registrations pop up all year. Subscribe for alerts so you can jump on camps, adventure kits, and family gatherings before spots fill.</p>
       <div class="flex flex-wrap gap-3">
         <a class="hero-cta" href="{{ site.links.eventsSubscribe }}">Subscribe for updates</a>
-        <a class="hero-cta-secondary" href="mailto:{{ site.contactEmail }}?subject=Question%20about%20Iowa%20CYP%20Events">Email a question</a>
+        <a class="hero-cta-secondary" href="/contact/#general-contact">Email a question</a>
       </div>
     </div>
   </div>
@@ -71,7 +71,7 @@ permalink: /events/index.html
     </div>
     <div class="flex flex-wrap gap-3">
       <a class="btn" href="{{ site.links.eventsSubscribe }}">Get event emails</a>
-      <a class="btn-secondary" href="mailto:{{ site.contactEmail }}?subject=Iowa%20CYP%20Event%20Question">Ask the team</a>
+      <a class="btn-secondary" href="/contact/#general-contact">Ask the team</a>
     </div>
   </div>
 </section>
@@ -86,6 +86,9 @@ permalink: /events/index.html
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {% for program in programs.items %}
         <article class="content-card flex flex-col gap-4 h-full" data-reveal>
+          {% if program.image %}
+            <img src="{{ program.image }}" alt="{{ program.name }}" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
+          {% endif %}
           <div class="space-y-2">
             <p class="text-xs uppercase tracking-[0.4em] text-secondary font-semibold">{{ program.type }}</p>
             <h3 class="text-xl font-semibold text-slate-900">{{ program.name }}</h3>
@@ -93,7 +96,8 @@ permalink: /events/index.html
           </div>
           <p class="text-gray-700 text-sm leading-relaxed">{{ program.description }}</p>
           {% if program.cta %}
-            <a class="btn-secondary w-fit" href="{{ program.cta.url }}">{{ program.cta.label }}</a>
+            {% set programCtaExternal = program.cta.url and program.cta.url[0] != '/' %}
+            <a class="btn-secondary w-fit" href="{{ program.cta.url }}"{% if programCtaExternal %} target="_blank" rel="noopener"{% endif %}>{{ program.cta.label }}</a>
           {% endif %}
         </article>
       {% endfor %}

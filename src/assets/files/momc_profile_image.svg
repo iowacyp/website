@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-labelledby="title desc">
+  <title>Month of the Military Child Profile Overlay</title>
+  <desc>Purple profile frame with Iowa Child & Youth Program branding and the phrase Purple Up.</desc>
+  <defs>
+    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#4338ca"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1080" rx="160" fill="url(#purpleGradient)"/>
+  <rect x="120" y="120" width="840" height="840" rx="140" fill="none" stroke="#f1efff" stroke-width="48"/>
+  <g fill="#f8f7ff">
+    <text x="540" y="250" font-family="Helvetica Neue, Arial, sans-serif" font-size="96" font-weight="700" text-anchor="middle" letter-spacing="6">PURPLE UP</text>
+    <text x="540" y="340" font-family="Helvetica Neue, Arial, sans-serif" font-size="48" font-weight="500" text-anchor="middle" letter-spacing="4">FOR IOWA GUARD KIDS</text>
+  </g>
+  <g transform="translate(320 720)">
+    <rect width="440" height="140" rx="70" fill="#312e81" opacity="0.92"/>
+    <text x="220" y="94" font-family="Helvetica Neue, Arial, sans-serif" font-size="56" font-weight="600" text-anchor="middle" fill="#f8f7ff">IOWA CYP</text>
+  </g>
+  <g fill="#ede9fe">
+    <circle cx="880" cy="210" r="28"/>
+    <circle cx="180" cy="240" r="20"/>
+    <circle cx="900" cy="820" r="18"/>
+    <circle cx="160" cy="840" r="14"/>
+  </g>
+</svg>

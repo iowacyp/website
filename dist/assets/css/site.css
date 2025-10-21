@@ -2355,6 +2355,10 @@ footer a:hover {
     display: flex;
   }
 
+  .md\:grid {
+    display: grid;
+  }
+
   .md\:w-40 {
     width: 10rem;
   }
@@ -2377,6 +2381,10 @@ footer a:hover {
 
   .md\:grid-cols-\[1\.2fr_1fr\] {
     grid-template-columns: 1.2fr 1fr;
+  }
+
+  .md\:grid-cols-\[minmax\(0\2c 1fr\)_0\.95fr\] {
+    grid-template-columns: minmax(0,1fr) 0.95fr;
   }
 
   .md\:grid-cols-\[minmax\(0\2c 1fr\)_0\.9fr\] {
