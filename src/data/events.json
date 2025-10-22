@@ -9,7 +9,7 @@
       "ctaLabel": "Register",
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdkB7oVnbLtNZAPZSFWqEu3Tsw_5G9Cd3buAjWyQ3DSzL6iaw/viewform?usp=share_link&ouid=100941830380849796397",
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/events/FallFest2.jpg"
+      "image": "/assets/img/events/fall-family-festival.jpg"
     },
     {
       "title": "Cookies with Santa",
@@ -20,7 +20,7 @@
       "ctaLabel": "Register",
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdJ-pmJZ_TR5habbSDL0fXfFVgds3c8q48ZDirfkQt_ml6Sgw/viewform?usp=share_link&ouid=100941830380849796397",
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/events/Cookies-with-Santa.jpg"
+      "image": "/assets/img/events/cookies-with-santa.jpg"
     },
     {
       "title": "Military Family Event: Davenport",
@@ -31,7 +31,7 @@
       "ctaLabel": "Register",
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdYCAqOna1vVK55GhN6U8Ggisx81sEPAKdS8YlecW9aaIeI1g/viewform?usp=share_link&ouid=100941830380849796397",
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/events/MFE-Davenport.jpg"
+      "image": "/assets/img/events/mfe-davenport.jpg"
     },
     {
       "title": "Military Family Event: Cedar Rapids",
@@ -42,7 +42,7 @@
       "ctaLabel": "Register",
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfEguzvj86P5ai4jTZRX1qel5P9k8F6u7bqEaCGTUts6vM0_w/viewform?usp=share_link&ouid=100941830380849796397",
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/about/about_teaching.jpg"
+      "image": "/assets/img/events/mfe-cedar-rapids.jpg"
     },
     {
       "title": "Military Family Event: Sioux City",
@@ -53,7 +53,7 @@
       "ctaLabel": "Register",
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSefViH-KPAXAZ0oHB4bZWqKwqdtUH1qMW9BskeU0N2pNbn-tw/viewform?usp=share_link&ouid=100941830380849796397",
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/stories/IMG_7033.jpg"
+      "image": "/assets/img/events/mfe-sioux-city.jpg"
     },
     {
       "title": "Military Family Ball",
@@ -64,7 +64,7 @@
       "ctaLabel": "Register",
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSefViH-KPAXAZ0oHB4bZWqKwqdtUH1qMW9BskeU0N2pNbn-tw/viewform?usp=share_link&ouid=100941830380849796397",
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/programs/family_ball_dance.jpg"
+      "image": "/assets/img/events/military-family-ball.jpg"
     },
     {
       "title": "Military Family Event: Des Moines",
@@ -75,7 +75,7 @@
       "ctaLabel": "Register",
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdgOv8A6xckq1eLLU_wy1hDt3e9OAbwEHUOh0B4YuaY62pjbA/viewform?usp=share_link&ouid=100941830380849796397",
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/stories/IMG_0693.jpg"
+      "image": "/assets/img/events/mfe-des-moines.jpg"
     }
   ]
 }

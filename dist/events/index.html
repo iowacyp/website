@@ -7,6 +7,7 @@
   <meta name="description" content="Discover Iowa CYP events including summer camp, adventure kits, Month of the Military Child celebrations, family gatherings, and Yellow Ribbon support.">
   <link rel="canonical" href="https://www.iowacyp.com/events/">
   <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="apple-touch-icon" href="/assets/pwa/icon-192.png">
   <meta name="theme-color" content="#1f4d7a">
@@ -29,11 +30,9 @@
 <header class="nav border-b border-secondary/40 bg-primary sticky top-0 z-50 shadow-sm">
   <div class="container flex items-center justify-between gap-6 py-3">
     <a href="/" class="flex items-center gap-3">
-      <img src="/assets/img/branding_symbol.png" alt="Iowa Child &amp; Youth Program emblem" class="h-10 w-auto drop-shadow-sm">
-      <div class="flex flex-col leading-none uppercase tracking-[0.3em] text-white">
-        <span class="text-[0.7rem]">Iowa</span>
-        <span class="text-base font-semibold">CYP</span>
-      </div>
+      <span class="inline-flex items-center justify-center rounded-full bg-white px-3 py-2 shadow-sm">
+        <img src="/assets/img/branding_symbol.png" alt="Iowa Child &amp; Youth Program logo" class="h-8 w-auto">
+      </span>
     </a>
     <button id="navToggle" class="menu-toggle" aria-expanded="false" aria-controls="mobileNav">
       <span class="sr-only">Toggle navigation</span>
@@ -111,7 +110,7 @@
       
         <article class="content-card h-full flex flex-col gap-4" data-reveal>
           
-            <img src="/assets/img/events/FallFest2.jpg" alt="Fall Family Festival" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
+            <img src="/assets/img/events/fall-family-festival.jpg" alt="Fall Family Festival" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
           
           <div class="space-y-2">
             <h3 class="text-xl font-semibold text-primary">Fall Family Festival</h3>
@@ -140,7 +139,7 @@
       
         <article class="content-card h-full flex flex-col gap-4" data-reveal>
           
-            <img src="/assets/img/events/Cookies-with-Santa.jpg" alt="Cookies with Santa" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
+            <img src="/assets/img/events/cookies-with-santa.jpg" alt="Cookies with Santa" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
           
           <div class="space-y-2">
             <h3 class="text-xl font-semibold text-primary">Cookies with Santa</h3>
@@ -169,7 +168,7 @@
       
         <article class="content-card h-full flex flex-col gap-4" data-reveal>
           
-            <img src="/assets/img/events/MFE-Davenport.jpg" alt="Military Family Event: Davenport" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
+            <img src="/assets/img/events/mfe-davenport.jpg" alt="Military Family Event: Davenport" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
           
           <div class="space-y-2">
             <h3 class="text-xl font-semibold text-primary">Military Family Event: Davenport</h3>
@@ -198,7 +197,7 @@
       
         <article class="content-card h-full flex flex-col gap-4" data-reveal>
           
-            <img src="/assets/img/about/about_teaching.jpg" alt="Military Family Event: Cedar Rapids" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
+            <img src="/assets/img/events/mfe-cedar-rapids.jpg" alt="Military Family Event: Cedar Rapids" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
           
           <div class="space-y-2">
             <h3 class="text-xl font-semibold text-primary">Military Family Event: Cedar Rapids</h3>
@@ -227,7 +226,7 @@
       
         <article class="content-card h-full flex flex-col gap-4" data-reveal>
           
-            <img src="/assets/img/stories/IMG_7033.jpg" alt="Military Family Event: Sioux City" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
+            <img src="/assets/img/events/mfe-sioux-city.jpg" alt="Military Family Event: Sioux City" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
           
           <div class="space-y-2">
             <h3 class="text-xl font-semibold text-primary">Military Family Event: Sioux City</h3>
@@ -256,7 +255,7 @@
       
         <article class="content-card h-full flex flex-col gap-4" data-reveal>
           
-            <img src="/assets/img/programs/family_ball_dance.jpg" alt="Military Family Ball" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
+            <img src="/assets/img/events/military-family-ball.jpg" alt="Military Family Ball" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
           
           <div class="space-y-2">
             <h3 class="text-xl font-semibold text-primary">Military Family Ball</h3>
@@ -285,7 +284,7 @@
       
         <article class="content-card h-full flex flex-col gap-4" data-reveal>
           
-            <img src="/assets/img/stories/IMG_0693.jpg" alt="Military Family Event: Des Moines" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
+            <img src="/assets/img/events/mfe-des-moines.jpg" alt="Military Family Event: Des Moines" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
           
           <div class="space-y-2">
             <h3 class="text-xl font-semibold text-primary">Military Family Event: Des Moines</h3>
@@ -329,96 +328,144 @@
     </header>
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       
-        <article class="content-card flex flex-col gap-4 h-full" data-reveal>
+        <article class="content-card flex flex-col gap-6 h-full" data-reveal>
           
-            <img src="/assets/img/programs/adventure_kits.jpg" alt="Adventure Kits" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
+            <img src="/assets/img/programs/adventure_kits.jpg" alt="Adventure Kits" class="h-44 w-full rounded-3xl object-cover border border-slate-200 shadow-lg shadow-slate-900/15" loading="lazy" decoding="async">
           
-          <div class="space-y-2">
-            <p class="text-xs uppercase tracking-[0.4em] text-secondary font-semibold">Program Series</p>
+          <div class="space-y-3">
             <h3 class="text-xl font-semibold text-slate-900">Adventure Kits</h3>
-            <p class="text-sm text-gray-600">Ideal for: Ages 6-14 military-connected youth</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-secondary/80">Ideal for: Ages 6-14 military-connected youth</p>
+            <p class="text-gray-700 text-sm leading-relaxed">Adventure Kits bring Guard families together with seasonal, hands-on projects that spark curiosity and connection. Each kit includes STEM challenges, health tips, and guided videos families can open anytime, anywhere.</p>
           </div>
-          <p class="text-gray-700 text-sm leading-relaxed">Adventure Kits deliver seasonal STEM projects, health tips, and hands-on challenges Guard families open anytime with videos and supplies ready.</p>
+          
+            <div class="program-quote space-y-3">
+              <div class="program-quote__divider" aria-hidden="true">⸻</div>
+              <blockquote class="text-primary italic text-sm leading-relaxed">&ldquo;Such great family fun! Events are tailored so well for kids to enjoy and parents to participate alongside them.&rdquo;</blockquote>
+              
+                <p class="text-xs uppercase tracking-wide text-slate-500">— Guard Parent, 5/23/2023</p>
+              
+            </div>
+          
           
             
             <a class="btn-secondary w-fit" href="https://docs.google.com/forms/d/e/1FAIpQLSdh8K47PeqrfDedQaminFAvfqKiXbwZUklDEm4PY1RalSzCuw/viewform?usp=share_link&amp;ouid=100941830380849796397" target="_blank" rel="noopener">Sign Up</a>
           
         </article>
       
-        <article class="content-card flex flex-col gap-4 h-full" data-reveal>
+        <article class="content-card flex flex-col gap-6 h-full" data-reveal>
           
-            <img src="/assets/img/programs/summer_camp_group.jpg" alt="Summer Camp" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
+            <img src="/assets/img/programs/summer_camp_group.jpg" alt="Summer Camp" class="h-44 w-full rounded-3xl object-cover border border-slate-200 shadow-lg shadow-slate-900/15" loading="lazy" decoding="async">
           
-          <div class="space-y-2">
-            <p class="text-xs uppercase tracking-[0.4em] text-secondary font-semibold">Camp</p>
+          <div class="space-y-3">
             <h3 class="text-xl font-semibold text-slate-900">Summer Camp</h3>
-            <p class="text-sm text-gray-600">Ideal for: Middle and high school military youth</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-secondary/80">Ideal for: Middle and high school military youth</p>
+            <p class="text-gray-700 text-sm leading-relaxed">Summer Camp gives Guard teens a week of adventure, growth, and community. Through team challenges, leadership labs, and mentor support, campers build confidence, friendships, and memories that last far beyond the week.</p>
           </div>
-          <p class="text-gray-700 text-sm leading-relaxed">Weeklong Summer Camp challenges Guard teens with team adventures, leadership labs, and mentor support that build lifelong friendships and confidence.</p>
+          
+            <div class="program-quote space-y-3">
+              <div class="program-quote__divider" aria-hidden="true">⸻</div>
+              <blockquote class="text-primary italic text-sm leading-relaxed">&ldquo;This camp and staff were able to put a light back into my daughter’s eyes… The week was transformative in so many ways.&rdquo;</blockquote>
+              
+                <p class="text-xs uppercase tracking-wide text-slate-500">— Guard Parent, 7/13/2021</p>
+              
+            </div>
+          
           
             
             <a class="btn-secondary w-fit" href="/subscribe/">Get Updates</a>
           
         </article>
       
-        <article class="content-card flex flex-col gap-4 h-full" data-reveal>
+        <article class="content-card flex flex-col gap-6 h-full" data-reveal>
           
-            <img src="/assets/img/programs/momc_purple_up.jpg" alt="Month of the Military Child" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
+            <img src="/assets/img/programs/momc_purple_up.jpg" alt="Month of the Military Child" class="h-44 w-full rounded-3xl object-cover border border-slate-200 shadow-lg shadow-slate-900/15" loading="lazy" decoding="async">
           
-          <div class="space-y-2">
-            <p class="text-xs uppercase tracking-[0.4em] text-secondary font-semibold">Campaign</p>
+          <div class="space-y-3">
             <h3 class="text-xl font-semibold text-slate-900">Month of the Military Child</h3>
-            <p class="text-sm text-gray-600">Ideal for: Military kids, families, educators</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-secondary/80">Ideal for: Military kids, families, and educators</p>
+            <p class="text-gray-700 text-sm leading-relaxed">Each April, the Guard family unites to honor the strength and sacrifice of military children. Iowa classrooms receive celebration kits—including Purple Up! wristbands—so kids feel seen and proud alongside their peers.</p>
           </div>
-          <p class="text-gray-700 text-sm leading-relaxed">Every April, the military community unites to support and celebrate military children and their families during Month of the Military Child. Nationwide, people wear purple to honor the sacrifices military youth make throughout their parents&#39; careers. In Iowa, we provide classrooms with celebration kits, including Purple Up wristbands, so military children can share in the celebration with their classmates.</p>
+          
+            <div class="program-quote space-y-3">
+              <div class="program-quote__divider" aria-hidden="true">⸻</div>
+              <blockquote class="text-primary italic text-sm leading-relaxed">&ldquo;Great way to honor and value military kids!&rdquo;</blockquote>
+              
+                <p class="text-xs uppercase tracking-wide text-slate-500">— Parent, 5/23/2023</p>
+              
+            </div>
+          
           
             
             <a class="btn-secondary w-fit" href="https://docs.google.com/forms/d/e/1FAIpQLSeuWERml_l29aE8I9TvD0IHVmdmj8BF8UImnZKGTzOmUE7rxw/viewform?usp=share_link&amp;ouid=100941830380849796397" target="_blank" rel="noopener">Request a Kit</a>
           
         </article>
       
-        <article class="content-card flex flex-col gap-4 h-full" data-reveal>
+        <article class="content-card flex flex-col gap-6 h-full" data-reveal>
           
-            <img src="/assets/img/programs/family_events_fall_festival.jpg" alt="Military Family Events" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
+            <img src="/assets/img/programs/family_events_fall_festival.jpg" alt="Military Family Events" class="h-44 w-full rounded-3xl object-cover border border-slate-200 shadow-lg shadow-slate-900/15" loading="lazy" decoding="async">
           
-          <div class="space-y-2">
-            <p class="text-xs uppercase tracking-[0.4em] text-secondary font-semibold">Program</p>
+          <div class="space-y-3">
             <h3 class="text-xl font-semibold text-slate-900">Military Family Events</h3>
-            <p class="text-sm text-gray-600">Ideal for: Military families statewide</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-secondary/80">Ideal for: Military families statewide</p>
+            <p class="text-gray-700 text-sm leading-relaxed">Military Family Events connect Guard households across Iowa through regional gatherings, workshops, and volunteer-led celebrations. These shared moments strengthen community, belonging, and Guard family pride all year long.</p>
           </div>
-          <p class="text-gray-700 text-sm leading-relaxed">Military Family Events gather Guard households for regional celebrations, workshops, and volunteer-led activities that strengthen community across Iowa all year.</p>
+          
+            <div class="program-quote space-y-3">
+              <div class="program-quote__divider" aria-hidden="true">⸻</div>
+              <blockquote class="text-primary italic text-sm leading-relaxed">&ldquo;We have so much fun! Super organized events.&rdquo;</blockquote>
+              
+                <p class="text-xs uppercase tracking-wide text-slate-500">— Guard Family, 10/24/2021</p>
+              
+            </div>
+          
           
             
             <a class="btn-secondary w-fit" href="/events/#upcoming">View Events</a>
           
         </article>
       
-        <article class="content-card flex flex-col gap-4 h-full" data-reveal>
+        <article class="content-card flex flex-col gap-6 h-full" data-reveal>
           
-            <img src="/assets/img/programs/yellow_ribbon.jpg" alt="Yellow Ribbon" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
+            <img src="/assets/img/programs/yellow_ribbon.jpg" alt="Yellow Ribbon" class="h-44 w-full rounded-3xl object-cover border border-slate-200 shadow-lg shadow-slate-900/15" loading="lazy" decoding="async">
           
-          <div class="space-y-2">
-            <p class="text-xs uppercase tracking-[0.4em] text-secondary font-semibold">Workshop</p>
+          <div class="space-y-3">
             <h3 class="text-xl font-semibold text-slate-900">Yellow Ribbon</h3>
-            <p class="text-sm text-gray-600">Ideal for: Youth experiencing deployment</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-secondary/80">Ideal for: Youth experiencing deployment</p>
+            <p class="text-gray-700 text-sm leading-relaxed">Yellow Ribbon youth workshops help kids and teens navigate deployment with confidence. They connect with peers who understand, learn practical tools, and find strength in shared experience and support.</p>
           </div>
-          <p class="text-gray-700 text-sm leading-relaxed">Youth attending these events are given the tools to navigate through the deployment process. At these events youth are given the opportunity to connect with others going through similar life challenges. If you are experiencing a deployment and want to find out more about this program, contact your local Yellow Ribbon team.</p>
+          
+            <div class="program-quote space-y-3">
+              <div class="program-quote__divider" aria-hidden="true">⸻</div>
+              <blockquote class="text-primary italic text-sm leading-relaxed">&ldquo;It means a lot just to have something to do when their dad is deployed… We enjoyed every minute of it.&rdquo;</blockquote>
+              
+                <p class="text-xs uppercase tracking-wide text-slate-500">— Military Spouse, 2/17/2024</p>
+              
+            </div>
+          
           
             
             <a class="btn-secondary w-fit" href="mailto:benjamin.f.winnike.mil@army.mil" target="_blank" rel="noopener">Contact Yellow Ribbon</a>
           
         </article>
       
-        <article class="content-card flex flex-col gap-4 h-full" data-reveal>
+        <article class="content-card flex flex-col gap-6 h-full" data-reveal>
           
-            <img src="/assets/img/programs/stp_panel_group.jpg" alt="State Teen Panel" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
+            <img src="/assets/img/programs/stp_panel_group.jpg" alt="State Teen Panel" class="h-44 w-full rounded-3xl object-cover border border-slate-200 shadow-lg shadow-slate-900/15" loading="lazy" decoding="async">
           
-          <div class="space-y-2">
-            <p class="text-xs uppercase tracking-[0.4em] text-secondary font-semibold">Mentorship</p>
+          <div class="space-y-3">
             <h3 class="text-xl font-semibold text-slate-900">State Teen Panel</h3>
-            <p class="text-sm text-gray-600">Ideal for: Military-connected teens ages 13-17</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-secondary/80">Ideal for: Military-connected teens ages 13-17</p>
+            <p class="text-gray-700 text-sm leading-relaxed">The State Teen Panel empowers Guard youth to lead, serve, and represent their peers. Members design service projects, build leadership skills, and strengthen the community they love.</p>
           </div>
-          <p class="text-gray-700 text-sm leading-relaxed">A leadership and service program that brings together military-connected teens from across Iowa to represent the voices of their peers, develop leadership skills, and support youth initiatives throughout the state.</p>
+          
+            <div class="program-quote space-y-3">
+              <div class="program-quote__divider" aria-hidden="true">⸻</div>
+              <blockquote class="text-primary italic text-sm leading-relaxed">&ldquo;We always have so much fun and get closer every time. I love everything about the STP—but the people are my favorite part.&rdquo;</blockquote>
+              
+                <p class="text-xs uppercase tracking-wide text-slate-500">— STP Youth, 3/11/2024</p>
+              
+            </div>
+          
           
             
             <a class="btn-secondary w-fit" href="https://docs.google.com/forms/d/e/1FAIpQLSfhXQJfp01X6vvjmfmn9O9Vasn9-grB5Up6spMEiHChrTU56g/viewform?usp=share_link&amp;ouid=100941830380849796397" target="_blank" rel="noopener">Join Today</a>
@@ -459,10 +506,34 @@
     </div>
     <div>
       <h2 class="font-light text-lg tracking-[0.3em] uppercase mb-3 text-white">Contact</h2>
-      <p class="text-white/90">Office: Camp Dodge Rec Hall - 7105 NW 78th Ave Bldg 3585, Johnston IA 50131</p>
-      <p class="text-white/90">Phone: <a class="text-white hover:text-secondary" href="tel:5157273064">515-727-3064</a></p>
-      <p class="text-white/90">Email: <a class="text-white hover:text-secondary" href="mailto:iaarngcyp@gmail.com">iaarngcyp@gmail.com</a></p>
-      <p class="text-white/90">Subscribe: <a class="text-white hover:text-secondary" href="/subscribe/">Join our mailing list</a></p>
+      <ul class="space-y-2 text-white/90">
+        <li class="flex items-start gap-3">
+          <span class="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/10 text-white/80">
+            <img src="/assets/icons/geo-alt-fill.svg" alt="" class="h-4 w-4" aria-hidden="true">
+          </span>
+          <span>Camp Dodge Rec Hall - 7105 NW 78th Ave Bldg 3585, Johnston IA 50131</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/10 text-white/80">
+            <i class="fas fa-phone text-sm" aria-hidden="true"></i>
+          </span>
+          <a class="text-white hover:text-secondary transition" href="tel:5157273064">515-727-3064</a>
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/10 text-white/80">
+            <i class="fas fa-envelope-open text-sm" aria-hidden="true"></i>
+          </span>
+          <a class="text-white hover:text-secondary transition" href="mailto:iaarngcyp@gmail.com">iaarngcyp@gmail.com</a>
+        </li>
+        
+          <li class="flex items-center gap-3">
+            <span class="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/10 text-white/80">
+              <i class="far fa-paper-plane text-sm" aria-hidden="true"></i>
+            </span>
+            <a class="text-white hover:text-secondary transition" href="/subscribe/">Join our mailing list</a>
+          </li>
+        
+      </ul>
     </div>
   </div>
   <div class="border-t border-secondary/40 py-4 text-center text-sm text-white/60">

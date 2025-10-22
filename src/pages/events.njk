@@ -85,16 +85,24 @@ permalink: /events/index.html
     </header>
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {% for program in programs.items %}
-        <article class="content-card flex flex-col gap-4 h-full" data-reveal>
+        <article class="content-card flex flex-col gap-6 h-full" data-reveal>
           {% if program.image %}
-            <img src="{{ program.image }}" alt="{{ program.name }}" class="h-44 w-full rounded-3xl object-cover border border-slate-200" loading="lazy" decoding="async">
+            <img src="{{ program.image }}" alt="{{ program.name }}" class="h-44 w-full rounded-3xl object-cover border border-slate-200 shadow-lg shadow-slate-900/15" loading="lazy" decoding="async">
           {% endif %}
-          <div class="space-y-2">
-            <p class="text-xs uppercase tracking-[0.4em] text-secondary font-semibold">{{ program.type }}</p>
+          <div class="space-y-3">
             <h3 class="text-xl font-semibold text-slate-900">{{ program.name }}</h3>
-            <p class="text-sm text-gray-600">Ideal for: {{ program.targetAudience }}</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-secondary/80">Ideal for: {{ program.targetAudience }}</p>
+            <p class="text-gray-700 text-sm leading-relaxed">{{ program.description }}</p>
           </div>
-          <p class="text-gray-700 text-sm leading-relaxed">{{ program.description }}</p>
+          {% if program.quote %}
+            <div class="program-quote space-y-3">
+              <div class="program-quote__divider" aria-hidden="true">⸻</div>
+              <blockquote class="text-primary italic text-sm leading-relaxed">&ldquo;{{ program.quote.text }}&rdquo;</blockquote>
+              {% if program.quote.attribution %}
+                <p class="text-xs uppercase tracking-wide text-slate-500">— {{ program.quote.attribution }}</p>
+              {% endif %}
+            </div>
+          {% endif %}
           {% if program.cta %}
             {% set programCtaExternal = program.cta.url and program.cta.url[0] != '/' %}
             <a class="btn-secondary w-fit" href="{{ program.cta.url }}"{% if programCtaExternal %} target="_blank" rel="noopener"{% endif %}>{{ program.cta.label }}</a>

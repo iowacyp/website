@@ -2,7 +2,7 @@ import AppKit
 import CoreImage
 
 let projectPath = "/Users/cox/Documents/iowacyp-site-starter"
-let symbolURL = URL(fileURLWithPath: projectPath + "/content/Media/branding_symbol.png")
+let symbolURL = URL(fileURLWithPath: projectPath + "/content/Media/cyp_logo_short.png")
 let outputDir = URL(fileURLWithPath: projectPath + "/src/assets/pwa")
 let bgColor = NSColor(calibratedRed: 0.121, green: 0.302, blue: 0.478, alpha: 1.0)
 let targetSizes: [CGFloat] = [512, 192]

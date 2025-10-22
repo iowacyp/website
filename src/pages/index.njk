@@ -45,10 +45,10 @@ permalink: /
 </section>
 
 <section class="bg-white py-20" data-reveal>
-  <div class="container text-center space-y-6">
+  <div class="container text-center space-y-5">
     <p class="text-sm uppercase tracking-[0.4em] text-primary/80">Serving Iowa Guard Families</p>
-    <h2 class="text-3xl md:text-4xl font-semibold text-slate-900 max-w-3xl mx-auto">We rally around Guard kids and the adults who love them—before, during, and after the call comes.</h2>
-    <p class="text-slate-800 max-w-2xl mx-auto">Camps, kits, coaching, and everyday touchpoints are built with parent input so youth grow confidence, friendships, and steady routines no matter where duty takes your family.</p>
+    <h2 class="text-3xl md:text-4xl font-semibold text-slate-900 max-w-3xl mx-auto leading-tight normal-case tracking-tight">Helping Guard kids grow confident and connected</h2>
+    <p class="text-base md:text-lg text-slate-600 max-w-2xl mx-auto">Wherever duty takes their families.</p>
   </div>
 </section>
 
@@ -78,33 +78,41 @@ permalink: /
   </div>
 </section>
 
-<section class="parallax section text-white relative" style="background-image: url('/assets/img/team/team_office_photo.jpg');" data-reveal>
+<section class="parallax section text-white relative" style="background-image: url('/assets/img/team/fun.jpg');" data-reveal>
   <div class="absolute inset-0 bg-primary/60"></div>
-  <div class="container relative grid gap-12 md:grid-cols-2 md:items-center py-20">
-    <div>
-      <h2 class="text-2xl md:text-3xl font-semibold text-white">What Guides Our Work</h2>
-      <p class="mt-3 text-white/90">{{ info.mission }}</p>
-    </div>
-    <div class="bg-white/12 backdrop-blur rounded-2xl p-6 border border-white/25 text-white">
-      <h3 class="text-xl font-semibold text-white mb-2">Where We're Headed</h3>
-      <p class="text-white">{{ info.vision }}</p>
-    </div>
+  <div class="container relative grid gap-8 md:grid-cols-2 items-stretch py-20">
+    <article class="bg-white/12 backdrop-blur rounded-2xl border border-white/25 p-6 md:p-8 text-white flex flex-col gap-6">
+      <header class="flex items-start gap-4">
+        <span class="flex h-12 w-12 items-center justify-center rounded-full bg-secondary/25 text-secondary">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3v2m0 14v2m8-8h-2M6 12H4m8-7a7 7 0 017 7 7 7 0 01-7 7 7 7 0 01-7-7 7 7 0 017-7zm0 4a3 3 0 100 6 3 3 0 000-6z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <div>
+          <p class="text-xs uppercase tracking-[0.35em] text-secondary/80">Mission</p>
+          <h2 class="text-2xl md:text-3xl font-semibold text-white mt-2">What Guides Our Work</h2>
+        </div>
+      </header>
+      <p class="text-white/90 leading-relaxed flex-1">{{ info.mission }}</p>
+    </article>
+    <article class="bg-white/12 backdrop-blur rounded-2xl border border-white/25 p-6 md:p-8 text-white flex flex-col gap-6">
+      <header class="flex items-start gap-4">
+        <span class="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-white">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 17l7.5-7.5L13 11l7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 4h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 21h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <div>
+          <p class="text-xs uppercase tracking-[0.35em] text-white/70">Vision</p>
+          <h3 class="text-xl md:text-2xl font-semibold text-white mt-2">Where We're Headed</h3>
+        </div>
+      </header>
+      <p class="text-white leading-relaxed flex-1">{{ info.vision }}</p>
+    </article>
   </div>
 </section>
-
-{% set quoteHighlight = quotes.items | selectattr('id', 'equalto', 'Q001') | list | first %}
-{% if quoteHighlight %}
-<section class="bg-white py-16" data-reveal>
-  <div class="container text-center">
-    <div class="max-w-3xl mx-auto space-y-4" data-reveal>
-      <blockquote class="text-2xl md:text-3xl italic text-primary leading-relaxed">&ldquo;{{ quoteHighlight.text }}&rdquo;</blockquote>
-      {% if quoteHighlight.role %}
-        <p class="text-sm uppercase tracking-[0.3em] text-slate-500">{{ quoteHighlight.role }}</p>
-      {% endif %}
-    </div>
-  </div>
-</section>
-{% endif %}
 
 <section class="relative isolate overflow-hidden rounded-[3rem] mx-4 md:mx-auto md:w-[calc(100%-2rem)] my-16" data-reveal>
   <img src="/assets/img/programs/family_events_fall_festival.jpg" alt="Iowa CYP families" class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async">
@@ -146,3 +154,52 @@ permalink: /
     </div>
   </div>
 </section>
+
+{% set storyQuoteIds = ['Q006', 'Q007', 'Q008', 'Q009', 'Q010', 'Q011', 'Q012', 'Q013', 'Q014', 'Q015', 'Q016', 'Q017'] %}
+{% set homeVoiceQuotes = quotes.items | selectattr('id', 'in', storyQuoteIds) | list %}
+{% if homeVoiceQuotes | length %}
+<section class="bg-primary/5 py-16" data-reveal>
+  <div class="container space-y-10">
+    <div class="max-w-3xl space-y-4">
+      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Voices you can trust</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Why consistent support matters statewide</h2>
+      <p class="text-slate-700 leading-relaxed">Parents, teens, and caregivers keep us honest. These quotes highlight what sticks with them long after an event or program ends.</p>
+    </div>
+    <div class="quote-carousel" data-quote-carousel>
+      <div class="content-card quote-carousel__slides" role="region" aria-live="polite">
+        {% for quote in homeVoiceQuotes %}
+          {% set attribution = quote.role or quote.author %}
+          <figure class="quote-slide {% if loop.first %}is-active{% endif %}" data-quote-slide>
+            <blockquote class="text-primary text-lg italic leading-relaxed">&ldquo;{{ quote.text }}&rdquo;</blockquote>
+            {% if attribution %}
+              <figcaption class="mt-4 text-xs uppercase tracking-wide text-slate-500">{{ attribution }}</figcaption>
+            {% endif %}
+          </figure>
+        {% endfor %}
+      </div>
+      <div class="quote-carousel__controls" aria-label="Quote navigation">
+        <button type="button" class="quote-nav-btn" data-quote-prev aria-label="Previous quote">
+          <span aria-hidden="true">&larr;</span>
+        </button>
+        <div class="quote-carousel__dots" role="tablist">
+          {% for quote in homeVoiceQuotes %}
+            <button
+              type="button"
+              class="quote-dot {% if loop.first %}is-active{% endif %}"
+              data-quote-dot="{{ loop.index0 }}"
+              aria-label="Show quote {{ loop.index }}"
+              role="tab"
+              {% if loop.first %}aria-selected="true"{% else %}aria-selected="false"{% endif %}
+            >
+              <span class="sr-only">Quote {{ loop.index }}</span>
+            </button>
+          {% endfor %}
+        </div>
+        <button type="button" class="quote-nav-btn" data-quote-next aria-label="Next quote">
+          <span aria-hidden="true">&rarr;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}

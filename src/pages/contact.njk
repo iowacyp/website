@@ -56,12 +56,12 @@ permalink: /contact/index.html
   <div class="container space-y-10">
     <div class="max-w-3xl space-y-4">
       <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Meet your points of contact</p>
-      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Connect directly with the coordinators supporting Iowa CYP</h2>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 uppercase tracking-[0.3em]">CONNECT WITH OUR COORDINATORS.</h2>
       <p class="text-slate-700 leading-relaxed">Chris and Erin both work out of Camp Dodge and team up on statewide programming. Reach out and we’ll cover your regional needs or loop in partners who can help.</p>
     </div>
     <div class="grid gap-6 md:grid-cols-2">
       {% for member in team.members %}
-        <article class="content-card h-full space-y-5" data-reveal>
+        <article class="content-card h-full space-y-6" data-reveal>
           <div class="flex items-center gap-5">
             {% if member.headshot %}
               <img src="{{ member.headshot }}" alt="{{ member.name }}" class="h-16 w-16 rounded-full object-cover border border-primary/30" loading="lazy" decoding="async">
@@ -72,7 +72,7 @@ permalink: /contact/index.html
               <p class="text-xs text-gray-600">{{ member.organization }}</p>
             </div>
           </div>
-          <p class="text-sm text-gray-700 leading-relaxed">{{ member.bio }}</p>
+          <p class="text-sm text-gray-700 leading-relaxed mt-4">{{ member.bio }}</p>
           <div class="flex flex-wrap items-center gap-3 pt-1">
             <a class="contact-link" href="mailto:{{ member.email }}">
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">

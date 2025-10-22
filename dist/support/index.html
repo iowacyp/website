@@ -7,6 +7,7 @@
   <meta name="description" content="Discover how community partners, educators, State Teen Panel members, and volunteers can support Iowa National Guard children and youth.">
   <link rel="canonical" href="https://www.iowacyp.com/support/">
   <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="apple-touch-icon" href="/assets/pwa/icon-192.png">
   <meta name="theme-color" content="#1f4d7a">
@@ -29,11 +30,9 @@
 <header class="nav border-b border-secondary/40 bg-primary sticky top-0 z-50 shadow-sm">
   <div class="container flex items-center justify-between gap-6 py-3">
     <a href="/" class="flex items-center gap-3">
-      <img src="/assets/img/branding_symbol.png" alt="Iowa Child &amp; Youth Program emblem" class="h-10 w-auto drop-shadow-sm">
-      <div class="flex flex-col leading-none uppercase tracking-[0.3em] text-white">
-        <span class="text-[0.7rem]">Iowa</span>
-        <span class="text-base font-semibold">CYP</span>
-      </div>
+      <span class="inline-flex items-center justify-center rounded-full bg-white px-3 py-2 shadow-sm">
+        <img src="/assets/img/branding_symbol.png" alt="Iowa Child &amp; Youth Program logo" class="h-8 w-auto">
+      </span>
     </a>
     <button id="navToggle" class="menu-toggle" aria-expanded="false" aria-controls="mobileNav">
       <span class="sr-only">Toggle navigation</span>
@@ -76,12 +75,14 @@
 </aside>
 
   <main id="main">
-    <section class="relative isolate overflow-hidden" data-reveal>
+    
+<section class="relative isolate overflow-hidden" data-reveal>
+  
   <div class="absolute inset-0">
     <img
-      src="/assets/img/programs/summer_camp_group.jpg"
-      alt="Iowa CYP youth and volunteers at a summer camp activity"
-      class="absolute inset-0 h-full w-full object-cover"
+      src="/content/Media/patriotic.jpg"
+      alt="Guard-connected youth and families gathered with patriotic bunting"
+      class="absolute inset-0 h-full w-full object-cover origin-center [transform:scaleX(-1)]"
       loading="lazy"
       decoding="async"
     >
@@ -97,6 +98,68 @@
         <a class="hero-cta-secondary" href="#volunteers">Volunteer with us</a>
       </div>
     </div>
+  </div>
+</section>
+
+<nav class="sticky top-20 z-30 bg-white/90 backdrop-blur border-y border-slate-200" aria-label="Section navigation" data-reveal>
+  <div class="container flex flex-wrap items-center justify-center gap-4 py-3 text-sm font-semibold text-primary">
+    <a class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 hover:bg-primary/10 transition" href="#community-partners">
+      <span>Partner</span>
+    </a>
+    <a class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 hover:bg-primary/10 transition" href="#leadership">
+      <span>Teach &amp; Lead</span>
+    </a>
+    <a class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 hover:bg-primary/10 transition" href="#momc">
+      <span>Celebrate MOMC</span>
+    </a>
+    <a class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 hover:bg-primary/10 transition" href="#volunteers">
+      <span>Volunteer</span>
+    </a>
+  </div>
+</nav>
+
+<section class="bg-white py-12" data-reveal>
+  <div class="container grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+    <article class="support-feature">
+      <span class="support-feature__icon">
+        <i aria-hidden="true" class="fas fa-angle-double-down leading-none"></i>
+      </span>
+      <div class="support-feature__body">
+        <h2 class="support-feature__title">Partner With Us</h2>
+        <p class="text-sm text-gray-700 leading-relaxed">Boost scholarships, sponsor camps, or lend event space so Guard-connected youth have more chances to gather.</p>
+        <a class="support-feature__cta" href="#community-partners">Explore partner lanes</a>
+      </div>
+    </article>
+    <article class="support-feature">
+      <span class="support-feature__icon">
+        <i aria-hidden="true" class="fas fa-tools leading-none"></i>
+      </span>
+      <div class="support-feature__body">
+        <h2 class="support-feature__title">Equip Classrooms</h2>
+        <p class="text-sm text-gray-700 leading-relaxed">Download lesson kits, book trainings, and connect with Purple Star School tools for your district.</p>
+        <a class="support-feature__cta" href="#leadership">See educator tools</a>
+      </div>
+    </article>
+    <article class="support-feature">
+      <span class="support-feature__icon">
+        <i aria-hidden="true" class="far fa-star leading-none"></i>
+      </span>
+      <div class="support-feature__body">
+        <h2 class="support-feature__title">Celebrate Together</h2>
+        <p class="text-sm text-gray-700 leading-relaxed">Host Purple Up moments, share social graphics, and join statewide Month of the Military Child events.</p>
+        <a class="support-feature__cta" href="#momc">Plan your celebration</a>
+      </div>
+    </article>
+    <article class="support-feature">
+      <span class="support-feature__icon">
+        <i aria-hidden="true" class="far fa-compass leading-none"></i>
+      </span>
+      <div class="support-feature__body">
+        <h2 class="support-feature__title">Volunteer Your Time</h2>
+        <p class="text-sm text-gray-700 leading-relaxed">Match your gifts with roles that welcome campers, ease logistics, and inspire our teens.</p>
+        <a class="support-feature__cta" href="#volunteers">Find your fit</a>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -221,28 +284,30 @@
 </section>
 
 
-<section class="bg-primary/5 py-20" data-reveal>
+<section id="leadership" class="bg-primary/5 py-20" data-reveal>
   <div class="container space-y-12">
-    <div class="max-w-3xl space-y-4">
-      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Leadership &amp; learning</p>
-      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Equip classrooms and teen leaders to champion military-connected youth</h2>
-      <p class="text-slate-700 leading-relaxed">Whether you’re shaping lesson plans or mentoring teens, we bring turn-key tools so you can keep Guard kids engaged and confident.</p>
+    <div class="max-w-3xl space-y-5">
+      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Lead &amp; Learn</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 leading-tight">Developing the Next Generation</h2>
+      <p class="text-slate-700 leading-relaxed">Grab ready-to-use lesson plans, mentor guides, and deployment resources that make it simple to grow confident Guard-connected youth.</p>
     </div>
-    <div class="grid gap-8 md:grid-cols-2">
-      <article class="content-card space-y-5 h-full" data-reveal>
-        <h3 class="text-xl font-semibold text-slate-900">Educators</h3>
+    <div class="grid gap-10 md:grid-cols-2">
+      <article class="content-card space-y-6 h-full" data-reveal>
+        <h3 class="text-xl font-semibold text-slate-900 tracking-[0.2em] uppercase">Educators</h3>
         <p class="text-gray-700 leading-relaxed">We equip schools and youth programs with quick-start lesson plans, deployment awareness toolkits, and staff sessions focused on military-connected students.</p>
         <ul class="list-disc list-inside text-gray-700 space-y-2">
           <li>Staff training on the deployment cycle and student transitions</li>
           <li>Classroom resilience activities and Purple Up celebration guides</li>
           <li>Connections to mental health, tutoring, and family readiness resources</li>
         </ul>
-        <div class="rounded-3xl border border-primary/20 bg-white/70 p-5 space-y-3">
-          <h4 class="text-lg font-semibold text-slate-900">Purple Star School Program</h4>
-          <p class="text-sm text-slate-700 leading-relaxed">We partner with the Iowa Department of Education so districts can earn the new Purple Star designation that honors schools committed to military-connected students.</p>
-          <div class="grid gap-4 md:grid-cols-2">
-            <div class="space-y-2">
-              <p class="text-xs uppercase tracking-wide text-primary/70 font-semibold">Core requirements</p>
+        <div class="rounded-3xl border border-primary/20 bg-white/70 p-5 space-y-4">
+          <div class="space-y-2">
+            <h4 class="text-lg font-semibold text-slate-900">Purple Star School Program</h4>
+            <p class="text-sm text-slate-700 leading-relaxed">We partner with the Iowa Department of Education so districts can earn the new Purple Star designation that honors schools committed to military-connected students.</p>
+          </div>
+          <div class="space-y-3">
+            <div class="rounded-2xl border border-primary/10 bg-white/80 p-4">
+              <h5 class="text-sm font-semibold text-primary mb-2 uppercase tracking-[0.2em]">Core requirements</h5>
               <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
                 <li>Assign a dedicated military family liaison.</li>
                 <li>Maintain a resource hub for Guard families.</li>
@@ -250,8 +315,8 @@
                 <li>Provide staff training on transitions.</li>
               </ul>
             </div>
-            <div class="space-y-2">
-              <p class="text-xs uppercase tracking-wide text-primary/70 font-semibold">Application timeline</p>
+            <div class="rounded-2xl border border-primary/10 bg-white/80 p-4">
+              <h5 class="text-sm font-semibold text-primary mb-2 uppercase tracking-[0.2em]">Application timeline</h5>
               <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
                 <li>Oct–Dec 2025: Applications open</li>
                 <li>Jan–Feb 2026: Reviews underway</li>
@@ -260,19 +325,21 @@
               </ul>
             </div>
           </div>
-          <a class="btn-secondary w-fit" href="https://educate.iowa.gov/pk-12/award-exchange-programs/purple-star-school-program" target="_blank" rel="noopener">Explore Purple Star details</a>
+          <div class="flex flex-wrap gap-3">
+            <a class="btn-secondary" href="https://educate.iowa.gov/pk-12/award-exchange-programs/purple-star-school-program" target="_blank" rel="noopener">Explore Purple Star details</a>
+            <a class="btn" href="/contact/#general-contact">Request a briefing</a>
+          </div>
         </div>
-        <a class="text-primary font-semibold inline-flex items-center gap-2" href="/contact/#general-contact">Request training<span aria-hidden="true">&rarr;</span></a>
       </article>
-      <article class="content-card space-y-5 h-full" data-reveal>
+      <article class="content-card space-y-6 h-full" data-reveal>
         <div>
-          <h3 class="text-xl font-semibold text-slate-900">State Teen Panel (STP)</h3>
+          <h3 class="text-xl font-semibold text-slate-900 tracking-[0.2em] uppercase">State Teen Panel (STP)</h3>
           <p class="text-gray-700">STP is our teen leadership crew for Guard-connected youth ages 13–17. Members plan events, advise decisions, and represent Iowa at regional symposiums.</p>
         </div>
         
-          <blockquote class="italic text-primary leading-relaxed">
-            &ldquo;The support these kids receive is incredible--it reminds them they&#39;re not alone. Military life is tough, and we&#39;re grateful for CYP helping our children feel seen and supported through it all.&rdquo;
-            <span class="block text-xs uppercase tracking-wide text-primary/70 mt-3 not-italic">ARNG Parent</span>
+          <blockquote class="italic text-primary leading-relaxed bg-primary/5 border border-primary/10 rounded-3xl p-5">
+            &ldquo;The online adventure kits gave our kids something to look forward to when we couldn’t be together in person. It still felt like CYP showed up for us.&rdquo;
+            <span class="block text-xs uppercase tracking-wide text-primary/70 mt-3 not-italic">Guard parent</span>
           </blockquote>
         
         <ul class="list-disc list-inside text-gray-700 space-y-2">
@@ -304,33 +371,80 @@
 <section id="momc" class="bg-white py-20" data-reveal>
   <div class="container grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_0.9fr] lg:items-start">
     <article class="content-card space-y-6 h-full">
-      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Month of the Military Child</p>
-      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Celebrate with us each April</h2>
-      <p class="text-slate-700 leading-relaxed">Military families with youth are invited to join the statewide celebration of Month of the Military Child (MOMC). We purple up, gather together, and highlight Guard kids whose strength keeps Iowa mission-ready.</p>
+      <div class="space-y-4">
+        <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Month of the Military Child</p>
+        <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Celebrate with us each April</h2>
+        <p class="text-slate-700 leading-relaxed">Military families with youth are invited to join the statewide celebration of Month of the Military Child (MOMC). We purple up, gather together, and highlight Guard kids whose strength keeps Iowa mission-ready.</p>
+        
+        <img src="/content/Media/kit.jpg" alt="Students opening Purple Up classroom kits filled with activities" class="w-full rounded-3xl border border-primary/10 object-cover">
+      </div>
       <div class="space-y-4">
         <h3 class="text-lg font-semibold text-slate-900">Celebrate with us</h3>
-        <ul class="list-disc list-inside text-gray-700 space-y-2">
-          <li>Save the date: Military Family Ball on April 12 at 5 PM&mdash;formal dinner, dancing, and surprises for every age group.</li>
-          <li>Wear purple and share a photo with <span class="font-semibold text-primary">#IApurpleup</span> on Friday, April 11 to shout out Guard-connected youth.</li>
-          <li>Update your social media profile picture with a purple overlay to show your support all month long.</li>
-        </ul>
+        <ol class="relative space-y-6 before:absolute before:left-3 before:top-1 before:h-full before:w-px before:bg-primary/20 before:content-['']">
+          <li class="relative flex gap-4 pl-12 text-gray-700">
+            <span class="absolute left-0 top-0 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-white text-xs font-semibold">12</span>
+            <div class="space-y-1">
+              <p class="font-semibold text-slate-900">April 12 · Military Family Ball</p>
+              <p class="leading-relaxed">Formal dinner, dancing, and surprises for every age group. Reserve your spot before seats run out.</p>
+            </div>
+          </li>
+          <li class="relative flex gap-4 pl-12 text-gray-700">
+            <span class="absolute left-0 top-0 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-white text-xs font-semibold">11</span>
+            <div class="space-y-1">
+              <p class="font-semibold text-slate-900">April 11 · Purple Up Friday</p>
+              <p class="leading-relaxed">Wear purple and share a photo with <span class="font-semibold text-primary">#IApurpleup</span> to shout out Guard-connected youth statewide.</p>
+            </div>
+          </li>
+          <li class="relative flex gap-4 pl-12 text-gray-700">
+            <span class="absolute left-0 top-0 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-white text-xs font-semibold">All</span>
+            <div class="space-y-1">
+              <p class="font-semibold text-slate-900">All April · Share support</p>
+              <p class="leading-relaxed">Update your social media profile picture, host hallway displays, and invite Guard families to speak in your classrooms.</p>
+            </div>
+          </li>
+        </ol>
         <div class="flex flex-wrap gap-3">
           <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSefViH-KPAXAZ0oHB4bZWqKwqdtUH1qMW9BskeU0N2pNbn-tw/viewform?usp=share_link&ouid=100941830380849796397" target="_blank" rel="noopener">Register for the Military Family Ball</a>
           <a class="btn-secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSeuWERml_l29aE8I9TvD0IHVmdmj8BF8UImnZKGTzOmUE7rxw/viewform?usp=share_link&amp;ouid=100941830380849796397" target="_blank" rel="noopener">Request a Classroom Kit</a>
         </div>
       </div>
-      <div class="space-y-3">
-        <h3 class="text-lg font-semibold text-slate-900">Spread the word</h3>
-        <p class="text-sm text-gray-700 leading-relaxed">Download ready-to-use pieces for schools, partners, and social feeds.</p>
-        <div class="grid gap-3 sm:grid-cols-2">
-          <a class="content-card content-card--tinted border border-primary/10 text-sm font-semibold text-primary hover:-translate-y-1 transition" href="/assets/files/momc_overview.png" target="_blank" rel="noopener">Purple Up Classroom Kit Flyer</a>
-          <a class="content-card content-card--tinted border border-primary/10 text-sm font-semibold text-primary hover:-translate-y-1 transition" href="/assets/files/momc_flyer.png" target="_blank" rel="noopener">Ways to Participate Flyer</a>
-          <a class="content-card content-card--tinted border border-primary/10 text-sm font-semibold text-primary hover:-translate-y-1 transition" href="/assets/files/momc_profile_image.svg" target="_blank" rel="noopener">Social Media Profile Image</a>
+    </article>
+    
+    <aside class="content-card space-y-6 h-full">
+      <div class="rounded-3xl border border-primary/10 bg-primary/5 p-6 space-y-5">
+        <div class="space-y-2 text-center sm:text-left">
+          <h3 class="text-lg font-semibold text-slate-900 uppercase tracking-[0.25em]">Spread the word</h3>
+          <p class="text-sm text-gray-700 leading-relaxed">Grab share-ready graphics, emails, and scripts to hype Purple Up all month long.</p>
+        </div>
+        <div class="grid gap-4">
+          <article class="rounded-3xl border border-primary/10 bg-white/90 p-5 space-y-3 text-center sm:text-left">
+            <div class="space-y-1.5">
+              <p class="text-sm font-semibold text-slate-900">Classroom Kit Flyer</p>
+              <p class="text-xs text-gray-600 leading-relaxed">Snapshot of kit contents, delivery timelines, and how to request more supplies.</p>
+            </div>
+            <a class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-primary" href="/assets/files/momc_overview.png" target="_blank" rel="noopener">Open flyer<span aria-hidden="true">&rarr;</span></a>
+          </article>
+          <article class="rounded-3xl border border-primary/10 bg-white/90 p-5 space-y-3 text-center sm:text-left">
+            <div class="space-y-1.5">
+              <p class="text-sm font-semibold text-slate-900">Ways to Participate Flyer</p>
+              <p class="text-xs text-gray-600 leading-relaxed">Classroom, community, and digital ideas for the whole month.</p>
+            </div>
+            <a class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-primary" href="/assets/files/momc_flyer.png" target="_blank" rel="noopener">Open flyer<span aria-hidden="true">&rarr;</span></a>
+          </article>
+          <article class="rounded-3xl border border-primary/10 bg-white/90 p-5 space-y-3 text-center sm:text-left">
+            <div class="space-y-1.5">
+              <p class="text-sm font-semibold text-slate-900">Purple Profile Graphic</p>
+              <p class="text-xs text-gray-600 leading-relaxed">Simple overlay for Teams, Facebook, or Instagram.</p>
+            </div>
+            <a class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-primary" href="/assets/files/momc_profile_image.svg" target="_blank" rel="noopener">Download image<span aria-hidden="true">&rarr;</span></a>
+          </article>
+        </div>
+        <div class="rounded-3xl border border-primary/15 bg-white p-5 space-y-3 text-center sm:text-left">
+          <p class="text-sm text-gray-700 leading-relaxed">Need ideas fast? Our team can help you plan a Purple Up moment in one quick call.</p>
+          <a class="btn-secondary inline-flex items-center justify-center gap-2 w-full sm:w-auto" href="/contact/#general-contact">Schedule a planning call</a>
         </div>
       </div>
-    </article>
-    <aside class="content-card space-y-5 h-full">
-      <h3 class="text-lg font-semibold text-slate-900">Quick Q&amp;A</h3>
+      <img src="/assets/img/programs/family_ball_dance.jpg" alt="Guard families dancing at the Military Family Ball" class="w-full rounded-3xl border border-primary/20 object-cover">
       <div class="space-y-4 text-sm text-gray-700 leading-relaxed">
         <div>
           <p class="font-semibold text-slate-900">Where do I pick up the Classroom Kit?</p>
@@ -345,23 +459,33 @@
           <p>Month of the Military Child honors kids who serve in their own way when a loved one wears the uniform. Use the classroom kit talking points or invite us to speak at your assembly.</p>
         </div>
       </div>
-      <a class="btn-secondary w-fit" href="/contact/#general-contact">Ask the team for support</a>
     </aside>
   </div>
 </section>
 
 <section id="volunteers" class="container py-16" data-reveal>
-  <div class="content-card md:grid md:grid-cols-[minmax(0,1fr)_0.95fr] md:items-center md:gap-8 space-y-6 md:space-y-0">
-    <div class="space-y-4">
+  <div class="content-card md:grid md:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.85fr)] md:items-center gap-8 md:gap-12 space-y-6 md:space-y-0">
+    <div class="space-y-5">
       <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Volunteers</p>
-      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Step into a role that matches your strengths</h2>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 leading-tight">Step into a role that matches your strengths</h2>
       <p class="text-gray-700 leading-relaxed">Whether you like organizing supplies or hanging out with campers, there’s a spot for you. Volunteers help with registration, activity stations, travel logistics, and more.</p>
       <p class="text-gray-700 leading-relaxed">Tell us what you enjoy and when you’re available—we’ll match you with the right role.</p>
+      <blockquote class="rounded-3xl border border-primary/10 bg-primary/5 p-5 text-sm italic text-primary leading-relaxed">
+        “I signed up to help at one weekend camp and stayed all season. Watching Guard teens light up when they see familiar faces is the best part.”<span class="mt-3 block text-xs font-semibold uppercase tracking-widest text-primary/70 not-italic">— Morgan, volunteer crew lead</span>
+      </blockquote>
+      <div>
+        <a class="btn" href="https://forms.osi.apps.mil/pages/responsepage.aspx?id=D9fm-kuVEUiStgUw1vhMQzDCAaciZmlLpr6dlo7GhLxUQzM3SEFGNk1MR1hHM0MxMkxMT1VKOFFURCQlQCN0PWcu">Get involved</a>
+      </div>
     </div>
-    <div class="space-y-4">
-      <img src="/assets/img/stories/IMG_0693.jpg" alt="Volunteer supporting Guard youth during an Iowa CYP activity" class="w-full rounded-3xl object-cover border border-primary/20" loading="lazy" decoding="async">
-      <a class="btn" href="https://forms.osi.apps.mil/pages/responsepage.aspx?id=D9fm-kuVEUiStgUw1vhMQzDCAaciZmlLpr6dlo7GhLxUQzM3SEFGNk1MR1hHM0MxMkxMT1VKOFFURCQlQCN0PWcu">Get involved</a>
+    <div class="space-y-4 md:justify-self-center">
+      
+      <div class="mx-auto max-w-[320px] md:max-w-[360px] rounded-3xl border border-primary/20 bg-white/80 p-3">
+        <img src="/content/Media/volunteer.jpg" alt="Volunteer cheering alongside Guard-connected youth during a CYP activity" class="w-full rounded-2xl object-cover aspect-[3/4]" loading="lazy" decoding="async">
+      </div>
     </div>
+  </div>
+  <div class="mt-8 rounded-3xl border border-primary/10 bg-white/70 p-6 text-sm text-gray-700 leading-relaxed">
+    Prefer to start with a quick question? Email us at <a class="font-semibold text-primary" href="mailto:iaarngcyp@gmail.com">iaarngcyp@gmail.com</a> or call your local Soldier &amp; Family Readiness Support Specialist—we’ll point you to the right shift.
   </div>
 </section>
 
@@ -395,10 +519,34 @@
     </div>
     <div>
       <h2 class="font-light text-lg tracking-[0.3em] uppercase mb-3 text-white">Contact</h2>
-      <p class="text-white/90">Office: Camp Dodge Rec Hall - 7105 NW 78th Ave Bldg 3585, Johnston IA 50131</p>
-      <p class="text-white/90">Phone: <a class="text-white hover:text-secondary" href="tel:5157273064">515-727-3064</a></p>
-      <p class="text-white/90">Email: <a class="text-white hover:text-secondary" href="mailto:iaarngcyp@gmail.com">iaarngcyp@gmail.com</a></p>
-      <p class="text-white/90">Subscribe: <a class="text-white hover:text-secondary" href="/subscribe/">Join our mailing list</a></p>
+      <ul class="space-y-2 text-white/90">
+        <li class="flex items-start gap-3">
+          <span class="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/10 text-white/80">
+            <img src="/assets/icons/geo-alt-fill.svg" alt="" class="h-4 w-4" aria-hidden="true">
+          </span>
+          <span>Camp Dodge Rec Hall - 7105 NW 78th Ave Bldg 3585, Johnston IA 50131</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/10 text-white/80">
+            <i class="fas fa-phone text-sm" aria-hidden="true"></i>
+          </span>
+          <a class="text-white hover:text-secondary transition" href="tel:5157273064">515-727-3064</a>
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/10 text-white/80">
+            <i class="fas fa-envelope-open text-sm" aria-hidden="true"></i>
+          </span>
+          <a class="text-white hover:text-secondary transition" href="mailto:iaarngcyp@gmail.com">iaarngcyp@gmail.com</a>
+        </li>
+        
+          <li class="flex items-center gap-3">
+            <span class="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/10 text-white/80">
+              <i class="far fa-paper-plane text-sm" aria-hidden="true"></i>
+            </span>
+            <a class="text-white hover:text-secondary transition" href="/subscribe/">Join our mailing list</a>
+          </li>
+        
+      </ul>
     </div>
   </div>
   <div class="border-t border-secondary/40 py-4 text-center text-sm text-white/60">

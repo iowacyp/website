@@ -4,31 +4,48 @@
       "id": "G003",
       "title": "State Teen Panel Application Packet",
       "description": "Eligibility details, time commitment, and application materials for Iowa CYP's State Teen Panel.",
-      "file": "/assets/files/stp_application_packet.pdf"
+      "file": "/assets/files/stp_application_packet.pdf",
+      "thumbnails": [
+        "/assets/img/downloads/state-teen-panel.png"
+      ]
     },
     {
       "id": "G101",
       "title": "MOMC Classroom Kit Overview",
       "description": "Share this one-page overview with schools requesting Month of the Military Child celebration kits.",
-      "file": "/assets/files/momc_overview.png"
+      "file": "/assets/files/momc_overview.png",
+      "thumbnails": [
+        "/assets/img/downloads/momc-classroom-kit-overview.png"
+      ]
     },
     {
       "id": "G102",
       "title": "MOMC Celebration Flyer",
       "description": "Printable flyer to promote Purple Up and classroom celebrations across Iowa.",
-      "file": "/assets/files/momc_flyer.png"
+      "file": "/assets/files/momc_flyer.png",
+      "thumbnails": [
+        "/assets/img/downloads/momc-celebration-flyer.png"
+      ]
     },
     {
       "id": "G201",
       "title": "Iowa CYP Rack Card",
       "description": "Two-sided rack card summarizing key programs for outreach tables and welcome packets.",
-      "file": "/assets/files/2025_cyp_rack_card.pdf"
+      "file": "/assets/files/2025_cyp_rack_card.pdf",
+      "thumbnails": [
+        "/assets/img/downloads/rack-card-front.jpg",
+        "/assets/img/downloads/rack-card-back.jpg"
+      ]
     },
     {
       "id": "G202",
       "title": "2025 Annual Report",
       "description": "Year-in-review report highlighting statewide impact, partnerships, and program metrics.",
-      "file": "/assets/files/2025_Annual_Report.pdf"
+      "file": "/assets/files/2025_Annual_Report.pdf",
+      "thumbnails": [
+        "/assets/img/downloads/2025-annual-report.png",
+        "/assets/img/downloads/2025-annual-report-summary.png"
+      ]
     }
   ]
 }

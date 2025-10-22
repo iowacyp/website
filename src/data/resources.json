@@ -13,7 +13,7 @@
       "label": "Iowa National Guard Mobile App (iOS)",
       "url": "https://apps.apple.com/us/app/iowa-national-guard/id6446351421",
       "summary": "Download the Iowa National Guard mobile app for iPhone to access news, events, and resources.",
-      "image": "/assets/img/resources/resource_arngapp.webp",
+      "image": "/content/Media/iaarng.jpg",
       "notes": "Ensure App Store badge follows branding."
     },
     {
@@ -21,7 +21,7 @@
       "label": "Iowa National Guard Mobile App (Android)",
       "url": "https://play.google.com/store/apps/details?id=com.m360mobile.iowa",
       "summary": "Download the Iowa National Guard mobile app for Android to stay connected with updates and tools.",
-      "image": "/assets/img/resources/resource_arngapp.webp",
+      "image": "/content/Media/googleplay.png",
       "notes": "Verify Google Play badge assets are current."
     },
     {
@@ -73,6 +73,13 @@
       "notes": "Request partner logo approval if highlighted."
     },
     {
+      "id": "R009A",
+      "label": "Lemons Inc. Lemonade Stand Builder",
+      "url": "https://lemonsinc.netlify.app/",
+      "summary": "Kid-friendly web app that walks young entrepreneurs through planning and running their own lemonade stand.",
+      "notes": "Great fit for workshops or take-home activities after financial literacy lessons."
+    },
+    {
       "id": "R010",
       "label": "Our Military Kids",
       "url": "https://www.ourmilitarykids.org/",
@@ -85,7 +92,7 @@
       "label": "ARNG Child & Youth Services",
       "url": "https://arngcys.com/",
       "summary": "National Guard Child & Youth Services hub for programs and resources.",
-      "image": "/assets/img/resources/resource_arngcys.svg",
+      "image": "/content/Media/arngcys.webp",
       "notes": "Confirm regional contacts referenced on site."
     },
     {
@@ -93,7 +100,7 @@
       "label": "Iowa National Guard Warrior & Family Services",
       "url": "https://www.iowanationalguard.com/member-and-family-services/",
       "summary": "Comprehensive services and support for Iowa Guard members and families.",
-      "image": "/assets/img/resources/resource_arngapp.webp",
+      "image": "/content/Media/WFSB.jpg",
       "notes": "Check for deeper links to specific services."
     },
     {

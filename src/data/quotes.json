@@ -1,60 +1,132 @@
 {
   "items": [
     {
-      "id": "Q001",
-      "text": "The support these kids receive is incredible--it reminds them they're not alone. Military life is tough, and we're grateful for CYP helping our children feel seen and supported through it all.",
+      "id": "Q002",
+      "text": "The online adventure kits gave our kids something to look forward to when we couldn’t be together in person. It still felt like CYP showed up for us.",
       "author": null,
-      "role": "ARNG Parent",
+      "role": "Guard parent",
       "section": "stories",
-      "useCase": "general"
+      "useCase": "adventure kits"
+    },
+    {
+      "id": "Q003",
+      "text": "Camp helped me grow as a leader and feel connected to other military kids.",
+      "author": "STP youth, 2025",
+      "role": null,
+      "section": "stories",
+      "useCase": "camp"
     },
     {
       "id": "Q004",
-      "text": "Month of the Military Child reminds us that purple is more than a color--it's our community.",
+      "text": "These events remind us that we’re part of something bigger — a community that understands the Guard life.",
       "author": null,
-      "role": null,
+      "role": "Guard parent",
       "section": "stories",
-      "useCase": "MOMC feature"
+      "useCase": "community events"
     },
     {
       "id": "Q005",
-      "text": "They are there to support the family from the youngest member to the oldest member.",
+      "text": "During deployment, CYP gave our kids something to smile about — and reminded them they weren’t the only ones missing someone.",
       "author": null,
-      "role": "ARNG Parent",
-      "section": "programs",
-      "useCase": "Family Events overview"
+      "role": "Guard parent",
+      "section": "stories",
+      "useCase": "deployment"
     },
     {
       "id": "Q006",
-      "text": "The sense of community and connection with other military children has been such a help. It showed me what we can overcome together and gave me invaluable leadership skills, helping me mature and feel more connected to my military peers.",
+      "text": "This camp put the light back in my daughter’s eyes.",
       "author": null,
-      "role": "STP Member",
-      "section": "partners",
-      "useCase": "STP recruitment page"
+      "role": "Guard parent, 2021",
+      "section": "stories",
+      "useCase": "camp"
     },
     {
       "id": "Q007",
-      "text": "Yellow Ribbon workshops connect kids who are facing the same challenges.",
+      "text": "Camp brightened her smile again and gave her friends who understand deployment.",
       "author": null,
-      "role": null,
-      "section": "programs",
-      "useCase": "general"
+      "role": "Guard parent, 2025",
+      "section": "stories",
+      "useCase": "camp"
     },
     {
       "id": "Q008",
-      "text": "This camp brightened our daughter's smile again. The friendships and support she found reminded her she's not alone--something every military kid deserves.",
+      "text": "Even online, I felt connected — like other military kids were doing the same thing with me at home.",
       "author": null,
-      "role": "ARNG Parent",
-      "section": "programs",
-      "useCase": "Summer camp"
+      "role": "Guard youth",
+      "section": "stories",
+      "useCase": "adventure kits"
     },
     {
       "id": "Q009",
-      "text": "Being a military kid in Iowa can be tough, but this community has been nothing short of amazing. The bonds, support, and love our kids find here remind them they're never alone.",
+      "text": "The adventure kits brought the fun and creativity of CYP right into our living room — a reminder that we’re not alone in this Guard life.",
       "author": null,
-      "role": "ARNG Parent",
-      "section": "general",
-      "useCase": "general"
+      "role": "Guard family",
+      "section": "stories",
+      "useCase": "adventure kits"
+    },
+    {
+      "id": "Q010",
+      "text": "Virtual kits like these keep our Guard families engaged and supported, no matter where duty takes them.",
+      "author": null,
+      "role": "Guard leadership",
+      "section": "stories",
+      "useCase": "adventure kits"
+    },
+    {
+      "id": "Q011",
+      "text": "It’s where I meet other Guard kids who get what it’s like when your parent is gone for drill or deployment.",
+      "author": null,
+      "role": "Guard youth",
+      "section": "stories",
+      "useCase": "community events"
+    },
+    {
+      "id": "Q012",
+      "text": "We come for the fun, but we leave feeling connected and seen.",
+      "author": null,
+      "role": "Guard family",
+      "section": "stories",
+      "useCase": "community events"
+    },
+    {
+      "id": "Q013",
+      "text": "CYP builds community in a way that strengthens readiness — by making sure no Guard family feels isolated.",
+      "author": null,
+      "role": "Guard leadership",
+      "section": "stories",
+      "useCase": "community events"
+    },
+    {
+      "id": "Q014",
+      "text": "When Dad was deployed, CYP made me feel proud to be a military kid instead of just missing him.",
+      "author": null,
+      "role": "Guard youth",
+      "section": "stories",
+      "useCase": "deployment"
+    },
+    {
+      "id": "Q015",
+      "text": "Having an event during deployment helped break up the long months and gave us a reason to laugh together.",
+      "author": null,
+      "role": "Guard spouse",
+      "section": "stories",
+      "useCase": "deployment"
+    },
+    {
+      "id": "Q016",
+      "text": "Programs like these don’t just fill the time — they hold families together during the hardest seasons of service.",
+      "author": null,
+      "role": "Guard leadership",
+      "section": "stories",
+      "useCase": "deployment"
+    },
+    {
+      "id": "Q017",
+      "text": "Even from the command level, I see that CYP keeps readiness high by making sure no family feels left behind.",
+      "author": null,
+      "role": "Guard leadership",
+      "section": "stories",
+      "useCase": "readiness"
     }
   ]
 }

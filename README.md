@@ -34,6 +34,10 @@ npx serve dist     # optional static preview after build
 ## Deployment
 - Netlify config (`netlify.toml`) sets the build command (`npm run build`), publish directory (`dist/`), and a sample redirect.
 - Run `npm run build`, deploy the contents of `dist/`, and optionally preview with `npx serve dist`.
+- Form submissions sync to Google Sheets via the Netlify Function at `netlify/functions/submission-created.js`. Before deploying, add these environment variables in Netlify:
+  - `GOOGLE_SERVICE_ACCOUNT`: full JSON for the Sheets API service account (keep it private).
+  - `GOOGLE_SPREADSHEET_ID`: the sheet ID (e.g., `1jZnYXTp59YVSD8DOQ6Dx8-G2-kUlUc6q2K94lYMiIOQ`).
+  - `GOOGLE_SHEET_TAB` (optional): target worksheet name, defaults to `Sheet1`.
 
 ## Updating Copy and Links
 - Maintain one `<h1>` per page with descending headings.

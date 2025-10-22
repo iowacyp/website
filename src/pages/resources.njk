@@ -7,7 +7,7 @@ permalink: /resources/index.html
 <section class="relative isolate overflow-hidden" data-reveal>
   <div class="absolute inset-0">
     <img
-      src="/assets/img/about/about_teaching.jpg"
+      src="/assets/img/resources/teaching.jpg"
       alt="Iowa CYP team member guiding a Guard-connected student through a workshop"
       class="absolute inset-0 h-full w-full object-cover"
       loading="lazy"
@@ -33,7 +33,7 @@ permalink: /resources/index.html
     </div>
     <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
       {% for resource in resources.items %}
-        <article class="content-card flex gap-4 h-full" data-reveal>
+        <article id="resource-{{ resource.id | lower }}" class="content-card flex gap-4 h-full" data-reveal>
           {% if resource.image %}
             <img src="{{ resource.image }}" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
           {% endif %}
@@ -55,17 +55,26 @@ permalink: /resources/index.html
 
 <section class="bg-primary/5 py-20" data-reveal>
   <div class="container space-y-10">
-    <article class="content-card md:flex md:items-center md:justify-between md:gap-12" data-reveal>
+    <article class="content-card grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center" data-reveal>
       <div class="space-y-4">
         <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Scholarships &amp; grants</p>
         <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Funding pathways for military-connected students</h2>
         <p class="text-gray-700 leading-relaxed">We keep track of scholarships and grants for Guard-connected students heading to college, trade schools, or certification programs. Share the database with families so they can spot the opportunities that fit best.</p>
+        {% if site.links.scholarshipDatabase %}
+          <a class="btn" href="{{ site.links.scholarshipDatabase }}" target="_blank" rel="noopener">Open the scholarship database</a>
+        {% else %}
+          <p class="text-sm text-gray-700">Scholarship database link coming soon. <a class="text-primary font-semibold" href="mailto:{{ site.contactEmail }}?subject=Scholarship%20Database%20Request">Email us to request the latest spreadsheet.</a></p>
+        {% endif %}
       </div>
-      {% if site.links.scholarshipDatabase %}
-        <a class="btn" href="{{ site.links.scholarshipDatabase }}" target="_blank" rel="noopener">Open the scholarship database</a>
-      {% else %}
-        <p class="text-sm text-gray-700">Scholarship database link coming soon. <a class="text-primary font-semibold" href="mailto:{{ site.contactEmail }}?subject=Scholarship%20Database%20Request">Email us to request the latest spreadsheet.</a></p>
-      {% endif %}
+      <div class="overflow-hidden rounded-[2.5rem] border border-primary/15 shadow-sm max-h-[420px]">
+        <img
+          src="/assets/img/resources/leadership.jpg"
+          alt="Guard-connected youth gathered for a leadership workshop"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        >
+      </div>
     </article>
   </div>
 </section>
@@ -79,17 +88,32 @@ permalink: /resources/index.html
     </div>
     <div class="grid gap-4 md:grid-cols-2">
       {% for download in downloads.items %}
-        <article class="content-card flex flex-col gap-3 h-full" data-reveal>
-          <h3 class="text-lg font-semibold text-slate-900">{{ download.title }}</h3>
-          <p class="text-sm text-gray-700 leading-relaxed">{{ download.description }}</p>
-          <a class="btn-secondary w-fit" href="{{ download.file }}" target="_blank" rel="noopener">Download</a>
+        <article class="content-card flex flex-col gap-4 h-full" data-reveal>
+          {% if download.thumbnails %}
+            <div class="grid gap-3{% if download.thumbnails | length > 1 %} sm:grid-cols-2{% endif %}">
+              {% for thumb in download.thumbnails %}
+                <img
+                  src="{{ thumb }}"
+                  alt="{{ download.title }} preview {{ loop.index }}"
+                  class="max-h-44 w-full object-contain rounded-2xl border border-slate-200 bg-white p-2"
+                  loading="lazy"
+                  decoding="async"
+                >
+              {% endfor %}
+            </div>
+          {% endif %}
+          <div class="space-y-3">
+            <h3 class="text-lg font-semibold text-slate-900">{{ download.title }}</h3>
+            <p class="text-sm text-gray-700 leading-relaxed">{{ download.description }}</p>
+          </div>
+          <a class="btn-secondary w-fit mt-auto" href="{{ download.file }}" target="_blank" rel="noopener">Download</a>
         </article>
       {% endfor %}
     </div>
   </div>
 </section>
 
-<section class="container pb-20" data-reveal>
+<section class="container pt-16 pb-20" data-reveal>
   <div class="content-card md:flex md:items-center md:justify-between md:gap-8 space-y-6 md:space-y-0">
     <div class="space-y-4">
       <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Need something else?</p>

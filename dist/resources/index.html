@@ -7,6 +7,7 @@
   <meta name="description" content="Quick links to scholarships, counseling, childcare, and support resources for Iowa National Guard children, teens, and families.">
   <link rel="canonical" href="https://www.iowacyp.com/resources/">
   <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="apple-touch-icon" href="/assets/pwa/icon-192.png">
   <meta name="theme-color" content="#1f4d7a">
@@ -29,11 +30,9 @@
 <header class="nav border-b border-secondary/40 bg-primary sticky top-0 z-50 shadow-sm">
   <div class="container flex items-center justify-between gap-6 py-3">
     <a href="/" class="flex items-center gap-3">
-      <img src="/assets/img/branding_symbol.png" alt="Iowa Child &amp; Youth Program emblem" class="h-10 w-auto drop-shadow-sm">
-      <div class="flex flex-col leading-none uppercase tracking-[0.3em] text-white">
-        <span class="text-[0.7rem]">Iowa</span>
-        <span class="text-base font-semibold">CYP</span>
-      </div>
+      <span class="inline-flex items-center justify-center rounded-full bg-white px-3 py-2 shadow-sm">
+        <img src="/assets/img/branding_symbol.png" alt="Iowa Child &amp; Youth Program logo" class="h-8 w-auto">
+      </span>
     </a>
     <button id="navToggle" class="menu-toggle" aria-expanded="false" aria-controls="mobileNav">
       <span class="sr-only">Toggle navigation</span>
@@ -79,7 +78,7 @@
     <section class="relative isolate overflow-hidden" data-reveal>
   <div class="absolute inset-0">
     <img
-      src="/assets/img/about/about_teaching.jpg"
+      src="/assets/img/resources/teaching.jpg"
       alt="Iowa CYP team member guiding a Guard-connected student through a workshop"
       class="absolute inset-0 h-full w-full object-cover"
       loading="lazy"
@@ -105,7 +104,7 @@
     </div>
     <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
       
-        <article class="content-card flex gap-4 h-full" data-reveal>
+        <article id="resource-r001" class="content-card flex gap-4 h-full" data-reveal>
           
             <img src="/assets/img/resources/resource_scholarships.svg" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
           
@@ -121,9 +120,9 @@
           </div>
         </article>
       
-        <article class="content-card flex gap-4 h-full" data-reveal>
+        <article id="resource-r002" class="content-card flex gap-4 h-full" data-reveal>
           
-            <img src="/assets/img/resources/resource_arngapp.webp" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
+            <img src="/content/Media/iaarng.jpg" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
           
           <div class="space-y-2">
             <h3 class="text-lg font-semibold text-slate-900">
@@ -137,9 +136,9 @@
           </div>
         </article>
       
-        <article class="content-card flex gap-4 h-full" data-reveal>
+        <article id="resource-r003" class="content-card flex gap-4 h-full" data-reveal>
           
-            <img src="/assets/img/resources/resource_arngapp.webp" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
+            <img src="/content/Media/googleplay.png" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
           
           <div class="space-y-2">
             <h3 class="text-lg font-semibold text-slate-900">
@@ -153,7 +152,7 @@
           </div>
         </article>
       
-        <article class="content-card flex gap-4 h-full" data-reveal>
+        <article id="resource-r004" class="content-card flex gap-4 h-full" data-reveal>
           
             <img src="/assets/img/resources/resource_tutorcom.png" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
           
@@ -169,7 +168,7 @@
           </div>
         </article>
       
-        <article class="content-card flex gap-4 h-full" data-reveal>
+        <article id="resource-r005" class="content-card flex gap-4 h-full" data-reveal>
           
             <img src="/assets/img/resources/resource_mos.png" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
           
@@ -185,7 +184,7 @@
           </div>
         </article>
       
-        <article class="content-card flex gap-4 h-full" data-reveal>
+        <article id="resource-r006" class="content-card flex gap-4 h-full" data-reveal>
           
             <img src="/assets/img/resources/resource_redcross.png" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
           
@@ -201,7 +200,7 @@
           </div>
         </article>
       
-        <article class="content-card flex gap-4 h-full" data-reveal>
+        <article id="resource-r007" class="content-card flex gap-4 h-full" data-reveal>
           
             <img src="/assets/img/partners/partner_bgca.png" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
           
@@ -217,7 +216,7 @@
           </div>
         </article>
       
-        <article class="content-card flex gap-4 h-full" data-reveal>
+        <article id="resource-r008" class="content-card flex gap-4 h-full" data-reveal>
           
             <img src="/assets/img/resources/resource_cca.webp" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
           
@@ -233,7 +232,7 @@
           </div>
         </article>
       
-        <article class="content-card flex gap-4 h-full" data-reveal>
+        <article id="resource-r009" class="content-card flex gap-4 h-full" data-reveal>
           
             <img src="/assets/img/resources/resource_hyvee.png" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
           
@@ -249,7 +248,21 @@
           </div>
         </article>
       
-        <article class="content-card flex gap-4 h-full" data-reveal>
+        <article id="resource-r009a" class="content-card flex gap-4 h-full" data-reveal>
+          
+          <div class="space-y-2">
+            <h3 class="text-lg font-semibold text-slate-900">
+              <a href="https://lemonsinc.netlify.app/" target="_blank" rel="noopener">Lemons Inc. Lemonade Stand Builder</a>
+            </h3>
+            <p class="text-sm text-gray-700 leading-relaxed">Kid-friendly web app that walks young entrepreneurs through planning and running their own lemonade stand.</p>
+            <a class="text-sm font-semibold text-primary inline-flex items-center gap-2" href="https://lemonsinc.netlify.app/" target="_blank" rel="noopener">Open resource<span aria-hidden="true">&rarr;</span></a>
+            
+              <p class="text-xs text-gray-500">Great fit for workshops or take-home activities after financial literacy lessons.</p>
+            
+          </div>
+        </article>
+      
+        <article id="resource-r010" class="content-card flex gap-4 h-full" data-reveal>
           
             <img src="/assets/img/resources/resource_omk.svg" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
           
@@ -265,9 +278,9 @@
           </div>
         </article>
       
-        <article class="content-card flex gap-4 h-full" data-reveal>
+        <article id="resource-r011" class="content-card flex gap-4 h-full" data-reveal>
           
-            <img src="/assets/img/resources/resource_arngcys.svg" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
+            <img src="/content/Media/arngcys.webp" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
           
           <div class="space-y-2">
             <h3 class="text-lg font-semibold text-slate-900">
@@ -281,9 +294,9 @@
           </div>
         </article>
       
-        <article class="content-card flex gap-4 h-full" data-reveal>
+        <article id="resource-r012" class="content-card flex gap-4 h-full" data-reveal>
           
-            <img src="/assets/img/resources/resource_arngapp.webp" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
+            <img src="/content/Media/WFSB.jpg" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
           
           <div class="space-y-2">
             <h3 class="text-lg font-semibold text-slate-900">
@@ -297,7 +310,7 @@
           </div>
         </article>
       
-        <article class="content-card flex gap-4 h-full" data-reveal>
+        <article id="resource-r013" class="content-card flex gap-4 h-full" data-reveal>
           
             <img src="/assets/img/resources/resource_upwards.svg" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
           
@@ -311,7 +324,7 @@
           </div>
         </article>
       
-        <article class="content-card flex gap-4 h-full" data-reveal>
+        <article id="resource-r014" class="content-card flex gap-4 h-full" data-reveal>
           
             <img src="/assets/img/resources/resource_crisistextline.png" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" loading="lazy" decoding="async">
           
@@ -333,15 +346,24 @@
 
 <section class="bg-primary/5 py-20" data-reveal>
   <div class="container space-y-10">
-    <article class="content-card md:flex md:items-center md:justify-between md:gap-12" data-reveal>
+    <article class="content-card grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center" data-reveal>
       <div class="space-y-4">
         <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Scholarships &amp; grants</p>
         <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Funding pathways for military-connected students</h2>
         <p class="text-gray-700 leading-relaxed">We keep track of scholarships and grants for Guard-connected students heading to college, trade schools, or certification programs. Share the database with families so they can spot the opportunities that fit best.</p>
+        
+          <a class="btn" href="https://onedrive.live.com/:x:/g/personal/78FBADA0C39648B6/QbZIlsOgrfsggHhwAAAAAAAA2mQHBZUkPzVGnQ?resid=78FBADA0C39648B6!112&amp;ithint=file%2Cxlsx&amp;migratedtospo=true&amp;redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy83OGZiYWRhMGMzOTY0OGI2L1FiWklsc09ncmZzZ2dIaHdBQUFBQUFBQTJtUUhCWlVrUHpWR25R" target="_blank" rel="noopener">Open the scholarship database</a>
+        
       </div>
-      
-        <a class="btn" href="https://onedrive.live.com/:x:/g/personal/78FBADA0C39648B6/QbZIlsOgrfsggHhwAAAAAAAA2mQHBZUkPzVGnQ?resid=78FBADA0C39648B6!112&amp;ithint=file%2Cxlsx&amp;migratedtospo=true&amp;redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy83OGZiYWRhMGMzOTY0OGI2L1FiWklsc09ncmZzZ2dIaHdBQUFBQUFBQTJtUUhCWlVrUHpWR25R" target="_blank" rel="noopener">Open the scholarship database</a>
-      
+      <div class="overflow-hidden rounded-[2.5rem] border border-primary/15 shadow-sm max-h-[420px]">
+        <img
+          src="/assets/img/resources/leadership.jpg"
+          alt="Guard-connected youth gathered for a leadership workshop"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        >
+      </div>
     </article>
   </div>
 </section>
@@ -355,41 +377,132 @@
     </div>
     <div class="grid gap-4 md:grid-cols-2">
       
-        <article class="content-card flex flex-col gap-3 h-full" data-reveal>
-          <h3 class="text-lg font-semibold text-slate-900">State Teen Panel Application Packet</h3>
-          <p class="text-sm text-gray-700 leading-relaxed">Eligibility details, time commitment, and application materials for Iowa CYP&#39;s State Teen Panel.</p>
-          <a class="btn-secondary w-fit" href="/assets/files/stp_application_packet.pdf" target="_blank" rel="noopener">Download</a>
+        <article class="content-card flex flex-col gap-4 h-full" data-reveal>
+          
+            <div class="grid gap-3">
+              
+                <img
+                  src="/assets/img/downloads/state-teen-panel.png"
+                  alt="State Teen Panel Application Packet preview 1"
+                  class="max-h-44 w-full object-contain rounded-2xl border border-slate-200 bg-white p-2"
+                  loading="lazy"
+                  decoding="async"
+                >
+              
+            </div>
+          
+          <div class="space-y-3">
+            <h3 class="text-lg font-semibold text-slate-900">State Teen Panel Application Packet</h3>
+            <p class="text-sm text-gray-700 leading-relaxed">Eligibility details, time commitment, and application materials for Iowa CYP&#39;s State Teen Panel.</p>
+          </div>
+          <a class="btn-secondary w-fit mt-auto" href="/assets/files/stp_application_packet.pdf" target="_blank" rel="noopener">Download</a>
         </article>
       
-        <article class="content-card flex flex-col gap-3 h-full" data-reveal>
-          <h3 class="text-lg font-semibold text-slate-900">MOMC Classroom Kit Overview</h3>
-          <p class="text-sm text-gray-700 leading-relaxed">Share this one-page overview with schools requesting Month of the Military Child celebration kits.</p>
-          <a class="btn-secondary w-fit" href="/assets/files/momc_overview.png" target="_blank" rel="noopener">Download</a>
+        <article class="content-card flex flex-col gap-4 h-full" data-reveal>
+          
+            <div class="grid gap-3">
+              
+                <img
+                  src="/assets/img/downloads/momc-classroom-kit-overview.png"
+                  alt="MOMC Classroom Kit Overview preview 1"
+                  class="max-h-44 w-full object-contain rounded-2xl border border-slate-200 bg-white p-2"
+                  loading="lazy"
+                  decoding="async"
+                >
+              
+            </div>
+          
+          <div class="space-y-3">
+            <h3 class="text-lg font-semibold text-slate-900">MOMC Classroom Kit Overview</h3>
+            <p class="text-sm text-gray-700 leading-relaxed">Share this one-page overview with schools requesting Month of the Military Child celebration kits.</p>
+          </div>
+          <a class="btn-secondary w-fit mt-auto" href="/assets/files/momc_overview.png" target="_blank" rel="noopener">Download</a>
         </article>
       
-        <article class="content-card flex flex-col gap-3 h-full" data-reveal>
-          <h3 class="text-lg font-semibold text-slate-900">MOMC Celebration Flyer</h3>
-          <p class="text-sm text-gray-700 leading-relaxed">Printable flyer to promote Purple Up and classroom celebrations across Iowa.</p>
-          <a class="btn-secondary w-fit" href="/assets/files/momc_flyer.png" target="_blank" rel="noopener">Download</a>
+        <article class="content-card flex flex-col gap-4 h-full" data-reveal>
+          
+            <div class="grid gap-3">
+              
+                <img
+                  src="/assets/img/downloads/momc-celebration-flyer.png"
+                  alt="MOMC Celebration Flyer preview 1"
+                  class="max-h-44 w-full object-contain rounded-2xl border border-slate-200 bg-white p-2"
+                  loading="lazy"
+                  decoding="async"
+                >
+              
+            </div>
+          
+          <div class="space-y-3">
+            <h3 class="text-lg font-semibold text-slate-900">MOMC Celebration Flyer</h3>
+            <p class="text-sm text-gray-700 leading-relaxed">Printable flyer to promote Purple Up and classroom celebrations across Iowa.</p>
+          </div>
+          <a class="btn-secondary w-fit mt-auto" href="/assets/files/momc_flyer.png" target="_blank" rel="noopener">Download</a>
         </article>
       
-        <article class="content-card flex flex-col gap-3 h-full" data-reveal>
-          <h3 class="text-lg font-semibold text-slate-900">Iowa CYP Rack Card</h3>
-          <p class="text-sm text-gray-700 leading-relaxed">Two-sided rack card summarizing key programs for outreach tables and welcome packets.</p>
-          <a class="btn-secondary w-fit" href="/assets/files/2025_cyp_rack_card.pdf" target="_blank" rel="noopener">Download</a>
+        <article class="content-card flex flex-col gap-4 h-full" data-reveal>
+          
+            <div class="grid gap-3 sm:grid-cols-2">
+              
+                <img
+                  src="/assets/img/downloads/rack-card-front.jpg"
+                  alt="Iowa CYP Rack Card preview 1"
+                  class="max-h-44 w-full object-contain rounded-2xl border border-slate-200 bg-white p-2"
+                  loading="lazy"
+                  decoding="async"
+                >
+              
+                <img
+                  src="/assets/img/downloads/rack-card-back.jpg"
+                  alt="Iowa CYP Rack Card preview 2"
+                  class="max-h-44 w-full object-contain rounded-2xl border border-slate-200 bg-white p-2"
+                  loading="lazy"
+                  decoding="async"
+                >
+              
+            </div>
+          
+          <div class="space-y-3">
+            <h3 class="text-lg font-semibold text-slate-900">Iowa CYP Rack Card</h3>
+            <p class="text-sm text-gray-700 leading-relaxed">Two-sided rack card summarizing key programs for outreach tables and welcome packets.</p>
+          </div>
+          <a class="btn-secondary w-fit mt-auto" href="/assets/files/2025_cyp_rack_card.pdf" target="_blank" rel="noopener">Download</a>
         </article>
       
-        <article class="content-card flex flex-col gap-3 h-full" data-reveal>
-          <h3 class="text-lg font-semibold text-slate-900">2025 Annual Report</h3>
-          <p class="text-sm text-gray-700 leading-relaxed">Year-in-review report highlighting statewide impact, partnerships, and program metrics.</p>
-          <a class="btn-secondary w-fit" href="/assets/files/2025_Annual_Report.pdf" target="_blank" rel="noopener">Download</a>
+        <article class="content-card flex flex-col gap-4 h-full" data-reveal>
+          
+            <div class="grid gap-3 sm:grid-cols-2">
+              
+                <img
+                  src="/assets/img/downloads/2025-annual-report.png"
+                  alt="2025 Annual Report preview 1"
+                  class="max-h-44 w-full object-contain rounded-2xl border border-slate-200 bg-white p-2"
+                  loading="lazy"
+                  decoding="async"
+                >
+              
+                <img
+                  src="/assets/img/downloads/2025-annual-report-summary.png"
+                  alt="2025 Annual Report preview 2"
+                  class="max-h-44 w-full object-contain rounded-2xl border border-slate-200 bg-white p-2"
+                  loading="lazy"
+                  decoding="async"
+                >
+              
+            </div>
+          
+          <div class="space-y-3">
+            <h3 class="text-lg font-semibold text-slate-900">2025 Annual Report</h3>
+            <p class="text-sm text-gray-700 leading-relaxed">Year-in-review report highlighting statewide impact, partnerships, and program metrics.</p>
+          </div>
+          <a class="btn-secondary w-fit mt-auto" href="/assets/files/2025_Annual_Report.pdf" target="_blank" rel="noopener">Download</a>
         </article>
       
     </div>
   </div>
 </section>
 
-<section class="container pb-20" data-reveal>
+<section class="container pt-16 pb-20" data-reveal>
   <div class="content-card md:flex md:items-center md:justify-between md:gap-8 space-y-6 md:space-y-0">
     <div class="space-y-4">
       <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Need something else?</p>
@@ -430,10 +543,34 @@
     </div>
     <div>
       <h2 class="font-light text-lg tracking-[0.3em] uppercase mb-3 text-white">Contact</h2>
-      <p class="text-white/90">Office: Camp Dodge Rec Hall - 7105 NW 78th Ave Bldg 3585, Johnston IA 50131</p>
-      <p class="text-white/90">Phone: <a class="text-white hover:text-secondary" href="tel:5157273064">515-727-3064</a></p>
-      <p class="text-white/90">Email: <a class="text-white hover:text-secondary" href="mailto:iaarngcyp@gmail.com">iaarngcyp@gmail.com</a></p>
-      <p class="text-white/90">Subscribe: <a class="text-white hover:text-secondary" href="/subscribe/">Join our mailing list</a></p>
+      <ul class="space-y-2 text-white/90">
+        <li class="flex items-start gap-3">
+          <span class="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/10 text-white/80">
+            <img src="/assets/icons/geo-alt-fill.svg" alt="" class="h-4 w-4" aria-hidden="true">
+          </span>
+          <span>Camp Dodge Rec Hall - 7105 NW 78th Ave Bldg 3585, Johnston IA 50131</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/10 text-white/80">
+            <i class="fas fa-phone text-sm" aria-hidden="true"></i>
+          </span>
+          <a class="text-white hover:text-secondary transition" href="tel:5157273064">515-727-3064</a>
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/10 text-white/80">
+            <i class="fas fa-envelope-open text-sm" aria-hidden="true"></i>
+          </span>
+          <a class="text-white hover:text-secondary transition" href="mailto:iaarngcyp@gmail.com">iaarngcyp@gmail.com</a>
+        </li>
+        
+          <li class="flex items-center gap-3">
+            <span class="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/10 text-white/80">
+              <i class="far fa-paper-plane text-sm" aria-hidden="true"></i>
+            </span>
+            <a class="text-white hover:text-secondary transition" href="/subscribe/">Join our mailing list</a>
+          </li>
+        
+      </ul>
     </div>
   </div>
   <div class="border-t border-secondary/40 py-4 text-center text-sm text-white/60">
