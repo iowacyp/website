@@ -21,14 +21,31 @@ permalink: /about/index.html
       <h1 class="text-3xl md:text-4xl font-semibold text-white">About the Iowa Child &amp; Youth Program</h1>
       <p class="text-base md:text-lg text-white/90 leading-relaxed">Iowa CYP is the Guard family's teammate. We make sure kids have places to be brave, goofy, and honest—and that parents have practical support when the calendar fills up with trainings, travel, and everything in between.</p>
       <div class="flex flex-wrap gap-4">
-        <a class="hero-cta" href="/support/">Partner With Us</a>
+        <a class="hero-cta" href="/support/#community-partners">Partner With Us</a>
         <a class="hero-cta-secondary" href="{{ site.links.eventsSubscribe }}">Stay in the Loop</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="bg-white py-16" data-reveal>
+<nav class="sticky top-20 z-30 bg-white/90 backdrop-blur border-y border-slate-200" aria-label="Section navigation" data-reveal>
+  <div class="container flex flex-wrap items-center justify-center gap-4 py-3 text-sm font-semibold text-primary">
+    <a class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 hover:bg-primary/10 transition" href="#mission">
+      <span>Mission &amp; Vision</span>
+    </a>
+    <a class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 hover:bg-primary/10 transition" href="#strategic">
+      <span>Strategy</span>
+    </a>
+    <a class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 hover:bg-primary/10 transition" href="#values">
+      <span>Values</span>
+    </a>
+    <a class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 hover:bg-primary/10 transition" href="#team">
+      <span>Team</span>
+    </a>
+  </div>
+</nav>
+
+<section id="mission" class="bg-white py-16" data-reveal>
   <div class="container space-y-12">
     <div class="max-w-3xl space-y-4">
       <p class="text-sm uppercase tracking-[0.35em] text-primary/80">Who We Are</p>
@@ -63,7 +80,7 @@ permalink: /about/index.html
   </div>
 </section>
 
-<section class="bg-primary/5 py-20" data-reveal>
+<section id="strategic" class="bg-primary/5 py-20" data-reveal>
   <div class="container space-y-12">
     <div class="text-center max-w-3xl mx-auto space-y-4">
       <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Strategic Infrastructure</p>
@@ -112,7 +129,7 @@ permalink: /about/index.html
   </div>
 </section>
 
-<section class="bg-white py-20" data-reveal>
+<section id="values" class="bg-white py-20" data-reveal>
   <div class="container space-y-8">
     <div class="text-center max-w-3xl mx-auto space-y-4">
       <p class="text-sm uppercase tracking-[0.35em] text-primary/80">Core Values</p>
@@ -156,7 +173,7 @@ permalink: /about/index.html
   </div>
 </section>
 
-<section class="relative isolate overflow-hidden py-24" data-reveal>
+<section id="team" class="relative isolate overflow-hidden py-24" data-reveal>
   <div class="absolute inset-0">
     <img
       src="/assets/img/team/fun.jpg"

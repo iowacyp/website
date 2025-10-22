@@ -89,7 +89,27 @@
   >
 </section>
 
-<section class="bg-slate-900 text-white py-24" data-reveal>
+<nav class="sticky top-20 z-30 bg-white/90 backdrop-blur border-y border-slate-200" aria-label="Section navigation" data-reveal>
+  <div class="container flex flex-wrap items-center justify-center gap-4 py-3 text-sm font-semibold text-primary">
+    <a class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 hover:bg-primary/10 transition" href="#spotlight">
+      <span>Spotlight</span>
+    </a>
+    <a class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 hover:bg-primary/10 transition" href="#family-stories">
+      <span>Family Stories</span>
+    </a>
+    <a class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 hover:bg-primary/10 transition" href="#mission-video">
+      <span>Mission Video</span>
+    </a>
+    <a class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 hover:bg-primary/10 transition" href="#voices">
+      <span>Voices</span>
+    </a>
+    <a class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 hover:bg-primary/10 transition" href="#share-story">
+      <span>Share Yours</span>
+    </a>
+  </div>
+</nav>
+
+<section id="spotlight" class="bg-slate-900 text-white py-24" data-reveal>
   <div class="container grid gap-12 lg:grid-cols-[minmax(0,1fr)_0.95fr] lg:items-center">
     <div class="space-y-5">
       <p class="text-sm uppercase tracking-[0.35em] text-secondary">Community spotlight</p>
@@ -113,7 +133,7 @@
   </div>
 </section>
 
-<section class="bg-gradient-to-b from-white via-white to-primary/10 py-24" data-reveal>
+<section id="family-stories" class="bg-gradient-to-b from-white via-white to-primary/10 py-24" data-reveal>
   <div class="container grid gap-12 lg:grid-cols-[minmax(0,1fr)_0.95fr] lg:items-center">
     <article class="content-card shadow-lg space-y-5 h-full order-last lg:order-first">
       <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Parent perspective</p>
@@ -141,7 +161,7 @@
   </div>
 </section>
 
-<section class="bg-primary/10 py-24" data-reveal>
+<section id="mission-video" class="bg-white py-24" data-reveal>
   <div class="container grid gap-8 md:grid-cols-[1.2fr_1fr] items-start">
     <article class="content-card bg-slate-900 text-white border-slate-900 space-y-4 h-full shadow-lg" data-reveal>
       <h2 class="text-xl font-semibold">See the program in action</h2>
@@ -171,12 +191,12 @@
   </div>
 </section>
 
-<section class="bg-primary/5 py-16" data-reveal>
+<section id="voices" class="bg-primary/5 py-16" data-reveal>
   <div class="container space-y-10">
     <div class="max-w-3xl space-y-4">
       <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Voices you can trust</p>
       <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Why consistent support matters statewide</h2>
-      <p class="text-slate-700 leading-relaxed">Parents, teens, and caregivers keep us honest. These quotes highlight what sticks with them long after an event or program ends.</p>
+      <p class="text-slate-700 leading-relaxed">Parents, teens, youth, and caregivers keep us honest. These quotes highlight what sticks with them long after an event or program ends.</p>
     </div>
     <div class="quote-carousel" data-quote-carousel>
       <div class="content-card quote-carousel__slides" role="region" aria-live="polite">
@@ -550,7 +570,7 @@
       <ul class="space-y-2 text-white/90">
         <li class="flex items-start gap-3">
           <span class="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/10 text-white/80">
-            <img src="/assets/icons/geo-alt-fill.svg" alt="" class="h-4 w-4" aria-hidden="true">
+            <i class="fas fa-map-marker-alt text-sm" aria-hidden="true"></i>
           </span>
           <span>Camp Dodge Rec Hall - 7105 NW 78th Ave Bldg 3585, Johnston IA 50131</span>
         </li>
