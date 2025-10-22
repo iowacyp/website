@@ -413,6 +413,24 @@ if (isYouTubeEmbed) {
   });
 }
 
+const markExternalLinks = () => {
+  const anchors = document.querySelectorAll('a[href^="http"]');
+  const origin = window.location.origin;
+  anchors.forEach((anchor) => {
+    const href = anchor.getAttribute('href');
+    if (!href) return;
+    if (href.startsWith(origin)) return;
+    if (href.startsWith('http')) {
+      anchor.setAttribute('target', '_blank');
+      const rel = anchor.getAttribute('rel') || '';
+      if (!rel.includes('noopener')) {
+        anchor.setAttribute('rel', `${rel} noopener noreferrer`.trim());
+      }
+    }
+  });
+};
+markExternalLinks();
+
 // Inject current year in footer
 const yearTarget = document.getElementById('year');
 if (yearTarget) {

@@ -123,3 +123,42 @@ permalink: /events/index.html
     </div>
   </div>
 </section>
+
+{% if events.events %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {% for event in events.events %}
+        {% set eventImage = event.image %}
+        {% if eventImage and eventImage[0] == '/' %}
+          {% set eventImage = site.domain ~ eventImage %}
+        {% endif %}
+        {% set eventUrl = event.ctaUrl %}
+        {% if eventUrl and eventUrl[0] == '/' %}
+          {% set eventUrl = site.domain ~ eventUrl %}
+        {% endif %}
+        {
+          "@type": "Event",
+          "name": "{{ event.title | escape }}",
+          {% if event.date %}"startDate": "{{ event.date }}",{% endif %}
+          {% if event.location %}"location": {
+            "@type": "Place",
+            "name": "{{ event.location | escape }}"
+          },{% endif %}
+          {% if eventImage %}"image": "{{ eventImage }}",{% endif %}
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          {% if eventUrl %}
+          "url": "{{ eventUrl }}",
+          {% endif %}
+          "organizer": {
+            "@type": "Organization",
+            "name": "{{ site.name }}",
+            "url": "{{ site.domain }}"
+          }
+        }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+  </script>
+{% endif %}
