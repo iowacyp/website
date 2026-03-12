@@ -34,10 +34,13 @@ npx serve dist     # optional static preview after build
 ## Deployment
 - Netlify config (`netlify.toml`) sets the build command (`npm run build`), publish directory (`dist/`), and a sample redirect.
 - Run `npm run build`, deploy the contents of `dist/`, and optionally preview with `npx serve dist`.
-- Form submissions sync to Google Sheets via the Netlify Function at `netlify/functions/submission-created.js`. Before deploying, add these environment variables in Netlify:
-  - `GOOGLE_SERVICE_ACCOUNT`: full JSON for the Sheets API service account (keep it private).
-  - `GOOGLE_SPREADSHEET_ID`: the sheet ID (e.g., `1jZnYXTp59YVSD8DOQ6Dx8-G2-kUlUc6q2K94lYMiIOQ`).
-  - `GOOGLE_SHEET_TAB` (optional): target worksheet name, defaults to `Sheet1`.
+- Subscribe submissions are proxied through `netlify/functions/subscribe-proxy.js` and forwarded to the admin Netlify function endpoint.
+- Public site Netlify environment variables:
+  - `ADMIN_PUBLIC_SUBSCRIBE_URL` (e.g. `https://cyp-admin.netlify.app/.netlify/functions/public-subscribe`)
+  - `PUBLIC_SUBSCRIBE_SHARED_SECRET` (must exactly match admin site's `PUBLIC_SUBSCRIBE_SHARED_SECRET`)
+  - `PUBLIC_SUBSCRIBE_SOURCE` (optional, defaults to `www.iowacyp.com`)
+  - `PUBLIC_SUBSCRIBE_RATE_LIMIT_WINDOW_MS` (optional, default `600000`)
+  - `PUBLIC_SUBSCRIBE_RATE_LIMIT_MAX` (optional, default `20`)
 
 ## Updating Copy and Links
 - Maintain one `<h1>` per page with descending headings.

@@ -30,8 +30,7 @@ permalink: /subscribe/index.html
       <p class="text-sm uppercase tracking-[0.35em] text-primary/70">What you can expect</p>
       <p class="text-slate-700 leading-relaxed">Monthly roundups with quick registration reminders, statewide resource drops, and a peek at new programming—plus urgent alerts when spots are limited.</p>
     </div>
-    <form name="event-updates" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="content-card space-y-6" data-reveal>
-      <input type="hidden" name="form-name" value="event-updates">
+    <form id="subscribeForm" class="content-card space-y-6" data-reveal>
       <p class="hidden">
         <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
       </p>
@@ -42,9 +41,9 @@ permalink: /subscribe/index.html
       </div>
 
       <div class="space-y-2">
-        <label class="block text-sm font-semibold text-slate-800" for="branch">Branch of Service</label>
-        <select id="branch" name="branch" required class="w-full rounded-2xl border border-slate-300 px-4 py-3 bg-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
-          <option value="" disabled selected>Select a branch</option>
+        <label class="block text-sm font-semibold text-slate-800" for="affiliation">Affiliation / Program (optional)</label>
+        <select id="affiliation" name="affiliation" class="w-full rounded-2xl border border-slate-300 px-4 py-3 bg-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
+          <option value="" selected>Select an option (optional)</option>
           <option>Army National Guard</option>
           <option>Air National Guard</option>
           <option>Army Reserve</option>
@@ -56,9 +55,9 @@ permalink: /subscribe/index.html
       </div>
 
       <div class="space-y-2">
-        <label class="block text-sm font-semibold text-slate-800" for="city">Closest City to Home</label>
-        <select id="city" name="city" required class="w-full rounded-2xl border border-slate-300 px-4 py-3 bg-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
-          <option value="" disabled selected>Select a city</option>
+        <label class="block text-sm font-semibold text-slate-800" for="service_area">Service Area / Closest City (optional)</label>
+        <select id="service_area" name="service_area" class="w-full rounded-2xl border border-slate-300 px-4 py-3 bg-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
+          <option value="" selected>Select a city (optional)</option>
           <option>Des Moines</option>
           <option>Sioux City</option>
           <option>Council Bluffs</option>
@@ -70,13 +69,29 @@ permalink: /subscribe/index.html
       </div>
 
       <div class="space-y-2">
+        <label class="block text-sm font-semibold text-slate-800" for="region">Region (optional)</label>
+        <select id="region" name="region" class="w-full rounded-2xl border border-slate-300 px-4 py-3 bg-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
+          <option value="" selected>Select a region (optional)</option>
+          <option>Central</option>
+          <option>Eastern</option>
+          <option>Western</option>
+          <option>Northern</option>
+          <option>Southern</option>
+          <option>Statewide</option>
+        </select>
+      </div>
+
+      <div class="space-y-2">
         <label class="inline-flex items-start gap-3 text-sm text-slate-700">
           <input type="checkbox" name="consent" required class="mt-1 h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary/50">
           <span>I agree to receive email updates from Iowa CYP. I understand I can unsubscribe at any time.</span>
         </label>
       </div>
 
-      <button type="submit" class="btn w-full md:w-auto">Submit</button>
+      <input type="hidden" name="source" value="www.iowacyp.com">
+      <input type="hidden" name="tags" value="website-subscribe">
+      <p id="subscribeStatus" class="text-sm text-slate-600" role="status" aria-live="polite"></p>
+      <button type="submit" class="btn w-full md:w-auto" data-subscribe-submit>Submit</button>
     </form>
   </div>
 </section>

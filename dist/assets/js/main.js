@@ -887,6 +887,103 @@ const markExternalLinks = () => {
 };
 markExternalLinks();
 
+const initSubscribeForm = () => {
+  const form = document.getElementById('subscribeForm');
+  if (!form) return;
+
+  const statusEl = document.getElementById('subscribeStatus');
+  const submitBtn = form.querySelector('[data-subscribe-submit]');
+  let busy = false;
+
+  const setStatus = (message, tone = 'muted') => {
+    if (!statusEl) return;
+    statusEl.textContent = message || '';
+    statusEl.classList.remove('text-slate-600', 'text-emerald-700', 'text-red-700');
+    if (tone === 'success') {
+      statusEl.classList.add('text-emerald-700');
+    } else if (tone === 'error') {
+      statusEl.classList.add('text-red-700');
+    } else {
+      statusEl.classList.add('text-slate-600');
+    }
+  };
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (busy) return;
+
+    const formData = new FormData(form);
+    const email = String(formData.get('email') || '').trim().toLowerCase();
+    const botField = String(formData.get('bot-field') || '').trim();
+
+    if (!email) {
+      setStatus('Please enter your email address.', 'error');
+      return;
+    }
+
+    if (botField) {
+      setStatus('Thanks, you are subscribed.', 'success');
+      form.reset();
+      return;
+    }
+
+    const payload = {
+      email,
+      region: String(formData.get('region') || '').trim() || null,
+      service_area: String(formData.get('service_area') || '').trim() || null,
+      affiliation: String(formData.get('affiliation') || '').trim() || null,
+      source: String(formData.get('source') || '').trim() || 'www.iowacyp.com',
+      tags: String(formData.get('tags') || '').trim(),
+      submitted_at: new Date().toISOString(),
+    };
+
+    busy = true;
+    if (submitBtn instanceof HTMLButtonElement) {
+      submitBtn.disabled = true;
+    }
+    setStatus('Submitting...');
+
+    try {
+      const response = await fetch('/.netlify/functions/subscribe-proxy', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      let responseBody = {};
+      try {
+        responseBody = await response.json();
+      } catch (_error) {
+        responseBody = {};
+      }
+
+      if (!response.ok || responseBody.ok !== true) {
+        const message =
+          String(responseBody.error || '').trim() ||
+          'We could not save your subscription. Please try again.';
+        throw new Error(message);
+      }
+
+      if (responseBody.unsubscribed_all === true) {
+        setStatus('Your email is marked as unsubscribed. Contact the CYP team to re-enable updates.', 'success');
+      } else {
+        setStatus('You are subscribed. Watch for upcoming Iowa CYP updates in your inbox.', 'success');
+      }
+      form.reset();
+    } catch (error) {
+      setStatus(String(error?.message || 'Submission failed. Please try again.'), 'error');
+      console.error('Subscribe submission failed', error);
+    } finally {
+      busy = false;
+      if (submitBtn instanceof HTMLButtonElement) {
+        submitBtn.disabled = false;
+      }
+    }
+  });
+};
+
+initSubscribeForm();
+
 // Inject current year in footer
 const yearTarget = document.getElementById('year');
 if (yearTarget) {
