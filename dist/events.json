@@ -9,18 +9,18 @@
       "ctaLabel": "Register",
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdkB7oVnbLtNZAPZSFWqEu3Tsw_5G9Cd3buAjWyQ3DSzL6iaw/viewform?usp=share_link&ouid=100941830380849796397",
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/events/fall-family-festival.jpg"
+      "image": "/content/UpcomingEvents/Fall Family Festival.png"
     },
     {
       "title": "Cookies with Santa",
       "date": "2025-12-13",
       "time": "12:00 PM - 1:30 PM",
       "displayDate": "December 13, 2025",
-      "location": "Camp Dodge - Gold Star Museum, 7105 NW 70th Ave, Johnston, IA",
+      "location": "Camp Dodge - Dodge House, 7105 NW 70th Ave, Johnston, IA",
       "ctaLabel": "Register",
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdJ-pmJZ_TR5habbSDL0fXfFVgds3c8q48ZDirfkQt_ml6Sgw/viewform?usp=share_link&ouid=100941830380849796397",
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/events/cookies-with-santa.jpg"
+      "image": "/content/UpcomingEvents/Cookies with Santa.png"
     },
     {
       "title": "Military Family Event: Davenport",
@@ -28,43 +28,45 @@
       "time": "6:00 PM - 8:00 PM",
       "displayDate": "January 18, 2026",
       "location": "The Fun Station, 400 S 14th Ave, Eldridge, IA 52748",
-      "ctaLabel": "Register",
-      "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdYCAqOna1vVK55GhN6U8Ggisx81sEPAKdS8YlecW9aaIeI1g/viewform?usp=share_link&ouid=100941830380849796397",
+      "ctaLabel": "Registration Full",
+      "ctaUrl": null,
+      "closed": true,
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/events/mfe-davenport.jpg"
+      "image": "/content/UpcomingEvents/Military Family Event: Davenport.png"
     },
     {
       "title": "Military Family Event: Cedar Rapids",
       "date": "2026-02-15",
       "time": "6:00 PM - 8:00 PM",
       "displayDate": "February 15, 2026",
-      "location": "The Fun Station, 200 Collins Rd NE, Cedar Rapids, IA",
-      "ctaLabel": "Register",
+      "location": "The Fun Station, 8920 Brighton Way, Cedar Rapids, IA 52404",
+      "ctaLabel": "Registration Full",
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfEguzvj86P5ai4jTZRX1qel5P9k8F6u7bqEaCGTUts6vM0_w/viewform?usp=share_link&ouid=100941830380849796397",
+      "closed": true,
       "notes": "Space is limited—register early so your family is covered.",
       "image": "/assets/img/events/mfe-cedar-rapids.jpg"
     },
     {
       "title": "Military Family Event: Sioux City",
-      "date": "2026-04-05",
+      "date": "2026-05-17",
       "time": "11:00 AM - 1:00 PM",
-      "displayDate": "April 5, 2026",
+      "displayDate": "May 17, 2026",
       "location": "Drop Zone, 3840 Stadium Dr, Sioux City, IA 51106",
       "ctaLabel": "Register",
-      "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSefViH-KPAXAZ0oHB4bZWqKwqdtUH1qMW9BskeU0N2pNbn-tw/viewform?usp=share_link&ouid=100941830380849796397",
+      "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSeBpOXbL3tzdyFUqkHIjGvWwhsS39RQV1kKVJUoR1W-7AvMSg/viewform?usp=dialog",
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/events/mfe-sioux-city.jpg"
+      "image": "/content/media/MFE SiouxCity26.png"
     },
     {
       "title": "Military Family Ball",
-      "date": "2026-04-18",
+      "date": "2026-04-25",
       "time": "4:30 PM - 7:00 PM",
-      "displayDate": "April 18, 2026",
+      "displayDate": "April 25, 2026",
       "location": "Camp Dodge - Pool Pavilion, 7105 NW 70th Ave, Johnston, IA",
       "ctaLabel": "Register",
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSefViH-KPAXAZ0oHB4bZWqKwqdtUH1qMW9BskeU0N2pNbn-tw/viewform?usp=share_link&ouid=100941830380849796397",
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/events/military-family-ball.jpg"
+      "image": "/content/media/Military Family Ball (04.25.26).png"
     },
     {
       "title": "Military Family Event: Des Moines",
@@ -75,7 +77,7 @@
       "ctaLabel": "Register",
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdgOv8A6xckq1eLLU_wy1hDt3e9OAbwEHUOh0B4YuaY62pjbA/viewform?usp=share_link&ouid=100941830380849796397",
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/events/mfe-des-moines.jpg"
+      "image": "/content/UpcomingEvents/Military Family Event: Des Moines.png"
     }
   ]
 }
