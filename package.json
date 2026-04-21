@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "ELEVENTY_ENV=dev concurrently \"npm:watch:css\" \"npm:serve\"",
-    "build": "eleventy && npm run build:css",
+    "clean:dist": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
+    "build": "npm run clean:dist && eleventy && npm run build:css",
     "serve": "eleventy --serve --quiet",
     "watch:css": "postcss src/assets/css/tailwind.css -o dist/assets/css/site.css --watch",
     "build:css": "postcss src/assets/css/tailwind.css -o dist/assets/css/site.css",
