@@ -13,7 +13,7 @@
       "label": "Iowa National Guard Mobile App (iOS)",
       "url": "https://apps.apple.com/us/app/iowa-national-guard/id6446351421",
       "summary": "Download the Iowa National Guard mobile app for iPhone to access news, events, and resources.",
-      "image": "/content/media/iaarng.jpg",
+      "image": "/content/Media/iaarng.jpg",
       "notes": "Ensure App Store badge follows branding."
     },
     {
@@ -21,7 +21,7 @@
       "label": "Iowa National Guard Mobile App (Android)",
       "url": "https://play.google.com/store/apps/details?id=com.m360mobile.iowa",
       "summary": "Download the Iowa National Guard mobile app for Android to stay connected with updates and tools.",
-      "image": "/content/media/googleplay.png",
+      "image": "/content/Media/googleplay.png",
       "notes": "Verify Google Play badge assets are current."
     },
     {
@@ -93,7 +93,7 @@
       "label": "ARNG Child & Youth Services",
       "url": "https://arngcys.com/",
       "summary": "National Guard Child & Youth Services hub for programs and resources.",
-      "image": "/content/media/arngcys.webp",
+      "image": "/content/Media/arngcys.webp",
       "notes": "Confirm regional contacts referenced on site."
     },
     {
@@ -101,7 +101,7 @@
       "label": "Iowa National Guard Warrior & Family Services",
       "url": "https://www.iowanationalguard.com/member-and-family-services/",
       "summary": "Comprehensive services and support for Iowa Guard members and families.",
-      "image": "/content/media/wfsb.jpg",
+      "image": "/content/Media/wfsb.jpg",
       "notes": "Check for deeper links to specific services."
     },
     {

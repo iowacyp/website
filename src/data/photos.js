@@ -9,7 +9,7 @@ module.exports = {
   items: [
     {
       id: "support-hero-summer-camp",
-      src: "/content/media/patriotic.jpg",
+      src: "/content/Media/patriotic.jpg",
       alt: "Guard-connected youth and families gathered with patriotic bunting",
       tags: ["support", "hero", "patriotic", "families", "event"],
       orientation: "landscape",
@@ -33,7 +33,7 @@ module.exports = {
     },
     {
       id: "support-volunteer-celebration",
-      src: "/content/media/volunteer.jpg",
+      src: "/content/Media/volunteer.jpg",
       alt: "Volunteer cheering alongside Guard-connected youth during a CYP activity",
       tags: ["volunteers", "celebration", "event", "support"],
       orientation: "landscape",
@@ -57,7 +57,7 @@ module.exports = {
     },
     {
       id: "stories-hero",
-      src: "/content/media/stories.png",
+      src: "/content/Media/stories.png",
       alt: "Guard-connected youth sharing stories at a community gathering",
       tags: ["stories", "hero", "patriotic", "event", "families"],
       orientation: "landscape",
@@ -65,7 +65,7 @@ module.exports = {
     },
     {
       id: "momc-kit",
-      src: "/content/media/kit.jpg",
+      src: "/content/Media/kit.jpg",
       alt: "Students opening Purple Up classroom kits filled with activities",
       tags: ["momc", "kit", "classroom", "resources"],
       orientation: "landscape",

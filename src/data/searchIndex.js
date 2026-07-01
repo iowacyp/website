@@ -105,7 +105,7 @@ const resourceItems = resources.map((resource) => ({
   url: resource.url,
   type: "Resource",
   summary: limitText(resource.summary || "", 180),
-  featured: ["/content/media/googleplay.png", "/content/media/iaarng.jpg", "/content/media/arngcys.webp", "/content/media/wfsb.jpg"].includes(resource.image),
+  featured: ["/content/Media/googleplay.png", "/content/Media/iaarng.jpg", "/content/Media/arngcys.webp", "/content/Media/wfsb.jpg"].includes(resource.image),
   external: /^https?:/i.test(resource.url),
   keywords: [resource.label, resource.summary, resource.notes],
   searchText: makeSearchText(resource.label, resource.summary, resource.notes, resource.url),
