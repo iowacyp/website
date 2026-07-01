@@ -112,7 +112,8 @@
       "ctaLabel": "Register",
       "ctaUrl": "https://fareharbor.com/embeds/book/jesterparkec/?full-items=yes&flow=1595744",
       "notes": "Separate camp session. Same time as August 1.",
-      "image": "/content/UpcomingEvents/Horseback Riding Day Camp 1.jpg"
+      "image": "/content/UpcomingEvents/Horseback Riding Day Camp 1.jpg",
+      "full": true
     },
     {
       "title": "Summer Horseback Riding Camp 2",
@@ -123,7 +124,8 @@
       "ctaLabel": "Register",
       "ctaUrl": "https://fareharbor.com/embeds/book/jesterparkec/?full-items=yes&flow=1595744",
       "notes": "One day camp session. Limited space.",
-      "image": "/content/UpcomingEvents/Horseback Riding Day Camp 2.jpg"
+      "image": "/content/UpcomingEvents/Horseback Riding Day Camp 2.jpg",
+      "full": true
     },
     {
       "title": "Living History Farms Day Camp 1",
