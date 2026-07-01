@@ -164,7 +164,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets/pwa": "assets/pwa" });
   for (const fileName of contentMediaFiles) {
     eleventyConfig.addPassthroughCopy({
-      [`content/media/${fileName}`]: `content/media/${fileName}`,
+      [`content/Media/${fileName}`]: `content/Media/${fileName}`,
     });
   }
   eleventyConfig.addPassthroughCopy({ "content/UpcomingEvents": "content/UpcomingEvents" });
