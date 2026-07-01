@@ -804,6 +804,61 @@ const initStoryModals = () => {
 initStoryCarousel();
 initStoryModals();
 
+const initResourceLogoFallbacks = () => {
+  const logos = Array.from(document.querySelectorAll('[data-resource-logo]'));
+  if (!logos.length) return;
+
+  const iconPaths = {
+    education: '<path d="M4 6.5 12 3l8 3.5-8 3.5L4 6.5Z"/><path d="M6.5 9v4.25c0 1.25 2.45 2.75 5.5 2.75s5.5-1.5 5.5-2.75V9"/><path d="M20 7v5"/>',
+    app: '<rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 17h2"/>',
+    support: '<path d="M12 21s-7-4.4-7-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7 3.8C19 16.6 12 21 12 21Z"/>',
+    health: '<path d="M12 21s-7-4.4-7-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7 3.8C19 16.6 12 21 12 21Z"/><path d="M12 8v6"/><path d="M9 11h6"/>',
+    childcare: '<path d="M8 11a4 4 0 0 1 8 0"/><path d="M6 11h12l-1.2 8H7.2L6 11Z"/><path d="M9 15h.01"/><path d="M15 15h.01"/>',
+    wellness: '<path d="M5 19c5.5 0 10-4.5 10-10V5H9C5.7 5 3 7.7 3 11c0 2.2 1.2 4.1 3 5.2"/><path d="M9 15c2.5-2.5 5.3-4.1 9-5"/>',
+    money: '<rect x="4" y="6" width="16" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M7 9h.01"/><path d="M17 15h.01"/>',
+    guard: '<path d="M12 3 5 6v5c0 4.2 2.8 8.1 7 10 4.2-1.9 7-5.8 7-10V6l-7-3Z"/><path d="M12 8v6"/><path d="M9 11h6"/>',
+    family: '<path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M17 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M14.5 20a4.5 4.5 0 0 1 6-4.2"/>',
+    entrepreneurship: '<path d="M6 10h12l-1 10H7L6 10Z"/><path d="M9 10V8a3 3 0 0 1 6 0v2"/><path d="M8 14h8"/>',
+    default: '<path d="M6 4h9l3 3v13H6V4Z"/><path d="M14 4v4h4"/><path d="M9 13h6"/><path d="M9 17h4"/>',
+  };
+
+  const themes = [
+    { name: 'health', words: ['crisis', 'mental health', 'counselor', 'confidential', 'red cross'] },
+    { name: 'childcare', words: ['child care', 'childcare', 'respite', 'drill', 'kids'] },
+    { name: 'education', words: ['scholarship', 'tutor', 'tutoring', 'homework', 'student', 'college', 'database'] },
+    { name: 'app', words: ['app', 'iphone', 'android', 'mobile', 'download'] },
+    { name: 'wellness', words: ['wellness', 'fitness', 'kidsfit', 'challenge'] },
+    { name: 'entrepreneurship', words: ['lemonade', 'entrepreneur', 'financial literacy', 'stand'] },
+    { name: 'money', words: ['grant', 'fee assistance', 'funding'] },
+    { name: 'guard', words: ['national guard', 'army', 'arng', 'warrior'] },
+    { name: 'family', words: ['family', 'families', 'youth', 'children'] },
+    { name: 'support', words: ['support', 'services', 'resources', 'programs'] },
+  ];
+
+  const pickTheme = (text) => {
+    const normalized = String(text || '').toLowerCase();
+    const match = themes.find((theme) => theme.words.some((word) => normalized.includes(word)));
+    return match ? match.name : 'default';
+  };
+
+  const buildFallback = (theme) => {
+    const fallback = document.createElement('span');
+    fallback.className = `resource-logo-fallback resource-logo-fallback--${theme}`;
+    fallback.setAttribute('aria-hidden', 'true');
+    fallback.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${iconPaths[theme] || iconPaths.default}</svg>`;
+    return fallback;
+  };
+
+  logos.forEach((logo) => {
+    logo.addEventListener('error', () => {
+      const theme = pickTheme(logo.dataset.resourceText);
+      logo.replaceWith(buildFallback(theme));
+    }, { once: true });
+  });
+};
+
+initResourceLogoFallbacks();
+
 const initSiteSearch = () => {
   const modal = document.querySelector('[data-modal="site-search"]');
   if (!modal) return;

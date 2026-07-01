@@ -2366,6 +2366,74 @@ footer a:hover {
   color: rgb(51 65 85 / var(--tw-text-opacity, 1));
 }
 
+.resource-logo-fallback {
+  display: inline-flex;
+  height: 3.5rem;
+  width: 3.5rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  border-width: 1px;
+  border-color: rgb(31 77 122 / 0.15);
+  background-color: rgb(31 77 122 / 0.05);
+  --tw-text-opacity: 1;
+  color: rgb(31 77 122 / var(--tw-text-opacity, 1));
+}
+
+.resource-logo-fallback svg {
+  height: 1.75rem;
+  width: 1.75rem;
+}
+
+.resource-logo-fallback--education,
+.resource-logo-fallback--app {
+  background-color: rgb(31 77 122 / 0.05);
+  --tw-text-opacity: 1;
+  color: rgb(31 77 122 / var(--tw-text-opacity, 1));
+}
+
+.resource-logo-fallback--health {
+  --tw-border-opacity: 1;
+  border-color: rgb(254 226 226 / var(--tw-border-opacity, 1));
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 242 242 / var(--tw-bg-opacity, 1));
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity, 1));
+}
+
+.resource-logo-fallback--childcare,
+.resource-logo-fallback--family {
+  border-color: rgb(244 180 27 / 0.3);
+  background-color: rgb(244 180 27 / 0.1);
+  --tw-text-opacity: 1;
+  color: rgb(31 77 122 / var(--tw-text-opacity, 1));
+}
+
+.resource-logo-fallback--wellness {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 250 229 / var(--tw-border-opacity, 1));
+  --tw-bg-opacity: 1;
+  background-color: rgb(236 253 245 / var(--tw-bg-opacity, 1));
+  --tw-text-opacity: 1;
+  color: rgb(4 120 87 / var(--tw-text-opacity, 1));
+}
+
+.resource-logo-fallback--money,
+.resource-logo-fallback--entrepreneurship {
+  border-color: rgb(244 180 27 / 0.3);
+  background-color: rgb(244 180 27 / 0.1);
+  --tw-text-opacity: 1;
+  color: rgb(31 77 122 / var(--tw-text-opacity, 1));
+}
+
+.resource-logo-fallback--guard,
+.resource-logo-fallback--support {
+  background-color: rgb(31 77 122 / 0.1);
+  --tw-text-opacity: 1;
+  color: rgb(31 77 122 / var(--tw-text-opacity, 1));
+}
+
 .event-card {
   display: flex;
   flex-direction: column;

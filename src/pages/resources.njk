@@ -36,7 +36,16 @@ permalink: /resources/index.html
       {% for resource in resources.items %}
         <article id="resource-{{ resource.id | lower }}" class="content-card flex gap-4 h-full" data-reveal>
           {% if resource.image %}
-            <img src="{{ resource.image }}" alt="" class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white" {{ imageAttrs(resource.image) }} loading="lazy" decoding="async">
+            <img
+              src="{{ resource.image }}"
+              alt=""
+              class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white"
+              data-resource-logo
+              data-resource-text="{{ (resource.label ~ ' ' ~ resource.summary) | escape }}"
+              {{ imageAttrs(resource.image) }}
+              loading="lazy"
+              decoding="async"
+            >
           {% endif %}
           <div class="space-y-2">
             <h3 class="text-lg font-semibold text-slate-900">
