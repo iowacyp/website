@@ -8,7 +8,7 @@
       "description": "Adventure Kits bring Guard families together with seasonal, hands-on projects that spark curiosity and connection. Each kit includes STEM challenges, health tips, and guided videos families can open anytime, anywhere.",
       "cta": {
         "label": "Sign Up",
-        "url": "https://docs.google.com/forms/d/e/1FAIpQLSdh8K47PeqrfDedQaminFAvfqKiXbwZUklDEm4PY1RalSzCuw/viewform?usp=share_link&ouid=100941830380849796397"
+        "url": "/adventure-kits/"
       },
       "image": "/assets/img/programs/adventure_kits.jpg",
       "featured": true,

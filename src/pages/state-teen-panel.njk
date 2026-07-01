@@ -1,0 +1,236 @@
+---
+layout: layouts/base.njk
+title: State Teen Panel | Iowa CYP
+description: The State Teen Panel (STP) is Iowa CYP's teen leadership program for Guard-connected youth ages 13–17. Plan events, build leadership skills, and connect with others who get military life.
+permalink: /state-teen-panel/index.html
+---
+{% set stpQuote = quotes.items | selectattr('id', 'equalto', 'Q007') | list | first %}
+
+<section class="relative isolate overflow-hidden" data-reveal>
+  {% set heroPhoto = requestPhoto({
+    id: "stp-hero",
+    tags: ["teens", "leadership"],
+    context: page.url ~ "#hero",
+    note: "State Teen Panel hero background – teens at an event or leadership activity"
+  }) %}
+  <div class="absolute inset-0">
+    <img
+      src="{{ heroPhoto.src }}"
+      alt="{{ heroPhoto.alt }}"
+      class="absolute inset-0 h-full w-full object-cover brightness-75 saturate-90 contrast-110"
+      loading="eager"
+      decoding="async"
+    >
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-r from-slate-950/94 via-slate-950/82 to-slate-950/60"></div>
+  <div class="relative container min-h-[60vh] py-24 flex items-center">
+    <div class="max-w-3xl rounded-[2rem] border border-white/10 bg-slate-950/88 p-6 md:p-10 text-white space-y-6 shadow-2xl backdrop-blur-md">
+      <p class="text-sm uppercase tracking-[0.15em] text-secondary">Teen Leadership</p>
+      <h1 class="text-3xl md:text-4xl font-semibold text-white">STATE TEEN PANEL</h1>
+      <p class="text-white/95 text-base md:text-lg leading-relaxed">STP is Iowa CYP's teen leadership crew for Guard-connected youth ages 13–17. Members plan events, advise program decisions, tell their own stories, and represent Iowa at regional symposiums.</p>
+      <div class="flex flex-wrap gap-3">
+        <a class="hero-cta" href="{{ site.links.stpApply }}">Apply Today</a>
+        <a class="hero-cta-secondary" href="#what-we-do">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="what-we-do" class="bg-white py-20" data-reveal>
+  <div class="container grid gap-10 lg:grid-cols-2 lg:items-start">
+    <article class="content-card space-y-6 h-full">
+      <div class="space-y-4">
+        <p class="text-sm uppercase tracking-[0.15em] text-primary/70">About STP</p>
+        <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 leading-tight">Lead, connect, and make an impact</h2>
+        <p class="text-slate-700 leading-relaxed">The State Teen Panel gives Guard-connected teens a seat at the table. Members work alongside CYP staff to plan camps and events, mentor younger youth, and bring the teen perspective to program decisions that affect hundreds of families statewide.</p>
+        <p class="text-slate-700 leading-relaxed">STP members also represent Iowa at regional and national symposiums — a rare opportunity to network with military-connected teens from across the country.</p>
+      </div>
+
+      {% if stpQuote %}
+        <blockquote class="italic text-primary leading-relaxed bg-primary/5 border border-primary/10 rounded-3xl p-5">
+          &ldquo;{{ stpQuote.text }}&rdquo;
+          <span class="block text-xs uppercase tracking-wide text-primary/70 mt-3 not-italic">{{ stpQuote.role }}</span>
+        </blockquote>
+      {% endif %}
+
+      <ul class="space-y-3 text-gray-700">
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-secondary" aria-hidden="true"></span>
+          <span>Lead service projects and mentor younger campers</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-secondary" aria-hidden="true"></span>
+          <span>Earn volunteer hours and documented leadership experience</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-secondary" aria-hidden="true"></span>
+          <span>Advise CYP staff on programs and events that matter to teens</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-secondary" aria-hidden="true"></span>
+          <span>Represent Iowa at regional symposiums with military teens nationwide</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-secondary" aria-hidden="true"></span>
+          <span>Connect with peers who understand Guard life firsthand</span>
+        </li>
+      </ul>
+    </article>
+
+    <div class="space-y-6">
+      <div class="frame-shell aspect-video rounded-3xl overflow-hidden border border-slate-200 shadow-sm" data-frame-shell>
+        <iframe
+          data-frame-src="https://www.youtube.com/embed/9on-5cZKmnA"
+          title="State Teen Panel spotlight"
+          class="frame-embed w-full h-full"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="content-card space-y-4">
+        <h3 class="text-base font-semibold uppercase tracking-[0.1em] text-slate-900">Who can join</h3>
+        <ul class="space-y-2 text-sm text-slate-700">
+          <li class="flex items-start gap-2.5">
+            <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/30" aria-hidden="true"></span>
+            <span>Ages 13–17 at time of application</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/30" aria-hidden="true"></span>
+            <span>Connected to the Iowa National Guard (child, stepchild, or legal dependent of a Guard member)</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/30" aria-hidden="true"></span>
+            <span>Interested in leadership, service, and peer connection</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/30" aria-hidden="true"></span>
+            <span>Able to attend STP events and camps throughout the year</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stories" class="bg-primary/5 py-20" data-reveal>
+  <div class="container space-y-10">
+    <div class="max-w-3xl space-y-4">
+      <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Stories of impact</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Pulled from Stories of Impact</h2>
+      <p class="text-slate-700 leading-relaxed">These spotlights are pulled from our published Stories of Impact page. They show how State Teen Panel members lead through service, connection, and the everyday moments that shape Guard family life.</p>
+    </div>
+    <div class="grid gap-6 lg:grid-cols-3">
+      <article class="content-card overflow-hidden h-full flex flex-col" data-interactive="true">
+        <img src="/content/media/VeteranPicture.jpeg" alt="State Teen Panel members visiting veterans at Eastern Star Masonic Home in Boone, Iowa" class="h-56 w-full object-cover object-center" loading="lazy" decoding="async">
+        <div class="space-y-4 pt-5">
+          <p class="text-xs uppercase tracking-[0.28em] text-primary/70">Listening across generations</p>
+          <h3 class="text-xl font-semibold text-slate-900">Moments That Stay With Us</h3>
+          <p class="text-sm text-slate-700 leading-relaxed">Seven STP members spent a day listening to veterans share stories of service, sacrifice, and life after uniform. What began as a service project became a bridge between generations.</p>
+          <blockquote class="border-l-4 border-secondary/80 pl-3 text-sm leading-relaxed text-slate-700 italic">&ldquo;I got to learn more about their lives and their insight on different skills - the experiences you gain versus the time spent away from your family.&rdquo;</blockquote>
+          <a class="link-underline w-fit" href="/stories/">Browse more stories</a>
+        </div>
+      </article>
+      <article class="content-card overflow-hidden h-full flex flex-col" data-interactive="true">
+        <img src="/content/media/size0-full.jpg" alt="Klaryssa Klair Dunwoody volunteering with the State Teen Panel" class="h-56 w-full object-cover object-[center_28%]" loading="lazy" decoding="async">
+        <div class="space-y-4 pt-5">
+          <p class="text-xs uppercase tracking-[0.28em] text-primary/70">Youth spotlight</p>
+          <h3 class="text-xl font-semibold text-slate-900">Youth Spotlight: Klaryssa Klair Dunwoody</h3>
+          <p class="text-sm text-slate-700 leading-relaxed">Klaryssa Klair Dunwoody found her place through STP and turned that experience into reliable support for younger kids and parents. Her service helped shape the Guard family experience for others.</p>
+          <blockquote class="border-l-4 border-secondary/80 pl-3 text-sm leading-relaxed text-slate-700 italic">&ldquo;Service became her way of shaping the Guard family experience for other kids and it shows.&rdquo;</blockquote>
+          <a class="link-underline w-fit" href="/stories/">See the full feature</a>
+        </div>
+      </article>
+      <article class="content-card overflow-hidden h-full flex flex-col" data-interactive="true">
+        <img src="/assets/img/programs/stp_panel_group.jpg" alt="State Teen Panel members gathered together at an Iowa CYP event" class="h-56 w-full object-cover object-center" loading="lazy" decoding="async">
+        <div class="space-y-4 pt-5">
+          <p class="text-xs uppercase tracking-[0.28em] text-primary/70">Peer connection</p>
+          <h3 class="text-xl font-semibold text-slate-900">Iowa Teen Steps Into Statewide Leadership Role as GTP Representative</h3>
+          <p class="text-sm text-slate-700 leading-relaxed">For many members, STP is where connection becomes the reason to keep showing up. Teens build confidence, learn to lead, and leave with a group that understands military life firsthand.</p>
+          <blockquote class="border-l-4 border-secondary/80 pl-3 text-sm leading-relaxed text-slate-700 italic">&ldquo;We always have so much fun and get closer every time. I love everything about the STP—but the people are my favorite part.&rdquo;</blockquote>
+          <a class="link-underline w-fit" href="/stories/">Explore all stories</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="retreat" class="bg-slate-900 text-white py-20" data-reveal>
+  <div class="container grid gap-10 lg:grid-cols-[minmax(0,1fr)_0.8fr] lg:items-center">
+    <div class="space-y-5">
+      <p class="text-sm uppercase tracking-[0.15em] text-secondary">STP Retreat</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-white leading-tight">Teen leaders building connection and confidence</h2>
+      <p class="text-white/85 leading-relaxed">The STP Retreat gives teen leaders time to plan, serve, and strengthen the peer relationships that make the State Teen Panel effective throughout the year.</p>
+      <p class="text-white/75 text-sm leading-relaxed">Retreat moments help teens practice leadership in a setting built around trust, shared experience, and real connection with other Guard-connected youth.</p>
+    </div>
+    <aside class="content-card border border-white/20 bg-white/5 text-white space-y-4">
+      <div class="space-y-1">
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-secondary/80">See the moment</p>
+        <img src="/assets/img/programs/stp_retreat.jpg" alt="State Teen Panel members gathered by a fireplace during the STP Retreat" class="mt-3 aspect-[3/4] w-full rounded-lg object-cover object-center" loading="lazy" decoding="async">
+        <h3 class="text-xl font-semibold text-white">STP Retreat on Facebook</h3>
+      </div>
+      <p class="text-sm text-white/80 leading-relaxed">View the shared post from the State Teen Panel retreat.</p>
+      <a class="btn-secondary inline-flex items-center gap-2 text-xs" href="https://www.facebook.com/share/p/1H1fEeGeQJ/" target="_blank" rel="noopener noreferrer">
+        <span>View Facebook post</span>
+      </a>
+    </aside>
+  </div>
+</section>
+
+<section id="apply" class="bg-primary/5 py-20" data-reveal>
+  <div class="container">
+    <div class="max-w-4xl mx-auto content-card space-y-8">
+      <div class="space-y-4 text-center">
+        <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Ready to lead?</p>
+        <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Apply to join the State Teen Panel</h2>
+        <p class="text-slate-700 leading-relaxed max-w-2xl mx-auto">Applications open each spring. Spots are limited — if you're Guard-connected and ready to lead, don't wait. Fill out the form and a CYP coordinator will follow up with next steps.</p>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a class="btn" href="{{ site.links.stpApply }}">Apply Now</a>
+        <a class="btn-secondary" href="/contact/#general-contact">Ask a question first</a>
+      </div>
+      {% if site.links.stpVideo %}
+        <div class="text-center">
+          <a class="link-underline" href="{{ site.links.stpVideo }}" target="_blank" rel="noopener">Watch the STP overview video</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="bg-white py-20" data-reveal>
+  <div class="container">
+    <div class="max-w-3xl mx-auto space-y-10">
+      <header class="space-y-3">
+        <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Common questions</p>
+        <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Frequently asked about STP</h2>
+      </header>
+      <div class="space-y-6 text-sm text-gray-700 leading-relaxed">
+        <div class="content-card space-y-2">
+          <p class="font-semibold text-slate-900 text-base">Do I have to have previous leadership experience?</p>
+          <p>No. STP is designed to build leadership skills, not require them. If you're motivated and want to make a difference for military-connected youth, you're a great fit.</p>
+        </div>
+        <div class="content-card space-y-2">
+          <p class="font-semibold text-slate-900 text-base">How much of a time commitment is it?</p>
+          <p>STP members typically attend a few key events per year including summer camp and a planning session. Time varies by activity — we work with teens to fit schedules.</p>
+        </div>
+        <div class="content-card space-y-2">
+          <p class="font-semibold text-slate-900 text-base">Is there any cost to participate?</p>
+          <p>Most STP activities are covered by Iowa CYP. If any costs arise, financial assistance is available — cost should never be a barrier.</p>
+        </div>
+        <div class="content-card space-y-2">
+          <p class="font-semibold text-slate-900 text-base">What happens after I apply?</p>
+          <p>A CYP coordinator will reach out within a few days to schedule a brief conversation and walk you through the next steps.</p>
+        </div>
+      </div>
+      <div class="rounded-3xl border border-primary/10 bg-primary/5 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="space-y-1">
+          <p class="font-semibold text-slate-900">Still have questions?</p>
+          <p class="text-sm text-slate-600">Our team is happy to chat before you apply.</p>
+        </div>
+        <a class="btn-secondary shrink-0" href="/contact/#general-contact">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>

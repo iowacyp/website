@@ -15,6 +15,7 @@ npx serve dist     # optional static preview after build
 - Shared layout and chrome: `src/_includes/layouts/base.njk` and `src/_includes/partials/`.
 - Global configuration (contact email, social handles, mailto/form links, app store URLs) lives in `src/data/site.json`. Update this file when outreach links change.
 - Upcoming events: edit `src/data/events.json`. Eleventy copies it to `/events.json` so `main.js` can render it on `/events`.
+- Full events: in `src/data/events.json`, set `"full": true` on any event that has hit capacity. This adds a black transparent overlay with red `Full` lettering and replaces the registration button with `Event full`. Set it back to `"full": false` or remove the field to reopen registration.
 - Tailwind source: `src/assets/css/tailwind.css`. PostCSS compiles to `dist/assets/css/site.css`.
 - JavaScript: `src/assets/js/main.js` handles the mobile nav focus trap, reduced-motion guard for the hero video, event rendering, and footer year.
 
@@ -32,15 +33,25 @@ npx serve dist     # optional static preview after build
 - Keep alt text meaningful, open external links with `target="_blank" rel="noopener"`, and aim for Lighthouse >= 95 across all categories before launch.
 
 ## Deployment
-- Netlify config (`netlify.toml`) sets the build command (`npm run build`), publish directory (`dist/`), and a sample redirect.
-- Run `npm run build`, deploy the contents of `dist/`, and optionally preview with `npx serve dist`.
+- Netlify config (`netlify.toml`) sets the build command (`npm run build:prod`), publish directory (`dist/`), and a sample redirect.
+- Run `npm run build`, then publish `dist/` directly with the Netlify CLI or the `npm run deploy` helper.
+- Production builds now run `npm run verify:build` after the Eleventy build to block legacy `/pages/` output or snapshot references from being deployed.
+- `scripts/build-snapshot.mjs` is archival only. Do not use it as a deployment path.
+- The verifier also blocks GitHub Pages deployment patterns in `.github/workflows/` and a root `CNAME` file.
 - Subscribe submissions are proxied through `netlify/functions/subscribe-proxy.js` and forwarded to the admin Netlify function endpoint.
+- Virtual programming signups use `netlify/functions/virtual-programming-signup-proxy.js` and the same HMAC-protected admin forwarding pattern.
+- `npm run deploy` builds the site and publishes the finished `dist/` directory directly to the linked Netlify project, including local functions from `netlify/functions`.
 - Public site Netlify environment variables:
   - `ADMIN_PUBLIC_SUBSCRIBE_URL` (e.g. `https://cyp-admin.netlify.app/.netlify/functions/public-subscribe`)
   - `PUBLIC_SUBSCRIBE_SHARED_SECRET` (must exactly match admin site's `PUBLIC_SUBSCRIBE_SHARED_SECRET`)
   - `PUBLIC_SUBSCRIBE_SOURCE` (optional, defaults to `www.iowacyp.com`)
   - `PUBLIC_SUBSCRIBE_RATE_LIMIT_WINDOW_MS` (optional, default `600000`)
   - `PUBLIC_SUBSCRIBE_RATE_LIMIT_MAX` (optional, default `20`)
+  - `ADMIN_PUBLIC_VIRTUAL_PROGRAMMING_URL` (e.g. `https://cyp-admin.netlify.app/.netlify/functions/public-virtual-programming-signup`)
+  - `PUBLIC_VIRTUAL_PROGRAMMING_SHARED_SECRET` (optional; falls back to `PUBLIC_SUBSCRIBE_SHARED_SECRET`)
+  - `PUBLIC_VIRTUAL_PROGRAMMING_SOURCE` (optional, defaults to `www.iowacyp.com`)
+  - `PUBLIC_VIRTUAL_PROGRAMMING_RATE_LIMIT_WINDOW_MS` (optional, default `600000`)
+  - `PUBLIC_VIRTUAL_PROGRAMMING_RATE_LIMIT_MAX` (optional, default `20`)
 
 ## Updating Copy and Links
 - Maintain one `<h1>` per page with descending headings.
@@ -49,7 +60,7 @@ npx serve dist     # optional static preview after build
   - `site.links.scholarshipDatabase` (final scholarship database URL)
   - `site.links.appStore` and `site.links.googlePlay` (app badge links)
   - Any partner, volunteer, or program inquiry forms
-- Update `src/data/events.json` with new titles, ISO dates (`YYYY-MM-DD`), times, locations, and CTA URLs. The script displays CTAs as external links when URLs start with `http`.
+- Update `src/data/events.json` with new titles, ISO dates (`YYYY-MM-DD`), times, locations, CTA URLs, and `"full": true` for events that have hit capacity. The script displays CTAs as external links when URLs start with `http`.
 - Add partner logos to the Support page once brand assets are cleared.
 
 With those pieces in place, rebuild (`npm run build`) and deploy `dist/` to Netlify or your preferred static host.

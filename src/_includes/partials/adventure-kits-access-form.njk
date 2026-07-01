@@ -1,0 +1,10 @@
+{% set formId = accessFormId or 'adventureKitsAccessForm' %}
+{% set fieldIdPrefix = accessFieldIdPrefix or 'adventureKitsAccess' %}
+{% set statusId = accessStatusId or formId ~ 'Status' %}
+{% set submitLabel = accessSubmitLabel or 'Unlock access' %}
+{% set formDataAttr = 'data-adventure-kits-access-form' %}
+{% set submitDataAttr = 'data-adventure-kits-access-submit' %}
+{% set statusDataAttr = 'data-adventure-kits-access-status' %}
+{% set sourceValue = accessSource or 'www.iowacyp.com' %}
+{% set tagsValue = accessTags or 'website-subscribe' %}
+{% include "partials/subscribe-form-fields.njk" %}

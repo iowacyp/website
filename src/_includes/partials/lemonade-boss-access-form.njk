@@ -1,0 +1,10 @@
+{% set formId = accessFormId or 'lemonadeBossAccessForm' %}
+{% set fieldIdPrefix = accessFieldIdPrefix or 'lemonadeBossAccess' %}
+{% set statusId = accessStatusId or formId ~ 'Status' %}
+{% set submitLabel = accessSubmitLabel or 'Unlock access' %}
+{% set formDataAttr = 'data-lemonade-boss-access-form' %}
+{% set submitDataAttr = 'data-lemonade-boss-access-submit' %}
+{% set statusDataAttr = 'data-lemonade-boss-access-status' %}
+{% set sourceValue = accessSource or 'lemonade-boss-gate' %}
+{% set tagsValue = accessTags or 'lemonade-boss-access' %}
+{% include "partials/subscribe-form-fields.njk" %}

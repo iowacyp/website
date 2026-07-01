@@ -1,0 +1,452 @@
+---
+layout: layouts/base.njk
+title: Adventure Kits Access | Sign Up to Unlock the Online Kit
+description: Sign up once to get quarterly Adventure Kits activities your kids can do at home, plus future kit announcements.
+permalink: /adventure-kits/index.html
+---
+<style>
+  .adventure-page {
+    position: relative;
+    overflow: hidden;
+    color: #173042;
+    background:
+      radial-gradient(circle at 12% 2%, rgba(101, 206, 214, 0.30), transparent 26%),
+      radial-gradient(circle at 84% 8%, rgba(132, 181, 255, 0.28), transparent 24%),
+      linear-gradient(180deg, #f5fdff 0%, #eff8ff 36%, #eaf6f5 100%);
+  }
+
+  .adventure-page::before,
+  .adventure-page::after {
+    content: "";
+    position: absolute;
+    border-radius: 999px;
+    pointer-events: none;
+    filter: blur(18px);
+    opacity: 0.55;
+  }
+
+  .adventure-page::before {
+    top: 5rem;
+    right: -8rem;
+    width: 16rem;
+    height: 16rem;
+    background: rgba(74, 190, 220, 0.30);
+  }
+
+  .adventure-page::after {
+    bottom: 9rem;
+    left: -7rem;
+    width: 15rem;
+    height: 15rem;
+    background: rgba(108, 207, 180, 0.30);
+  }
+
+  .adventure-shell {
+    position: relative;
+    z-index: 1;
+  }
+
+  .adventure-hero {
+    display: grid;
+    gap: 1.75rem;
+    align-items: center;
+    border: 1px solid rgba(23, 48, 66, 0.08);
+    border-radius: 2.5rem;
+    background: rgba(255, 255, 255, 0.84);
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    box-shadow: 0 28px 70px -44px rgba(23, 48, 66, 0.38);
+    backdrop-filter: blur(12px);
+  }
+
+  .adventure-hero__copy {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .adventure-pill,
+  .adventure-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: fit-content;
+    border-radius: 999px;
+    padding: 0.45rem 1rem;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  .adventure-pill {
+    background: rgba(74, 190, 220, 0.16);
+    color: #1f5f72;
+  }
+
+  .adventure-badge {
+    background: rgba(23, 48, 66, 0.08);
+    color: #173042;
+  }
+
+  .adventure-hero h1,
+  .adventure-section h2,
+  .adventure-card h3 {
+    text-transform: none;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+
+  .adventure-hero h1 {
+    font-size: clamp(2.6rem, 6vw, 4.75rem);
+    color: #173042;
+    max-width: 12ch;
+  }
+
+  .adventure-hero p,
+  .adventure-section p {
+    line-height: 1.75;
+    color: #4b6170;
+  }
+
+  .adventure-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .adventure-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    padding: 0.95rem 1.35rem;
+    font-weight: 700;
+    font-size: 0.98rem;
+    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+    box-shadow: 0 18px 30px -20px rgba(23, 48, 66, 0.38);
+  }
+
+  .adventure-btn--primary {
+    background: #4abedc;
+    color: #173042;
+  }
+
+  .adventure-btn--secondary {
+    background: #84b5ff;
+    color: #173042;
+  }
+
+  .adventure-btn--ghost {
+    background: rgba(255, 255, 255, 0.76);
+    color: #173042;
+    border: 1px solid rgba(23, 48, 66, 0.12);
+  }
+
+  .adventure-btn:hover,
+  .adventure-btn:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: 0 22px 34px -22px rgba(23, 48, 66, 0.55);
+    outline: none;
+  }
+
+  .adventure-showcase {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .adventure-showcase__frame {
+    overflow: hidden;
+    border-radius: 2rem;
+    border: 1px solid rgba(23, 48, 66, 0.08);
+    background: #ffffff;
+    box-shadow: 0 24px 40px -32px rgba(23, 48, 66, 0.48);
+  }
+
+  .adventure-showcase__frame img {
+    display: block;
+    width: 100%;
+    height: clamp(220px, 40vw, 380px);
+    object-fit: cover;
+  }
+
+  .adventure-stats {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .adventure-stat {
+    border-radius: 1.5rem;
+    border: 1px solid rgba(23, 48, 66, 0.08);
+    background: rgba(255, 255, 255, 0.84);
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .adventure-stat strong {
+    display: block;
+    font-size: 1.15rem;
+    color: #173042;
+  }
+
+  .adventure-stat span {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #6b7b87;
+  }
+
+  .adventure-section {
+    margin-top: clamp(3.5rem, 8vw, 5rem);
+    padding: clamp(2rem, 5vw, 3.5rem);
+    border-radius: 2.25rem;
+    border: 1px solid rgba(23, 48, 66, 0.08);
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: 0 20px 48px -38px rgba(23, 48, 66, 0.40);
+    backdrop-filter: blur(12px);
+  }
+
+  .adventure-section.teal {
+    background: linear-gradient(180deg, rgba(74, 190, 220, 0.28) 0%, rgba(132, 181, 255, 0.30) 100%);
+  }
+
+  .adventure-section.mint {
+    background: linear-gradient(180deg, rgba(108, 207, 180, 0.24) 0%, rgba(74, 190, 220, 0.20) 100%);
+  }
+
+  .adventure-section h2 {
+    font-size: clamp(1.7rem, 4vw, 2.6rem);
+    margin-bottom: 0.5rem;
+    color: #173042;
+  }
+
+  .adventure-grid,
+  .adventure-steps {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .adventure-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .adventure-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.84);
+    border-radius: 1.75rem;
+    box-shadow: inset 0 0 0 1px rgba(23, 48, 66, 0.08);
+  }
+
+  .adventure-step__icon {
+    flex: none;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: #4abedc;
+    display: grid;
+    place-items: center;
+    font-size: 1.4rem;
+    box-shadow: 0 8px 18px -12px rgba(23, 48, 66, 0.35);
+  }
+
+  .adventure-card {
+    background: #ffffff;
+    border-radius: 1.75rem;
+    padding: 1.75rem;
+    box-shadow: 0 18px 38px -30px rgba(23, 48, 66, 0.40);
+    display: grid;
+    gap: 1rem;
+  }
+
+  .adventure-card h3 {
+    font-size: 1.35rem;
+    color: #173042;
+  }
+
+  .adventure-footer {
+    margin-top: clamp(3.5rem, 8vw, 5rem);
+    padding: clamp(2rem, 5vw, 3rem);
+    border-radius: 2rem;
+    background: #173042;
+    color: rgba(255, 255, 255, 0.86);
+    text-align: center;
+  }
+
+  .adventure-footer h2 {
+    color: #84b5ff;
+    margin-bottom: 0.75rem;
+  }
+
+  @media (min-width: 1024px) {
+    .adventure-hero {
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .adventure-steps {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .adventure-btn {
+      transition: none;
+    }
+  }
+</style>
+
+<div class="adventure-page">
+  <div class="adventure-shell container py-10 md:py-14">
+    <section id="adventure-kits-signup" class="adventure-section teal" data-reveal data-adventure-kits-gate>
+      <div class="max-w-3xl space-y-4">
+        <span class="adventure-badge bg-white/75">Access required</span>
+        <h1 class="text-3xl md:text-4xl font-semibold text-slate-900 normal-case tracking-tight">A hands-on kit for kids and parents</h1>
+        <p class="adventure-section__lead">Sign up once and we’ll send quarterly Adventure Kits activities your kids can do at home, along with future kit announcements for your family.</p>
+      </div>
+      {% set accessFormId = 'adventureKitsAccessForm' %}
+      {% set accessStatusId = 'adventureKitsAccessStatus' %}
+      {% include "partials/adventure-kits-access-form.njk" %}
+    </section>
+
+    <div data-adventure-kits-content hidden>
+      <section class="adventure-hero" data-reveal>
+        <div class="adventure-hero__copy">
+          <span class="adventure-pill">
+            <span aria-hidden="true">🧭</span>
+            Family activity series
+          </span>
+          <div class="space-y-4">
+            <h1>Explore Adventure Kits with your family</h1>
+            <p class="max-w-2xl">Adventure Kits gives parents a simple way to bring home a ready-made activity each quarter so kids can try new ideas, practice problem-solving, and have fun together.</p>
+          </div>
+          <div class="adventure-actions">
+            <a class="adventure-btn adventure-btn--primary" href="#adventure-kits-signup">Sign up now</a>
+            <a class="adventure-btn adventure-btn--ghost" href="#what-it-is">What you get</a>
+            <a class="adventure-btn adventure-btn--secondary" href="mailto:{{ site.contactEmail }}">Email the team</a>
+          </div>
+        </div>
+
+        <aside class="adventure-showcase">
+          <div class="adventure-showcase__frame">
+            <img src="/assets/img/programs/adventure_kits.jpg" alt="Guard youth holding adventure kits during a community event" width="1920" height="1005" loading="eager" decoding="async">
+          </div>
+          <div class="adventure-stats">
+            <div class="adventure-stat">
+              <strong>Seasonal</strong>
+              <span>Fresh kits</span>
+            </div>
+            <div class="adventure-stat">
+              <strong>Family</strong>
+              <span>Hands-on</span>
+            </div>
+            <div class="adventure-stat">
+              <strong>Online</strong>
+              <span>Easy access</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="what-it-is" class="adventure-section" data-reveal>
+        <div class="max-w-3xl space-y-4">
+          <span class="adventure-badge bg-white/75">Inside the kit</span>
+          <h2>What are Adventure Kits?</h2>
+          <p class="adventure-section__lead">Adventure Kits bring Guard families together with short, guided activities you can open at home. Each quarterly release blends creativity, healthy habits, and learning into something kids can do with a parent or caregiver.</p>
+        </div>
+        <div class="adventure-grid">
+          <article class="adventure-card">
+            <span class="adventure-step__icon" aria-hidden="true">🎨</span>
+            <h3>Create together</h3>
+            <p>Kids get a project they can complete with a grown-up, which keeps the activity social and easy to finish.</p>
+          </article>
+          <article class="adventure-card">
+            <span class="adventure-step__icon" aria-hidden="true">📘</span>
+            <h3>Guided and simple</h3>
+            <p>Every kit is built to be low-prep and family-friendly, so parents don’t have to build the experience from scratch.</p>
+          </article>
+          <article class="adventure-card">
+            <span class="adventure-step__icon" aria-hidden="true">💬</span>
+            <h3>Conversation-ready</h3>
+            <p>The activities create natural moments to talk about goals, resilience, and what it means to be part of a Guard family.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="adventure-section mint" data-reveal>
+        <div class="max-w-3xl space-y-4">
+          <span class="adventure-badge bg-white/75">How it works</span>
+          <h2>Sign up once, then watch for quarterly activities</h2>
+          <p class="adventure-section__lead">Families complete one simple signup form. After that, we’ll send quarterly activities your kids can do at home and keep you updated on new kits.</p>
+        </div>
+        <div class="adventure-steps">
+          <div class="adventure-step">
+            <span class="adventure-step__icon" aria-hidden="true">1</span>
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900">Complete the sign-up form</h3>
+              <p>Tell us who you are and how to reach you so we can keep your family on the list.</p>
+            </div>
+          </div>
+          <div class="adventure-step">
+            <span class="adventure-step__icon" aria-hidden="true">2</span>
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900">We save your interest</h3>
+              <p>Your sign-up is saved once, and we’ll use it for future quarterly kits.</p>
+            </div>
+          </div>
+          <div class="adventure-step">
+            <span class="adventure-step__icon" aria-hidden="true">3</span>
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900">Open the kit experience</h3>
+              <p>Once unlocked, you can revisit the page and continue using the kit content from the same browser.</p>
+            </div>
+          </div>
+          <div class="adventure-step">
+            <span class="adventure-step__icon" aria-hidden="true">4</span>
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900">Stay on the list</h3>
+              <p>We’ll use the same signup path for future quarterly Adventure Kits and related announcements.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="adventure-section" data-reveal>
+        <div class="max-w-3xl space-y-4">
+          <span class="adventure-badge bg-white/75">What families get</span>
+          <h2>Built to feel easy, useful, and worth the click</h2>
+          <p class="adventure-section__lead">Adventure Kits are designed for busy families. The goal is to send a short, meaningful activity each quarter that feels practical to start and easy to finish.</p>
+        </div>
+        <div class="adventure-grid">
+          <article class="adventure-card">
+            <h3>Family-friendly activities</h3>
+            <p>Quick, guided projects that parents can run with their kids at home.</p>
+          </article>
+          <article class="adventure-card">
+            <h3>Future kit updates</h3>
+            <p>Use the signup to stay on the list for quarterly Adventure Kits activities that arrive at home.</p>
+          </article>
+          <article class="adventure-card">
+            <h3>Same secure signup path</h3>
+            <p>One sign-up keeps your family on the list for future activity releases.</p>
+          </article>
+          <article class="adventure-card">
+            <h3>Easy to revisit</h3>
+            <p>Once you sign up from this browser, the page remembers your access.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="adventure-footer" data-reveal>
+        <h2>Need help getting started?</h2>
+        <p>Reach out if you want help using Adventure Kits with your family, a classroom, or a group setting. We’re happy to point you in the right direction.</p>
+      </section>
+    </div>
+  </div>
+</div>

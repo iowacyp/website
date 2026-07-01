@@ -1,40 +1,49 @@
 {
-  "vision": "Every Iowa Guard kid feels seen, supported, and ready for what's next — and leaders can point to stronger, steadier families because of it.",
-  "mission": "Show up for Guard-connected kids and caregivers with year-round experiences, practical resources, and caring adults so home life stays steady through every drill, mobilization, and return.",
+  "vision": "A future where every Guard family is supported by a connected community—and the strength of those families is recognized as essential to readiness and retention.",
+  "mission": "Support Guard-connected kids and caregivers with experiences, resources, and trusted relationships that build resilience and stability at home.",
   "strategicInfrastructure": [
     {
       "title": "Partnership Cultivation",
-      "description": "Grow local and statewide partners who help us stretch funding, add fresh experiences, and keep families covered."
+      "description": "Build and strengthen local and statewide partnerships that expand capacity, enhance experiences, and extend our reach to more families."
     },
     {
       "title": "Storytelling & Advocacy",
-      "description": "Share real Guard family stories so decision-makers understand the wins, the gaps, and why support matters."
+      "description": "Share real Guard family stories to highlight impact, identify gaps, and inform decision-makers where support matters most."
     },
     {
-      "title": "Data Driven",
-      "description": "Track what works so we can show readiness, resilience, and retention gains."
+      "title": "Data-Driven Decisions",
+      "description": "Track outcomes and trends to demonstrate gains in resilience, connection, and readiness."
     },
     {
       "title": "Marketing & Visibility",
-      "description": "Keep families and leaders in the loop with clear, consistent updates and event branding."
+      "description": "Keep families and leaders informed through clear, consistent communication and strong program presence."
     }
   ],
   "coreValues": [
     {
-      "title": "Mission-Rooted",
-      "description": "Every action strengthens the Guard family and mission."
+      "title": "Show Up",
+      "description": "We’re consistent and dependable, showing up when families need us and staying present through the full rhythm of Guard life.",
+      "icon": "show-up"
     },
     {
-      "title": "Hospitality-Led",
-      "description": "We lead with warmth, care, and belonging."
+      "title": "Build Connection",
+      "description": "Relationships come first. We make space for trust, familiarity, and the kind of belonging that helps families feel less alone.",
+      "icon": "build-connection"
     },
     {
-      "title": "Trust-Stewards",
-      "description": "We honor time, funding, and people with excellence."
+      "title": "Be Intentional",
+      "description": "Every action has purpose, from the way we plan events to how we use time, energy, and resources to serve families well.",
+      "icon": "be-intentional"
     },
     {
-      "title": "Deeply Planted",
-      "description": "We grow lasting roots in families, communities, and the Guard."
+      "title": "Earn Trust",
+      "description": "We follow through with clear communication, dependable support, and the kind of consistency people can count on.",
+      "icon": "earn-trust"
+    },
+    {
+      "title": "Keep Growing",
+      "description": "We evolve to serve better by listening, learning, and adjusting so our programs stay relevant to the families we serve.",
+      "icon": "keep-growing"
     }
   ]
 }

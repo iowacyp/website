@@ -5,21 +5,28 @@ description: Reach the Iowa Child & Youth Program team for event questions, part
 permalink: /contact/index.html
 ---
 <section class="relative isolate overflow-hidden" data-reveal>
-  <div class="absolute inset-0">
-    <img
-      src="/assets/img/contact_location.jpg"
-      alt="Exterior of the Iowa CYP office at Camp Dodge"
-      class="absolute inset-0 h-full w-full object-cover"
-      loading="lazy"
-      decoding="async"
-    >
+  <div class="absolute inset-0" data-video-shell>
+    <img src="/assets/img/contact_location.jpg" alt="" class="video-poster" aria-hidden="true" {{ imageAttrs('/assets/img/contact_location.jpg') }} decoding="async">
+    <video class="video-fade h-full w-full object-cover object-[center_35%] brightness-75 saturate-90 contrast-110" autoplay loop muted playsinline preload="metadata" data-video-fade data-video-lazy aria-hidden="true">
+      <source src="/content/media/38084-416330724_medium.mp4" type="video/mp4">
+    </video>
+    <noscript>
+      <img
+        src="/assets/img/contact_location.jpg"
+        alt="Exterior of the Iowa CYP office at Camp Dodge"
+        class="absolute inset-0 h-full w-full object-cover"
+        {{ imageAttrs('/assets/img/contact_location.jpg') }}
+        loading="lazy"
+        decoding="async"
+      >
+    </noscript>
   </div>
-  <div class="absolute inset-0 bg-slate-900/70"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-slate-950/94 via-slate-950/82 to-slate-950/60"></div>
   <div class="relative container min-h-[60vh] py-24 flex items-center">
-    <div class="max-w-3xl text-white space-y-6 drop-shadow-[0_6px_24px_rgba(0,0,0,0.55)]">
-      <p class="text-sm uppercase tracking-[0.35em] text-secondary">Contact Iowa CYP</p>
-      <h1 class="text-3xl md:text-4xl font-semibold text-white">Reach the team that walks alongside Iowa Guard families</h1>
-      <p class="text-white/90 text-base md:text-lg leading-relaxed">Send a note for event help, school support, partnership ideas, or anything family-related. We’ll route your message to the teammate who can respond fastest.</p>
+    <div class="max-w-3xl rounded-[2rem] border border-white/10 bg-slate-950/88 p-6 md:p-10 text-white space-y-6 shadow-2xl backdrop-blur-md">
+      <p class="text-sm uppercase tracking-[0.15em] text-secondary">Contact Iowa CYP</p>
+      <h1 class="text-3xl md:text-4xl font-semibold text-white">Reach the team that supports Iowa Guard families</h1>
+      <p class="text-white/95 text-base md:text-lg leading-relaxed">Send a note for event help, school support, partnership ideas, or anything family-related. We’ll route your message to the teammate who can respond fastest.</p>
       <a class="hero-cta" href="#general-contact">Email the team</a>
     </div>
   </div>
@@ -29,7 +36,7 @@ permalink: /contact/index.html
   <div class="container space-y-10">
     <div class="grid gap-6 md:grid-cols-[minmax(0,1fr)_0.9fr]">
       <article id="general-contact" class="content-card space-y-4 h-full" data-reveal>
-        <p class="text-sm uppercase tracking-[0.35em] text-primary/70">General contact</p>
+        <p class="text-sm uppercase tracking-[0.15em] text-primary/70">General contact</p>
         <h2 class="text-2xl font-semibold text-slate-900">We’re a call or message away</h2>
         <p class="text-gray-700">Email: <a class="text-primary font-semibold" href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></p>
         <p class="text-gray-700">Phone: <a class="text-primary font-semibold" href="tel:{{ site.contactPhone | replace('-', '') }}">{{ site.contactPhone }}</a></p>
@@ -40,9 +47,9 @@ permalink: /contact/index.html
         </p>
       </article>
       <article class="content-card space-y-4 h-full md:flex md:items-center md:gap-6" data-reveal>
-        <img src="/assets/img/contact_location.jpg" alt="Iowa Gold Star Military Museum exterior" class="w-full md:w-40 h-40 object-cover rounded-2xl border border-primary/20" loading="lazy" decoding="async">
+        <img src="/content/media/goldstar.jpg" alt="Iowa Gold Star Military Museum exterior" class="w-full md:w-40 h-40 object-cover rounded-2xl border border-primary/20" {{ imageAttrs('/content/media/goldstar.jpg') }} loading="lazy" decoding="async">
         <div class="space-y-3">
-          <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Visit us</p>
+          <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Visit us</p>
           <h2 class="text-2xl font-semibold text-slate-900">Camp Dodge, Johnston</h2>
           <p class="text-gray-700">{{ site.officeLocation }}</p>
           <p class="text-sm text-gray-600">We’re beside the Iowa Gold Star Military Museum inside Camp Dodge. Bring a valid ID for gate access.</p>
@@ -52,11 +59,26 @@ permalink: /contact/index.html
   </div>
 </section>
 
+<section class="bg-primary/5 py-16" data-reveal>
+  <div class="container space-y-8">
+    <div class="max-w-3xl space-y-4">
+      <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Virtual programming signup</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Sign Up for Virtual Programming</h2>
+      <p class="text-slate-700 leading-relaxed">Interested in receiving Iowa Child & Youth Program virtual activities, resources, and seasonal programming? Complete the form below to be added to our virtual programming list.</p>
+    </div>
+    <div>
+      {% set signupFormId = 'contactVirtualProgrammingSignupForm' %}
+      {% set signupStatusId = 'contactVirtualProgrammingSignupStatus' %}
+      {% include "partials/virtual-programming-signup-form.njk" %}
+    </div>
+  </div>
+</section>
+
 <section class="bg-primary/5 py-20" data-reveal>
   <div class="container space-y-10">
     <div class="max-w-3xl space-y-4">
-      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Meet your points of contact</p>
-      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 uppercase tracking-[0.3em]">CONNECT WITH OUR COORDINATORS.</h2>
+      <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Meet your points of contact</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 uppercase tracking-[0.1em]">Connect with our coordinators</h2>
       <p class="text-slate-700 leading-relaxed">Chris and Erin both work out of Camp Dodge and team up on statewide programming. Reach out and we’ll cover your regional needs or loop in partners who can help.</p>
     </div>
     <div class="grid gap-6 md:grid-cols-2">
@@ -64,7 +86,7 @@ permalink: /contact/index.html
         <article class="content-card h-full space-y-6" data-reveal>
           <div class="flex items-center gap-5">
             {% if member.headshot %}
-              <img src="{{ member.headshot }}" alt="{{ member.name }}" class="h-16 w-16 rounded-full object-cover border border-primary/30" loading="lazy" decoding="async">
+              <img src="{{ member.headshot }}" alt="{{ member.name }}" class="h-16 w-16 rounded-full object-cover border border-primary/30" width="64" height="64" loading="lazy" decoding="async">
             {% endif %}
             <div>
               <h3 class="text-lg font-semibold text-slate-900">{{ member.name }}</h3>
@@ -104,14 +126,14 @@ permalink: /contact/index.html
   <div class="container space-y-10">
     <div class="content-card md:flex md:items-center md:justify-between md:gap-8 space-y-6 md:space-y-0">
       <div class="space-y-3">
-        <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Stay in the loop</p>
-        <h2 class="text-2xl font-semibold text-slate-900">Get event updates and resource drops</h2>
+        <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Stay in the loop</p>
+        <h2 class="text-2xl font-semibold text-slate-900">Get event updates and new resources</h2>
         <p class="text-gray-700">We’ll send a quick note when registrations open or new supports launch.</p>
       </div>
       <a class="btn" href="{{ site.links.eventsSubscribe }}">Subscribe to updates</a>
     </div>
     <div class="space-y-3">
-      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Follow Iowa CYP</p>
+      <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Follow Iowa CYP</p>
       <div class="flex flex-wrap gap-4 text-gray-700">
         <a class="social-link text-primary hover:text-secondary" href="{{ site.social.facebook }}" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">

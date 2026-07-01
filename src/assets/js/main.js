@@ -1,16 +1,64 @@
+document.documentElement.classList.add('js');
+
 // Mobile navigation with focus trap
 const navToggle = document.getElementById('navToggle');
 const mobileNav = document.getElementById('mobileNav');
 const navOverlay = document.getElementById('navOverlay');
 let navOpen = false;
 let previousFocus = null;
+let bodyScrollLockCount = 0;
+let bodyScrollY = 0;
+
+const lockBodyScroll = () => {
+  bodyScrollLockCount += 1;
+  if (bodyScrollLockCount > 1) return;
+
+  bodyScrollY = window.scrollY || window.pageYOffset || 0;
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${bodyScrollY}px`;
+  document.body.style.left = '0';
+  document.body.style.right = '0';
+  document.body.style.width = '100%';
+  document.body.style.overflow = 'hidden';
+};
+
+const unlockBodyScroll = () => {
+  if (bodyScrollLockCount === 0) return;
+  bodyScrollLockCount -= 1;
+  if (bodyScrollLockCount > 0) return;
+
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.left = '';
+  document.body.style.right = '';
+  document.body.style.width = '';
+  document.body.style.overflow = '';
+  window.scrollTo(0, bodyScrollY);
+};
 
 const getNavFocusable = () => {
   if (!mobileNav) return [];
-  return Array.from(mobileNav.querySelectorAll('[data-nav-focus], [data-nav-close], a'))
+  return Array.from(mobileNav.querySelectorAll('[data-nav-focus], [data-nav-close], [data-nav-parent-button], a, button'))
     .filter(
     (el) => !el.hasAttribute('disabled')
     );
+};
+
+const collapseMobileSubmenus = () => {
+  if (!mobileNav) return;
+  const parentButtons = mobileNav.querySelectorAll('[data-nav-parent-button]');
+  const submenus = mobileNav.querySelectorAll('[data-nav-submenu]');
+
+  parentButtons.forEach((button) => {
+    button.setAttribute('aria-expanded', 'false');
+    const icon = button.querySelector('svg');
+    if (icon) icon.classList.remove('rotate-180');
+  });
+
+  submenus.forEach((submenu) => {
+    submenu.classList.remove('is-open');
+    submenu.setAttribute('aria-hidden', 'true');
+  });
 };
 
 const closeNav = () => {
@@ -24,7 +72,8 @@ const closeNav = () => {
   if (navOverlay) {
     navOverlay.classList.add('hidden');
   }
-  document.body.classList.remove('overflow-hidden');
+  unlockBodyScroll();
+  collapseMobileSubmenus();
   if (previousFocus) {
     previousFocus.focus();
   }
@@ -43,8 +92,7 @@ const openNav = () => {
   if (navOverlay) {
     navOverlay.classList.remove('hidden');
   }
-  document.body.classList.add('overflow-hidden');
-  window.scrollTo(0, 0);
+  lockBodyScroll();
   const focusable = getNavFocusable();
   if (focusable.length) {
     focusable[0].focus();
@@ -86,6 +134,23 @@ if (navToggle && mobileNav) {
   if (closeButton) {
     closeButton.addEventListener('click', closeNav);
   }
+
+  mobileNav.querySelectorAll('[data-nav-parent-button]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const container = button.closest('[data-nav-item]');
+      const submenu = container?.querySelector('[data-nav-submenu]');
+      if (!submenu) return;
+
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      submenu.classList.toggle('is-open', !expanded);
+      submenu.setAttribute('aria-hidden', expanded ? 'true' : 'false');
+
+      const icon = button.querySelector('svg');
+      if (icon) icon.classList.toggle('rotate-180', !expanded);
+    });
+  });
+
   mobileNav.addEventListener('click', (event) => {
     if (event.target.matches('[data-nav-focus]')) {
       closeNav();
@@ -96,18 +161,213 @@ if (navToggle && mobileNav) {
   }
 }
 
+// Desktop dropdown hover-intent — 200 ms close delay prevents accidental triggers
+{
+  const navItems = document.querySelectorAll('header.nav nav > ul > .nav-item');
+  let closeTimer = null;
+  let activeItem = null;
+
+  const closeItem = (li) => {
+    li.removeAttribute('data-open');
+    if (activeItem === li) activeItem = null;
+  };
+
+  const openItem = (li) => {
+    clearTimeout(closeTimer);
+    if (activeItem && activeItem !== li) {
+      closeItem(activeItem);
+    }
+    activeItem = li;
+    li.setAttribute('data-open', '');
+  };
+
+  const scheduleClose = (li) => {
+    clearTimeout(closeTimer);
+    closeTimer = setTimeout(() => {
+      closeItem(li);
+    }, 200);
+  };
+
+  navItems.forEach((li) => {
+    const trigger = li.querySelector(':scope > a[data-nav-trigger]');
+    const panel = li.querySelector('[data-nav-panel]');
+
+    if (!trigger || !panel) return;
+
+    trigger.addEventListener('mouseenter', () => openItem(li));
+    trigger.addEventListener('mouseleave', () => scheduleClose(li));
+    trigger.addEventListener('focus', () => openItem(li));
+    trigger.addEventListener('blur', (event) => {
+      if (!li.contains(event.relatedTarget)) {
+        scheduleClose(li);
+      }
+    });
+    panel.addEventListener('mouseenter', () => openItem(li));
+    panel.addEventListener('mouseleave', () => scheduleClose(li));
+    li.addEventListener('focusin', () => openItem(li));
+    li.addEventListener('focusout', (event) => {
+      if (!li.contains(event.relatedTarget)) {
+        scheduleClose(li);
+      }
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    if (activeItem) {
+      closeItem(activeItem);
+    }
+  }, { passive: true });
+}
+
+const setupFrameEmbeds = () => {
+  const frames = Array.from(document.querySelectorAll('iframe[data-frame-src], iframe[data-frame-eager]'));
+  if (!frames.length) return;
+
+  const markLoaded = (frame) => {
+    frame.classList.add('is-loaded');
+    const shell = frame.closest('[data-frame-shell]');
+    if (shell) {
+      shell.setAttribute('data-frame-loaded', 'true');
+    }
+  };
+
+  const hydrateFrame = (frame) => {
+    if (frame.dataset.frameHydrated === 'true') return;
+    const src = frame.dataset.frameSrc;
+    if (!src) return;
+
+    frame.dataset.frameHydrated = 'true';
+    frame.addEventListener('load', () => markLoaded(frame), { once: true });
+    frame.src = src;
+  };
+
+  const observeOptions = {
+    rootMargin: '220px 0px',
+    threshold: 0.01,
+  };
+
+  const observer = 'IntersectionObserver' in window
+    ? new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting && entry.intersectionRatio <= 0) {
+            return;
+          }
+          observer.unobserve(entry.target);
+          hydrateFrame(entry.target);
+        });
+      }, observeOptions)
+    : null;
+
+  frames.forEach((frame) => {
+    frame.classList.add('frame-embed');
+
+    if (frame.dataset.frameBound === 'true') return;
+    frame.dataset.frameBound = 'true';
+
+    const shell = frame.closest('[data-frame-shell]');
+    if (shell) {
+      shell.setAttribute('data-frame-loaded', 'false');
+    }
+
+    if (frame.hasAttribute('data-frame-eager')) {
+      hydrateFrame(frame);
+      return;
+    }
+
+    if (observer) {
+      observer.observe(frame);
+    } else {
+      hydrateFrame(frame);
+    }
+  });
+};
+
+setupFrameEmbeds();
+
+const setupVideoFades = () => {
+  const videos = Array.from(document.querySelectorAll('video[data-video-fade], video[data-video-lazy], .hero-video'));
+  if (!videos.length) return;
+
+  const startVideo = (video) => {
+    if (video.dataset.videoMotionDisabled === 'true') return;
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {
+        // Autoplay can still be blocked by browser policy; poster remains visible.
+      });
+    }
+  };
+
+  const markLoaded = (video) => {
+    const shell = video.closest('[data-video-shell], [data-frame-shell], .hero-video-wrapper, .video-shell');
+    if (shell) {
+      shell.setAttribute('data-video-loaded', 'true');
+    }
+    video.setAttribute('data-video-loaded', 'true');
+  };
+
+  const markLoadedAndPlay = (video) => {
+    markLoaded(video);
+    startVideo(video);
+  };
+
+  const prepareVideo = (video) => {
+    if (video.dataset.videoBound === 'true') return;
+    video.dataset.videoBound = 'true';
+    video.muted = true;
+    video.defaultMuted = true;
+    video.autoplay = true;
+    video.playsInline = true;
+
+    const shell = video.closest('[data-video-shell], [data-frame-shell], .hero-video-wrapper, .video-shell');
+    if (shell) {
+      shell.setAttribute('data-video-loaded', 'false');
+    }
+
+    const lazySources = Array.from(video.querySelectorAll('source[data-src]'));
+    if (lazySources.length) {
+      lazySources.forEach((source) => {
+        source.src = source.dataset.src;
+      });
+    }
+
+    video.load();
+
+    if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+      markLoadedAndPlay(video);
+      return;
+    }
+
+    ['loadedmetadata', 'loadeddata', 'canplay', 'canplaythrough', 'playing'].forEach((eventName) => {
+      video.addEventListener(eventName, () => markLoadedAndPlay(video), { once: true });
+    });
+  };
+
+  videos.forEach(prepareVideo);
+
+  const retryVideos = () => {
+    videos.forEach((video) => {
+      if (video.readyState >= HTMLMediaElement.HAVE_METADATA) {
+        markLoadedAndPlay(video);
+      }
+    });
+  };
+
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) retryVideos();
+  });
+  ['pointerdown', 'touchstart', 'keydown'].forEach((eventName) => {
+    window.addEventListener(eventName, retryVideos, { once: true, passive: true });
+  });
+};
+
+setupVideoFades();
+
 const scrollReveal = (() => {
-  const SELECTOR = [
-    '[data-reveal]',
-    'main section',
-    'main article',
-    'main aside',
-    'main .content-card',
-    'main .feature-card',
-    'main .resource-card',
-    'main .event-card',
-    'main .grid > *',
-  ].join(', ');
+  const SELECTOR = '[data-reveal]';
   const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
   let observer = null;
   let globalOrder = 0;
@@ -133,8 +393,8 @@ const scrollReveal = (() => {
   const ensureObserver = () => {
     if (observer) return observer;
     observer = new IntersectionObserver(handleEntries, {
-      threshold: 0.25,
-      rootMargin: '0px 0px -10% 0px',
+      threshold: 0.08,
+      rootMargin: '0px 0px -3% 0px',
     });
     return observer;
   };
@@ -191,62 +451,155 @@ const formatEventDate = (value) => {
   return new Intl.DateTimeFormat('en-US', { dateStyle: 'long' }).format(date);
 };
 
+const todayEventKey = () => {
+  const today = new Date();
+  const month = `${today.getMonth() + 1}`.padStart(2, '0');
+  const day = `${today.getDate()}`.padStart(2, '0');
+  return `${today.getFullYear()}-${month}-${day}`;
+};
+
+const sortEventsByDate = (events, direction = 'asc') =>
+  [...events].sort((left, right) => {
+    const leftFeatured = Boolean(left.featured);
+    const rightFeatured = Boolean(right.featured);
+
+    if (direction === 'asc' && leftFeatured !== rightFeatured) {
+      return leftFeatured ? -1 : 1;
+    }
+
+    const leftDate = left.date || '';
+    const rightDate = right.date || '';
+    return direction === 'desc'
+      ? rightDate.localeCompare(leftDate)
+      : leftDate.localeCompare(rightDate);
+  });
+
+const isEventFull = (event) => event.full === true || event.full === 'true';
+
+const renderEventCard = (event, variant = 'upcoming') => {
+  const displayDate = event.displayDate || formatEventDate(event.date);
+  const datetimeAttr = event.date ? ` datetime="${event.date}"` : '';
+  const hasImage = Boolean(event.image);
+  const eventFull = variant !== 'completed' && isEventFull(event);
+
+  const wrapperClass =
+    variant === 'completed'
+      ? 'content-card h-full flex flex-col overflow-hidden border border-slate-200/80 bg-slate-50/60 p-0'
+      : `event-card rounded-2xl border border-slate-200 bg-white shadow-sm flex flex-col overflow-hidden${hasImage ? ' p-0' : ' p-6'}`;
+
+  const titleClass = variant === 'completed' ? 'text-lg font-semibold text-slate-800' : 'text-xl font-semibold text-primary';
+  const locationClass = variant === 'completed' ? 'text-sm text-slate-600' : 'text-sm text-gray-600';
+  const notesClass = variant === 'completed' ? 'text-sm text-slate-600 leading-relaxed' : 'text-sm text-gray-600';
+  const featuredBadge = variant !== 'completed' && event.featured
+    ? '<span class="inline-flex items-center rounded-full bg-secondary px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-primary">Top event</span>'
+    : '';
+  const fullBadge = eventFull
+    ? '<span class="inline-flex items-center rounded-full bg-red-100 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-red-700">Full</span>'
+    : '';
+
+  const imageBlock = hasImage
+    ? `<div class="event-card__image-wrap">
+        <img src="${event.image}" alt="${event.title}" class="${variant === 'completed' ? 'event-banner opacity-90' : 'event-card__image'}" width="1920" height="1005" loading="lazy" decoding="async">
+        ${eventFull ? '<div class="event-card__full-overlay" aria-label="Event full"><span>Full</span></div>' : ''}
+      </div>`
+    : '';
+
+  let ctaButton = '';
+  if (eventFull) {
+    ctaButton = '<span class="btn event-card__full-cta w-fit" aria-disabled="true">Event full</span>';
+  } else if (variant !== 'completed' && event.ctaUrl) {
+    const absolute = /^https?:/i.test(event.ctaUrl);
+    const currentOrigin = window.location.origin;
+    const external = absolute && !event.ctaUrl.startsWith(currentOrigin);
+    const attrs = external ? ' target="_blank" rel="noopener"' : '';
+    const label = event.ctaLabel || 'Learn More';
+    const externalNote = external ? ' <span class="sr-only">(opens in new tab)</span>' : '';
+    ctaButton = `<a class="btn w-fit" href="${event.ctaUrl}"${attrs}>${label}${externalNote}</a>`;
+  }
+
+  const contentPadding = hasImage ? 'p-5' : '';
+  const wrapperAccent = variant !== 'completed' && event.featured ? ' ring-2 ring-secondary/60 shadow-lg' : '';
+
+  return `
+    <article class="${wrapperClass}${wrapperAccent}">
+      ${imageBlock}
+      <div class="flex flex-col flex-1 gap-3 ${contentPadding}">
+        <div class="space-y-1.5">
+          <div class="flex items-start gap-2 flex-wrap">
+            <h3 class="${titleClass}">${event.title}</h3>
+            ${variant === 'completed' ? '<span class="inline-flex items-center rounded-full bg-slate-200 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-700">Completed</span>' : `${featuredBadge}${fullBadge}`}
+          </div>
+          ${
+            displayDate || event.time
+              ? `<p class="${variant === 'completed' ? 'text-sm text-slate-600' : 'text-gray-700'}"><time${datetimeAttr}>${displayDate || event.date || ''}</time>${event.time ? ` &middot; ${event.time}` : ''}</p>`
+              : ''
+          }
+          ${event.location ? `<p class="${locationClass}">${event.location}</p>` : ''}
+          ${
+            variant === 'completed'
+              ? '<p class="text-sm text-slate-600 leading-relaxed">Thanks to all who joined us.</p>'
+              : event.notes
+                ? `<p class="${notesClass}">${event.notes}</p>`
+                : ''
+          }
+        </div>
+        ${ctaButton}
+      </div>
+    </article>
+  `;
+};
+
 async function renderEvents() {
-  const target = document.getElementById('eventsList');
-  if (!target) return;
-  target.setAttribute('aria-busy', 'true');
+  const upcomingTarget = document.getElementById('eventsList');
+  if (!upcomingTarget) return;
+
+  const completedTarget = document.getElementById('completedEvents');
+  upcomingTarget.setAttribute('aria-busy', 'true');
+  if (completedTarget) {
+    completedTarget.setAttribute('aria-busy', 'true');
+  }
+
   try {
     const res = await fetch('/events.json', { headers: { 'Cache-Control': 'no-cache' } });
     if (!res.ok) throw new Error(`Failed to fetch events: ${res.status}`);
+
     const data = await res.json();
-    if (!data.events || !data.events.length) {
-      target.innerHTML = '<p class="text-gray-600">No upcoming events right now. Check back soon!</p>';
-      return;
+    const eventList = Array.isArray(data.events) ? data.events : [];
+    const todayKey = todayEventKey();
+    const upcomingEvents = sortEventsByDate(
+      eventList.filter((event) => !event.date || event.date >= todayKey),
+      'asc'
+    );
+    const completedEvents = sortEventsByDate(
+      eventList.filter((event) => event.date && event.date < todayKey),
+      'desc'
+    );
+
+    upcomingTarget.innerHTML = upcomingEvents.length
+      ? upcomingEvents.map((event) => renderEventCard(event)).join('')
+      : '<p class="text-gray-600">No upcoming events right now. Check back soon.</p>';
+
+    if (completedTarget) {
+      completedTarget.innerHTML = completedEvents.length
+        ? completedEvents.map((event) => renderEventCard(event, 'completed')).join('')
+        : '<p class="text-slate-600">No completed events to show yet.</p>';
     }
-    target.innerHTML = data.events
-      .map((ev) => {
-        const displayDate = ev.displayDate || formatEventDate(ev.date);
-        const datetimeAttr = ev.date ? ` datetime="${ev.date}"` : '';
-        const timeDetails = [displayDate, ev.time].filter(Boolean).join(' &middot; ');
-        const locationLine = ev.location ? `<p class="text-sm text-gray-600">${ev.location}</p>` : '';
-        const notesLine = ev.notes ? `<p class="text-sm text-gray-600">${ev.notes}</p>` : '';
-        const imageBlock = ev.image
-          ? `<img src="${ev.image}" alt="${ev.title}" class="event-card__image mb-4" loading="lazy" decoding="async">`
-          : '';
-        let ctaButton = '';
-        if (ev.ctaUrl) {
-          const absolute = /^https?:/i.test(ev.ctaUrl);
-          const currentOrigin = window.location.origin;
-          const external = absolute && !ev.ctaUrl.startsWith(currentOrigin);
-          const attrs = external ? ' target="_blank" rel="noopener"' : '';
-          const label = ev.ctaLabel || 'Learn More';
-          const externalNote = external ? ' <span class="sr-only">(opens in new tab)</span>' : '';
-          ctaButton = `<a class="btn w-fit" href="${ev.ctaUrl}"${attrs}>${label}${externalNote}</a>`;
-        }
-        return `
-          <article class="event-card rounded-2xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col">
-            ${imageBlock}
-            <div class="space-y-2 mb-4">
-              <h3 class="text-xl font-semibold text-primary">${ev.title}</h3>
-              ${
-                timeDetails
-                  ? `<p class="text-gray-700"><time${datetimeAttr}>${displayDate || ev.date || ''}</time>${ev.time ? ` &middot; ${ev.time}` : ''}</p>`
-                  : ''
-              }
-              ${locationLine}
-              ${notesLine}
-            </div>
-            ${ctaButton}
-          </article>
-        `;
-      })
-      .join('');
-    scrollReveal.init(target);
+
+    scrollReveal.init(upcomingTarget);
+    if (completedTarget) {
+      scrollReveal.init(completedTarget);
+    }
   } catch (error) {
-    target.innerHTML = '<p class="text-red-600">Could not load events. Please refresh and try again.</p>';
+    upcomingTarget.innerHTML = '<p class="text-red-600">Could not load events. Please refresh and try again.</p>';
+    if (completedTarget) {
+      completedTarget.innerHTML = '<p class="text-red-600">Could not load completed events.</p>';
+    }
     console.error(error);
   } finally {
-    target.setAttribute('aria-busy', 'false');
+    upcomingTarget.setAttribute('aria-busy', 'false');
+    if (completedTarget) {
+      completedTarget.setAttribute('aria-busy', 'false');
+    }
   }
 }
 renderEvents();
@@ -350,12 +703,290 @@ const initQuoteCarousels = () => {
 
 initQuoteCarousels();
 
+const initStoryCarousel = () => {
+  const carousel = document.querySelector('[data-story-carousel]');
+  const track = carousel?.querySelector('[data-story-track]');
+  if (!carousel || !track) return;
+
+  const slides = Array.from(track.querySelectorAll('[data-story-slide]'));
+  const prevButton = carousel.querySelector('[data-story-prev]');
+  const nextButton = carousel.querySelector('[data-story-next]');
+  if (!slides.length) return;
+
+  slides
+    .sort((left, right) => {
+      const leftDate = left.getAttribute('data-published') || '';
+      const rightDate = right.getAttribute('data-published') || '';
+      return rightDate.localeCompare(leftDate);
+    })
+    .forEach((slide) => track.appendChild(slide));
+
+  const scrollAmount = () => {
+    const firstSlide = slides[0];
+    if (!firstSlide) return 0;
+    const styles = window.getComputedStyle(track);
+    const gap = Number.parseFloat(styles.columnGap || styles.gap || '0');
+    return firstSlide.getBoundingClientRect().width + gap;
+  };
+
+  const updateButtons = () => {
+    if (!prevButton || !nextButton) return;
+    const maxScrollLeft = track.scrollWidth - track.clientWidth;
+    prevButton.disabled = track.scrollLeft <= 4;
+    nextButton.disabled = track.scrollLeft >= maxScrollLeft - 4;
+  };
+
+  const moveTrack = (direction) => {
+    track.scrollBy({ left: direction * scrollAmount(), behavior: 'smooth' });
+  };
+
+  prevButton?.addEventListener('click', () => moveTrack(-1));
+  nextButton?.addEventListener('click', () => moveTrack(1));
+  track.addEventListener('scroll', updateButtons, { passive: true });
+  window.addEventListener('resize', updateButtons);
+  updateButtons();
+};
+
+const initStoryModals = () => {
+  const openButtons = Array.from(document.querySelectorAll('[data-modal-open]'));
+  if (!openButtons.length) return;
+
+  let activeModal = null;
+  let previousFocus = null;
+
+  const closeModal = (modal) => {
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.setAttribute('aria-hidden', 'true');
+    unlockBodyScroll();
+    activeModal = null;
+    if (previousFocus instanceof HTMLElement) {
+      previousFocus.focus();
+    }
+    previousFocus = null;
+  };
+
+  const openModal = (modal) => {
+    if (!modal) return;
+    previousFocus = document.activeElement;
+    modal.classList.remove('hidden');
+    modal.setAttribute('aria-hidden', 'false');
+    lockBodyScroll();
+    activeModal = modal;
+    modal.scrollTop = 0;
+    const autoFocus = modal.querySelector('[data-modal-autofocus]');
+    const firstFocusable = modal.querySelector('input, textarea, button, a[href], [tabindex]:not([tabindex="-1"])');
+    (autoFocus instanceof HTMLElement ? autoFocus : firstFocusable || modal).focus();
+  };
+
+  openButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const modalName = button.getAttribute('data-modal-open');
+      if (!modalName) return;
+      openModal(document.querySelector(`[data-modal="${modalName}"]`));
+    });
+  });
+
+  document.querySelectorAll('[data-modal]').forEach((modal) => {
+    modal.querySelectorAll('[data-modal-close], [data-modal-overlay]').forEach((element) => {
+      element.addEventListener('click', () => closeModal(modal));
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && activeModal) {
+      event.preventDefault();
+      closeModal(activeModal);
+    }
+  });
+};
+
+initStoryCarousel();
+initStoryModals();
+
+const initSiteSearch = () => {
+  const modal = document.querySelector('[data-modal="site-search"]');
+  if (!modal) return;
+
+  const input = modal.querySelector('[data-site-search-input]');
+  const results = modal.querySelector('[data-site-search-results]');
+  const status = modal.querySelector('[data-site-search-status]');
+  const clearButton = modal.querySelector('[data-site-search-clear]');
+  const form = modal.querySelector('[data-site-search-form]');
+  const loadSearchItems = () => {
+    const dataNode = document.getElementById('site-search-data');
+    if (dataNode && dataNode.textContent) {
+      try {
+        const parsed = JSON.parse(dataNode.textContent);
+        if (Array.isArray(parsed) && parsed.length) return parsed;
+      } catch (error) {
+        // Fall back to the small static index below.
+      }
+    }
+
+    return [
+      { title: 'Home', url: '/', type: 'Page', summary: 'Landing page with featured programs, mission, and quick access to updates.', keywords: ['landing', 'featured', 'updates'], featured: true },
+      { title: 'About', url: '/about/', type: 'Page', summary: 'Mission, vision, values, and team information.', keywords: ['mission', 'vision', 'values', 'team'], featured: true },
+      { title: 'Stories', url: '/stories/', type: 'Page', summary: 'Family stories and community voices.', keywords: ['stories', 'voices', 'spotlight'], featured: true },
+      { title: 'Events', url: '/events/', type: 'Page', summary: 'Upcoming events, completed gatherings, and programs.', keywords: ['calendar', 'programs'], featured: true },
+      { title: 'Support', url: '/support/', type: 'Page', summary: 'Ways to partner, volunteer, and support the mission.', keywords: ['partner', 'volunteer', 'donate'], featured: true },
+      { title: 'Educators', url: '/educators/', type: 'Page', summary: 'Purple Star Schools tools and classroom resources.', keywords: ['teachers', 'schools', 'classroom'], featured: true },
+      { title: 'Month of the Military Child', url: '/month-of-the-military-child/', type: 'Page', summary: 'Celebration tools and classroom ideas for MOMC.', keywords: ['momc', 'purple up', 'military child'], featured: true },
+      { title: 'Resources', url: '/resources/', type: 'Page', summary: 'Scholarships, downloads, and trusted partner links.', keywords: ['resource hub', 'help', 'links'], featured: true },
+      { title: 'Contact', url: '/contact/', type: 'Page', summary: 'Reach the team by phone or email.', keywords: ['email', 'phone', 'help'], featured: true },
+      { title: 'Mental Health Resources', url: '/mental-health-resources/', type: 'Page', summary: 'Mental health support and crisis resources.', keywords: ['crisis', 'mental health', 'support'], featured: true },
+    ];
+  };
+
+  const searchItems = loadSearchItems();
+
+  const normalize = (value = '') => value.toLowerCase().replace(/[\u2019']/g, "'").replace(/[^a-z0-9]+/g, ' ').trim();
+  const defaultItems = searchItems.filter((item) => item.featured).slice(0, 8);
+
+  const buildHref = (item) => {
+    if (item.external) return item.url;
+    return item.url;
+  };
+
+  const scoreItem = (item, query) => {
+    const normalizedQuery = normalize(query);
+    if (!normalizedQuery) return item.featured ? 1 : 0;
+
+    const tokens = normalizedQuery.split(/\s+/).filter(Boolean);
+    const haystack = normalize(item.searchText || [item.title, item.type, item.summary, ...(item.keywords || [])].join(' '));
+    if (!tokens.every((token) => haystack.includes(token))) return null;
+
+    let score = 0;
+    if (normalize(item.title).startsWith(normalizedQuery)) score += 80;
+    if (normalize(item.title).includes(normalizedQuery)) score += 40;
+    if (normalize(item.summary).includes(normalizedQuery)) score += 20;
+    if (haystack.includes(normalizedQuery)) score += 10;
+    tokens.forEach((token) => {
+      if (normalize(item.title).includes(token)) score += 10;
+      if (normalize(item.summary).includes(token)) score += 5;
+      if (haystack.includes(token)) score += 2;
+    });
+    if (item.external) score -= 5;
+    if (item.featured) score += 6;
+    return score;
+  };
+
+  const renderResults = (query = '') => {
+    if (!results || !status) return;
+
+    const trimmedQuery = query.trim();
+    const list = trimmedQuery
+      ? searchItems
+          .map((item) => ({ item, score: scoreItem(item, trimmedQuery) }))
+          .filter((entry) => entry.score !== null)
+          .sort((left, right) => right.score - left.score)
+          .map((entry) => entry.item)
+          .slice(0, 10)
+      : defaultItems;
+
+    status.textContent = trimmedQuery
+      ? `${list.length} result${list.length === 1 ? '' : 's'} for "${trimmedQuery}".`
+      : 'Showing quick links. Start typing to search the site.';
+
+    if (!list.length) {
+      results.innerHTML = `
+        <div class="rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-600">
+          No results found for "${trimmedQuery}". Try a different keyword or browse the quick links above.
+        </div>
+      `;
+      return;
+    }
+
+    results.innerHTML = list.map((item) => {
+      const externalNote = item.external ? '<span class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">External</span>' : '';
+      const newTabAttrs = item.external ? ' target="_blank" rel="noopener"' : '';
+      const closeAttr = ' data-modal-close';
+      return `
+        <a
+          href="${buildHref(item)}"
+          class="group flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-px hover:border-primary hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/20"
+          ${newTabAttrs}
+          ${closeAttr}
+        >
+          <span class="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/5 text-primary">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="min-w-0 flex-1">
+            <span class="flex flex-wrap items-center gap-2">
+              <span class="block text-base font-semibold text-slate-900 group-hover:text-primary">${item.title}</span>
+              ${externalNote}
+            </span>
+            <span class="mt-1 block text-sm font-semibold uppercase tracking-[0.14em] text-slate-400">${item.type}</span>
+            <span class="mt-2 block text-sm leading-relaxed text-slate-600">${item.summary}</span>
+          </span>
+        </a>
+      `;
+    }).join('');
+  };
+
+  const focusInput = () => {
+    if (!(input instanceof HTMLElement)) return;
+    input.focus();
+    if (typeof input.select === 'function') {
+      input.select();
+    }
+  };
+
+  if (input) {
+    input.addEventListener('input', () => renderResults(input.value));
+  }
+
+  if (clearButton) {
+    clearButton.addEventListener('click', () => {
+      if (input instanceof HTMLInputElement) {
+        input.value = '';
+      }
+      renderResults('');
+      focusInput();
+    });
+  }
+
+  if (form) {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      renderResults(input instanceof HTMLInputElement ? input.value : '');
+    });
+  }
+
+  const observer = new MutationObserver(() => {
+    if (modal.getAttribute('aria-hidden') === 'false') {
+      renderResults(input instanceof HTMLInputElement ? input.value : '');
+      requestAnimationFrame(focusInput);
+    }
+  });
+  observer.observe(modal, { attributes: true, attributeFilter: ['aria-hidden'] });
+
+  renderResults('');
+};
+
+initSiteSearch();
+
 // Handle reduced motion for hero video
 const heroVideo = document.querySelector('.hero-video');
 const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 const isHtmlMediaElement = heroVideo instanceof HTMLMediaElement;
 const isYouTubeEmbed =
   heroVideo instanceof HTMLIFrameElement && heroVideo.src.includes('youtube.com/embed');
+const heroVideoOrigin = heroVideo && isYouTubeEmbed ? window.location.origin : null;
+
+if (isYouTubeEmbed && heroVideoOrigin) {
+  try {
+    const heroUrl = new URL(heroVideo.src);
+    if (heroUrl.searchParams.get('origin') !== heroVideoOrigin) {
+      heroUrl.searchParams.set('origin', heroVideoOrigin);
+      heroVideo.src = heroUrl.toString();
+    }
+  } catch (error) {
+    // Leave the iframe as-is if the URL cannot be parsed.
+  }
+}
 
 const postToYouTube = (action) => {
   if (!isYouTubeEmbed || !heroVideo.contentWindow) return;
@@ -369,13 +1000,19 @@ const updateHeroVideo = () => {
   if (!heroVideo) return;
   if (isHtmlMediaElement) {
     if (motionQuery.matches) {
+      heroVideo.dataset.videoMotionDisabled = 'true';
       heroVideo.pause();
       heroVideo.currentTime = 0;
       heroVideo.removeAttribute('autoplay');
+      heroVideo.classList.add('is-motion-disabled');
       heroVideo.setAttribute('aria-hidden', 'true');
     } else {
+      heroVideo.dataset.videoMotionDisabled = 'false';
+      heroVideo.classList.remove('is-motion-disabled');
       heroVideo.removeAttribute('aria-hidden');
       heroVideo.muted = true;
+      heroVideo.defaultMuted = true;
+      heroVideo.playsInline = true;
       const playPromise = heroVideo.play();
       if (playPromise && typeof playPromise.then === 'function') {
         playPromise.catch(() => {
@@ -389,8 +1026,10 @@ const updateHeroVideo = () => {
   if (isYouTubeEmbed) {
     if (motionQuery.matches) {
       postToYouTube('pauseVideo');
+      heroVideo.classList.add('is-motion-disabled');
       heroVideo.setAttribute('aria-hidden', 'true');
     } else {
+      heroVideo.classList.remove('is-motion-disabled');
       heroVideo.removeAttribute('aria-hidden');
       postToYouTube('mute');
       postToYouTube('playVideo');
@@ -431,6 +1070,17 @@ const markExternalLinks = () => {
 };
 markExternalLinks();
 
+const ALLOWED_SERVICE_AREAS = new Set([
+  'Des Moines',
+  'Sioux City',
+  'Council Bluffs',
+  'Waterloo',
+  'Cedar Rapids',
+  'Davenport',
+]);
+
+const isAllowedServiceArea = (value) => ALLOWED_SERVICE_AREAS.has(String(value || '').trim());
+
 const initSubscribeForm = () => {
   const form = document.getElementById('subscribeForm');
   if (!form) return;
@@ -458,10 +1108,28 @@ const initSubscribeForm = () => {
 
     const formData = new FormData(form);
     const email = String(formData.get('email') || '').trim().toLowerCase();
+    const affiliation = String(formData.get('affiliation') || '').trim();
+    const serviceArea = String(formData.get('service_area') || '').trim();
+    const consent = Boolean(formData.get('consent'));
     const botField = String(formData.get('bot-field') || '').trim();
 
     if (!email) {
       setStatus('Please enter your email address.', 'error');
+      return;
+    }
+
+    if (!affiliation || !serviceArea) {
+      setStatus('Please select both your affiliation / program and service area.', 'error');
+      return;
+    }
+
+    if (!isAllowedServiceArea(serviceArea)) {
+      setStatus('Please select a valid service area / closest city.', 'error');
+      return;
+    }
+
+    if (!consent) {
+      setStatus('Please confirm you want to receive updates from Iowa CYP.', 'error');
       return;
     }
 
@@ -474,8 +1142,9 @@ const initSubscribeForm = () => {
     const payload = {
       email,
       region: String(formData.get('region') || '').trim() || null,
-      service_area: String(formData.get('service_area') || '').trim() || null,
-      affiliation: String(formData.get('affiliation') || '').trim() || null,
+      service_area: serviceArea,
+      affiliation,
+      consent: true,
       source: String(formData.get('source') || '').trim() || 'www.iowacyp.com',
       tags: String(formData.get('tags') || '').trim(),
       submitted_at: new Date().toISOString(),
@@ -528,6 +1197,330 @@ const initSubscribeForm = () => {
 
 initSubscribeForm();
 
+const initVirtualProgrammingSignupForm = () => {
+  const form = document.querySelector('[data-virtual-programming-signup-form]');
+  if (!form) return;
+
+  const statusEl = form.querySelector('[data-vp-signup-status]');
+  const submitBtn = form.querySelector('[data-vp-signup-submit]');
+  const emailInput = form.querySelector('input[name="email"]');
+  const storageKey = 'virtual-programming-signup-email';
+  let busy = false;
+  const canUseStorage = () => {
+    try {
+      return typeof window.localStorage !== 'undefined';
+    } catch (_error) {
+      return false;
+    }
+  };
+
+  if (canUseStorage() && emailInput instanceof HTMLInputElement) {
+    const rememberedEmail = window.localStorage.getItem(storageKey);
+    if (rememberedEmail) {
+      emailInput.value = rememberedEmail;
+    }
+  }
+
+  const setStatus = (message, tone = 'muted') => {
+    if (!statusEl) return;
+    statusEl.textContent = message || '';
+    statusEl.classList.remove('text-slate-600', 'text-emerald-700', 'text-red-700');
+    if (tone === 'success') {
+      statusEl.classList.add('text-emerald-700');
+    } else if (tone === 'error') {
+      statusEl.classList.add('text-red-700');
+    } else {
+      statusEl.classList.add('text-slate-600');
+    }
+  };
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (busy) return;
+
+    const formData = new FormData(form);
+    const email = String(formData.get('email') || '').trim().toLowerCase();
+    const affiliation = String(formData.get('affiliation') || '').trim();
+    const serviceArea = String(formData.get('service_area') || '').trim();
+    const consent = Boolean(formData.get('consent'));
+    const botField = String(formData.get('bot-field') || '').trim();
+
+    if (!email) {
+      setStatus('Please enter your email address.', 'error');
+      return;
+    }
+
+    if (!affiliation || !serviceArea) {
+      setStatus('Please select both your affiliation / program and service area.', 'error');
+      return;
+    }
+
+    if (!isAllowedServiceArea(serviceArea)) {
+      setStatus('Please select a valid service area / closest city.', 'error');
+      return;
+    }
+
+    if (!consent) {
+      setStatus('Please confirm you want to receive updates from Iowa CYP.', 'error');
+      return;
+    }
+
+    if (botField) {
+      setStatus('Thank you! Your virtual programming interest form has been submitted.', 'success');
+      if (canUseStorage()) {
+        window.localStorage.setItem(storageKey, email);
+      }
+      form.reset();
+      return;
+    }
+
+    const payload = {
+      email,
+      region: String(formData.get('region') || '').trim() || null,
+      service_area: serviceArea,
+      affiliation,
+      consent: true,
+      source: String(formData.get('source') || '').trim() || 'www.iowacyp.com',
+      tags: String(formData.get('tags') || '').trim(),
+      submitted_at: new Date().toISOString(),
+    };
+
+    busy = true;
+    if (submitBtn instanceof HTMLButtonElement) {
+      submitBtn.disabled = true;
+    }
+    setStatus('Submitting...');
+
+    try {
+      const response = await fetch('/.netlify/functions/subscribe-proxy', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      let responseBody = {};
+      try {
+        responseBody = await response.json();
+      } catch (_error) {
+        responseBody = {};
+      }
+
+      if (!response.ok || responseBody.ok !== true) {
+        const message =
+          String(responseBody.error || '').trim() ||
+          'We could not submit your virtual programming signup. Please try again.';
+        throw new Error(message);
+      }
+
+      if (canUseStorage()) {
+        window.localStorage.setItem(storageKey, email);
+      }
+      setStatus('Thank you! Your virtual programming interest form has been submitted.', 'success');
+      form.reset();
+    } catch (error) {
+      setStatus(String(error?.message || 'Submission failed. Please try again.'), 'error');
+      console.error('Virtual programming signup submission failed', error);
+    } finally {
+      busy = false;
+      if (submitBtn instanceof HTMLButtonElement) {
+        submitBtn.disabled = false;
+      }
+    }
+  });
+};
+
+initVirtualProgrammingSignupForm();
+
+const initAccessGate = ({
+  gateSelector,
+  contentSelector,
+  formSelector,
+  statusSelector,
+  submitSelector,
+  storageKey,
+  emailKey,
+  unlockedMessage,
+  successMessage,
+  defaultSource,
+  logLabel,
+}) => {
+  const gate = document.querySelector(gateSelector);
+  const content = document.querySelector(contentSelector);
+  const form = document.querySelector(formSelector);
+  if (!gate || !content || !form) return;
+
+  const statusEl = form.querySelector(statusSelector);
+  const submitBtn = form.querySelector(submitSelector);
+  const emailInput = form.querySelector('input[name="email"]');
+  let busy = false;
+
+  const canUseStorage = () => {
+    try {
+      return typeof window.localStorage !== 'undefined';
+    } catch (_error) {
+      return false;
+    }
+  };
+
+  const unlock = () => {
+    gate.classList.add('hidden');
+    content.hidden = false;
+  };
+
+  if (canUseStorage() && window.localStorage.getItem(storageKey) === 'true') {
+    if (emailInput instanceof HTMLInputElement) {
+      const rememberedEmail = window.localStorage.getItem(emailKey);
+      if (rememberedEmail) {
+        emailInput.value = rememberedEmail;
+      }
+    }
+    unlock();
+    return;
+  }
+
+  if (canUseStorage() && emailInput instanceof HTMLInputElement) {
+    const rememberedEmail = window.localStorage.getItem(emailKey);
+    if (rememberedEmail) {
+      emailInput.value = rememberedEmail;
+    }
+  }
+
+  const setStatus = (message, tone = 'muted') => {
+    if (!statusEl) return;
+    statusEl.textContent = message || '';
+    statusEl.classList.remove('text-slate-600', 'text-emerald-700', 'text-red-700');
+    if (tone === 'success') {
+      statusEl.classList.add('text-emerald-700');
+    } else if (tone === 'error') {
+      statusEl.classList.add('text-red-700');
+    } else {
+      statusEl.classList.add('text-slate-600');
+    }
+  };
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (busy) return;
+
+    const formData = new FormData(form);
+    const email = String(formData.get('email') || '').trim().toLowerCase();
+    const affiliation = String(formData.get('affiliation') || '').trim();
+    const serviceArea = String(formData.get('service_area') || '').trim();
+    const consent = Boolean(formData.get('consent'));
+    const botField = String(formData.get('bot-field') || '').trim();
+
+    if (!email) {
+      setStatus('Please enter your email address.', 'error');
+      return;
+    }
+
+    if (!affiliation || !serviceArea) {
+      setStatus('Please select both your affiliation / program and service area.', 'error');
+      return;
+    }
+
+    if (!isAllowedServiceArea(serviceArea)) {
+      setStatus('Please select a valid service area / closest city.', 'error');
+      return;
+    }
+
+    if (!consent) {
+      setStatus('Please confirm you want to receive updates from Iowa CYP.', 'error');
+      return;
+    }
+
+    if (botField) {
+      setStatus(unlockedMessage, 'success');
+      if (canUseStorage()) {
+        window.localStorage.setItem(storageKey, 'true');
+        window.localStorage.setItem(emailKey, email);
+      }
+      unlock();
+      return;
+    }
+
+    const payload = {
+      email,
+      region: String(formData.get('region') || '').trim() || null,
+      service_area: serviceArea,
+      affiliation,
+      consent: true,
+      source: String(formData.get('source') || '').trim() || defaultSource,
+      tags: String(formData.get('tags') || '').trim(),
+      submitted_at: new Date().toISOString(),
+    };
+
+    busy = true;
+    if (submitBtn instanceof HTMLButtonElement) {
+      submitBtn.disabled = true;
+    }
+    setStatus('Submitting...');
+
+    try {
+      const response = await fetch('/.netlify/functions/subscribe-proxy', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      const responseBody = await response.json().catch(() => ({}));
+
+      if (!response.ok || responseBody?.ok !== true) {
+        const message =
+          String(responseBody.error || '').trim() ||
+          'Unable to complete the signup right now. Please try again.';
+        throw new Error(message);
+      }
+
+      if (canUseStorage()) {
+        window.localStorage.setItem(storageKey, 'true');
+        window.localStorage.setItem(emailKey, email);
+      }
+      setStatus(successMessage, 'success');
+      unlock();
+    } catch (error) {
+      if (canUseStorage()) {
+        window.localStorage.setItem(storageKey, 'true');
+        window.localStorage.setItem(emailKey, email);
+      }
+      setStatus(String(error?.message || 'Submission failed. Please try again.'), 'error');
+      console.error(`${logLabel || 'Access'} submission failed`, error);
+    } finally {
+      busy = false;
+      if (submitBtn instanceof HTMLButtonElement) {
+        submitBtn.disabled = false;
+      }
+    }
+  });
+};
+
+initAccessGate({
+  gateSelector: '[data-lemonade-boss-gate]',
+  contentSelector: '[data-lemonade-boss-content]',
+  formSelector: '[data-lemonade-boss-access-form]',
+  statusSelector: '[data-lemonade-boss-access-status]',
+  submitSelector: '[data-lemonade-boss-access-submit]',
+  storageKey: 'lemonade-boss-access-granted',
+  emailKey: 'lemonade-boss-access-email',
+  unlockedMessage: 'Access unlocked. The Lemonade Boss links are now available.',
+  successMessage: 'Access unlocked. The Lemonade Boss links are now available.',
+  defaultSource: 'lemonade-boss-page',
+  logLabel: 'Lemonade Boss access',
+});
+
+initAccessGate({
+  gateSelector: '[data-adventure-kits-gate]',
+  contentSelector: '[data-adventure-kits-content]',
+  formSelector: '[data-adventure-kits-access-form]',
+  statusSelector: '[data-adventure-kits-access-status]',
+  submitSelector: '[data-adventure-kits-access-submit]',
+  storageKey: 'adventure-kits-access-granted',
+  emailKey: 'adventure-kits-access-email',
+  unlockedMessage: 'Access unlocked. The Adventure Kits content is now available.',
+  successMessage: 'Access unlocked. The Adventure Kits content is now available.',
+  defaultSource: 'www.iowacyp.com',
+  logLabel: 'Adventure Kits access',
+});
 // Inject current year in footer
 const yearTarget = document.getElementById('year');
 if (yearTarget) {

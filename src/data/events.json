@@ -1,5 +1,20 @@
 {
   "events": [
+{
+      "title": "YMCA Camp 2026",
+      "date": "2026-07-19",
+      "endDate": "2026-07-25",
+      "displayDate": "July 19-25, 2026",
+      "location": "Des Moines YMCA Camp",
+      "ctaLabel": "Register",
+      "ctaUrl": "https://desmoinesycamp.campbrainregistration.com/",
+      "notes": "One week of summer camp for ages 9-17 featuring outdoor adventures, team-building activities, new friendships, and unforgettable summer memories. $25 registration fee for eligible Iowa Army National Guard youth using promo code GUARD26.",
+      "image": "/content/UpcomingEvents/Summer Camp (web).png",
+      "featured": true,
+      "full": false,
+      "registrationCode": "GUARD26",
+      "ageRange": "Ages 9-17"
+    },
     {
       "title": "Fall Family Festival",
       "date": "2025-10-25",
@@ -9,7 +24,7 @@
       "ctaLabel": "Register",
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdkB7oVnbLtNZAPZSFWqEu3Tsw_5G9Cd3buAjWyQ3DSzL6iaw/viewform?usp=share_link&ouid=100941830380849796397",
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/events/fall-family-festival.jpg"
+      "image": "/content/UpcomingEvents/Fall Family Festival.jpg"
     },
     {
       "title": "Cookies with Santa",
@@ -20,7 +35,7 @@
       "ctaLabel": "Register",
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdJ-pmJZ_TR5habbSDL0fXfFVgds3c8q48ZDirfkQt_ml6Sgw/viewform?usp=share_link&ouid=100941830380849796397",
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/events/cookies-with-santa.jpg"
+      "image": "/content/UpcomingEvents/Cookies with Santa.jpg"
     },
     {
       "title": "Military Family Event: Davenport",
@@ -31,7 +46,7 @@
       "ctaLabel": "Register",
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdYCAqOna1vVK55GhN6U8Ggisx81sEPAKdS8YlecW9aaIeI1g/viewform?usp=share_link&ouid=100941830380849796397",
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/events/mfe-davenport.jpg"
+      "image": "/content/UpcomingEvents/MFE_ Davenport.jpg"
     },
     {
       "title": "Military Family Event: Cedar Rapids",
@@ -42,29 +57,29 @@
       "ctaLabel": "Register",
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfEguzvj86P5ai4jTZRX1qel5P9k8F6u7bqEaCGTUts6vM0_w/viewform?usp=share_link&ouid=100941830380849796397",
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/events/mfe-cedar-rapids.jpg"
+      "image": "/content/UpcomingEvents/MFE_ Cedar Rapids.jpg"
     },
     {
       "title": "Military Family Event: Sioux City",
-      "date": "2026-04-05",
+      "date": "2026-05-17",
       "time": "11:00 AM - 1:00 PM",
-      "displayDate": "April 5, 2026",
+      "displayDate": "May 17, 2026",
       "location": "Drop Zone, 3840 Stadium Dr, Sioux City, IA 51106",
       "ctaLabel": "Register",
-      "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSefViH-KPAXAZ0oHB4bZWqKwqdtUH1qMW9BskeU0N2pNbn-tw/viewform?usp=share_link&ouid=100941830380849796397",
+      "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSeBpOXbL3tzdyFUqkHIjGvWwhsS39RQV1kKVJUoR1W-7AvMSg/viewform?usp=dialog",
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/events/mfe-sioux-city.jpg"
+      "image": "/content/UpcomingEvents/MFE_ Sioux City.jpg"
     },
     {
       "title": "Military Family Ball",
-      "date": "2026-04-18",
+      "date": "2026-04-25",
       "time": "4:30 PM - 7:00 PM",
-      "displayDate": "April 18, 2026",
+      "displayDate": "April 25, 2026",
       "location": "Camp Dodge - Pool Pavilion, 7105 NW 70th Ave, Johnston, IA",
       "ctaLabel": "Register",
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSefViH-KPAXAZ0oHB4bZWqKwqdtUH1qMW9BskeU0N2pNbn-tw/viewform?usp=share_link&ouid=100941830380849796397",
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/events/military-family-ball.jpg"
+      "image": "/content/UpcomingEvents/Military Family Ball.jpg"
     },
     {
       "title": "Military Family Event: Des Moines",
@@ -75,7 +90,71 @@
       "ctaLabel": "Register",
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdgOv8A6xckq1eLLU_wy1hDt3e9OAbwEHUOh0B4YuaY62pjbA/viewform?usp=share_link&ouid=100941830380849796397",
       "notes": "Space is limited—register early so your family is covered.",
-      "image": "/assets/img/events/mfe-des-moines.jpg"
+      "image": "/content/UpcomingEvents/MFE_ Des Moines.jpg"
+    },
+    {
+      "title": "Military Family Event: Cedar Falls",
+      "date": "2026-06-28",
+      "time": "6:00 PM - 8:00 PM",
+      "displayDate": "June 28, 2026",
+      "location": "5911 University Ave Suite 350, Cedar Falls, IA 50613",
+      "ctaLabel": "Register",
+      "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfbY6x6v_poQO9Ff4RBH9sKZMKd-reFcZKtij5c3OPg4lB51w/viewform?usp=dialog",
+      "notes": "Space is limited—register early so your family is covered.",
+      "image": "/content/UpcomingEvents/MFE_ Cedar Falls.jpg"
+    },
+    {
+      "title": "Summer Horseback Riding Camp 1",
+      "date": "2026-07-31",
+      "time": "8:50 AM - 11:30 AM",
+      "displayDate": "July 31, 2026",
+      "location": "Jester Park Equestrian Center, 11171 NW 103rd Ct, Granger, IA 50109",
+      "ctaLabel": "Register",
+      "ctaUrl": "https://fareharbor.com/embeds/book/jesterparkec/?full-items=yes&flow=1595744",
+      "notes": "Separate camp session. Same time as August 1.",
+      "image": "/content/UpcomingEvents/Horseback Riding Day Camp 1.jpg"
+    },
+    {
+      "title": "Summer Horseback Riding Camp 2",
+      "date": "2026-08-01",
+      "time": "8:50 AM - 11:30 AM",
+      "displayDate": "August 1, 2026",
+      "location": "Jester Park Equestrian Center, 11171 NW 103rd Ct, Granger, IA 50109",
+      "ctaLabel": "Register",
+      "ctaUrl": "https://fareharbor.com/embeds/book/jesterparkec/?full-items=yes&flow=1595744",
+      "notes": "One day camp session. Limited space.",
+      "image": "/content/UpcomingEvents/Horseback Riding Day Camp 2.jpg"
+    },
+    {
+      "title": "Living History Farms Day Camp 1",
+      "date": "2026-08-19",
+      "time": "9:00 AM - 4:00 PM",
+      "displayDate": "August 19, 2026",
+      "location": "11121 Hickman Rd, Urbandale, IA 50322",
+      "ctaLabel": "Register",
+      "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLScU6A2szY-5IibdgcT8cWKHPn4FSDjSX5OLoXcId8i5RkxUYw/viewform?usp=dialog",
+      "image": "/content/UpcomingEvents/Living History Farms Day 1.jpg"
+    },
+    {
+      "title": "Living History Farms Day Camp 2",
+      "date": "2026-08-21",
+      "time": "9:00 AM - 4:00 PM",
+      "displayDate": "August 21, 2026",
+      "location": "11121 Hickman Rd, Urbandale, IA 50322",
+      "ctaLabel": "Register",
+      "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSda7piby8NzAJD6VGFlbFHHcIpiXK_RUuBWjhmAfGOriD-cSA/viewform?usp=dialog",
+      "image": "/content/UpcomingEvents/Living History Farms Day 2.jpg"
+    },
+    {
+      "title": "Military Family Event: Council Bluffs",
+      "date": "2026-08-09",
+      "time": "6:00 PM - 8:00 PM",
+      "displayDate": "August 9, 2026",
+      "location": "The Hub, 7 S 4th St., Council Bluffs, IA 51503",
+      "ctaLabel": "Register",
+      "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSflPsp13oW4J0-JtiIK5kBG_Gqu6UCFjXMLtmvZGUApRytIyg/viewform?usp=dialog",
+      "notes": "Space is limited—register early so your family is covered.",
+      "image": "/content/UpcomingEvents/MFE Council Bluffs.png"
     }
   ]
 }

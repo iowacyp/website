@@ -1,37 +1,315 @@
 {% set navItems = [
   { "label": "Home", "url": "/" },
-  { "label": "About", "url": "/about/" },
-  { "label": "Stories", "url": "/stories/" },
-  { "label": "Events", "url": "/events/" },
-  { "label": "Support Us", "url": "/support/" },
-  { "label": "Resources", "url": "/resources/" },
+  {
+    "label": "About",
+    "url": "/about/",
+    "children": [
+      { "label": "Mission & Vision", "url": "/about/#mission", "desc": "Our purpose and direction" },
+      { "label": "Strategy", "url": "/about/#strategic", "desc": "How we plan and deliver" },
+      { "label": "Values", "url": "/about/#values", "desc": "What we stand for" },
+      { "label": "Team", "url": "/about/#team", "desc": "Meet the CYP team" }
+    ]
+  },
+  {
+    "label": "Stories",
+    "url": "/stories/",
+    "children": [
+      { "label": "Spotlight", "url": "/stories/#spotlight", "desc": "Featured military family stories" },
+      { "label": "Family Stories", "url": "/stories/#family-stories", "desc": "From the families we serve" },
+      { "label": "Voices", "url": "/stories/#voices", "desc": "Community perspectives" }
+    ]
+  },
+  {
+    "label": "Events",
+    "url": "/events/",
+    "children": [
+      { "label": "Upcoming", "url": "/events/#upcoming", "desc": "What's on the calendar" },
+      { "label": "Programs", "url": "/events/#programs", "desc": "Year-round program offerings" }
+    ]
+  },
+  {
+    "label": "Support Us",
+    "url": "/support/",
+    "children": [
+      { "label": "Partner", "url": "/support/#community-partners", "desc": "Become a community partner" },
+      { "label": "Educators", "url": "/educators/", "desc": "Purple Star Schools & classroom tools" },
+      { "label": "State Teen Panel", "url": "/state-teen-panel/", "desc": "Teen leadership for ages 13–17" },
+      { "label": "Celebrate MOMC", "url": "/month-of-the-military-child/", "desc": "Month of the Military Child" },
+      { "label": "Volunteer", "url": "/support/#volunteers", "desc": "Give your time and talents" }
+    ]
+  },
+  {
+    "label": "Resources",
+    "url": "/resources/",
+    "children": [
+      { "label": "Top Resources", "url": "/resources/#top-resources", "desc": "Most useful tools and links" },
+      { "label": "Lemonade Boss", "url": "/lemonade-boss/", "desc": "Freshly updated youth entrepreneurship app" },
+      { "label": "Scholarships", "url": "/resources/#scholarships", "desc": "Education funding support" },
+      { "label": "Downloads", "url": "/resources/#downloads", "desc": "Guides, flyers, and materials" }
+    ]
+  },
   { "label": "Contact", "url": "/contact/" }
 ] %}
-<header class="nav border-b border-secondary/40 bg-primary sticky top-0 z-50 shadow-sm">
-  <div class="container flex items-center justify-between gap-6 py-3">
-    <a href="/" class="flex items-center gap-3">
-      <span class="inline-flex items-center justify-center rounded-full bg-white px-3 py-2 shadow-sm">
-        <img src="/assets/img/branding_symbol.png" alt="{{ site.name }} logo" class="h-8 w-auto">
-      </span>
+{% set currentUrl = page.url or '/' %}
+
+<header class="nav sticky top-0 z-50 border-b border-white/10 bg-primary shadow-md">
+  <div class="container flex items-center justify-between gap-4 px-4 sm:px-6 py-3">
+
+    <!-- Logo -->
+    <a href="/" class="flex shrink-0 items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-white/70 rounded-full" aria-label="{{ site.name }}">
+      <img src="/content/media/CYPSail.svg" alt="" class="h-11 w-11 object-contain" loading="eager" decoding="async" width="500" height="500">
     </a>
-    <button id="navToggle" class="menu-toggle" aria-expanded="false" aria-controls="mobileNav">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="menu-toggle__lines" aria-hidden="true"></span>
-    </button>
+
+    <a href="{{ site.links.summerCampDetails }}" target="_blank" rel="noopener" class="inline-flex min-w-0 items-center gap-1.5 rounded-full border border-secondary/80 bg-white px-2 py-1.5 text-xs font-semibold text-primary shadow-sm transition hover:bg-secondary/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary/70 md:hidden">
+      <span class="shrink-0 rounded-full bg-secondary px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.12em] text-primary">New</span>
+      <span class="truncate">Camp</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:block" aria-label="Primary">
+      <ul class="flex items-center gap-0.5">
+        {% for item in navItems %}
+          {% set hasChildren = item.children and item.children.length %}
+          {% set isCurrent = currentUrl == item.url or (item.url != '/' and currentUrl.indexOf(item.url) == 0) %}
+          <li class="nav-item relative">
+
+            <a
+              href="{{ item.url }}"
+              class="relative inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-semibold tracking-[0.02em] outline-none transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-white/70 {% if isCurrent %}text-secondary{% else %}text-white/80 hover:text-white{% endif %}"
+              {% if hasChildren %}data-nav-trigger{% endif %}
+              {% if isCurrent %}aria-current="page"{% endif %}
+            >
+              {{ item.label }}
+              {% if hasChildren %}
+                <svg class="nav-chevron h-3.5 w-3.5 shrink-0 transition-transform duration-200 {% if isCurrent %}text-secondary/70{% else %}text-white/40{% endif %}" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                  <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              {% endif %}
+              <span class="nav-underline absolute inset-x-3 -bottom-0.5 h-[2px] rounded-full bg-secondary origin-center transition-transform duration-200 {% if isCurrent %}scale-x-100{% else %}scale-x-0{% endif %}"></span>
+            </a>
+
+            {% if hasChildren %}
+              <div class="absolute left-0 top-full z-50 pt-3 min-w-full">
+                <div class="nav-dd transition-all duration-[180ms] ease-out" data-nav-panel>
+                  <div class="min-w-[15rem] rounded-2xl border border-slate-100 bg-white p-2 shadow-[0_12px_40px_rgba(15,23,42,0.14),0_2px_10px_rgba(15,23,42,0.06)]">
+                    <ul class="grid gap-0.5">
+                      {% for child in item.children %}
+                        <li>
+                          <a
+                            href="{{ child.url }}"
+                            class="group/child flex items-start gap-3 rounded-xl px-3.5 py-2.5 transition-colors duration-150 hover:bg-slate-50 focus:bg-slate-50 focus:outline-none"
+                            data-nav-focus
+                          >
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/20 transition-colors duration-150 group-hover/child:bg-secondary" aria-hidden="true"></span>
+                            <span class="min-w-0">
+                              <span class="block text-sm font-semibold leading-snug text-slate-800 transition-colors duration-150 group-hover/child:text-primary">{{ child.label }}</span>
+                              {% if child.desc %}
+                                <span class="mt-0.5 block text-xs leading-snug text-slate-500">{{ child.desc }}</span>
+                              {% endif %}
+                            </span>
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <!-- Desktop CTA + Mobile burger -->
+    <div class="flex items-center gap-2">
+      <button
+        type="button"
+        class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-primary shadow-sm transition hover:bg-slate-50 hover:-translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary/70"
+        data-modal-open="site-search"
+        aria-label="Search the site"
+        aria-haspopup="dialog"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke-width="1.8"/>
+          <path d="M16.25 16.25 21 21" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <a href="{{ site.links.summerCampDetails }}" target="_blank" rel="noopener" class="hidden md:inline-flex items-center gap-2 rounded-full border border-secondary/80 bg-white px-2.5 py-1.5 text-sm font-semibold text-primary shadow-[0_10px_24px_-16px_rgba(255,214,92,0.9)] transition hover:-translate-y-px hover:bg-secondary/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary/70">
+        <span class="rounded-full bg-secondary px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-primary">New</span>
+        <span>Summer Camp</span>
+      </a>
+      <a href="/subscribe/" class="hidden md:inline-flex items-center rounded-full bg-secondary px-4 py-2 text-sm font-semibold text-primary shadow-sm transition hover:bg-[#f7c74a] hover:-translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary/70">
+        Subscribe
+      </a>
+      <button id="navToggle" class="menu-toggle md:hidden" aria-expanded="false" aria-controls="mobileNav">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="menu-toggle__lines" aria-hidden="true"></span>
+      </button>
+    </div>
+
   </div>
 </header>
-<div id="navOverlay" class="fixed inset-0 bg-[#1f4d7a]/80 backdrop-blur-sm hidden z-[110]" data-nav-overlay aria-hidden="true"></div>
-<aside id="mobileNav" class="fixed inset-y-0 right-0 w-80 max-w-full bg-white shadow-[0_0_60px_rgba(0,0,0,0.35)] transform translate-x-full transition-transform duration-300 ease-out flex flex-col z-[120] overflow-y-auto" data-nav-drawer aria-label="Primary">
-  <div class="flex items-center justify-between px-8 py-6 border-b border-secondary/40">
-    <span class="text-xs uppercase tracking-[0.4em] text-primary/80">Menu</span>
-    <button class="menu-close" type="button" data-nav-close aria-label="Close navigation">
-      <span aria-hidden="true">&times;</span>
-    </button>
+
+<!-- Mobile overlay -->
+<div id="navOverlay" class="fixed inset-0 z-[110] hidden bg-primary/70 backdrop-blur-sm md:hidden" data-nav-overlay aria-hidden="true"></div>
+
+<!-- Mobile drawer -->
+<aside
+  id="mobileNav"
+  class="fixed inset-y-0 right-0 z-[120] flex w-[min(22rem,100vw)] translate-x-full flex-col overflow-hidden bg-white text-primary shadow-[0_24px_80px_rgba(15,23,42,0.32)] transition-transform duration-300 ease-out md:hidden"
+  data-nav-drawer
+  aria-label="Primary"
+>
+  <div class="flex min-h-full flex-col">
+
+    <!-- Drawer header -->
+    <div class="flex shrink-0 items-center justify-between border-b border-slate-100 px-5 py-4">
+      <a href="/" class="flex items-center gap-2.5 rounded-full outline-none focus-visible:ring-2 focus-visible:ring-primary/30" data-nav-focus aria-label="{{ site.name }}">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary/5">
+          <img src="/content/media/CYPSail.svg" alt="" class="h-6 w-6 object-contain" loading="lazy" decoding="async" width="500" height="500">
+        </span>
+        <span class="text-xs font-bold uppercase tracking-[0.3em] text-primary/50">Iowa CYP</span>
+      </a>
+      <button
+        class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition hover:bg-slate-200 hover:text-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+        type="button"
+        data-nav-close
+        aria-label="Close navigation"
+      >
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Drawer nav (scrollable) -->
+    <nav class="flex-1 overflow-y-auto px-3 py-3" aria-label="Mobile primary">
+      <ul>
+        {% for item in navItems %}
+          {% set hasChildren = item.children and item.children.length %}
+          {% set isCurrent = currentUrl == item.url or (item.url != '/' and currentUrl.indexOf(item.url) == 0) %}
+          <li data-nav-item>
+
+            <div class="flex items-center rounded-2xl transition-colors {% if isCurrent %}bg-primary/5{% endif %}">
+              <a
+                href="{{ item.url }}"
+                class="drawer-link min-w-0 flex-1 rounded-2xl px-4 py-3.5 {% if isCurrent %}text-secondary{% endif %}"
+                data-nav-focus
+                {% if isCurrent %}aria-current="page"{% endif %}
+              >
+                {{ item.label }}
+              </a>
+              {% if hasChildren %}
+                <button
+                  class="nav-chevron-btn mr-2 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-primary/40 transition hover:bg-slate-100 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+                  type="button"
+                  data-nav-parent-button
+                  aria-expanded="false"
+                  aria-label="Toggle {{ item.label }} submenu"
+                >
+                  <svg class="h-4 w-4 transition-transform duration-250 ease-out" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                    <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              {% endif %}
+            </div>
+
+            {% if hasChildren %}
+              <div class="nav-submenu" data-nav-submenu aria-hidden="true">
+                <ul class="nav-submenu-inner px-3 pb-2 pt-1 space-y-0.5">
+                  {% for child in item.children %}
+                    <li>
+                      <a
+                        href="{{ child.url }}"
+                        class="group/mchild flex items-start gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 hover:bg-slate-50 focus:bg-slate-50 focus:outline-none"
+                        data-nav-focus
+                      >
+                        <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/20 transition-colors duration-150 group-hover/mchild:bg-secondary" aria-hidden="true"></span>
+                        <span class="min-w-0">
+                          <span class="block text-sm font-semibold leading-snug text-slate-700 transition-colors duration-150 group-hover/mchild:text-primary">{{ child.label }}</span>
+                          {% if child.desc %}
+                            <span class="mt-0.5 block text-xs leading-snug text-slate-500">{{ child.desc }}</span>
+                          {% endif %}
+                        </span>
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <!-- Drawer footer CTAs -->
+    <div class="shrink-0 border-t border-slate-100 p-4 space-y-2.5">
+      <a href="{{ site.links.summerCampDetails }}" target="_blank" rel="noopener" class="inline-flex w-full items-center justify-center gap-2 rounded-full border border-secondary bg-white px-4 py-3 text-sm font-semibold text-primary shadow-sm transition hover:bg-secondary/10" data-nav-focus>
+        <span class="rounded-full bg-secondary px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-primary">New</span>
+        <span>Summer Camp 2026</span>
+      </a>
+      <a href="/subscribe/" class="btn w-full justify-center" data-nav-focus>Subscribe for Updates</a>
+      <a href="/contact/" class="btn-secondary w-full justify-center" data-nav-focus>Contact Us</a>
+    </div>
+
   </div>
-  <nav class="px-8 py-10 space-y-6 text-left">
-    {% for item in navItems %}
-      {% set isCurrent = page.url and page.url == item.url %}
-      <a href="{{ item.url }}" class="drawer-link" data-nav-focus {% if isCurrent %}aria-current="page"{% endif %}>{{ item.label }}</a>
-    {% endfor %}
-  </nav>
 </aside>
+
+<!-- Search modal -->
+<div class="modal hidden fixed inset-0 z-[130] p-4 sm:p-6 lg:p-8" data-modal="site-search" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="site-search-title" tabindex="-1">
+  <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-sm" data-modal-overlay></div>
+  <article class="relative mx-auto flex w-full max-w-3xl flex-col overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-2xl max-h-[calc(100svh-2rem)]">
+    <header class="flex items-start justify-between gap-4 border-b border-slate-100 px-5 py-4 sm:px-6">
+      <div class="space-y-1">
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-primary/60">Search</p>
+        <h2 id="site-search-title" class="text-2xl font-semibold normal-case tracking-tight text-slate-900">Find what you need</h2>
+      </div>
+      <button
+        type="button"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition hover:bg-slate-200 hover:text-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+        data-modal-close
+        aria-label="Close search"
+      >
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </header>
+
+    <div class="flex-1 overflow-y-auto px-5 py-5 sm:px-6 sm:py-6 space-y-5">
+      <form class="space-y-3" data-site-search-form>
+        <label class="sr-only" for="siteSearchInput">Search the site</label>
+        <div class="relative">
+          <span class="pointer-events-none absolute inset-y-0 left-4 flex items-center text-slate-400" aria-hidden="true">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none">
+              <path d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M16.25 16.25 21 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <input
+            id="siteSearchInput"
+            type="search"
+            placeholder="Search events, resources, programs..."
+            class="w-full rounded-2xl border border-slate-200 bg-slate-50 py-3.5 pl-12 pr-4 text-base text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10"
+            data-site-search-input
+            data-modal-autofocus
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+          >
+        </div>
+        <p class="text-sm leading-relaxed text-slate-600" data-site-search-status>Search pages, events, programs, downloads, resources, and partners across the site.</p>
+      </form>
+
+      <div class="space-y-3">
+        <div class="flex items-center justify-between gap-3">
+          <h3 class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Results</h3>
+          <button type="button" class="text-sm font-semibold text-primary transition hover:text-secondary" data-site-search-clear>Clear</button>
+        </div>
+        <div class="grid gap-3" data-site-search-results aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+</div>

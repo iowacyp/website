@@ -1,0 +1,18 @@
+{% set signupFormId = signupFormId or 'virtualProgrammingSignupForm' %}
+{% set signupStatusId = signupStatusId or signupFormId ~ 'Status' %}
+{% set signupFieldIdPrefix = signupFieldIdPrefix or signupFormId %}
+{% set signupSource = signupSource or 'www.iowacyp.com' %}
+{% set signupTags = signupTags or 'website-subscribe' %}
+{% set signupSubmitLabel = signupSubmitLabel or 'Submit' %}
+{% set signupFormDataAttr = signupFormDataAttr or 'data-virtual-programming-signup-form' %}
+{% set signupSubmitDataAttr = signupSubmitDataAttr or 'data-vp-signup-submit' %}
+{% set formId = signupFormId %}
+{% set statusId = signupStatusId %}
+{% set fieldIdPrefix = signupFieldIdPrefix %}
+{% set submitLabel = signupSubmitLabel %}
+{% set formDataAttr = signupFormDataAttr %}
+{% set submitDataAttr = signupSubmitDataAttr %}
+{% set statusDataAttr = signupStatusDataAttr or 'data-vp-signup-status' %}
+{% set sourceValue = signupSource %}
+{% set tagsValue = signupTags %}
+{% include "partials/subscribe-form-fields.njk" %}

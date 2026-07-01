@@ -2,14 +2,14 @@
   "items": [
     {
       "id": "PR001",
-      "name": "EveryStep",
-      "description": "EveryStep provided amazing resources during our annual Iowa Remembers Retreat for military youth who have lost a loved one.",
-      "website": "https://www.everystep.org/",
-      "logo": "/assets/img/partners/partner_everystep.png"
+      "name": "Swingin' Fore Soldiers",
+      "description": "Swingin' Fore Soldiers has supported the Military Family Ball with the DJ and helped bring more military kids to camp.",
+      "website": "https://swinginforesoldiers.com/",
+      "logo": "/assets/img/partners/partner_swingin_fore_soldiers.png"
     },
     {
       "id": "PR002",
-      "name": "City Serve (Capitol City Church)",
+      "name": "City Serve",
       "description": "Capitol City Church assembled a volunteer team to support large-scale events like the Fall Family Festival and Cookies with Santa.",
       "website": "https://www.capitolcitychurch.com/",
       "logo": "/assets/img/partners/partner_cityserve.png"
@@ -37,7 +37,7 @@
     },
     {
       "id": "PR007",
-      "name": "Project Food and Fellowship (Iowa Select Farms)",
+      "name": "Project Food and Fellowship",
       "description": "Iowa Select Farms donated take-home activities and meals through Project Food and Fellowship to support military families in Iowa.",
       "website": "https://www.iowaselect.com/foundation/food-and-fellowship/",
       "logo": "/assets/img/partners/partner_projectfoodfellowship.png"
@@ -51,10 +51,10 @@
     },
     {
       "id": "PR009",
-      "name": "BGCA Mission Youth Outreach",
-      "description": "Boys & Girls Clubs programming tailored to military-connected youth.",
-      "website": "https://www.bgca.org/about-us/military/mission-youth-outreach-2025/",
-      "logo": "/assets/img/partners/partner_bgca.png"
+      "name": "Blue Star Moms of Iowa",
+      "description": "Blue Star Moms of Iowa has helped support camp and created meaningful encouragement for military families.",
+      "website": "https://www.bluestarmothersofiowa.com/",
+      "logo": "/assets/img/partners/partner_bluestarmoms.jpg"
     }
   ]
 }

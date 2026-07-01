@@ -2,3 +2,4 @@
 .netlify
 node_modules
 .txt
+google-service-account.json

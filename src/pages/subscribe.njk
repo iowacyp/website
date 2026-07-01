@@ -9,17 +9,17 @@ permalink: /subscribe/index.html
     <img
       src="/assets/img/programs/family_events_fall_festival.jpg"
       alt="Families gathered at an Iowa CYP fall festival"
-      class="absolute inset-0 h-full w-full object-cover"
+      class="absolute inset-0 h-full w-full object-cover object-[center_35%] brightness-75 saturate-90 contrast-110"
       loading="lazy"
       decoding="async"
     >
   </div>
-  <div class="absolute inset-0 bg-slate-900/65"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-slate-950/94 via-slate-950/82 to-slate-950/60"></div>
   <div class="relative container min-h-[55vh] py-20 flex items-center">
-    <div class="max-w-3xl text-white space-y-6 drop-shadow-[0_6px_24px_rgba(0,0,0,0.55)]">
-      <p class="text-sm uppercase tracking-[0.35em] text-secondary">Stay in the loop</p>
+    <div class="max-w-3xl rounded-[2rem] border border-white/10 bg-slate-950/88 p-6 md:p-10 text-white space-y-6 shadow-2xl backdrop-blur-md">
+      <p class="text-sm uppercase tracking-[0.15em] text-secondary">Stay in the loop</p>
       <h1 class="text-3xl md:text-4xl font-semibold text-white">Join the Iowa CYP email list</h1>
-      <p class="text-white/90 text-base md:text-lg leading-relaxed">Be first to know when camp registration opens, when adventure kits ship, and when partner events pop up near you.</p>
+      <p class="text-white/95 text-base md:text-lg leading-relaxed">Be first to know when camp registration opens, when adventure kits ship, and when partner events are coming to your area.</p>
     </div>
   </div>
 </section>
@@ -27,79 +27,23 @@ permalink: /subscribe/index.html
 <section class="bg-white py-16" data-reveal>
   <div class="container max-w-3xl space-y-12">
     <div class="space-y-4 text-center">
-      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">What you can expect</p>
-      <p class="text-slate-700 leading-relaxed">Monthly roundups with quick registration reminders, statewide resource drops, and a peek at new programming—plus urgent alerts when spots are limited.</p>
+      <p class="text-sm uppercase tracking-[0.15em] text-primary/70">What you can expect</p>
+      <p class="text-slate-700 leading-relaxed">Monthly roundups with registration reminders, statewide resource updates, and a look at upcoming programming. We also send urgent alerts when spots are limited.</p>
     </div>
-    <form id="subscribeForm" class="content-card space-y-6" data-reveal>
-      <p class="hidden">
-        <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
-      </p>
-
-      <div class="space-y-2">
-        <label class="block text-sm font-semibold text-slate-800" for="email">Email</label>
-        <input id="email" name="email" type="email" required autocomplete="email" class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
-      </div>
-
-      <div class="space-y-2">
-        <label class="block text-sm font-semibold text-slate-800" for="affiliation">Affiliation / Program (optional)</label>
-        <select id="affiliation" name="affiliation" class="w-full rounded-2xl border border-slate-300 px-4 py-3 bg-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
-          <option value="" selected>Select an option (optional)</option>
-          <option>Army National Guard</option>
-          <option>Air National Guard</option>
-          <option>Army Reserve</option>
-          <option>Active Duty</option>
-          <option>Veteran</option>
-          <option>Fallen Family</option>
-          <option>Other / Civilian Partner</option>
-        </select>
-      </div>
-
-      <div class="space-y-2">
-        <label class="block text-sm font-semibold text-slate-800" for="service_area">Service Area / Closest City (optional)</label>
-        <select id="service_area" name="service_area" class="w-full rounded-2xl border border-slate-300 px-4 py-3 bg-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
-          <option value="" selected>Select a city (optional)</option>
-          <option>Des Moines</option>
-          <option>Sioux City</option>
-          <option>Council Bluffs</option>
-          <option>Waterloo</option>
-          <option>Cedar Rapids</option>
-          <option>Davenport</option>
-          <option>Other</option>
-        </select>
-      </div>
-
-      <div class="space-y-2">
-        <label class="block text-sm font-semibold text-slate-800" for="region">Region (optional)</label>
-        <select id="region" name="region" class="w-full rounded-2xl border border-slate-300 px-4 py-3 bg-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
-          <option value="" selected>Select a region (optional)</option>
-          <option>Central</option>
-          <option>Eastern</option>
-          <option>Western</option>
-          <option>Northern</option>
-          <option>Southern</option>
-          <option>Statewide</option>
-        </select>
-      </div>
-
-      <div class="space-y-2">
-        <label class="inline-flex items-start gap-3 text-sm text-slate-700">
-          <input type="checkbox" name="consent" required class="mt-1 h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary/50">
-          <span>I agree to receive email updates from Iowa CYP. I understand I can unsubscribe at any time.</span>
-        </label>
-      </div>
-
-      <input type="hidden" name="source" value="www.iowacyp.com">
-      <input type="hidden" name="tags" value="website-subscribe">
-      <p id="subscribeStatus" class="text-sm text-slate-600" role="status" aria-live="polite"></p>
-      <button type="submit" class="btn w-full md:w-auto" data-subscribe-submit>Submit</button>
-    </form>
+    {% set formId = 'subscribeForm' %}
+    {% set statusId = 'subscribeStatus' %}
+    {% set submitLabel = 'Submit' %}
+    {% set submitDataAttr = 'data-subscribe-submit' %}
+    {% set sourceValue = 'www.iowacyp.com' %}
+    {% set tagsValue = 'website-subscribe' %}
+    {% include "partials/subscribe-form-fields.njk" %}
   </div>
 </section>
 
 <section class="container pb-20" data-reveal>
   <div class="content-card md:flex md:items-center md:justify-between md:gap-8 space-y-6 md:space-y-0">
     <div class="space-y-3">
-      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Need to update your info?</p>
+      <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Need to update your info?</p>
       <p class="text-gray-700 leading-relaxed">Email us any time with changes to your contact details or subscription preferences, and we’ll make sure you keep getting the updates you want.</p>
     </div>
     <a class="btn-secondary" href="mailto:{{ site.contactEmail }}?subject=Update%20Preferences">Email the CYP team</a>

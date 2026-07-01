@@ -6,144 +6,947 @@ permalink: /stories/index.html
 ---
 {% set storyQuoteIds = ['Q006', 'Q007', 'Q008', 'Q009', 'Q010', 'Q011', 'Q012', 'Q013', 'Q014', 'Q015', 'Q016', 'Q017'] %}
 {% set voiceQuotes = quotes.items | selectattr('id', 'in', storyQuoteIds) | list %}
-{% set storiesHeroPhoto = requestPhoto({
-  id: "stories-hero",
-  context: page.url ~ "#hero",
-  note: "Stories hero background"
-}) %}
 
 <section class="relative isolate overflow-hidden" data-reveal>
-  <img
-    src="{{ storiesHeroPhoto.src }}"
-    alt="{{ storiesHeroPhoto.alt }}"
-    class="w-full h-[260px] md:h-[360px] object-cover"
-    loading="lazy"
-    decoding="async"
-  >
+  <div class="relative min-h-[48vh] md:min-h-[55vh] overflow-hidden">
+    <div class="absolute inset-0" data-video-shell>
+      <img
+        src="/content/media/stories.png"
+        alt=""
+        class="video-poster"
+        aria-hidden="true"
+        {{ imageAttrs('/content/media/stories.png') }}
+        decoding="async"
+      >
+      <video
+        class="video-fade w-full h-full min-w-full min-h-full object-cover object-[center_35%] brightness-75 saturate-90 contrast-110"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        data-video-fade
+        data-video-lazy
+        aria-hidden="true"
+      >
+        <source src="/content/media/stories-hero.mp4" type="video/mp4">
+        <p class="sr-only">Your browser does not support the stories hero video.</p>
+      </video>
+      <noscript>
+        <img
+          src="/content/media/stories.png"
+          alt="Volunteer cheering alongside Guard-connected youth during a CYP activity"
+          class="absolute inset-0 h-full w-full object-cover"
+          {{ imageAttrs('/content/media/stories.png') }}
+          loading="lazy"
+          decoding="async"
+        >
+      </noscript>
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-950/94 via-slate-950/82 to-slate-950/60 pointer-events-none"></div>
+    <div class="container relative min-h-[48vh] md:min-h-[55vh] flex items-center justify-center text-center py-12 md:py-16">
+      <div class="max-w-3xl md:max-w-2xl rounded-[2rem] border border-white/10 bg-slate-950/88 p-6 md:p-10 text-white space-y-6 shadow-2xl backdrop-blur-md">
+        <h1 class="text-3xl md:text-4xl font-semibold uppercase tracking-[0.15em] text-white flex flex-col gap-2">
+          <span>Stories</span>
+          <span>Of</span>
+          <span>Impact</span>
+        </h1>
+        <p class="text-white/90 text-base md:text-lg leading-relaxed">
+          Real stories from Iowa National Guard children, teens, and caregivers who found connection and resilience through Iowa CYP.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a class="hero-cta" href="mailto:{{ site.contactEmail }}?subject=Share%20My%20Iowa%20CYP%20Story">Share Your Story</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-{% set storiesImage = storiesHeroPhoto.src %}
-{% if storiesImage and storiesImage[0] == '/' %}
-  {% set storiesImage = site.domain ~ storiesImage %}
-{% endif %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "{{ title }}",
   "url": "{{ site.domain }}{{ page.url }}",
-  {% if storiesImage %}"image": "{{ storiesImage }}",{% endif %}
+  "image": "{{ site.domain }}/content/media/stories.png",
   "description": "{{ description | escape }}"
 }
 </script>
 
-<nav class="sticky top-20 z-30 bg-white/90 backdrop-blur border-y border-slate-200" aria-label="Section navigation" data-reveal>
-  <div class="container flex flex-wrap items-center justify-center gap-4 py-3 text-sm font-semibold text-primary">
-    <a class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 hover:bg-primary/10 transition" href="#spotlight">
-      <span>Spotlight</span>
-    </a>
-    <a class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 hover:bg-primary/10 transition" href="#family-stories">
-      <span>Family Stories</span>
-    </a>
-    <a class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 hover:bg-primary/10 transition" href="#mission-video">
-      <span>Mission Video</span>
-    </a>
-    <a class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 hover:bg-primary/10 transition" href="#voices">
-      <span>Voices</span>
-    </a>
-    <a class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 hover:bg-primary/10 transition" href="#share-story">
-      <span>Share Yours</span>
-    </a>
+<section id="event-stories" class="bg-slate-900 text-white py-16 md:py-24" data-reveal>
+  <div class="container space-y-10">
+    <div class="max-w-3xl space-y-4">
+      <p class="text-sm uppercase tracking-[0.15em] text-secondary">Event stories</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-white">Moments that stay with us</h2>
+      <p class="text-white/80 leading-relaxed">Highlights from camps and gatherings where Iowa CYP youth discover their strengths. Use these stories when you want a real example of resilience in action.</p>
+    </div>
+    <div class="max-w-6xl">
+      <div class="relative" data-story-carousel>
+        <div class="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth lg:gap-6" data-story-track>
+          <article class="flex w-[230px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-lg transition lg:mx-auto lg:w-full lg:max-w-[340px] xl:w-[420px] xl:max-w-[420px]" data-story-slide data-published="2026-04-29">
+            <figure class="relative aspect-[4/5] overflow-hidden rounded-t-[1.75rem]">
+              <img src="/content/media/MFB-Recap.jpg" alt="Families gathered together at the Military Family Ball" class="h-full w-full object-cover" style="object-position: center 30%;" {{ imageAttrs('/content/media/MFB-Recap.jpg') }} loading="lazy" decoding="async">
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent p-3">
+                <p class="text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-secondary">Military Family Ball</p>
+                <p class="mt-1 text-xs font-medium text-white/90">An evening that strengthened the bonds behind the uniform.</p>
+              </div>
+            </figure>
+            <div class="flex flex-1 flex-col space-y-3 p-4 text-left">
+              <span class="inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.28em] text-white/80">Month of the Military Child</span>
+              <p class="text-[0.55rem] uppercase tracking-[0.28em] text-white/60">Published April 29, 2026</p>
+              <h3 class="sr-only">An Evening That Strengthened the Bonds Behind the Uniform</h3>
+              <blockquote class="border-l-4 border-secondary/80 pl-3 text-sm leading-relaxed text-white/85">&ldquo;A connected evening gave military families space to breathe, belong, and build resilience together.&rdquo;</blockquote>
+              <p class="text-xs text-white/75 leading-relaxed">The Military Family Ball welcomed 86 attendees, 22 volunteers, and 45% first-time families into a 10/10 experience supported by strong community partners.</p>
+              <div class="pt-1">
+                <button type="button" class="btn-secondary inline-flex items-center gap-2 text-xs" data-modal-open="event-story-military-family-ball">
+                  <span>Read full story</span>
+                </button>
+              </div>
+            </div>
+          </article>
+          <article class="flex w-[230px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-lg transition lg:mx-auto lg:w-full lg:max-w-[340px] xl:w-[420px] xl:max-w-[420px]" data-story-slide data-published="2026-04-23">
+            <figure class="relative aspect-[4/5] overflow-hidden rounded-t-[1.75rem]">
+              <img src="/content/media/purplestarschools.png" alt="Military-connected students, families, school leaders, and state leaders at the Iowa State Capitol for the launch of Iowa's Purple Star School Program" class="h-full w-full object-cover" style="object-position: center 35%;" {{ imageAttrs('/content/media/purplestarschools.png') }} loading="lazy" decoding="async">
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent p-3">
+                <p class="text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-secondary">Purple Star Schools</p>
+                <p class="mt-1 text-xs font-medium text-white/90">Iowa launched its statewide Purple Star School Program during Month of the Military Child.</p>
+              </div>
+            </figure>
+            <div class="flex flex-1 flex-col space-y-3 p-4 text-left">
+              <span class="inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.28em] text-white/80">Military-connected students</span>
+              <p class="text-[0.55rem] uppercase tracking-[0.28em] text-white/60">Published April 23, 2026</p>
+              <h3 class="sr-only">Iowa Launches Purple Star Schools</h3>
+              <blockquote class="border-l-4 border-secondary/80 pl-3 text-sm leading-relaxed text-white/85">"Seventeen schools became Iowa's first Purple Star Schools, building stronger support systems for military-connected students and families."</blockquote>
+              <p class="text-xs text-white/75 leading-relaxed">The new designation recognizes schools prepared to support students through moves, deployment, and transitions into new communities.</p>
+              <div class="pt-1">
+                <button type="button" class="btn-secondary inline-flex items-center gap-2 text-xs" data-modal-open="event-story-purple-star-schools">
+                  <span>Read full story</span>
+                </button>
+              </div>
+            </div>
+          </article>
+          <article class="flex w-[230px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-lg transition lg:mx-auto lg:w-full lg:max-w-[340px] xl:w-[420px] xl:max-w-[420px]" data-story-slide data-published="2026-04-10">
+            <figure class="relative aspect-[4/5] overflow-hidden rounded-t-[1.75rem]">
+              <img src="/content/media/PurpleUPStory.jpg" alt="Purple Up! Day classroom kit outreach across Iowa" class="h-full w-full object-cover" style="object-position: center 25%;" {{ imageAttrs('/content/media/PurpleUPStory.jpg') }} loading="lazy" decoding="async">
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent p-3">
+                <p class="text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-secondary">Purple Up! Day</p>
+                <p class="mt-1 text-xs font-medium text-white/90">Classrooms across Iowa celebrated Month of the Military Child with educational kits.</p>
+              </div>
+            </figure>
+            <div class="flex flex-1 flex-col space-y-3 p-4 text-left">
+              <span class="inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.28em] text-white/80">Month of the Military Child</span>
+              <p class="text-[0.55rem] uppercase tracking-[0.28em] text-white/60">Published April 10, 2026</p>
+              <h3 class="sr-only">Purple Up! Day Celebrated Across Iowa with Statewide Classroom Kit Outreach</h3>
+              <blockquote class="border-l-4 border-secondary/80 pl-3 text-sm leading-relaxed text-white/85">"More than 130 educational kits reached classrooms statewide, helping students learn about military life and the role of military children."</blockquote>
+              <p class="text-xs text-white/75 leading-relaxed">Sixty-eight schools, 3,850 youth, and 13 volunteers joined the effort, with 67% of participating families signing up for the first time.</p>
+              <div class="pt-1">
+                <button type="button" class="btn-secondary inline-flex items-center gap-2 text-xs" data-modal-open="event-story-purple-up">
+                  <span>Read full story</span>
+                </button>
+              </div>
+            </div>
+          </article>
+          <article class="flex w-[230px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-lg transition lg:mx-auto lg:w-full lg:max-w-[340px] xl:w-[420px] xl:max-w-[420px]" data-story-slide data-published="2026-04-01">
+            <figure class="relative aspect-[4/5] overflow-hidden rounded-t-[1.75rem]">
+              <img src="/content/media/Proc.jpg" alt="Governor Reynolds signing the Month of the Military Child proclamation at the Iowa State Capitol" class="h-full w-full object-cover" style="object-position: center 26%;" {{ imageAttrs('/content/media/Proc.jpg') }} loading="lazy" decoding="async">
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent p-3">
+                <p class="text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-secondary">Capitol moment</p>
+                <p class="mt-1 text-xs font-medium text-white/90">Military families and youth stood with the Governor as April was officially proclaimed.</p>
+              </div>
+            </figure>
+            <div class="flex flex-1 flex-col space-y-3 p-4 text-left">
+              <span class="inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.28em] text-white/80">Month of the Military Child</span>
+              <p class="text-[0.55rem] uppercase tracking-[0.28em] text-white/60">Published April 1, 2026</p>
+              <h3 class="sr-only">Governor Reynolds Proclaims April as Month of the Military Child at Iowa Capitol</h3>
+              <blockquote class="border-l-4 border-secondary/80 pl-3 text-sm leading-relaxed text-white/85">"The proclamation brought families together in the Capitol and set the tone for a month of recognition across Iowa."</blockquote>
+              <p class="text-xs text-white/75 leading-relaxed">More than 35 family members, including 2 State Teen Panel members, joined the ceremony as classroom kits and five statewide events extended the celebration through April.</p>
+              <div class="pt-1">
+                <button type="button" class="btn-secondary inline-flex items-center gap-2 text-xs" data-modal-open="event-story-capitol-proclamation">
+                  <span>Read full story</span>
+                </button>
+              </div>
+            </div>
+          </article>
+          <article class="flex w-[230px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-lg transition lg:mx-auto lg:w-full lg:max-w-[340px] xl:w-[420px] xl:max-w-[420px]" data-story-slide data-published="2026-01-28">
+            <figure class="relative aspect-[4/5] overflow-hidden rounded-t-[1.75rem]">
+              <img src="/content/media/charlee.jpg" alt="Charlee Cromwell volunteering at a food packaging line" class="h-full w-full object-cover object-[center_20%]" {{ imageAttrs('/content/media/charlee.jpg') }} loading="lazy" decoding="async">
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent p-3">
+                <p class="text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-secondary">Leadership spotlight</p>
+                <p class="mt-1 text-xs font-medium text-white/90">Perry teen steps into Iowa's Guard Teen Panel leadership for Region 7.</p>
+              </div>
+            </figure>
+            <div class="flex flex-1 flex-col space-y-3 p-4 text-left">
+              <span class="inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.28em] text-white/80">Guard Teen Panel</span>
+              <p class="text-[0.55rem] uppercase tracking-[0.28em] text-white/60">Published January 28, 2026</p>
+              <h3 class="sr-only">Iowa teen steps into statewide leadership role as GTP representative</h3>
+              <blockquote class="border-l-4 border-secondary/80 pl-3 text-sm leading-relaxed text-white/85">&ldquo;That experience helped me realize I wanted to use my voice to support other military teens across our region.&rdquo;</blockquote>
+              <p class="text-xs text-white/75 leading-relaxed">Charlee Cromwell was selected as Iowa's GTP Representative, advocating for Guard youth across Region 7.</p>
+              <div class="pt-1">
+                <button type="button" class="btn-secondary inline-flex items-center gap-2 text-xs" data-modal-open="event-story-gtp-representative">
+                  <span>Read full story</span>
+                </button>
+              </div>
+            </div>
+          </article>
+          <article class="flex w-[230px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-lg transition lg:mx-auto lg:w-full lg:max-w-[340px] xl:w-[420px] xl:max-w-[420px]" data-story-slide data-published="2025-10-29">
+            <figure class="relative aspect-[4/5] overflow-hidden rounded-t-[1.75rem]">
+              <img src="/content/media/1593491592788477691.jpg" alt="Guard families gathered at Camp Dodge Fall Family Festival" class="h-full w-full object-cover" style="object-position: center 38%;" {{ imageAttrs('/content/media/1593491592788477691.jpg') }} loading="lazy" decoding="async">
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent p-3">
+                <p class="text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-secondary">Festival spotlight</p>
+                <p class="mt-1 text-xs font-medium text-white/90">Camp Dodge came alive with pumpkins, partners, and Guard family connection.</p>
+              </div>
+            </figure>
+            <div class="flex flex-1 flex-col space-y-3 p-4 text-left">
+              <span class="inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.28em] text-white/80">Family festival</span>
+              <p class="text-[0.55rem] uppercase tracking-[0.28em] text-white/60">Posted October 29, 2025</p>
+              <h3 class="sr-only">Fall Family Festival Strengthens Guard Family Connections</h3>
+              <blockquote class="border-l-4 border-secondary/80 pl-3 text-sm leading-relaxed text-white/85">&ldquo;Pumpkin painting, therapy animals, and teen leaders turned Camp Dodge into a readiness recharge for Guard families.&rdquo;</blockquote>
+              <p class="text-xs text-white/75 leading-relaxed">State Teen Panel members, 113 volunteers, and community partners welcomed 491 attendees for a day of connection, resilience, and readiness.</p>
+              <div class="pt-1">
+                <button type="button" class="btn-secondary inline-flex items-center gap-2 text-xs" data-modal-open="event-story-fall-festival">
+                  <span>Read full story</span>
+                </button>
+              </div>
+            </div>
+          </article>
+          <article class="flex w-[230px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-lg transition lg:mx-auto lg:w-full lg:max-w-[340px] xl:w-[420px] xl:max-w-[420px]" data-story-slide data-published="2026-03-07">
+            <figure class="relative aspect-[4/5] overflow-hidden rounded-t-[1.75rem]">
+              <img src="/content/media/VeteranPicture.jpeg" alt="State Teen Panel members visiting veterans at Eastern Star Masonic Home in Boone, Iowa" class="h-full w-full object-cover" style="object-position: center 22%;" loading="lazy" decoding="async">
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent p-3">
+                <p class="text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-secondary">STP in the community</p>
+                <p class="mt-1 text-xs font-medium text-white/90">STP members sit down with veterans to hear stories across generations.</p>
+              </div>
+            </figure>
+            <div class="flex flex-1 flex-col space-y-3 p-4 text-left">
+              <span class="inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.28em] text-white/80">Listening Across Generations</span>
+              <p class="text-[0.55rem] uppercase tracking-[0.28em] text-white/60">March 7, 2026</p>
+              <h3 class="sr-only">Moments That Stay With Us: Listening Across Generations at Eastern Star Masonic Home</h3>
+              <blockquote class="border-l-4 border-secondary/80 pl-3 text-sm leading-relaxed text-white/85">&quot;I got to learn more about their lives and their insight on different skills - the experiences you gain versus the time spent away from your family.&quot;</blockquote>
+              <p class="text-xs text-white/75 leading-relaxed">Seven STP members volunteered at Eastern Star Masonic Home in Boone, Iowa, interviewing veterans about service, sacrifice, and life lessons.</p>
+              <div class="pt-1">
+                <button type="button" class="btn-secondary inline-flex items-center gap-2 text-xs" data-modal-open="event-story-veteran-listening">
+                  <span>Read full story</span>
+                </button>
+              </div>
+            </div>
+          </article>
+          <article class="flex w-[230px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-lg transition lg:mx-auto lg:w-full lg:max-w-[340px] xl:w-[420px] xl:max-w-[420px]" data-story-slide data-published="2023-04-29">
+            <figure class="relative aspect-[4/5] overflow-hidden rounded-t-[1.75rem]">
+              <img src="/content/media/size0-full.jpg" alt="Klaryssa Klair Dunwoody volunteering with the State Teen Panel" class="h-full w-full object-cover object-[center_30%]" loading="lazy" decoding="async">
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent p-3">
+                <p class="text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-secondary">Youth spotlight</p>
+                <p class="mt-1 text-xs font-medium text-white/90">Altoona teen honored for service to Iowa Guard families.</p>
+              </div>
+            </figure>
+            <div class="flex flex-1 flex-col space-y-3 p-4 text-left">
+              <span class="inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.28em] text-white/80">Leadership</span>
+              <p class="text-[0.55rem] uppercase tracking-[0.28em] text-white/60">Published April 29, 2023</p>
+              <h3 class="sr-only">Youth Spotlight: Klaryssa Klair Dunwoody</h3>
+              <blockquote class="border-l-4 border-secondary/80 pl-3 text-sm leading-relaxed text-white/85">&ldquo;Service became her way of shaping the Guard family experience for other kids and it shows.&rdquo;</blockquote>
+              <p class="text-xs text-white/75 leading-relaxed">Klair's leadership with the State Teen Panel and deployment events earned her the 2023 Iowa Army National Guard Youth Volunteer Award.</p>
+              <div class="pt-1">
+                <button type="button" class="btn-secondary inline-flex items-center gap-2 text-xs" data-modal-open="event-story-youth-spotlight">
+                  <span>Read full story</span>
+                </button>
+              </div>
+            </div>
+          </article>
+          <article class="flex w-[230px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-lg transition lg:mx-auto lg:w-full lg:max-w-[340px] xl:w-[420px] xl:max-w-[420px]" data-story-slide data-published="2025-08-11">
+            <figure class="relative aspect-[4/5] overflow-hidden rounded-t-[1.75rem]">
+              <img src="/assets/img/stories/josephandchris.jpeg" alt="Joseph smiling with mentor Chris inside the rec hall" class="h-full w-full object-cover" loading="lazy" decoding="async">
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent p-3">
+                <p class="text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-secondary">Camp highlight</p>
+                <p class="mt-1 text-xs font-medium text-white/90">Wednesday win with a mentor who kept cheering.</p>
+              </div>
+            </figure>
+            <div class="flex flex-1 flex-col space-y-3 p-4 text-left">
+              <span class="inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.28em] text-white/80">Camper breakthrough</span>
+              <h3 class="sr-only">Chain of Confidence</h3>
+              <blockquote class="border-l-4 border-secondary/80 pl-3 text-sm leading-relaxed text-white/85">&ldquo;He started the week wanting to go home. By Wednesday, he was leading with confidence and a chain that told the story of not giving up.&rdquo;</blockquote>
+              <p class="text-xs text-white/75 leading-relaxed">A small challenge and a patient mentor turned homesickness into pride. Share this when you need a concrete camp win.</p>
+              <div class="pt-1">
+                <button type="button" class="btn-secondary inline-flex items-center gap-2 text-xs" data-modal-open="event-story-camper">
+                  <span>Read full story</span>
+                </button>
+              </div>
+            </div>
+          </article>
+          <article class="flex w-[230px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-lg transition lg:mx-auto lg:w-full lg:max-w-[340px] xl:w-[420px] xl:max-w-[420px]" data-story-slide>
+            <figure class="relative aspect-[4/5] overflow-hidden rounded-t-[1.75rem]">
+              <img src="/content/media/islaandrylee.jpg" alt="Isla and Rylee holding a painted rock together and laughing" class="h-full w-full object-cover object-[center_55%]" loading="lazy" decoding="async">
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent p-3">
+                <p class="text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-secondary">Legacy rock</p>
+                <p class="mt-1 text-xs font-medium text-white/90">A painted rock that captured a brand-new friendship.</p>
+              </div>
+            </figure>
+            <div class="flex flex-1 flex-col space-y-3 p-4 text-left">
+              <span class="inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.28em] text-white/80">Friendship forged</span>
+              <h3 class="sr-only">Rock-Solid Bond</h3>
+              <blockquote class="border-l-4 border-secondary/80 pl-3 text-sm leading-relaxed text-white/85">&ldquo;Two campers met as strangers and left as best friends - a reminder that some of the strongest bonds begin at camp.&rdquo;</blockquote>
+              <p class="text-xs text-white/75 leading-relaxed">Their Legacy Rock proved how one week can spark a friendship that stays strong long after camp ends.</p>
+              <div class="pt-1">
+                <button type="button" class="btn-secondary inline-flex items-center gap-2 text-xs" data-modal-open="event-story-friendship">
+                  <span>Read full story</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+        <button
+          type="button"
+          class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 h-11 w-11 items-center justify-center rounded-full bg-white text-primary shadow-lg ring-1 ring-primary/20 transition hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-white disabled:hover:text-primary"
+          data-story-prev
+          aria-label="Previous story"
+        >
+          <span aria-hidden="true">&larr;</span>
+        </button>
+        <button
+          type="button"
+          class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 h-11 w-11 items-center justify-center rounded-full bg-white text-primary shadow-lg ring-1 ring-primary/20 transition hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-white disabled:hover:text-primary"
+          data-story-next
+          aria-label="Next story"
+        >
+          <span aria-hidden="true">&rarr;</span>
+        </button>
+      </div>
+    </div>
   </div>
-</nav>
+</section>
 
-<section id="spotlight" class="bg-slate-900 text-white py-24" data-reveal>
+<div class="modal hidden fixed inset-0 z-50 p-4 sm:p-6 lg:p-8" data-modal="event-story-military-family-ball" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="event-story-military-family-ball-title" tabindex="-1">
+  <div class="absolute inset-0 bg-slate-900/70" data-modal-overlay></div>
+  <article class="relative mx-auto max-w-4xl w-full overflow-hidden overflow-y-auto rounded-3xl bg-white text-slate-900 shadow-2xl max-h-[calc(100vh-3rem)]">
+    <button type="button" class="absolute top-4 right-4 text-slate-500 hover:text-slate-700" data-modal-close aria-label="Close story">
+      <svg class="h-6 w-6" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.707 6.293a1 1 0 00-1.414 0L12 10.586 7.707 6.293a1 1 0 00-1.414 1.414L10.586 12l-4.293 4.293a1 1 0 101.414 1.414L12 13.414l4.293 4.293a1 1 0 001.414-1.414L13.414 12l4.293-4.293a1 1 0 000-1.414z" fill="currentColor"/></svg>
+    </button>
+    <div class="flex h-full flex-col">
+      <figure class="relative h-64 sm:h-80 w-full overflow-hidden bg-slate-100 flex items-center justify-center">
+        <img src="/content/media/MFB-Recap.jpg" alt="Families at the Military Family Ball smiling and connecting during the evening" class="h-full w-full object-contain" loading="lazy" decoding="async">
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent px-6 sm:px-10 py-4">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-primary shadow-lg">Military Family Ball</span>
+        </figcaption>
+      </figure>
+      <div class="flex-1 overflow-y-auto px-6 sm:px-10 py-8 space-y-8">
+        <header class="space-y-3">
+          <h3 id="event-story-military-family-ball-title" class="text-2xl font-semibold text-slate-900">An Evening That Strengthened the Bonds Behind the Uniform</h3>
+          <div class="space-y-1">
+            <p class="text-sm font-semibold text-primary">Military Family Ball | Month of the Military Child</p>
+            <p class="text-[0.65rem] uppercase tracking-[0.28em] text-slate-500">Published April 29, 2026</p>
+          </div>
+        </header>
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+          <div class="space-y-6 text-slate-700 leading-relaxed">
+            <p>As the Month of the Military Child came to a close, the Iowa Army National Guard Child &amp; Youth Program brought families together for an evening that went far beyond a traditional event. The Military Family Ball created space for connection, understanding, and shared experience, something military families often do not get enough of.</p>
+            <p>From the moment families arrived, the atmosphere carried a sense of ease and belonging. Conversations flowed naturally, youth connected quickly, and parents found themselves among others who understand the unique rhythm of military life. For many families, that connection is what matters most.</p>
+            <p>These moments of connection are more than meaningful, they are essential. They help build resilience in youth, strengthen family relationships, and create a network of support that extends well beyond a single evening.</p>
+            <blockquote class="border-l-4 border-primary/70 pl-4 italic text-slate-800">
+              <p>“Provides children with a sense of connection and reassurance that they are not alone, especially during deployment periods.”</p>
+            </blockquote>
+            <blockquote class="border-l-4 border-primary/70 pl-4 italic text-slate-800">
+              <p>“They provide valuable opportunities for our family to connect with and build relationships among other military families, fostering a sense of community, shared understanding, and mutual support.”</p>
+            </blockquote>
+            <p>This year’s event welcomed 86 attendees out of 108 registered, with 45% attending for the first time. Twenty-two dedicated volunteers helped ensure the evening ran smoothly, and the event received a 10/10 satisfaction rating.</p>
+          </div>
+          <aside class="space-y-5">
+            <div class="content-card border border-primary/20 bg-white/90 rounded-3xl p-6 sm:p-7 shadow-lg space-y-5">
+              <div class="space-y-1">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Event snapshot</p>
+                <h4 class="text-xl font-semibold text-slate-900">By the numbers</h4>
+              </div>
+              <dl class="grid gap-4">
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">86</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Attendees</dd></div>
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">108</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Registered</dd></div>
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">45%</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">First-time families</dd></div>
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">22</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Volunteers</dd></div>
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">10/10</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Satisfaction</dd></div>
+              </dl>
+            </div>
+            <div class="content-card border border-secondary/20 bg-secondary/5 rounded-3xl p-5 space-y-3 text-sm leading-relaxed text-slate-700">
+              <p class="text-xs font-semibold uppercase tracking-[0.32em] text-secondary/70">Community partners</p>
+              <p>Iowa Select Farms, USO, City Serve DSM, Pay It Forward Always, and Swingin' Fore Soldiers helped make the evening possible and invested in the well-being of military families across the state.</p>
+              <p class="pt-2">Because when military families come together, resilience is not just taught, it is lived.</p>
+            </div>
+            <div class="content-card border border-primary/15 bg-primary/5 rounded-3xl p-5 space-y-3 text-sm leading-relaxed text-slate-700">
+              <p>The Military Family Ball recap was shared on Facebook.</p>
+              <a class="btn-secondary inline-flex items-center gap-2 text-xs" href="https://www.facebook.com/share/p/1E9gmCeBds/" target="_blank" rel="noopener noreferrer">
+                View the Facebook post
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+<section id="spotlight" class="bg-white py-16 md:py-24" data-reveal>
   <div class="container grid gap-12 lg:grid-cols-[minmax(0,1fr)_0.95fr] lg:items-center">
     <div class="space-y-5">
-      <p class="text-sm uppercase tracking-[0.35em] text-secondary">Community spotlight</p>
-      <h2 class="text-2xl md:text-3xl font-semibold text-white">News story: Community lifts families during deployment</h2>
-      <p class="text-white/85 leading-relaxed">Program Director Chris Cox sat down with local news to share how partners step in when Guard families face deployments. The feature highlights a free horse camp hosted by Jester Park Equestrian Center that gave military youth room to breathe, laugh, and stay connected while a parent was away.</p>
-      <ul class="space-y-3 text-sm text-white/80">
-        <li><span class="font-semibold text-white">Why it mattered:</span> Volunteers, donors, and Jester Park covered every cost so Guard kids could simply show up.</li>
-        <li><span class="font-semibold text-white">What families said:</span> Time with the horses eased anxiety and sparked conversations about deployment in a safe setting.</li>
-        <li><span class="font-semibold text-white">How to use it:</span> Share this clip with civic groups and potential sponsors who want real examples of community impact.</li>
+      <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Community spotlight</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">A community lifts families during deployment</h2>
+      <p class="text-slate-700 leading-relaxed">Program Director Chris Cox sat down with local news to share how partners step in when Guard families face deployments. The feature highlights a free horse camp hosted by Jester Park Equestrian Center that gave military youth room to breathe, laugh, and stay connected while a parent was away.</p>
+      <ul class="list-disc pl-8 space-y-3 text-sm text-slate-700">
+        <li><span class="font-semibold text-slate-900">Why it mattered:</span> Volunteers, donors, and Jester Park covered every cost so Guard kids could simply show up.</li>
+        <li><span class="font-semibold text-slate-900">What families said:</span> Time with the horses eased anxiety and sparked conversations about deployment in a safe setting.</li>
+        <li><span class="font-semibold text-slate-900">How to use it:</span> Share this clip with civic groups and potential sponsors who want real examples of community impact.</li>
       </ul>
     </div>
-    <article class="content-card bg-white/5 border-white/20 backdrop-blur text-white space-y-4">
-      <div class="aspect-video rounded-3xl overflow-hidden border border-white/30">
+    <article class="content-card shadow-lg space-y-4">
+      <div class="aspect-video rounded-3xl overflow-hidden border border-slate-200">
         <video controls preload="metadata" poster="/assets/img/stories/news_story.png" class="w-full h-full" playsinline>
           <source src="/assets/video/news_interview.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </div>
-      <p class="text-white/80 text-sm leading-relaxed">Full interview: Chris Cox explains how community partners like Jester Park Equestrian Center rally around Guard families to keep kids grounded during deployment.</p>
+      <p class="text-slate-700 text-sm leading-relaxed">Full interview: Chris Cox explains how community partners like Jester Park Equestrian Center rally around Guard families to keep kids grounded during deployment.</p>
     </article>
   </div>
 </section>
 
-<section id="family-stories" class="bg-gradient-to-b from-white via-white to-primary/10 py-24" data-reveal>
+<section id="family-stories" class="bg-slate-900 py-16 md:py-24" data-reveal>
   <div class="container grid gap-12 lg:grid-cols-[minmax(0,1fr)_0.95fr] lg:items-center">
     <article class="content-card shadow-lg space-y-5 h-full order-last lg:order-first">
-      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Parent perspective</p>
+      <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Parent perspective</p>
       <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Finding friendship after a cross-country move</h2>
-      <p class="text-slate-700 leading-relaxed">When one Guard family relocated from Texas to Iowa, their daughter wondered who would understand what military life felt like. In this short clip, her mom shares how a familiar face from an Iowa CYP program turned into instant camaraderie—and how that connection steadied their whole household.</p>
-      <ul class="space-y-3 text-sm text-slate-700">
-        <li><span class="font-semibold text-slate-900">Shared experience:</span> A fellow military youth spotted her at camp and reminded her she wasn’t starting over alone.</li>
+      <p class="text-slate-700 leading-relaxed">When one Guard family relocated from Texas to Iowa, their daughter wondered who would understand what military life felt like. In this short clip, her mom shares how a familiar face from an Iowa CYP program turned into instant camaraderie and how that connection steadied their whole household.</p>
+      <ul class="list-disc pl-8 space-y-3 text-sm text-slate-700">
+        <li><span class="font-semibold text-slate-900">Shared experience:</span> A fellow military youth spotted her at camp and reminded her she was not starting over alone.</li>
         <li><span class="font-semibold text-slate-900">Ripple effect:</span> Confidence followed her home, making the new duty station feel less overwhelming.</li>
         <li><span class="font-semibold text-slate-900">Takeaway:</span> CYP friendships can outlast moves and mobilizations, giving kids anchors no matter the zip code.</li>
       </ul>
     </article>
     <div class="content-card shadow-lg h-full space-y-4">
-      <div class="aspect-video rounded-3xl overflow-hidden border border-slate-200">
+      <div class="frame-shell aspect-video rounded-3xl overflow-hidden border border-slate-200" data-frame-shell>
         <iframe
-          src="https://www.youtube.com/embed/rZL1KANrLt4"
-          title="Guard parent testimonial"
-          class="w-full h-full"
+          data-frame-src="https://www.youtube.com/embed/rZL1KANrLt4?rel=0&modestbranding=1&playsinline=1"
+          data-frame-eager
+          title="Horse camp story"
+          class="frame-embed w-full h-full"
           loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
           allowfullscreen
         ></iframe>
       </div>
-      <p class="text-sm text-gray-700 leading-relaxed">Use this testimony when talking with school counselors, partner organizations, or potential sponsors who want to understand the on-the-ground impact of CYP relationships.</p>
+      <p class="text-sm text-gray-700 leading-relaxed">Use this story when talking with school counselors, partner organizations, or potential sponsors who want to understand the on-the-ground impact of CYP relationships. If the embedded player does not load, <a class="text-primary font-semibold hover:underline" href="https://www.youtube.com/watch?v=rZL1KANrLt4" target="_blank" rel="noopener">watch it on YouTube</a>.</p>
     </div>
   </div>
 </section>
 
-<section id="mission-video" class="bg-white py-24" data-reveal>
-  <div class="container grid gap-8 md:grid-cols-[1.2fr_1fr] items-start">
-    <article class="content-card bg-slate-900 text-white border-slate-900 space-y-4 h-full shadow-lg" data-reveal>
-      <h2 class="text-xl font-semibold">See the program in action</h2>
-      {% if site.links.programOverviewVideo %}
-        {% set embedUrl = site.links.programOverviewVideo | replace('https://youtu.be/', 'https://www.youtube.com/embed/') %}
-        <div class="aspect-video rounded-xl overflow-hidden border border-white/20">
-          <iframe src="{{ embedUrl }}" title="Iowa CYP Overview" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+<div class="modal hidden fixed inset-0 z-50 p-4 sm:p-6 lg:p-8" data-modal="event-story-purple-star-schools" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="event-story-purple-star-schools-title" tabindex="-1">
+  <div class="absolute inset-0 bg-slate-900/70" data-modal-overlay></div>
+  <article class="relative mx-auto max-w-4xl w-full overflow-hidden overflow-y-auto rounded-3xl bg-white text-slate-900 shadow-2xl max-h-[calc(100vh-3rem)]">
+    <button type="button" class="absolute top-4 right-4 text-slate-500 hover:text-slate-700" data-modal-close aria-label="Close story">
+      <svg class="h-6 w-6" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.707 6.293a1 1 0 00-1.414 0L12 10.586 7.707 6.293a1 1 0 00-1.414 1.414L10.586 12l-4.293 4.293a1 1 0 101.414 1.414L12 13.414l4.293 4.293a1 1 0 001.414-1.414L13.414 12l4.293-4.293a1 1 0 000-1.414z" fill="currentColor"/></svg>
+    </button>
+    <div class="flex h-full flex-col">
+      <figure class="relative h-64 sm:h-80 w-full overflow-hidden bg-slate-100 flex items-center justify-center">
+        <img src="/content/media/purplestarschools.png" alt="Military-connected students, families, school leaders, and state leaders at the Iowa State Capitol for the launch of Iowa's Purple Star School Program" class="h-full w-full object-contain" loading="lazy" decoding="async">
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent px-4 sm:px-6 py-3">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-primary shadow">Purple Star Schools</span>
+        </figcaption>
+      </figure>
+      <div class="flex-1 overflow-y-auto px-6 sm:px-10 py-8 space-y-8">
+        <header class="space-y-3">
+          <div class="space-y-1">
+            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Supporting military-connected students across the state</p>
+            <h3 id="event-story-purple-star-schools-title" class="text-2xl font-semibold text-slate-900">Iowa Launches Purple Star Schools</h3>
+          </div>
+          <div class="space-y-1">
+            <p class="text-sm font-semibold text-primary">Des Moines, Iowa | April 23, 2026</p>
+            <p class="text-[0.65rem] uppercase tracking-[0.28em] text-slate-500">Published April 23, 2026</p>
+          </div>
+        </header>
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+          <div class="space-y-6 text-slate-700 leading-relaxed">
+            <p>Iowa officially launched its Purple Star School Program on April 23, 2026, marking a major milestone in how the state supports military-connected students and their families.</p>
+            <p>This effort did not appear overnight. It was built through collaboration, persistence, and a shared belief that military kids deserve consistent support no matter where life takes them. Leaders across education and military communities worked together to bring the vision to life, including Chris Cox, a member of the Military Interstate Children's Compact Commission, who helped advocate for the legislation that made the program possible.</p>
+            <p>In 2025, Senate File 275 was signed into law with unanimous bipartisan support, laying the foundation for Iowa's Purple Star designation. With implementation underway, Iowa became the 44th state to adopt the nationally recognized program.</p>
+            <p>The official inauguration took place at the Iowa State Capitol during the Month of the Military Child. Seven school districts, representing 17 schools, were recognized as Iowa's first Purple Star Schools. Each demonstrated a strong commitment to supporting military-connected students through practical systems, visible resources, and ongoing staff readiness.</p>
+            <p>At the ceremony, state and military leaders came together to recognize the impact of the initiative and the schools leading the way. The message was clear: when schools understand and support military families, students are better positioned to thrive.</p>
+            <p>Military-connected students often face frequent moves, disrupted learning, and time away from a parent during deployment. The Purple Star designation helps ensure schools are not only aware of those challenges, but actively equipped to respond to them.</p>
+            <p>As more schools pursue the designation, Iowa continues building a stronger, more connected support system for military families across the state.</p>
+          </div>
+          <aside class="space-y-5">
+            <div class="content-card border border-primary/20 bg-white/90 rounded-3xl p-6 sm:p-7 shadow-lg space-y-5">
+              <div class="space-y-1">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Program snapshot</p>
+                <h4 class="text-xl font-semibold text-slate-900">First designations</h4>
+              </div>
+              <dl class="grid gap-4">
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">44th</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">State to adopt</dd></div>
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">7</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Districts recognized</dd></div>
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">17</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">First Purple Star Schools</dd></div>
+              </dl>
+            </div>
+            <div class="content-card border border-secondary/20 bg-secondary/5 rounded-3xl p-5 space-y-4 text-sm leading-relaxed text-slate-700">
+              <p class="text-xs font-semibold uppercase tracking-[0.32em] text-secondary/70">What schools built</p>
+              <ul class="grid gap-3">
+                <li class="flex gap-3"><span class="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-secondary"></span><span>A dedicated military liaison for students and families.</span></li>
+                <li class="flex gap-3"><span class="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-secondary"></span><span>Accessible resource pages for military-connected families.</span></li>
+                <li class="flex gap-3"><span class="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-secondary"></span><span>Programs that raise awareness of military life challenges.</span></li>
+                <li class="flex gap-3"><span class="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-secondary"></span><span>Ongoing staff training to better serve military-connected youth.</span></li>
+              </ul>
+            </div>
+            <div class="content-card border border-primary/15 bg-primary/5 rounded-3xl p-5 space-y-3 text-sm leading-relaxed text-slate-700">
+              <p class="text-xs font-semibold uppercase tracking-[0.32em] text-primary/70">See the moment</p>
+              <p>Iowa Department of Education shared the Purple Star Schools launch on Facebook on April 23, 2026.</p>
+              <a class="btn-secondary inline-flex items-center gap-2 text-xs" href="https://www.facebook.com/share/p/1G1Sw6nT36/" target="_blank" rel="noopener noreferrer">
+                <span>View Facebook post</span>
+              </a>
+            </div>
+          </aside>
         </div>
-      {% else %}
-        <video class="w-full rounded-xl" controls poster="/assets/img/stories/news_story.png" playsinline>
-          <source src="/assets/video/news_interview.mp4" type="video/mp4">
-          Sorry, your browser does not support embedded video.
-        </video>
-      {% endif %}
-      <p class="text-white/80 text-sm">Share this overview with partners and community members to invite new champions into the work.</p>
-    </article>
-    <article class="content-card shadow-lg space-y-4 h-full">
-      <h2 class="text-2xl font-semibold text-slate-900">Mission in Motion</h2>
-      <p class="text-gray-700 leading-relaxed">{{ info.mission }}</p>
-      <ul class="list-disc list-inside text-sm text-gray-700 space-y-2">
-        {% for pillar in info.strategicInfrastructure %}
-          <li><span class="font-semibold text-slate-800">{{ pillar.title }}:</span> {{ pillar.description }}</li>
-        {% endfor %}
-      </ul>
-    </article>
-  </div>
-</section>
+      </div>
+    </div>
+  </article>
+</div>
 
-<section id="voices" class="bg-primary/5 py-16" data-reveal>
+<div class="modal hidden fixed inset-0 z-50 p-4 sm:p-6 lg:p-8" data-modal="event-story-capitol-proclamation" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="event-story-capitol-proclamation-title" tabindex="-1">
+  <div class="absolute inset-0 bg-slate-900/70" data-modal-overlay></div>
+  <article class="relative mx-auto max-w-4xl w-full overflow-hidden overflow-y-auto rounded-3xl bg-white text-slate-900 shadow-2xl max-h-[calc(100vh-3rem)]">
+    <button type="button" class="absolute top-4 right-4 text-slate-500 hover:text-slate-700" data-modal-close aria-label="Close story">
+      <svg class="h-6 w-6" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.707 6.293a1 1 0 00-1.414 0L12 10.586 7.707 6.293a1 1 0 00-1.414 1.414L10.586 12l-4.293 4.293a1 1 0 101.414 1.414L12 13.414l4.293 4.293a1 1 0 001.414-1.414L13.414 12l4.293-4.293a1 1 0 000-1.414z" fill="currentColor"/></svg>
+    </button>
+    <div class="flex h-full flex-col">
+      <figure class="relative h-64 sm:h-80 w-full overflow-hidden bg-slate-100 flex items-center justify-center">
+        <img src="/content/media/Proc.jpg" alt="Governor Reynolds signing the Month of the Military Child proclamation at the Iowa State Capitol" class="h-full w-full object-contain" loading="lazy" decoding="async">
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent px-4 sm:px-6 py-3">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-primary shadow">Capitol moment</span>
+        </figcaption>
+      </figure>
+      <div class="flex-1 overflow-y-auto px-6 sm:px-10 py-8 space-y-8">
+        <header class="space-y-3">
+          <div class="space-y-1">
+            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Month of the Military Child recognition</p>
+            <h3 id="event-story-capitol-proclamation-title" class="text-2xl font-semibold text-slate-900">Governor Reynolds Proclaims April as Month of the Military Child at Iowa Capitol</h3>
+          </div>
+          <div class="space-y-1">
+            <p class="text-sm font-semibold text-primary">Des Moines, Iowa | April 1, 2026</p>
+            <p class="text-[0.65rem] uppercase tracking-[0.28em] text-slate-500">Published April 1, 2026</p>
+          </div>
+        </header>
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+          <div class="space-y-6 text-slate-700 leading-relaxed">
+            <p>Military-connected youth and families gathered at the Iowa Capitol as Governor Reynolds officially proclaimed April the Month of the Military Child across the state. The moment honored the resilience, service, and sacrifice of Iowa's military children while giving families a public reminder that their experiences matter.</p>
+            <p>The proclamation helped launch a month of statewide visibility efforts, classroom kit outreach, and community celebrations coordinated through Iowa CYP and partner organizations. It also gave youth the chance to stand visibly beside state leadership as their stories were recognized.</p>
+            <p>For Guard families, the value of the day was not only symbolic. It signaled that their children are seen not just within military circles, but across schools, communities, and state government.</p>
+            <p>Moments like this help turn awareness into support by connecting families, educators, and community leaders around the real experiences of military youth.</p>
+          </div>
+          <aside class="space-y-5">
+            <div class="content-card border border-primary/20 bg-white/90 rounded-3xl p-6 sm:p-7 shadow-lg space-y-5">
+              <div class="space-y-1">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Story snapshot</p>
+                <h4 class="text-xl font-semibold text-slate-900">Capitol recognition</h4>
+              </div>
+              <dl class="grid gap-4">
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">April</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Month recognized</dd></div>
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">35+</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Family members present</dd></div>
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">2</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Teen panel members</dd></div>
+              </dl>
+            </div>
+            <div class="content-card border border-secondary/20 bg-secondary/5 rounded-3xl p-5 space-y-3 text-sm leading-relaxed text-slate-700">
+              <p class="text-xs font-semibold uppercase tracking-[0.32em] text-secondary/70">Why it matters</p>
+              <p>Public recognition helps schools, communities, and state leaders see military children as part of Iowa's readiness story.</p>
+            </div>
+            <div class="content-card border border-primary/15 bg-primary/5 rounded-3xl p-5 space-y-3 text-sm leading-relaxed text-slate-700">
+              <p class="text-xs font-semibold uppercase tracking-[0.32em] text-primary/70">See the moment</p>
+              <p>The proclamation signing was shared on Facebook.</p>
+              <a class="btn-secondary inline-flex items-center gap-2 text-xs" href="https://www.facebook.com/share/p/18TduzAmg8/" target="_blank" rel="noopener noreferrer">
+                <span>View Facebook post</span>
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="modal hidden fixed inset-0 z-50 p-4 sm:p-6 lg:p-8" data-modal="event-story-purple-up" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="event-story-purple-up-title" tabindex="-1">
+  <div class="absolute inset-0 bg-slate-900/70" data-modal-overlay></div>
+  <article class="relative mx-auto max-w-4xl w-full overflow-hidden overflow-y-auto rounded-3xl bg-white text-slate-900 shadow-2xl max-h-[calc(100vh-3rem)]">
+    <button type="button" class="absolute top-4 right-4 text-slate-500 hover:text-slate-700" data-modal-close aria-label="Close story">
+      <svg class="h-6 w-6" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.707 6.293a1 1 0 00-1.414 0L12 10.586 7.707 6.293a1 1 0 00-1.414 1.414L10.586 12l-4.293 4.293a1 1 0 101.414 1.414L12 13.414l4.293 4.293a1 1 0 001.414-1.414L13.414 12l4.293-4.293a1 1 0 000-1.414z" fill="currentColor"/></svg>
+    </button>
+    <div class="flex h-full flex-col">
+      <figure class="relative h-64 sm:h-80 w-full overflow-hidden bg-slate-100 flex items-center justify-center">
+        <img src="/content/media/PurpleUPStory.jpg" alt="Purple Up! Day classroom kit outreach across Iowa" class="h-full w-full object-contain" loading="lazy" decoding="async">
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent px-4 sm:px-6 py-3">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-primary shadow">Purple Up! Day</span>
+        </figcaption>
+      </figure>
+      <div class="flex-1 overflow-y-auto px-6 sm:px-10 py-8 space-y-8">
+        <header class="space-y-3">
+          <div class="space-y-1">
+            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Statewide classroom outreach</p>
+            <h3 id="event-story-purple-up-title" class="text-2xl font-semibold text-slate-900">Purple Up! Day Celebrated Across Iowa with Statewide Classroom Kit Outreach</h3>
+          </div>
+          <div class="space-y-1">
+            <p class="text-sm font-semibold text-primary">Statewide | April 10, 2026</p>
+            <p class="text-[0.65rem] uppercase tracking-[0.28em] text-slate-500">Published April 10, 2026</p>
+          </div>
+        </header>
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+          <div class="space-y-6 text-slate-700 leading-relaxed">
+            <p>Across Iowa, classrooms marked Purple Up! Day with educational kits designed to help students understand military life and celebrate the resilience of military children. The project reached schools across the state and connected new families to Iowa CYP for the first time.</p>
+            <p>The classroom kits helped educators bring the Month of the Military Child into schools in a way that felt practical, visible, and positive. Students learned why military youth are recognized each April, while military-connected kids experienced a moment of pride rather than invisibility.</p>
+            <p>What made the outreach meaningful was its scale and simplicity. By delivering ready-to-use materials, the effort lowered the barrier for schools to participate and created shared language around military family life.</p>
+            <p>Projects like Purple Up! Day extend Iowa CYP beyond event spaces and into classrooms, where day-to-day belonging matters most.</p>
+          </div>
+          <aside class="space-y-5">
+            <div class="content-card border border-primary/20 bg-white/90 rounded-3xl p-6 sm:p-7 shadow-lg space-y-5">
+              <div class="space-y-1">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Outreach snapshot</p>
+                <h4 class="text-xl font-semibold text-slate-900">By the numbers</h4>
+              </div>
+              <dl class="grid gap-4">
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">130+</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Classroom kits</dd></div>
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">68</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Schools reached</dd></div>
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">3,850</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Youth impacted</dd></div>
+              </dl>
+            </div>
+            <div class="content-card border border-secondary/20 bg-secondary/5 rounded-3xl p-5 space-y-3 text-sm leading-relaxed text-slate-700">
+              <p class="text-xs font-semibold uppercase tracking-[0.32em] text-secondary/70">Why it matters</p>
+              <p>Ready-to-use school materials make recognition easy for educators and visible for military-connected students.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="modal hidden fixed inset-0 z-50 p-4 sm:p-6 lg:p-8" data-modal="event-story-veteran-listening" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="event-story-veteran-listening-title" tabindex="-1">
+  <div class="absolute inset-0 bg-slate-900/70" data-modal-overlay></div>
+  <article class="relative mx-auto max-w-4xl w-full overflow-hidden overflow-y-auto rounded-3xl bg-white text-slate-900 shadow-2xl max-h-[calc(100vh-3rem)]">
+    <button type="button" class="absolute top-4 right-4 text-slate-500 hover:text-slate-700" data-modal-close aria-label="Close story">
+      <svg class="h-6 w-6" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.707 6.293a1 1 0 00-1.414 0L12 10.586 7.707 6.293a1 1 0 00-1.414 1.414L10.586 12l-4.293 4.293a1 1 0 101.414 1.414L12 13.414l4.293 4.293a1 1 0 001.414-1.414L13.414 12l4.293-4.293a1 1 0 000-1.414z" fill="currentColor"/></svg>
+    </button>
+    <div class="flex h-full flex-col">
+      <figure class="relative h-64 sm:h-80 w-full overflow-hidden bg-slate-100 flex items-center justify-center">
+        <img src="/content/media/VeteranPicture.jpeg" alt="State Teen Panel members visiting veterans at Eastern Star Masonic Home in Boone, Iowa" class="h-full w-full object-contain" loading="lazy" decoding="async">
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent px-4 sm:px-6 py-3">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-primary shadow">Listening Across Generations</span>
+        </figcaption>
+      </figure>
+      <div class="flex-1 overflow-y-auto px-6 sm:px-10 py-8 space-y-8">
+        <header class="space-y-3">
+          <div class="space-y-1">
+            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Listening across generations</p>
+            <h3 id="event-story-veteran-listening-title" class="text-2xl font-semibold text-slate-900">Moments That Stay With Us</h3>
+          </div>
+          <div class="space-y-1">
+            <p class="text-sm font-semibold text-primary">Boone, Iowa | March 7, 2026</p>
+            <p class="text-[0.65rem] uppercase tracking-[0.28em] text-slate-500">Published March 7, 2026</p>
+          </div>
+        </header>
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+          <div class="space-y-6 text-slate-700 leading-relaxed">
+            <p>State Teen Panel members spent the day at Eastern Star Masonic Home in Boone, Iowa, listening to veterans share stories of service, sacrifice, and life after uniform. The conversations became more than a volunteer activity. They turned into a bridge between generations.</p>
+            <p>For the teens, the visit created a rare chance to hear directly from those who had served before them. The stories gave context to service, family separation, resilience, and the long view of what military life can ask of a person.</p>
+            <p>By the end of the visit, the room was filled with smiles, thoughtful questions, and moments that made history feel personal instead of distant. What began as a service project became a reminder that listening is itself a form of leadership.</p>
+            <p>For Iowa CYP, this kind of experience matters because it strengthens empathy and service-minded leadership among Guard-connected youth while honoring the people who came before them.</p>
+          </div>
+          <aside class="space-y-5">
+            <div class="content-card border border-primary/20 bg-white/90 rounded-3xl p-6 sm:p-7 shadow-lg space-y-5">
+              <div class="space-y-1">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Visit snapshot</p>
+                <h4 class="text-xl font-semibold text-slate-900">Service in action</h4>
+              </div>
+              <dl class="grid gap-4">
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">7</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Teen panel members</dd></div>
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">1</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Veteran community visit</dd></div>
+              </dl>
+            </div>
+            <div class="content-card border border-secondary/20 bg-secondary/5 rounded-3xl p-5 space-y-3 text-sm leading-relaxed text-slate-700">
+              <p class="text-xs font-semibold uppercase tracking-[0.32em] text-secondary/70">Why it matters</p>
+              <p>Listening to veterans helps Guard-connected teens connect service history with empathy, leadership, and family sacrifice.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="modal hidden fixed inset-0 z-50 p-4 sm:p-6 lg:p-8" data-modal="event-story-youth-spotlight" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="event-story-youth-spotlight-title" tabindex="-1">
+  <div class="absolute inset-0 bg-slate-900/70" data-modal-overlay></div>
+  <article class="relative mx-auto max-w-4xl w-full overflow-hidden overflow-y-auto rounded-3xl bg-white text-slate-900 shadow-2xl max-h-[calc(100vh-3rem)]">
+    <button type="button" class="absolute top-4 right-4 text-slate-500 hover:text-slate-700" data-modal-close aria-label="Close story">
+      <svg class="h-6 w-6" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.707 6.293a1 1 0 00-1.414 0L12 10.586 7.707 6.293a1 1 0 00-1.414 1.414L10.586 12l-4.293 4.293a1 1 0 101.414 1.414L12 13.414l4.293 4.293a1 1 0 001.414-1.414L13.414 12l4.293-4.293a1 1 0 000-1.414z" fill="currentColor"/></svg>
+    </button>
+    <div class="flex h-full flex-col">
+      <figure class="relative h-64 sm:h-80 w-full overflow-hidden bg-slate-100 flex items-center justify-center">
+        <img src="/content/media/size0-full.jpg" alt="Klaryssa Klair Dunwoody volunteering with the State Teen Panel" class="h-full w-full object-contain object-[center_20%]" loading="lazy" decoding="async">
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent px-4 sm:px-6 py-3">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-primary shadow">Youth spotlight</span>
+        </figcaption>
+      </figure>
+      <div class="flex-1 overflow-y-auto px-6 sm:px-10 py-8 space-y-8">
+        <header class="space-y-3">
+          <div class="space-y-1">
+            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Youth leadership spotlight</p>
+            <h3 id="event-story-youth-spotlight-title" class="text-2xl font-semibold text-slate-900">Altoona Teen Honored for Service to Iowa Guard Families</h3>
+          </div>
+          <div class="space-y-1">
+            <p class="text-sm font-semibold text-primary">Johnston, Iowa | April 15, 2023</p>
+            <p class="text-[0.65rem] uppercase tracking-[0.28em] text-slate-500">Published April 29, 2023</p>
+          </div>
+        </header>
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+          <div class="space-y-6 text-slate-700 leading-relaxed">
+            <p>Life as a military child comes with challenges that are often unseen. For Klaryssa Klair Dunwoody, those challenges became an invitation to lead. The Altoona teen and daughter of Iowa Army National Guard Capt. Josh Dunwoody was awarded the 2023 Iowa Army National Guard Youth Volunteer Award for her dedication to Guard Soldiers and families.</p>
+            <p>Klair found her place through the State Teen Panel, where youth leaders help plan and support family events across the state. Her service grew into a reliable presence for younger kids and parents navigating the Guard lifestyle.</p>
+            <p>Recognition like this matters because it shows military-connected youth that their leadership is not secondary to the mission. It is part of it. When teens like Klair step forward, they strengthen the Guard community from the inside out.</p>
+            <p>The Iowa National Guard Child and Youth Program continues to create opportunities like the State Teen Panel so military youth can connect, lead, and serve.</p>
+          </div>
+          <aside class="space-y-5">
+            <div class="content-card border border-primary/20 bg-white/90 rounded-3xl p-6 sm:p-7 shadow-lg space-y-5">
+              <div class="space-y-1">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Recognition snapshot</p>
+                <h4 class="text-xl font-semibold text-slate-900">Youth volunteer award</h4>
+              </div>
+              <dl class="grid gap-4">
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">2023</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Award year</dd></div>
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">STP</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Leadership pathway</dd></div>
+              </dl>
+            </div>
+            <div class="content-card border border-secondary/20 bg-secondary/5 rounded-3xl p-5 space-y-3 text-sm leading-relaxed text-slate-700">
+              <p class="text-xs font-semibold uppercase tracking-[0.32em] text-secondary/70">Why it matters</p>
+              <p>Youth leadership shows military-connected teens that their service strengthens the Guard family community.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="modal hidden fixed inset-0 z-50 p-4 sm:p-6 lg:p-8" data-modal="event-story-gtp-representative" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="event-story-gtp-representative-title" tabindex="-1">
+  <div class="absolute inset-0 bg-slate-900/70" data-modal-overlay></div>
+  <article class="relative mx-auto max-w-4xl w-full overflow-hidden overflow-y-auto rounded-3xl bg-white text-slate-900 shadow-2xl max-h-[calc(100vh-3rem)]">
+    <button type="button" class="absolute top-4 right-4 text-slate-500 hover:text-slate-700" data-modal-close aria-label="Close story">
+      <svg class="h-6 w-6" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.707 6.293a1 1 0 00-1.414 0L12 10.586 7.707 6.293a1 1 0 00-1.414 1.414L10.586 12l-4.293 4.293a1 1 0 101.414 1.414L12 13.414l4.293 4.293a1 1 0 001.414-1.414L13.414 12l4.293-4.293a1 1 0 000-1.414z" fill="currentColor"/></svg>
+    </button>
+    <div class="flex h-full flex-col">
+      <figure class="relative h-64 sm:h-80 w-full overflow-hidden bg-slate-100 flex items-center justify-center">
+        <img src="/content/media/charlee.jpg" alt="Charlee Cromwell volunteering at a food packaging line" class="h-full w-full object-contain" loading="lazy" decoding="async">
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent px-4 sm:px-6 py-3">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-primary shadow">Leadership spotlight</span>
+        </figcaption>
+      </figure>
+      <div class="flex-1 overflow-y-auto px-6 sm:px-10 py-8 space-y-8">
+        <header class="space-y-3">
+          <div class="space-y-1">
+            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Statewide teen leadership</p>
+            <h3 id="event-story-gtp-representative-title" class="text-2xl font-semibold text-slate-900">Iowa Teen Steps Into Statewide Leadership Role as GTP Representative</h3>
+          </div>
+          <div class="space-y-1">
+            <p class="text-sm font-semibold text-primary">Johnston, Iowa | December 15, 2025</p>
+            <p class="text-[0.65rem] uppercase tracking-[0.28em] text-slate-500">Published January 28, 2026</p>
+          </div>
+        </header>
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+          <div class="space-y-6 text-slate-700 leading-relaxed">
+            <p>For many military teens, leadership begins quietly by showing up, listening, and choosing to serve. For Charlee Cromwell, that steady commitment led to a statewide role supporting Guard youth across Iowa and Region 7.</p>
+            <p>As Iowa's Guard Teen Panel representative, Charlee helps carry youth perspective into planning, outreach, and leadership conversations that shape programs for military-connected teens. That role matters because it gives Guard youth an actual voice in the work, not just a seat in the audience.</p>
+            <p>Charlee's path also reflects the strength of the State Teen Panel pipeline. Leadership within Iowa CYP is not abstract. It starts with service, responsibility, and trust earned over time.</p>
+            <p>When military-connected teens see peers step into visible leadership roles, it changes what feels possible for them too.</p>
+          </div>
+          <aside class="space-y-5">
+            <div class="content-card border border-primary/20 bg-white/90 rounded-3xl p-6 sm:p-7 shadow-lg space-y-5">
+              <div class="space-y-1">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Leadership snapshot</p>
+                <h4 class="text-xl font-semibold text-slate-900">Guard Teen Panel</h4>
+              </div>
+              <dl class="grid gap-4">
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">Iowa</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">State representative</dd></div>
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">7</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Region supported</dd></div>
+              </dl>
+            </div>
+            <div class="content-card border border-secondary/20 bg-secondary/5 rounded-3xl p-5 space-y-3 text-sm leading-relaxed text-slate-700">
+              <p class="text-xs font-semibold uppercase tracking-[0.32em] text-secondary/70">Why it matters</p>
+              <p>Peer leadership gives military-connected teens a visible role in shaping programs built for their real experiences.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="modal hidden fixed inset-0 z-50 p-4 sm:p-6 lg:p-8" data-modal="event-story-camper" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="event-story-camper-title" tabindex="-1">
+  <div class="absolute inset-0 bg-slate-900/70" data-modal-overlay></div>
+  <article class="relative mx-auto max-w-4xl w-full overflow-hidden overflow-y-auto rounded-3xl bg-white text-slate-900 shadow-2xl max-h-[calc(100vh-3rem)]">
+    <button type="button" class="absolute top-4 right-4 text-slate-500 hover:text-slate-700" data-modal-close aria-label="Close story">
+      <svg class="h-6 w-6" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.707 6.293a1 1 0 00-1.414 0L12 10.586 7.707 6.293a1 1 0 00-1.414 1.414L10.586 12l-4.293 4.293a1 1 0 101.414 1.414L12 13.414l4.293 4.293a1 1 0 001.414-1.414L13.414 12l4.293-4.293a1 1 0 000-1.414z" fill="currentColor"/></svg>
+    </button>
+    <div class="flex h-full flex-col">
+      <figure class="relative h-64 sm:h-80 w-full overflow-hidden bg-slate-100 flex items-center justify-center">
+        <img src="/assets/img/stories/josephandchris.jpeg" alt="Joseph smiling with mentor Chris inside the rec hall" class="h-full w-full object-contain" loading="lazy" decoding="async">
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent px-4 sm:px-6 py-3">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-primary shadow">Camp highlight</span>
+        </figcaption>
+      </figure>
+      <div class="flex-1 overflow-y-auto px-6 sm:px-10 py-8 space-y-8">
+        <header class="space-y-3">
+          <div class="space-y-1">
+            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Camper breakthrough</p>
+            <h3 id="event-story-camper-title" class="text-2xl font-semibold text-slate-900">Chain of Confidence: A Camper's Turnaround</h3>
+          </div>
+          <div class="space-y-1">
+            <p class="text-sm font-semibold text-primary">Summer Camp | 2025</p>
+            <p class="text-[0.65rem] uppercase tracking-[0.28em] text-slate-500">Published August 11, 2025</p>
+          </div>
+        </header>
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+          <div class="space-y-6 text-slate-700 leading-relaxed">
+            <p>It was Monday at camp when one of our youth sat off to the side, fighting back tears. He wanted to go home. Homesickness is common that first day, when kids feel unsure, overwhelmed, and uncertain about where they belong.</p>
+            <p>A small challenge, some patient encouragement, and one hard-earned win changed the week. By Wednesday, the same camper who wanted to leave was standing tall, smiling, and connected to the people around him.</p>
+            <p>Stories like this matter because they show what camp actually does. It gives kids room to struggle, support to keep going, and the kind of confidence that carries home with them after the week ends.</p>
+            <p>Sometimes all a child needs is one small success and one adult who believes they can do it. That is the work.</p>
+          </div>
+          <aside class="space-y-5">
+            <div class="content-card border border-primary/20 bg-white/90 rounded-3xl p-6 sm:p-7 shadow-lg space-y-5">
+              <div class="space-y-1">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Camp snapshot</p>
+                <h4 class="text-xl font-semibold text-slate-900">Confidence built</h4>
+              </div>
+              <dl class="grid gap-4">
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">Mon</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Wanted to go home</dd></div>
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">Wed</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Leading with pride</dd></div>
+              </dl>
+            </div>
+            <div class="content-card border border-secondary/20 bg-secondary/5 rounded-3xl p-5 space-y-3 text-sm leading-relaxed text-slate-700">
+              <p class="text-xs font-semibold uppercase tracking-[0.32em] text-secondary/70">Why it matters</p>
+              <p>Camp gives youth room to struggle, recover, and carry home confidence that came from a real win.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="modal hidden fixed inset-0 z-50 p-4 sm:p-6 lg:p-8" data-modal="event-story-friendship" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="event-story-friendship-title" tabindex="-1">
+  <div class="absolute inset-0 bg-slate-900/70" data-modal-overlay></div>
+  <article class="relative mx-auto max-w-4xl w-full overflow-hidden overflow-y-auto rounded-3xl bg-white text-slate-900 shadow-2xl max-h-[calc(100vh-3rem)]">
+    <button type="button" class="absolute top-4 right-4 text-slate-500 hover:text-slate-700" data-modal-close aria-label="Close story">
+      <svg class="h-6 w-6" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.707 6.293a1 1 0 00-1.414 0L12 10.586 7.707 6.293a1 1 0 00-1.414 1.414L10.586 12l-4.293 4.293a1 1 0 101.414 1.414L12 13.414l4.293 4.293a1 1 0 001.414-1.414L13.414 12l4.293-4.293a1 1 0 000-1.414z" fill="currentColor"/></svg>
+    </button>
+    <div class="flex h-full flex-col">
+      <figure class="relative h-64 sm:h-80 w-full overflow-hidden bg-slate-100 flex items-center justify-center">
+        <img src="/content/media/islaandrylee.jpg" alt="Isla and Rylee holding their painted legacy rock and laughing" class="h-full w-full object-contain" loading="lazy" decoding="async">
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent px-4 sm:px-6 py-3">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-primary shadow">Legacy rock</span>
+        </figcaption>
+      </figure>
+      <div class="flex-1 overflow-y-auto px-6 sm:px-10 py-8 space-y-8">
+        <header class="space-y-3">
+          <div class="space-y-1">
+            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Behind the picture</p>
+            <h3 id="event-story-friendship-title" class="text-2xl font-semibold text-slate-900">Legacy Rock Friendship</h3>
+          </div>
+          <div class="space-y-1">
+            <p class="text-sm font-semibold text-primary">Summer Camp | 2025</p>
+            <p class="text-[0.65rem] uppercase tracking-[0.28em] text-slate-500">Friendship forged at camp</p>
+          </div>
+        </header>
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+          <div class="space-y-6 text-slate-700 leading-relaxed">
+            <p>At first glance, it is just two smiling girls and a painted rock. What you do not see is the story behind the smiles.</p>
+            <p>Rylee and Isla met at summer camp as strangers and quickly became inseparable friends. Their legacy rock turned that week into something visible and lasting, a reminder that connection can happen fast when kids feel safe and understood.</p>
+            <p>Even with a move ahead, they left camp already planning how to stay in touch. That is what this program does at its best. It helps military-connected youth build friendships that outlast the event itself.</p>
+          </div>
+          <aside class="space-y-5">
+            <div class="content-card border border-primary/20 bg-white/90 rounded-3xl p-6 sm:p-7 shadow-lg space-y-5">
+              <div class="space-y-1">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Friendship snapshot</p>
+                <h4 class="text-xl font-semibold text-slate-900">A lasting connection</h4>
+              </div>
+              <dl class="grid gap-4">
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">2</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Campers connected</dd></div>
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">1</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Legacy rock</dd></div>
+              </dl>
+            </div>
+            <div class="content-card border border-secondary/20 bg-secondary/5 rounded-3xl p-5 space-y-3 text-sm leading-relaxed text-slate-700">
+              <p class="text-xs font-semibold uppercase tracking-[0.32em] text-secondary/70">Why it matters</p>
+              <p>Shared camp experiences give military-connected youth friendships that can continue through moves and transitions.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="modal hidden fixed inset-0 z-50 p-4 sm:p-6 lg:p-8" data-modal="event-story-fall-festival" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="event-story-fall-festival-title" tabindex="-1">
+  <div class="absolute inset-0 bg-slate-900/70" data-modal-overlay></div>
+  <article class="relative mx-auto max-w-4xl w-full overflow-hidden overflow-y-auto rounded-3xl bg-white text-slate-900 shadow-2xl max-h-[calc(100vh-3rem)]">
+    <button type="button" class="absolute top-4 right-4 text-slate-500 hover:text-slate-700" data-modal-close aria-label="Close story">
+      <svg class="h-6 w-6" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.707 6.293a1 1 0 00-1.414 0L12 10.586 7.707 6.293a1 1 0 00-1.414 1.414L10.586 12l-4.293 4.293a1 1 0 101.414 1.414L12 13.414l4.293 4.293a1 1 0 001.414-1.414L13.414 12l4.293-4.293a1 1 0 000-1.414z" fill="currentColor"/></svg>
+    </button>
+    <div class="flex h-full flex-col">
+      <figure class="relative h-64 sm:h-80 w-full overflow-hidden bg-slate-100 flex items-center justify-center">
+        <img src="/content/media/1593491592788477691.jpg" alt="Guard families smiling at Camp Dodge Fall Family Festival" class="h-full w-full object-contain" loading="lazy" decoding="async">
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent px-6 sm:px-10 py-4">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-primary shadow-lg">Festival spotlight</span>
+        </figcaption>
+      </figure>
+      <div class="flex-1 overflow-y-auto px-6 sm:px-10 py-8 space-y-8">
+        <header class="space-y-3">
+          <h3 id="event-story-fall-festival-title" class="text-2xl font-semibold text-slate-900">Fall Family Festival Strengthens Guard Family Connections</h3>
+          <div class="space-y-1">
+            <p class="text-sm font-semibold text-primary">Camp Dodge, Johnston, Iowa | October 25, 2025</p>
+            <p class="text-[0.65rem] uppercase tracking-[0.28em] text-slate-500">Published October 29, 2025</p>
+          </div>
+        </header>
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+          <div class="space-y-6 text-slate-700 leading-relaxed">
+            <p>Military families came together at Camp Dodge for the annual Fall Family Festival, a day built around connection, resilience, and readiness. From the first welcome to the final goodbye, the installation felt like a reunion space for Guard-connected kids, parents, and caregivers.</p>
+            <p>State Teen Panel members helped set the tone the moment families arrived. Community partners, therapy-animal volunteers, and activity leaders created a schedule full of shared experiences that helped families relax and reconnect.</p>
+            <p>Events like this matter because they do more than entertain. They reduce isolation, strengthen peer connection, and reinforce the message that Guard families are part of something larger than a single event day.</p>
+            <div class="content-card border border-primary/15 bg-primary/5 rounded-2xl p-5 space-y-3">
+              <h4 class="text-base font-semibold text-primary">Why it matters</h4>
+              <ul class="grid gap-3 text-sm text-slate-700">
+                <li class="flex gap-3"><span class="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-secondary"></span><span>Connected families strengthen Soldier commitment and readiness.</span></li>
+                <li class="flex gap-3"><span class="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-secondary"></span><span>Shared positive experiences lower stress and reinforce resilience over time.</span></li>
+                <li class="flex gap-3"><span class="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-secondary"></span><span>Community-backed events help Guard families feel seen, supported, and less alone.</span></li>
+              </ul>
+            </div>
+          </div>
+          <aside class="space-y-5">
+            <div class="content-card border border-primary/20 bg-white/90 rounded-3xl p-6 sm:p-7 shadow-lg space-y-5">
+              <div class="space-y-1">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Festival snapshot</p>
+                <h4 class="text-xl font-semibold text-slate-900">By the numbers</h4>
+              </div>
+              <dl class="grid gap-4">
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">491</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Attendees onsite</dd></div>
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">511</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Guard family registrations</dd></div>
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">113</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Volunteers supporting</dd></div>
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">91%</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">Would recommend</dd></div>
+                <div class="flex items-baseline gap-3 rounded-2xl bg-primary/5 px-4 py-3"><dt class="text-3xl font-semibold text-primary leading-none">49%</dt><dd class="text-xs uppercase tracking-[0.28em] text-slate-500">New-to-CYP families</dd></div>
+              </dl>
+            </div>
+            <div class="content-card border border-secondary/20 bg-secondary/5 rounded-3xl p-5 space-y-3 text-sm leading-relaxed text-slate-700">
+              <p class="text-xs font-semibold uppercase tracking-[0.32em] text-secondary/70">Pass it on</p>
+              <p>Share this story with partners, commanders, and civic groups looking for concrete proof that community-backed events move the readiness needle for Guard families.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+<section id="voices" class="bg-primary/5 py-14 md:py-16" data-reveal>
   <div class="container space-y-10">
     <div class="max-w-3xl space-y-4">
-      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Voices you can trust</p>
-      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Why consistent support matters statewide</h2>
-      <p class="text-slate-700 leading-relaxed">Parents, teens, youth, and caregivers keep us honest. These quotes highlight what sticks with them long after an event or program ends.</p>
+      <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Voices you can trust</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Why steady support matters statewide</h2>
+      <p class="text-slate-700 leading-relaxed">Parents, teens, youth, and caregivers keep us honest. These quotes show what stays with them long after an event or program ends.</p>
     </div>
     <div class="quote-carousel" data-quote-carousel>
       <div class="content-card quote-carousel__slides" role="region" aria-live="polite">
@@ -179,22 +982,6 @@ permalink: /stories/index.html
           <span aria-hidden="true">&rarr;</span>
         </button>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="share-story" class="bg-white py-24" data-reveal>
-  <div class="container">
-    <div class="content-card border border-primary/20 shadow-lg md:p-12 space-y-5">
-      <h2 class="text-2xl font-semibold text-slate-900">Share your Iowa CYP story</h2>
-      <p class="text-slate-700">We feature fresh voices each season. Send a quick note or ask for a call—photos welcome! We’ll coordinate next steps together.</p>
-      <p class="text-slate-600 text-sm leading-relaxed">Your story is what keeps lawmakers, sponsors, and community partners investing in these programs. When you share what mattered, we can keep showing up for every Guard-connected kid.</p>
-      <a class="btn-secondary inline-flex items-center gap-2" href="mailto:{{ site.contactEmail }}?subject=Share%20My%20Iowa%20CYP%20Story">
-        <svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M20 4H4a2 2 0 00-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18v-9.764l7.382 5.768a1 1 0 001.236 0L20 8.236V18H4z" fill="currentColor"/>
-        </svg>
-        <span>Email the team</span>
-      </a>
     </div>
   </div>
 </section>

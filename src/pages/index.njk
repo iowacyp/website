@@ -5,30 +5,34 @@ description: Iowa CYP connects military-connected youth and families with progra
 permalink: /
 ---
 <section class="relative isolate">
-  <div class="relative min-h-[90vh] overflow-hidden">
-    <div class="absolute inset-0 hero-video-wrapper">
+  <div class="relative h-[90vh] overflow-hidden">
+    <div class="absolute inset-0 hero-video-wrapper frame-shell frame-shell--hero" data-frame-shell data-video-shell>
       <img
         src="/assets/img/hero/poster.jpg"
         alt="Iowa CYP mentor cheering with youth during a Guard family event"
         class="hero-video-poster"
         aria-hidden="true"
+        {{ imageAttrs('/assets/img/hero/poster.jpg') }}
         decoding="async"
       >
-      <iframe
+      <video
         class="hero-video"
-        src="https://www.youtube.com/embed/y8qR00ZHSNQ?autoplay=1&mute=1&controls=0&loop=1&playlist=y8qR00ZHSNQ&modestbranding=1&rel=0&playsinline=1&enablejsapi=1"
-        title="Iowa CYP Overview"
-        allow="autoplay; encrypted-media; picture-in-picture"
-        allowfullscreen
-        data-yt-player="hero"
-        frameborder="0"
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="metadata"
+        data-video-lazy
+        poster="/assets/img/hero/poster.jpg"
         aria-hidden="true"
-      ></iframe>
+      >
+        <source src="/content/media/website-recap.mp4" type="video/mp4">
+      </video>
     </div>
     <div class="absolute inset-0 bg-slate-900/70"></div>
     <div class="container relative min-h-[90vh] flex items-center justify-center text-center">
       <div class="max-w-3xl text-white space-y-6 drop-shadow-[0_6px_24px_rgba(0,0,0,0.55)]" data-reveal>
-        <h1 class="text-3xl md:text-4xl font-semibold uppercase tracking-[0.4em] text-white flex flex-col gap-2">
+        <h1 class="text-3xl md:text-4xl font-semibold uppercase tracking-[0.15em] text-white flex flex-col gap-2">
           <span>Helping</span>
           <span>Military</span>
           <span>Youth</span>
@@ -46,9 +50,34 @@ permalink: /
 
 <section class="bg-white py-20" data-reveal>
   <div class="container text-center space-y-5">
-    <p class="text-sm uppercase tracking-[0.4em] text-primary/80">Serving Iowa Guard Families</p>
+    <p class="text-sm uppercase tracking-[0.15em] text-primary/80">Serving Iowa Guard Families</p>
     <h2 class="text-3xl md:text-4xl font-semibold text-slate-900 max-w-3xl mx-auto leading-tight normal-case tracking-tight">Helping Guard kids grow confident and connected</h2>
     <p class="text-base md:text-lg text-slate-600 max-w-2xl mx-auto">Wherever duty takes their families.</p>
+  </div>
+</section>
+
+<section class="bg-primary/5 py-20" data-reveal>
+  <div class="container">
+    <div class="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(255,214,92,0.34),transparent_32%),radial-gradient(circle_at_top_right,rgba(191,227,139,0.34),transparent_28%),linear-gradient(135deg,rgba(255,251,242,0.98),rgba(255,247,225,0.95))] px-0 py-6 md:py-10 lg:min-h-[clamp(34rem,60vw,44rem)]">
+      <img src="/assets/img/lemonade.png" alt="" class="absolute inset-0 h-full w-full object-cover object-right pointer-events-none select-none" {{ imageAttrs('/assets/img/lemonade.png') }} loading="eager" decoding="async" aria-hidden="true">
+      <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,251,242,0.98)_0%,rgba(255,247,225,0.94)_28%,rgba(255,247,225,0.72)_46%,rgba(255,247,225,0.08)_68%,rgba(255,247,225,0)_100%)]"></div>
+      <div class="relative z-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:min-h-[clamp(34rem,60vw,44rem)] px-6 md:px-10">
+        <div class="space-y-6 max-w-3xl">
+          <span class="inline-flex items-center gap-3 rounded-full bg-white/85 px-5 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#1f4d7a] shadow-sm">
+            <span aria-hidden="true">🍋</span>
+            Major update
+          </span>
+          <div class="space-y-4">
+            <h2 class="max-w-3xl text-4xl md:text-5xl font-semibold normal-case tracking-tight text-slate-950">Teach your child the basics of business.</h2>
+            <p class="max-w-2xl text-lg md:text-xl leading-relaxed text-slate-700">This workbook and app help kids practice idea building, simple budgeting, pricing, marketing, and confidence through a hands-on lemonade stand challenge.</p>
+          </div>
+          <div class="flex flex-wrap gap-4 pt-2">
+            <a class="inline-flex items-center justify-center rounded-full bg-[#1f4d7a] px-6 py-4 text-base font-semibold text-white shadow-[0_18px_30px_-20px_rgba(31,77,122,0.55)] transition hover:-translate-y-0.5 hover:bg-[#173b5e]" href="/lemonade-boss/">Open the workbook &amp; app</a>
+            <a class="inline-flex items-center justify-center rounded-full border border-[#9cb7da] bg-white/75 px-6 py-4 text-base font-semibold text-[#1f4d7a] shadow-sm transition hover:-translate-y-0.5 hover:bg-white" href="/lemonade-boss/">See what's included</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -59,7 +88,7 @@ permalink: /
         {% if program.featured %}
           <article class="feature-card">
             {% if program.image %}
-              <img src="{{ program.image }}" alt="{{ program.name }}" loading="lazy" decoding="async">
+              <img src="{{ program.image }}" alt="{{ program.name }}" {{ imageAttrs(program.image) }} loading="lazy" decoding="async">
             {% endif %}
             <div class="feature-body">
               <h3>{{ program.name }}</h3>
@@ -73,7 +102,7 @@ permalink: /
       {% endfor %}
     </div>
     <div class="text-center">
-      <a class="hero-cta inline-flex items-center justify-center px-6 py-3 rounded-full bg-slate-900 text-white font-semibold shadow-lg shadow-slate-900/25 transition hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-xl" href="/events/">Browse all programs</a>
+      <a class="btn" href="/events/">Browse all programs</a>
     </div>
   </div>
 </section>
@@ -89,7 +118,7 @@ permalink: /
           </svg>
         </span>
         <div>
-          <p class="text-xs uppercase tracking-[0.35em] text-secondary/80">Mission</p>
+          <p class="text-xs uppercase tracking-[0.15em] text-secondary/80">Mission</p>
           <h2 class="text-2xl md:text-3xl font-semibold text-white mt-2">What Guides Our Work</h2>
         </div>
       </header>
@@ -105,7 +134,7 @@ permalink: /
           </svg>
         </span>
         <div>
-          <p class="text-xs uppercase tracking-[0.35em] text-white/70">Vision</p>
+          <p class="text-xs uppercase tracking-[0.15em] text-white/70">Vision</p>
           <h3 class="text-xl md:text-2xl font-semibold text-white mt-2">Where We're Headed</h3>
         </div>
       </header>
@@ -114,17 +143,39 @@ permalink: /
   </div>
 </section>
 
-<section class="relative isolate overflow-hidden rounded-[3rem] mx-4 md:mx-auto md:w-[calc(100%-2rem)] my-16" data-reveal>
-  <img src="/assets/img/programs/family_events_fall_festival.jpg" alt="Iowa CYP families" class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async">
-  <div class="absolute inset-0 bg-slate-900/45"></div>
-  <div class="relative container py-24 text-center text-white space-y-6">
-    <h2 class="text-3xl md:text-4xl font-semibold tracking-[0.35em] text-white">Partner With Us</h2>
-    <p class="max-w-2xl mx-auto text-white/90 text-base md:text-lg leading-relaxed">From packing adventure kits to hosting family nights, community partners and volunteers help us keep Iowa Guard families encouraged and ready. Bring your time, skills, or resources and we’ll put them to good use.</p>
-    <div class="flex flex-wrap justify-center gap-4">
-      <a class="hero-cta" href="/support/">Get Involved</a>
-      {% if site.links.programOverviewVideo %}
-        <a class="hero-cta-secondary" href="{{ site.links.programOverviewVideo }}" target="_blank" rel="noopener">Watch Overview</a>
-      {% endif %}
+<section class="relative isolate overflow-hidden rounded-[3rem] mx-4 md:mx-auto md:w-[calc(100%-2rem)] my-16 text-white" data-reveal>
+  <div class="absolute inset-0" data-video-shell>
+    <img src="/assets/img/programs/family_events_fall_festival.jpg" alt="" class="video-poster" aria-hidden="true" {{ imageAttrs('/assets/img/programs/family_events_fall_festival.jpg') }} decoding="async">
+  </div>
+  <video
+    class="video-fade h-full w-full object-cover object-center brightness-75 saturate-90 contrast-110"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    data-video-fade
+    data-video-lazy
+    aria-hidden="true"
+  >
+    <source src="/content/media/5027202-uhd_4096_2160_30fps.mp4" type="video/mp4">
+  </video>
+  <noscript>
+    <img src="/assets/img/programs/family_events_fall_festival.jpg" alt="Iowa CYP families" class="absolute inset-0 h-full w-full object-cover" {{ imageAttrs('/assets/img/programs/family_events_fall_festival.jpg') }} loading="lazy" decoding="async">
+  </noscript>
+  <div class="absolute inset-0 bg-gradient-to-r from-slate-950/96 via-slate-950/90 to-slate-950/70"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.08),transparent_30%),radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.05),transparent_28%)]"></div>
+  <div class="relative container py-20 md:py-28">
+    <div class="max-w-2xl rounded-[2rem] border border-white/10 bg-slate-950/92 p-6 md:p-10 shadow-2xl backdrop-blur-md space-y-6">
+      <p class="text-sm uppercase tracking-[0.15em] text-secondary/90">Partner With Us</p>
+      <h2 class="text-3xl md:text-5xl font-semibold text-white leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">Bring your time, skills, or resources to Iowa Guard families</h2>
+      <p class="max-w-xl text-white/95 text-base md:text-lg leading-relaxed">From packing adventure kits to hosting family nights, community partners and volunteers help us keep Iowa Guard families encouraged and ready. We’ll put your support to use where it matters most.</p>
+      <div class="flex flex-wrap gap-4">
+        <a class="hero-cta" href="/support/">Get Involved</a>
+        {% if site.links.programOverviewVideo %}
+          <a class="hero-cta-secondary" href="{{ site.links.programOverviewVideo }}" target="_blank" rel="noopener">Watch Overview</a>
+        {% endif %}
+      </div>
     </div>
   </div>
 </section>
@@ -142,7 +193,7 @@ permalink: /
         {% if resource.id in highlightIds %}
           <a class="resource-card flex items-center gap-4" href="{{ resource.url }}" target="_blank" rel="noopener">
             {% if resource.image %}
-              <img src="{{ resource.image }}" alt="" class="h-12 w-12 object-contain rounded-lg bg-white border border-slate-200" loading="lazy" decoding="async">
+              <img src="{{ resource.image }}" alt="" class="h-12 w-12 object-contain rounded-lg bg-white border border-slate-200" {{ imageAttrs(resource.image) }} loading="lazy" decoding="async">
             {% endif %}
             <div>
               <h3 class="font-semibold text-slate-900">{{ resource.label }}</h3>
@@ -161,7 +212,7 @@ permalink: /
 <section class="bg-primary/5 py-16" data-reveal>
   <div class="container space-y-10">
     <div class="max-w-3xl space-y-4">
-      <p class="text-sm uppercase tracking-[0.35em] text-primary/70">Voices you can trust</p>
+      <p class="text-sm uppercase tracking-[0.15em] text-primary/70">What families are saying</p>
       <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Why consistent support matters statewide</h2>
       <p class="text-slate-700 leading-relaxed">Parents, teens, youth, and caregivers keep us honest. These quotes highlight what sticks with them long after an event or program ends.</p>
     </div>

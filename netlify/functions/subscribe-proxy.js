@@ -4,6 +4,14 @@ const DEFAULT_ADMIN_URL = 'https://cyp-admin.netlify.app/.netlify/functions/publ
 const DEFAULT_SOURCE = 'www.iowacyp.com';
 const DEFAULT_RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const DEFAULT_RATE_LIMIT_MAX = 20;
+const ALLOWED_SERVICE_AREAS = new Set([
+  'Des Moines',
+  'Sioux City',
+  'Council Bluffs',
+  'Waterloo',
+  'Cedar Rapids',
+  'Davenport',
+]);
 const RATE_LIMIT_BUCKETS = new Map();
 
 function json(statusCode, payload) {
@@ -22,6 +30,10 @@ function normalizeText(value) {
 
 function normalizeLower(value) {
   return normalizeText(value).toLowerCase();
+}
+
+function isAllowedServiceArea(value) {
+  return ALLOWED_SERVICE_AREAS.has(normalizeText(value));
 }
 
 function isValidEmail(value) {
@@ -128,11 +140,24 @@ exports.handler = async (event) => {
     return json(400, { ok: false, error: 'Valid email is required.' });
   }
 
+  const affiliation = normalizeText(body.affiliation || body.program || body.branch || body.military_affiliation);
+  const serviceArea = normalizeText(body.service_area || body.serviceArea || body.city);
+  const consent = String(body.consent || '').toLowerCase();
+  if (!affiliation || !serviceArea) {
+    return json(400, { ok: false, error: 'Affiliation / program and service area are required.' });
+  }
+  if (!isAllowedServiceArea(serviceArea)) {
+    return json(400, { ok: false, error: 'Please select a valid service area / closest city.' });
+  }
+  if (!['true', 'yes', 'on', '1'].includes(consent)) {
+    return json(400, { ok: false, error: 'Consent is required.' });
+  }
+
   const payload = {
     email,
     region: normalizeText(body.region) || null,
-    service_area: normalizeText(body.service_area || body.serviceArea || body.city) || null,
-    affiliation: normalizeText(body.affiliation || body.program || body.branch || body.military_affiliation) || null,
+    service_area: serviceArea,
+    affiliation,
     source: normalizeText(body.source) || normalizeText(process.env.PUBLIC_SUBSCRIBE_SOURCE) || DEFAULT_SOURCE,
     tags: normalizeTags(body.tags),
     submitted_at: normalizeText(body.submitted_at || body.submittedAt) || new Date().toISOString(),

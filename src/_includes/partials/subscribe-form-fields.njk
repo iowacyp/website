@@ -1,0 +1,63 @@
+{% set formId = formId or 'subscribeForm' %}
+{% set fieldIdPrefix = fieldIdPrefix or '' %}
+{% set statusId = statusId or (formId ~ 'Status') %}
+{% set submitLabel = submitLabel or 'Submit' %}
+{% set formDataAttr = formDataAttr or '' %}
+{% set submitDataAttr = submitDataAttr or 'data-subscribe-submit' %}
+{% set statusDataAttr = statusDataAttr or '' %}
+{% set sourceValue = sourceValue or 'www.iowacyp.com' %}
+{% set tagsValue = tagsValue or 'website-subscribe' %}
+{% set serviceAreas = ['Des Moines', 'Sioux City', 'Council Bluffs', 'Waterloo', 'Cedar Rapids', 'Davenport'] %}
+
+{% set prefix = fieldIdPrefix ~ '-' if fieldIdPrefix else '' %}
+
+<form
+  id="{{ formId }}"
+  class="content-card space-y-6"
+  {% if formDataAttr %}{{ formDataAttr | safe }}{% endif %}
+>
+  <p class="hidden">
+    <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+  </p>
+
+  <div class="space-y-2">
+    <label class="block text-sm font-semibold text-slate-800" for="{{ prefix }}email">Email</label>
+    <input id="{{ prefix }}email" name="email" type="email" required autocomplete="email" class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
+  </div>
+
+  <div class="space-y-2">
+    <label class="block text-sm font-semibold text-slate-800" for="{{ prefix }}affiliation">Affiliation / Program</label>
+    <select id="{{ prefix }}affiliation" name="affiliation" required class="w-full rounded-2xl border border-slate-300 px-4 py-3 bg-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
+      <option value="" selected>Select an option</option>
+      <option>Army National Guard</option>
+      <option>Air National Guard</option>
+      <option>Army Reserve</option>
+      <option>Active Duty</option>
+      <option>Veteran</option>
+      <option>Fallen Family</option>
+      <option>Other / Civilian Partner</option>
+    </select>
+  </div>
+
+  <div class="space-y-2">
+    <label class="block text-sm font-semibold text-slate-800" for="{{ prefix }}service_area">Service Area / Closest City</label>
+    <select id="{{ prefix }}service_area" name="service_area" required class="w-full rounded-2xl border border-slate-300 px-4 py-3 bg-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
+      <option value="" selected>Select a city</option>
+      {% for city in serviceAreas %}
+      <option>{{ city }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="space-y-2">
+    <label class="inline-flex items-start gap-3 text-sm text-slate-700">
+      <input type="checkbox" name="consent" required class="mt-1 h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary/50">
+      <span>I agree to receive email updates from Iowa CYP. I understand I can unsubscribe at any time.</span>
+    </label>
+  </div>
+
+  <input type="hidden" name="source" value="{{ sourceValue }}">
+  <input type="hidden" name="tags" value="{{ tagsValue }}">
+  <p id="{{ statusId }}" class="text-sm text-slate-600" role="status" aria-live="polite" {% if statusDataAttr %}{{ statusDataAttr | safe }}{% endif %}></p>
+  <button type="submit" class="btn w-full md:w-auto" {{ submitDataAttr }}>{{ submitLabel }}</button>
+</form>
