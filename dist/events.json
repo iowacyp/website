@@ -17,23 +17,23 @@
     },
     {
       "title": "Fall Family Festival",
-      "date": "2025-10-25",
+      "date": "2026-10-24",
       "time": "2:00 PM - 4:00 PM",
-      "displayDate": "October 25, 2025",
+      "displayDate": "October 24, 2026",
       "location": "Camp Dodge - Pool Pavilion, 7105 NW 70th Ave, Johnston, IA",
       "ctaLabel": "Register",
-      "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdkB7oVnbLtNZAPZSFWqEu3Tsw_5G9Cd3buAjWyQ3DSzL6iaw/viewform?usp=share_link&ouid=100941830380849796397",
+      "ctaUrl": "/register/e80bfe5f-23fc-49e4-86f7-2e61c1c40965",
       "notes": "Space is limited—register early so your family is covered.",
       "image": "/content/UpcomingEvents/Fall Family Festival.jpg"
     },
     {
       "title": "Cookies with Santa",
-      "date": "2025-12-13",
+      "date": "2026-12-12",
       "time": "12:00 PM - 1:30 PM",
-      "displayDate": "December 13, 2025",
+      "displayDate": "December 12, 2026",
       "location": "Camp Dodge - Gold Star Museum, 7105 NW 70th Ave, Johnston, IA",
       "ctaLabel": "Register",
-      "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdJ-pmJZ_TR5habbSDL0fXfFVgds3c8q48ZDirfkQt_ml6Sgw/viewform?usp=share_link&ouid=100941830380849796397",
+      "ctaUrl": "/register/ae600c2b-e49a-4578-8703-ddac2291d079",
       "notes": "Space is limited—register early so your family is covered.",
       "image": "/content/UpcomingEvents/Cookies with Santa.jpg"
     },
@@ -60,6 +60,16 @@
       "image": "/content/UpcomingEvents/MFE_ Cedar Rapids.jpg"
     },
     {
+      "title": "STP Retreat",
+      "date": "2027-03-06",
+      "displayDate": "March 6, 2027",
+      "location": "Des Moines YMCA Camp",
+      "ctaLabel": "Register",
+      "ctaUrl": "/register/282badde-adb0-40b8-b463-91a4094b4298",
+      "notes": "State Teen Panel youth gather for leadership, connection, and planning for the year ahead.",
+      "image": "/content/media/stp_panel_group.jpg"
+    },
+    {
       "title": "Military Family Event: Sioux City",
       "date": "2027-05-08",
       "time": "11:00 AM - 1:00 PM",
@@ -72,12 +82,12 @@
     },
     {
       "title": "Military Family Ball",
-      "date": "2026-04-25",
+      "date": "2027-04-24",
       "time": "4:30 PM - 7:00 PM",
-      "displayDate": "April 25, 2026",
+      "displayDate": "April 24, 2027",
       "location": "Camp Dodge - Pool Pavilion, 7105 NW 70th Ave, Johnston, IA",
       "ctaLabel": "Register",
-      "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSefViH-KPAXAZ0oHB4bZWqKwqdtUH1qMW9BskeU0N2pNbn-tw/viewform?usp=share_link&ouid=100941830380849796397",
+      "ctaUrl": "/register/da077f60-2d98-4f3d-942b-14f17130c0fd",
       "notes": "Space is limited—register early so your family is covered.",
       "image": "/content/UpcomingEvents/Military Family Ball.jpg"
     },
@@ -93,6 +103,16 @@
       "image": "/content/UpcomingEvents/MFE_ Des Moines.jpg"
     },
     {
+      "title": "Purple Up",
+      "date": "2027-04-09",
+      "displayDate": "April 9, 2027",
+      "location": "Statewide",
+      "ctaLabel": "Register",
+      "ctaUrl": "/register/3fbc8da6-0b20-4dd0-a1c2-c457a1c0fcb7",
+      "notes": "Celebrate Month of the Military Child and show support for Iowa's military-connected youth.",
+      "image": "/content/media/momc_purple_up.jpg"
+    },
+    {
       "title": "Military Family Event: Cedar Falls",
       "date": "2027-06-09",
       "time": "6:00 PM - 8:00 PM",
@@ -102,6 +122,16 @@
       "ctaUrl": "/register/c5858eb8-3a12-4f48-896b-6487697138b6",
       "notes": "Space is limited—register early so your family is covered.",
       "image": "/content/UpcomingEvents/MFE_ Cedar Falls.jpg"
+    },
+    {
+      "title": "Military Family Event: Waterloo",
+      "date": "2027-06-20",
+      "displayDate": "June 20, 2027",
+      "location": "Get Air, Waterloo, IA",
+      "ctaLabel": "Register",
+      "ctaUrl": "/register/0f19c721-953d-4b09-8b94-e3d2f84c3042",
+      "notes": "Space is limited—register early so your family is covered.",
+      "image": "/content/UpcomingEvents/MFE Waterloo (06.28.26).jpg"
     },
     {
       "title": "Summer Horseback Riding Camp 1",
@@ -157,6 +187,80 @@
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSflPsp13oW4J0-JtiIK5kBG_Gqu6UCFjXMLtmvZGUApRytIyg/viewform?usp=dialog",
       "notes": "Space is limited—register early so your family is covered.",
       "image": "/content/UpcomingEvents/MFE Council Bluffs.png"
+    }
+  ],
+  "lastYearEvents": [
+    {
+      "title": "Military Family Event: Cedar Falls",
+      "date": "2026-06-28",
+      "time": "6:00 PM - 8:00 PM",
+      "displayDate": "June 28, 2026",
+      "location": "5911 University Ave Suite 350, Cedar Falls, IA 50613",
+      "notes": "Space was limited, and families gathered for an evening of connection and fun.",
+      "image": "/content/UpcomingEvents/MFE_ Cedar Falls.jpg"
+    },
+    {
+      "title": "Military Family Event: Des Moines",
+      "date": "2026-05-17",
+      "time": "6:00 PM - 8:00 PM",
+      "displayDate": "May 17, 2026",
+      "location": "Emerge Academy, 2100 SE Gateway Dr Suite 200, Grimes, IA",
+      "notes": "Families connected through an evening activity designed for Guard-connected youth.",
+      "image": "/content/UpcomingEvents/MFE_ Des Moines.jpg"
+    },
+    {
+      "title": "Military Family Event: Sioux City",
+      "date": "2026-05-17",
+      "time": "11:00 AM - 1:00 PM",
+      "displayDate": "May 17, 2026",
+      "location": "Drop Zone, 3840 Stadium Dr, Sioux City, IA 51106",
+      "notes": "Guard families gathered for a regional youth and family connection event.",
+      "image": "/content/UpcomingEvents/MFE_ Sioux City.jpg"
+    },
+    {
+      "title": "Military Family Ball",
+      "date": "2026-04-25",
+      "time": "4:30 PM - 7:00 PM",
+      "displayDate": "April 25, 2026",
+      "location": "Camp Dodge - Pool Pavilion, 7105 NW 70th Ave, Johnston, IA",
+      "notes": "Families celebrated Month of the Military Child together at Camp Dodge.",
+      "image": "/content/UpcomingEvents/Military Family Ball.jpg"
+    },
+    {
+      "title": "Military Family Event: Cedar Rapids",
+      "date": "2026-02-15",
+      "time": "6:00 PM - 8:00 PM",
+      "displayDate": "February 15, 2026",
+      "location": "The Fun Station, 200 Collins Rd NE, Cedar Rapids, IA",
+      "notes": "Families joined a regional activity for connection, play, and CYP outreach.",
+      "image": "/content/UpcomingEvents/MFE_ Cedar Rapids.jpg"
+    },
+    {
+      "title": "Military Family Event: Davenport",
+      "date": "2026-01-18",
+      "time": "6:00 PM - 8:00 PM",
+      "displayDate": "January 18, 2026",
+      "location": "The Fun Station, 400 S 14th Ave, Eldridge, IA 52748",
+      "notes": "Guard families gathered in the Davenport area for a winter family event.",
+      "image": "/content/UpcomingEvents/MFE_ Davenport.jpg"
+    },
+    {
+      "title": "Cookies with Santa",
+      "date": "2025-12-13",
+      "time": "12:00 PM - 1:30 PM",
+      "displayDate": "December 13, 2025",
+      "location": "Camp Dodge - Gold Star Museum, 7105 NW 70th Ave, Johnston, IA",
+      "notes": "Families celebrated the holiday season together at Camp Dodge.",
+      "image": "/content/UpcomingEvents/Cookies with Santa.jpg"
+    },
+    {
+      "title": "Fall Family Festival",
+      "date": "2025-10-25",
+      "time": "2:00 PM - 4:00 PM",
+      "displayDate": "October 25, 2025",
+      "location": "Camp Dodge - Pool Pavilion, 7105 NW 70th Ave, Johnston, IA",
+      "notes": "Families kicked off the program year with a fall gathering at Camp Dodge.",
+      "image": "/content/UpcomingEvents/Fall Family Festival.jpg"
     }
   ]
 }

@@ -565,6 +565,7 @@ async function renderEvents() {
 
     const data = await res.json();
     const eventList = Array.isArray(data.events) ? data.events : [];
+    const lastYearEventList = Array.isArray(data.lastYearEvents) ? data.lastYearEvents : [];
     const todayKey = todayEventKey();
     const upcomingEvents = sortEventsByDate(
       eventList.filter((event) => !event.date || event.date >= todayKey),
@@ -580,9 +581,12 @@ async function renderEvents() {
       : '<p class="text-gray-600">No upcoming events right now. Check back soon.</p>';
 
     if (completedTarget) {
-      completedTarget.innerHTML = completedEvents.length
-        ? completedEvents.map((event) => renderEventCard(event, 'completed')).join('')
-        : '<p class="text-slate-600">No completed events to show yet.</p>';
+      const displayCompletedEvents = lastYearEventList.length
+        ? sortEventsByDate(lastYearEventList, 'desc')
+        : completedEvents;
+      completedTarget.innerHTML = displayCompletedEvents.length
+        ? displayCompletedEvents.map((event) => renderEventCard(event, 'completed')).join('')
+        : '<p class="text-slate-600">No last year events to show yet.</p>';
     }
 
     scrollReveal.init(upcomingTarget);
