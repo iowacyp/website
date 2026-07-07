@@ -335,6 +335,44 @@ footer a {
   @apply mt-auto pt-2 w-fit;
 }
 
+.event-month-group {
+  @apply rounded-[2rem] border border-slate-200 bg-white shadow-sm overflow-hidden transition duration-200;
+}
+
+.event-month-group[open] {
+  @apply shadow-md border-primary/20;
+}
+
+.event-month-summary {
+  @apply flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 md:px-6;
+}
+
+.event-month-summary::-webkit-details-marker {
+  display: none;
+}
+
+.event-month-title {
+  @apply text-base font-semibold text-slate-900 md:text-lg;
+}
+
+.event-month-meta {
+  @apply inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-slate-600;
+}
+
+.event-month-range {
+  @apply px-5 pb-2 text-sm font-medium text-slate-600 md:px-6;
+}
+
+.event-month-grid {
+  @apply grid gap-4 border-t border-slate-100 px-5 py-5 md:px-6;
+}
+
+@media (min-width: 768px) {
+  .event-month-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .support-feature {
   @apply flex items-start gap-4 md:gap-5 lg:gap-6 px-2 py-3 md:px-4 md:py-4 rounded-[2.5rem];
 }

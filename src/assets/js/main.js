@@ -476,6 +476,30 @@ const sortEventsByDate = (events, direction = 'asc') =>
 
 const isEventFull = (event) => event.full === true || event.full === 'true';
 
+const formatEventMonthLabel = (dateKey) => {
+  if (!dateKey) return '';
+  const date = new Date(`${dateKey}T00:00:00Z`);
+  if (Number.isNaN(date.getTime())) return dateKey;
+  return new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(date);
+};
+
+const groupEventsByMonth = (events) => {
+  const groups = new Map();
+  for (const event of events) {
+    const dateKey = String(event?.date || '').slice(0, 10);
+    const monthKey = dateKey ? dateKey.slice(0, 7) : 'undated';
+    if (!groups.has(monthKey)) {
+      groups.set(monthKey, []);
+    }
+    groups.get(monthKey).push(event);
+  }
+  return Array.from(groups.entries()).map(([monthKey, monthEvents]) => ({
+    monthKey,
+    label: monthKey === 'undated' ? 'Undated' : formatEventMonthLabel(`${monthKey}-01`),
+    events: monthEvents,
+  }));
+};
+
 const renderEventCard = (event, variant = 'upcoming') => {
   const displayDate = event.displayDate || formatEventDate(event.date);
   const datetimeAttr = event.date ? ` datetime="${event.date}"` : '';
@@ -549,6 +573,31 @@ const renderEventCard = (event, variant = 'upcoming') => {
   `;
 };
 
+const renderEventMonthGroup = (group, index = 0) => {
+  const eventCount = group.events.length;
+  const dateRange = group.events.length
+    ? `${group.events[0].displayDate || formatEventDate(group.events[0].date)}` +
+      (group.events.length > 1
+        ? ` to ${group.events[group.events.length - 1].displayDate || formatEventDate(group.events[group.events.length - 1].date)}`
+        : '')
+    : '';
+  const eventGrid = group.events.map((event) => renderEventCard(event)).join('');
+  const openAttr = index === 0 ? ' open' : '';
+
+  return `
+    <details class="event-month-group"${openAttr}>
+      <summary class="event-month-summary">
+        <span class="event-month-title">${group.label}</span>
+        <span class="event-month-meta">${eventCount} event${eventCount === 1 ? '' : 's'}</span>
+      </summary>
+      ${dateRange ? `<p class="event-month-range">${dateRange}</p>` : ''}
+      <div class="event-month-grid">
+        ${eventGrid}
+      </div>
+    </details>
+  `;
+};
+
 async function renderEvents() {
   const upcomingTarget = document.getElementById('eventsList');
   if (!upcomingTarget) return;
@@ -577,7 +626,7 @@ async function renderEvents() {
     );
 
     upcomingTarget.innerHTML = upcomingEvents.length
-      ? upcomingEvents.map((event) => renderEventCard(event)).join('')
+      ? groupEventsByMonth(upcomingEvents).map((group, index) => renderEventMonthGroup(group, index)).join('')
       : '<p class="text-gray-600">No upcoming events right now. Check back soon.</p>';
 
     if (completedTarget) {
