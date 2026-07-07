@@ -476,27 +476,38 @@ const sortEventsByDate = (events, direction = 'asc') =>
 
 const isEventFull = (event) => event.full === true || event.full === 'true';
 
-const formatEventMonthLabel = (dateKey) => {
-  if (!dateKey) return '';
+const getFiscalQuarterInfo = (dateKey) => {
+  if (!dateKey) return null;
   const date = new Date(`${dateKey}T00:00:00Z`);
-  if (Number.isNaN(date.getTime())) return dateKey;
-  return new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(date);
+  if (Number.isNaN(date.getTime())) return null;
+  const month = date.getUTCMonth();
+  const year = date.getUTCFullYear();
+  const fiscalYear = month >= 9 ? year + 1 : year;
+  const fiscalQuarter = month >= 9 ? 1 : month >= 6 ? 4 : month >= 3 ? 3 : 2;
+  return { fiscalYear, fiscalQuarter };
 };
 
-const groupEventsByMonth = (events) => {
+const formatFiscalQuarterLabel = (dateKey) => {
+  const info = getFiscalQuarterInfo(dateKey);
+  if (!info) return dateKey || '';
+  return `FY${String(info.fiscalYear).slice(-2)} Q${info.fiscalQuarter}`;
+};
+
+const groupEventsByQuarter = (events) => {
   const groups = new Map();
   for (const event of events) {
     const dateKey = String(event?.date || '').slice(0, 10);
-    const monthKey = dateKey ? dateKey.slice(0, 7) : 'undated';
-    if (!groups.has(monthKey)) {
-      groups.set(monthKey, []);
+    const quarterInfo = getFiscalQuarterInfo(dateKey);
+    const quarterKey = quarterInfo ? `${quarterInfo.fiscalYear}-Q${quarterInfo.fiscalQuarter}` : 'undated';
+    if (!groups.has(quarterKey)) {
+      groups.set(quarterKey, []);
     }
-    groups.get(monthKey).push(event);
+    groups.get(quarterKey).push(event);
   }
-  return Array.from(groups.entries()).map(([monthKey, monthEvents]) => ({
-    monthKey,
-    label: monthKey === 'undated' ? 'Undated' : formatEventMonthLabel(`${monthKey}-01`),
-    events: monthEvents,
+  return Array.from(groups.entries()).map(([quarterKey, quarterEvents]) => ({
+    quarterKey,
+    label: quarterKey === 'undated' ? 'Undated' : formatFiscalQuarterLabel(quarterEvents[0]?.date),
+    events: quarterEvents,
   }));
 };
 
@@ -573,7 +584,7 @@ const renderEventCard = (event, variant = 'upcoming') => {
   `;
 };
 
-const renderEventMonthGroup = (group, index = 0) => {
+const renderEventQuarterGroup = (group, index = 0) => {
   const eventCount = group.events.length;
   const dateRange = group.events.length
     ? `${group.events[0].displayDate || formatEventDate(group.events[0].date)}` +
@@ -585,13 +596,13 @@ const renderEventMonthGroup = (group, index = 0) => {
   const openAttr = index === 0 ? ' open' : '';
 
   return `
-    <details class="event-month-group"${openAttr}>
-      <summary class="event-month-summary">
-        <span class="event-month-title">${group.label}</span>
-        <span class="event-month-meta">${eventCount} event${eventCount === 1 ? '' : 's'}</span>
+    <details class="event-quarter-group"${openAttr}>
+      <summary class="event-quarter-summary">
+        <span class="event-quarter-title">${group.label}</span>
+        <span class="event-quarter-meta">${eventCount} event${eventCount === 1 ? '' : 's'}</span>
       </summary>
-      ${dateRange ? `<p class="event-month-range">${dateRange}</p>` : ''}
-      <div class="event-month-grid">
+      ${dateRange ? `<p class="event-quarter-range">${dateRange}</p>` : ''}
+      <div class="event-quarter-grid">
         ${eventGrid}
       </div>
     </details>
@@ -626,7 +637,7 @@ async function renderEvents() {
     );
 
     upcomingTarget.innerHTML = upcomingEvents.length
-      ? groupEventsByMonth(upcomingEvents).map((group, index) => renderEventMonthGroup(group, index)).join('')
+      ? groupEventsByQuarter(upcomingEvents).map((group, index) => renderEventQuarterGroup(group, index)).join('')
       : '<p class="text-gray-600">No upcoming events right now. Check back soon.</p>';
 
     if (completedTarget) {
