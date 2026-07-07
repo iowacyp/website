@@ -43,6 +43,11 @@
   status = 301
 
 [[redirects]]
+  from = "/register/:eventId"
+  to = "https://cyp-admin.netlify.app/register/:eventId"
+  status = 302
+
+[[redirects]]
   from = "/contact-us"
   to = "/contact"
   status = 301
