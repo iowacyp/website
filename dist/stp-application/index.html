@@ -810,10 +810,17 @@
       const requiredCheckboxes = ["ackParent", "ackApplicant"];
       const fieldIds = requiredFields.concat(requiredCheckboxes);
       const endpoint = "https://cyp-admin.netlify.app/api/submit-application";
+      const draftStorageKey = "iowacyp:stp-application:draft:v1";
       let applicationOpened = false;
+      let draftSaveTimer = null;
 
       const getField = (name) => document.getElementById(name);
       const getErrorNode = (name) => document.getElementById(`${name}-error`);
+      const draftStatus = document.createElement("p");
+      draftStatus.className = "note";
+      draftStatus.setAttribute("aria-live", "polite");
+      draftStatus.textContent = "Your application is saved in this browser as you type.";
+      submitButton.closest(".form-actions")?.appendChild(draftStatus);
 
       function firstNameFromFullName(value) {
         const text = String(value || "").trim();
@@ -832,6 +839,10 @@
         } else if (allEligibilityChecked()) {
           eligibilityWarning.hidden = true;
         }
+      }
+
+      function setDraftStatus(message) {
+        draftStatus.textContent = message || "Your application is saved in this browser as you type.";
       }
 
       function clearFieldError(name) {
@@ -1013,6 +1024,87 @@
         return data;
       }
 
+      function getDraftFields() {
+        return Array.from(form.querySelectorAll("input, select, textarea")).filter((field) => field.id);
+      }
+
+      function serializeDraft() {
+        const fields = {};
+        getDraftFields().forEach((field) => {
+          fields[field.id] = field.type === "checkbox" ? field.checked : field.value;
+        });
+
+        return {
+          fields,
+          eligibility: eligibilityInputs.map((input) => input.checked),
+          applicationOpened,
+          updatedAt: new Date().toISOString(),
+        };
+      }
+
+      function saveDraft() {
+        try {
+          localStorage.setItem(draftStorageKey, JSON.stringify(serializeDraft()));
+          setDraftStatus("Draft saved in this browser.");
+        } catch (error) {
+          console.warn("Unable to save STP application draft:", error);
+          setDraftStatus("Draft autosave is unavailable in this browser.");
+        }
+      }
+
+      function scheduleDraftSave() {
+        window.clearTimeout(draftSaveTimer);
+        draftSaveTimer = window.setTimeout(saveDraft, 250);
+      }
+
+      function clearDraft() {
+        try {
+          localStorage.removeItem(draftStorageKey);
+        } catch (error) {
+          console.warn("Unable to clear STP application draft:", error);
+        }
+      }
+
+      function restoreDraft() {
+        let draft = null;
+        try {
+          const raw = localStorage.getItem(draftStorageKey);
+          draft = raw ? JSON.parse(raw) : null;
+        } catch (error) {
+          console.warn("Unable to restore STP application draft:", error);
+          return;
+        }
+
+        if (!draft || typeof draft !== "object") {
+          return;
+        }
+
+        const fields = draft.fields || {};
+        getDraftFields().forEach((field) => {
+          if (!Object.prototype.hasOwnProperty.call(fields, field.id)) {
+            return;
+          }
+          if (field.type === "checkbox") {
+            field.checked = fields[field.id] === true;
+          } else {
+            field.value = fields[field.id] ?? "";
+          }
+        });
+
+        (draft.eligibility || []).forEach((checked, index) => {
+          if (eligibilityInputs[index]) {
+            eligibilityInputs[index].checked = checked === true;
+          }
+        });
+
+        applicationOpened = draft.applicationOpened === true || allEligibilityChecked();
+        if (applicationOpened && allEligibilityChecked()) {
+          applicationShell.classList.add("is-visible");
+        }
+        setEligibilityState();
+        setDraftStatus("Draft restored from this browser.");
+      }
+
       async function submitApplication(payload) {
         const response = await fetch(endpoint, {
           method: "POST",
@@ -1042,6 +1134,7 @@
         applicationOpened = true;
         applicationShell.classList.add("is-visible");
         eligibilityWarning.hidden = true;
+        saveDraft();
         applicationShell.scrollIntoView({ behavior: "smooth", block: "start" });
       });
 
@@ -1053,11 +1146,13 @@
         if (applicationOpened && !allEligibilityChecked()) {
           eligibilityWarning.hidden = false;
         }
+        saveDraft();
       });
 
       eligibilityInputs.forEach((input) => {
         input.addEventListener("change", () => {
           setEligibilityState();
+          scheduleDraftSave();
         });
       });
 
@@ -1069,6 +1164,11 @@
         } else if (target.value.trim()) {
           clearFieldError(target.name);
         }
+        scheduleDraftSave();
+      });
+
+      form.addEventListener("change", () => {
+        scheduleDraftSave();
       });
 
       form.addEventListener("submit", async (event) => {
@@ -1092,7 +1192,9 @@
         try {
           await submitApplication(payload);
           showSuccess(`Thanks ${firstNameFromFullName(payload.applicant.fullName)}! Your application has been submitted. We'll be in touch soon.`);
+          clearDraft();
           form.reset();
+          setDraftStatus("Submitted application cleared from this browser.");
         } catch (error) {
           console.error("Application submission failed:", error);
           showSubmitError(error.message || "Unable to submit your application. Please try again.");
@@ -1102,6 +1204,7 @@
         }
       });
 
+      restoreDraft();
       setEligibilityState();
     </script>
   </body>
