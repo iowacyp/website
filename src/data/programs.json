@@ -91,7 +91,7 @@
       "description": "The State Teen Panel empowers Guard youth to lead, serve, and represent their peers. Members design service projects, build leadership skills, and strengthen the community they love.",
       "cta": {
         "label": "Join Today",
-        "url": "https://docs.google.com/forms/d/e/1FAIpQLSfhXQJfp01X6vvjmfmn9O9Vasn9-grB5Up6spMEiHChrTU56g/viewform?usp=share_link&ouid=100941830380849796397"
+        "url": "https://cyp-admin.netlify.app/stp-application/"
       },
       "image": "/assets/img/programs/stp_panel_group.jpg",
       "quote": {
