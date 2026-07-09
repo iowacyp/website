@@ -476,38 +476,53 @@ const sortEventsByDate = (events, direction = 'asc') =>
 
 const isEventFull = (event) => event.full === true || event.full === 'true';
 
-const getFiscalQuarterInfo = (dateKey) => {
+const getEventSeasonInfo = (dateKey) => {
   if (!dateKey) return null;
   const date = new Date(`${dateKey}T00:00:00Z`);
   if (Number.isNaN(date.getTime())) return null;
   const month = date.getUTCMonth();
   const year = date.getUTCFullYear();
-  const fiscalYear = month >= 9 ? year + 1 : year;
-  const fiscalQuarter = month >= 9 ? 1 : month >= 6 ? 4 : month >= 3 ? 3 : 2;
-  return { fiscalYear, fiscalQuarter };
+
+  if (month >= 2 && month <= 4) {
+    return { key: `${year}-spring`, label: `Spring ${year}` };
+  }
+
+  if (month >= 5 && month <= 7) {
+    return { key: `${year}-summer`, label: `Summer ${year}` };
+  }
+
+  if (month >= 8 && month <= 10) {
+    return { key: `${year}-fall`, label: `Fall ${year}` };
+  }
+
+  const winterStartYear = month === 11 ? year : year - 1;
+  return {
+    key: `${winterStartYear}-winter`,
+    label: `Winter ${winterStartYear}-${String(winterStartYear + 1).slice(-2)}`,
+  };
 };
 
-const formatFiscalQuarterLabel = (dateKey) => {
-  const info = getFiscalQuarterInfo(dateKey);
+const formatEventSeasonLabel = (dateKey) => {
+  const info = getEventSeasonInfo(dateKey);
   if (!info) return dateKey || '';
-  return `FY${String(info.fiscalYear).slice(-2)} Q${info.fiscalQuarter}`;
+  return info.label;
 };
 
-const groupEventsByQuarter = (events) => {
+const groupEventsBySeason = (events) => {
   const groups = new Map();
   for (const event of events) {
     const dateKey = String(event?.date || '').slice(0, 10);
-    const quarterInfo = getFiscalQuarterInfo(dateKey);
-    const quarterKey = quarterInfo ? `${quarterInfo.fiscalYear}-Q${quarterInfo.fiscalQuarter}` : 'undated';
-    if (!groups.has(quarterKey)) {
-      groups.set(quarterKey, []);
+    const seasonInfo = getEventSeasonInfo(dateKey);
+    const seasonKey = seasonInfo ? seasonInfo.key : 'undated';
+    if (!groups.has(seasonKey)) {
+      groups.set(seasonKey, []);
     }
-    groups.get(quarterKey).push(event);
+    groups.get(seasonKey).push(event);
   }
-  return Array.from(groups.entries()).map(([quarterKey, quarterEvents]) => ({
-    quarterKey,
-    label: quarterKey === 'undated' ? 'Undated' : formatFiscalQuarterLabel(quarterEvents[0]?.date),
-    events: quarterEvents,
+  return Array.from(groups.entries()).map(([seasonKey, seasonEvents]) => ({
+    seasonKey,
+    label: seasonKey === 'undated' ? 'Undated' : formatEventSeasonLabel(seasonEvents[0]?.date),
+    events: seasonEvents,
   }));
 };
 
@@ -584,7 +599,7 @@ const renderEventCard = (event, variant = 'upcoming') => {
   `;
 };
 
-const renderEventQuarterGroup = (group, index = 0) => {
+const renderEventSeasonGroup = (group, index = 0) => {
   const eventCount = group.events.length;
   const dateRange = group.events.length
     ? `${group.events[0].displayDate || formatEventDate(group.events[0].date)}` +
@@ -637,7 +652,7 @@ async function renderEvents() {
     );
 
     upcomingTarget.innerHTML = upcomingEvents.length
-      ? groupEventsByQuarter(upcomingEvents).map((group, index) => renderEventQuarterGroup(group, index)).join('')
+      ? groupEventsBySeason(upcomingEvents).map((group, index) => renderEventSeasonGroup(group, index)).join('')
       : '<p class="text-gray-600">No upcoming events right now. Check back soon.</p>';
 
     if (completedTarget) {
