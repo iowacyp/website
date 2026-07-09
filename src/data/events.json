@@ -267,6 +267,22 @@
       "full": false,
       "registrationCode": "",
       "ageRange": ""
+    },
+    {
+      "adminId": "e7de22ae-2e5d-47b1-b30a-ecb4c6107375",
+      "title": "MFE Des Moines",
+      "date": "2027-05-16",
+      "endDate": "2027-05-16",
+      "displayDate": "May 16, 2027",
+      "location": "Emerge Academy",
+      "ctaLabel": "Register",
+      "ctaUrl": "/register/e7de22ae-2e5d-47b1-b30a-ecb4c6107375",
+      "notes": "",
+      "image": "",
+      "featured": false,
+      "full": false,
+      "registrationCode": "",
+      "ageRange": ""
     }
   ],
   "lastYearEvents": [
