@@ -283,6 +283,22 @@
       "full": false,
       "registrationCode": "",
       "ageRange": ""
+    },
+    {
+      "adminId": "d96271f7-d8f1-4ad4-bc4a-df337cfc53be",
+      "title": "Summer Camp",
+      "date": "2027-07-18",
+      "endDate": "2027-07-18",
+      "displayDate": "July 18-24, 2027",
+      "location": "Des Moines YMCA Camp",
+      "ctaLabel": "Register",
+      "ctaUrl": "/register/d96271f7-d8f1-4ad4-bc4a-df337cfc53be",
+      "notes": "",
+      "image": "",
+      "featured": false,
+      "full": false,
+      "registrationCode": "",
+      "ageRange": ""
     }
   ],
   "lastYearEvents": [
