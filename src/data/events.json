@@ -251,6 +251,22 @@
       "full": false,
       "registrationCode": "",
       "ageRange": ""
+    },
+    {
+      "adminId": "14022ce7-fee7-4bad-a2a2-d18c0b29c380",
+      "title": "MFE Sioux City",
+      "date": "2027-05-16",
+      "endDate": "2027-05-16",
+      "displayDate": "May 16, 2027",
+      "location": "Drop Zone",
+      "ctaLabel": "Register",
+      "ctaUrl": "/register/14022ce7-fee7-4bad-a2a2-d18c0b29c380",
+      "notes": "",
+      "image": "",
+      "featured": false,
+      "full": false,
+      "registrationCode": "",
+      "ageRange": ""
     }
   ],
   "lastYearEvents": [
