@@ -219,6 +219,22 @@
       "full": false,
       "registrationCode": "",
       "ageRange": ""
+    },
+    {
+      "adminId": "424fb1cd-b67d-4747-8501-3dcf060f3562",
+      "title": "MFE Cedar Rapids",
+      "date": "2027-02-14",
+      "endDate": "2027-02-14",
+      "displayDate": "February 14, 2027",
+      "location": "The Fun Station",
+      "ctaLabel": "Register",
+      "ctaUrl": "/register/424fb1cd-b67d-4747-8501-3dcf060f3562",
+      "notes": "",
+      "image": "",
+      "featured": false,
+      "full": false,
+      "registrationCode": "",
+      "ageRange": ""
     }
   ],
   "lastYearEvents": [
