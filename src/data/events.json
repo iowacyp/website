@@ -1,6 +1,6 @@
 {
   "events": [
-{
+    {
       "title": "YMCA Camp 2026",
       "date": "2026-07-19",
       "endDate": "2026-07-25",
@@ -187,6 +187,22 @@
       "ctaUrl": "https://docs.google.com/forms/d/e/1FAIpQLSflPsp13oW4J0-JtiIK5kBG_Gqu6UCFjXMLtmvZGUApRytIyg/viewform?usp=dialog",
       "notes": "Space is limited—register early so your family is covered.",
       "image": "/content/UpcomingEvents/MFE Council Bluffs.png"
+    },
+    {
+      "adminId": "0f19c721-953d-4b09-8b94-e3d2f84c3042",
+      "title": "MFE Waterloo",
+      "date": "2027-06-20",
+      "endDate": "2027-06-20",
+      "displayDate": "June 20, 2027",
+      "location": "Get Air",
+      "ctaLabel": "Register",
+      "ctaUrl": "/register/0f19c721-953d-4b09-8b94-e3d2f84c3042",
+      "notes": "",
+      "image": "",
+      "featured": false,
+      "full": false,
+      "registrationCode": "",
+      "ageRange": ""
     }
   ],
   "lastYearEvents": [
