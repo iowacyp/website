@@ -45,7 +45,12 @@ eleventyExcludeFromCollections: true
     <section id="story-gallery-grid" class="grid grid-cols-2 gap-4 lg:grid-cols-3 lg:gap-6" aria-label="Story gallery">
       {% for story in storyGallery.items %}
         <button type="button" class="group relative min-h-[19rem] overflow-hidden rounded-[1.75rem] border border-white/15 bg-slate-900 text-left shadow-2xl shadow-black/20 transition duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary active:scale-[0.985] sm:min-h-[25rem]" data-story-id="{{ story.id }}" aria-label="Read {{ story.title }}">
-          <img src="{{ story.thumbnail }}" alt="{{ story.alt }}" class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" style="object-position: {{ story.position }};" loading="{% if loop.index <= 6 %}eager{% else %}lazy{% endif %}" decoding="async">
+          {%- if story.cardFit == 'contain' %}
+            <img src="{{ story.thumbnail }}" alt="" class="absolute inset-0 h-full w-full scale-110 object-cover opacity-55 blur-xl" aria-hidden="true" loading="lazy" decoding="async">
+            <img src="{{ story.thumbnail }}" alt="{{ story.alt }}" class="absolute inset-0 h-full w-full object-contain transition duration-700 group-hover:scale-[1.02]" loading="{% if loop.index <= 6 %}eager{% else %}lazy{% endif %}" decoding="async">
+          {%- else %}
+            <img src="{{ story.thumbnail }}" alt="{{ story.alt }}" class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" style="object-position: {{ story.position }};" loading="{% if loop.index <= 6 %}eager{% else %}lazy{% endif %}" decoding="async">
+          {%- endif %}
           <span class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/5"></span>
           <span class="absolute inset-x-0 bottom-0 block space-y-3 p-4 sm:p-6">
             <span class="inline-flex rounded-full bg-secondary px-3 py-1 text-[0.6rem] font-bold uppercase tracking-[0.2em] text-slate-950 sm:text-xs">{{ story.eyebrow }}</span>
@@ -78,7 +83,8 @@ eleventyExcludeFromCollections: true
 </section>
 
 <button type="button" class="fixed inset-0 z-[70] hidden overflow-hidden bg-slate-950 text-left text-white" data-attract aria-label="Open the featured story and pause slideshow" aria-hidden="true">
-  <img src="" alt="" class="absolute inset-0 h-full w-full object-cover transition-opacity duration-700" data-attract-image>
+  <img src="" alt="" class="absolute inset-0 h-full w-full scale-110 object-cover opacity-50 blur-2xl transition-opacity duration-700" data-attract-backdrop aria-hidden="true">
+  <img src="" alt="" class="absolute inset-0 h-full w-full object-contain transition-opacity duration-700" data-attract-image>
   <span class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/35"></span>
   <span class="absolute inset-0 flex items-end p-[max(2rem,env(safe-area-inset-bottom))] sm:items-center sm:p-16 lg:p-24">
     <span class="block max-w-3xl space-y-6">

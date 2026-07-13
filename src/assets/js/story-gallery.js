@@ -20,6 +20,7 @@
   const previousButton = document.querySelector('[data-detail-prev]');
   const nextButton = document.querySelector('[data-detail-next]');
   const attract = document.querySelector('[data-attract]');
+  const attractBackdrop = document.querySelector('[data-attract-backdrop]');
   const attractImage = document.querySelector('[data-attract-image]');
   const attractEyebrow = document.querySelector('[data-attract-eyebrow]');
   const attractTitle = document.querySelector('[data-attract-title]');
@@ -105,7 +106,8 @@
     if (!detailContent) return;
     detailContent.innerHTML = `
       <figure class="relative h-[38vh] min-h-72 overflow-hidden bg-slate-900 sm:h-[48vh]">
-        <img src="${escapeHtml(story.image)}" alt="${escapeHtml(story.alt)}" class="h-full w-full object-cover" style="object-position:${escapeHtml(story.position || 'center')}" decoding="async">
+        <img src="${escapeHtml(story.image)}" alt="" class="absolute inset-0 h-full w-full scale-110 object-cover opacity-50 blur-2xl" aria-hidden="true" decoding="async">
+        <img src="${escapeHtml(story.image)}" alt="${escapeHtml(story.alt)}" class="absolute inset-0 h-full w-full object-contain" decoding="async">
         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-slate-950/5"></div>
         <figcaption class="absolute inset-x-0 bottom-0 px-6 pb-7 text-white sm:px-10 lg:px-14">
           <p class="text-xs font-bold uppercase tracking-[0.25em] text-secondary">${escapeHtml(story.eyebrow)}</p>
@@ -183,11 +185,13 @@
     lastAttractId = attractStory.id;
     if (attractImage) {
       attractImage.classList.add('opacity-0');
+      if (attractBackdrop) attractBackdrop.style.opacity = '0';
       window.setTimeout(() => {
         attractImage.src = attractStory.image;
         attractImage.alt = attractStory.alt;
-        attractImage.style.objectPosition = attractStory.position || 'center';
+        if (attractBackdrop) attractBackdrop.src = attractStory.image;
         attractImage.classList.remove('opacity-0');
+        if (attractBackdrop) attractBackdrop.style.opacity = '0.5';
       }, reducedMotion ? 0 : 220);
     }
     if (attractEyebrow) attractEyebrow.textContent = attractStory.eyebrow;
