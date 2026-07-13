@@ -73,7 +73,41 @@ permalink: /stories/index.html
 }
 </script>
 
-<section id="event-stories" class="bg-slate-900 text-white py-16 md:py-24" data-reveal>
+<section id="event-stories" class="bg-slate-900 py-16 text-white md:py-24" data-reveal>
+  <div class="container space-y-10">
+    <div class="max-w-3xl space-y-4">
+      <p class="text-sm uppercase tracking-[0.15em] text-secondary">Event stories</p>
+      <h2 class="text-2xl font-semibold text-white md:text-3xl">Moments that stay with us</h2>
+      <p class="leading-relaxed text-white/80">Highlights from camps, service projects, and gatherings where Iowa CYP youth and families discover their strengths.</p>
+    </div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {% for story in storyGallery.items %}
+        <article class="group overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-lg">
+          <a class="flex h-full flex-col" href="/stories/{{ story.id }}/">
+            <figure class="relative aspect-[4/3] overflow-hidden bg-slate-950">
+              {% if story.cardFit == 'contain' %}
+                <img src="{{ story.thumbnail }}" alt="" class="absolute inset-0 h-full w-full scale-110 object-cover opacity-50 blur-xl" aria-hidden="true" loading="lazy" decoding="async">
+                <img src="{{ story.thumbnail }}" alt="{{ story.alt }}" class="absolute inset-0 h-full w-full object-contain transition duration-700 group-hover:scale-[1.02]" {{ imageAttrs(story.thumbnail) | safe }} loading="lazy" decoding="async">
+              {% else %}
+                <img src="{{ story.thumbnail }}" alt="{{ story.alt }}" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" style="object-position: {{ story.position }};" {{ imageAttrs(story.thumbnail) | safe }} loading="lazy" decoding="async">
+              {% endif %}
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/10 to-transparent"></div>
+              <p class="absolute inset-x-0 bottom-0 p-5 text-xs font-bold uppercase tracking-[0.22em] text-secondary">{{ story.eyebrow }}</p>
+            </figure>
+            <div class="flex flex-1 flex-col space-y-3 p-5">
+              <p class="text-xs uppercase tracking-[0.18em] text-white/55">{{ story.published }}</p>
+              <h3 class="text-xl font-semibold leading-tight text-white">{{ story.title }}</h3>
+              <p class="text-sm leading-relaxed text-white/75">{{ story.hook }}</p>
+              <span class="mt-auto inline-flex items-center gap-2 pt-2 text-sm font-bold text-secondary">Read full story <span aria-hidden="true">&rarr;</span></span>
+            </div>
+          </a>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="legacy-event-stories" class="hidden" aria-hidden="true">
   <div class="container space-y-10">
     <div class="max-w-3xl space-y-4">
       <p class="text-sm uppercase tracking-[0.15em] text-secondary">Event stories</p>

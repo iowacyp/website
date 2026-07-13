@@ -1,0 +1,71 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: storyGallery.items
+  size: 1
+  alias: story
+  addAllPagesToCollections: true
+permalink: /stories/{{ story.id }}/index.html
+searchExclude: true
+eleventyComputed:
+  title: "{{ story.title }} | Iowa CYP"
+  description: "{{ story.hook }}"
+---
+<article class="bg-white">
+  <header class="relative min-h-[55vh] overflow-hidden bg-slate-950 text-white">
+    <img src="{{ story.image }}" alt="" class="absolute inset-0 h-full w-full scale-110 object-cover opacity-45 blur-2xl" aria-hidden="true" decoding="async">
+    <img src="{{ story.image }}" alt="{{ story.alt }}" class="absolute inset-0 h-full w-full object-contain" {{ imageAttrs(story.image) | safe }} decoding="async">
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/35 to-transparent"></div>
+    <div class="container relative flex min-h-[55vh] items-end py-10 md:py-14">
+      <div class="max-w-4xl rounded-[1.75rem] border border-white/15 bg-slate-950/85 p-6 shadow-2xl backdrop-blur-md md:p-8">
+        <p class="text-xs font-bold uppercase tracking-[0.25em] text-secondary">{{ story.eyebrow }}</p>
+        <h1 class="mt-3 text-3xl font-semibold leading-tight text-white md:text-5xl">{{ story.title }}</h1>
+        <p class="mt-4 text-sm uppercase tracking-[0.18em] text-white/60">{{ story.published }}</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="container grid gap-10 py-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)] lg:py-16">
+    <div class="space-y-6 text-lg leading-relaxed text-slate-700">
+      {% for paragraph in story.body %}<p>{{ paragraph }}</p>{% endfor %}
+    </div>
+    <aside class="space-y-5">
+      <blockquote class="rounded-3xl border-l-4 border-secondary bg-secondary/10 p-6 text-xl font-semibold leading-snug text-slate-900">&ldquo;{{ story.quote }}&rdquo;</blockquote>
+      <div class="rounded-3xl border border-primary/15 bg-primary/5 p-6">
+        <p class="text-xs font-bold uppercase tracking-[0.22em] text-primary/60">Why it matters</p>
+        <p class="mt-3 leading-relaxed text-slate-700">{{ story.impact }}</p>
+      </div>
+      {% if story.stats and story.stats.length %}
+        <dl class="grid grid-cols-2 gap-3">
+          {% for stat in story.stats %}
+            <div class="rounded-2xl bg-primary/5 p-4">
+              <dt class="text-2xl font-bold text-primary">{{ stat.value }}</dt>
+              <dd class="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">{{ stat.label }}</dd>
+            </div>
+          {% endfor %}
+        </dl>
+      {% endif %}
+    </aside>
+  </div>
+
+  {% if story.gallery and story.gallery.length > 1 %}
+    <section class="bg-primary/5 py-12" aria-labelledby="story-gallery-heading">
+      <div class="container space-y-6">
+        <h2 id="story-gallery-heading" class="text-2xl font-semibold text-slate-900">More from this story</h2>
+        <div class="grid grid-cols-2 gap-4 lg:grid-cols-3">
+          {% for image in story.gallery %}
+            <figure class="overflow-hidden rounded-2xl bg-slate-200">
+              <img src="{{ image.src }}" alt="{{ image.alt }}" class="h-full min-h-64 w-full object-cover" {{ imageAttrs(image.src) | safe }} loading="lazy" decoding="async">
+            </figure>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+  <footer class="border-t border-slate-200 py-10">
+    <div class="container">
+      <a class="btn-primary inline-flex items-center gap-2" href="/stories/"><span aria-hidden="true">&larr;</span> All stories</a>
+    </div>
+  </footer>
+</article>

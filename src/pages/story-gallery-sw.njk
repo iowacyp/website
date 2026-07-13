@@ -5,8 +5,8 @@ searchExclude: true
 eleventyExcludeFromCollections: true
 ---
 const CACHE_PREFIX = 'iowa-cyp-story-gallery-';
-const CACHE_NAME = `${CACHE_PREFIX}v7-20260713`;
-const ASSETS = {{ jsonStringify(storyGallery.offlineAssets) | safe }};
+const CACHE_NAME = `${CACHE_PREFIX}{{ storyCacheVersion(storyGallery.items) }}`;
+const ASSETS = {{ jsonStringify(storyOfflineAssets(storyGallery.items)) | safe }};
 const ASSET_PATHS = new Set(ASSETS);
 
 self.addEventListener('install', (event) => {

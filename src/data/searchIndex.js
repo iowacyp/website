@@ -172,8 +172,21 @@ const teamItems = (team.members || []).map((member) => ({
   searchText: makeSearchText(member.name, member.title, member.organization, member.bio, member.email, member.phone, team.officeLocation),
 }));
 
+const stories = readJson("storyGallery.json").items || [];
+const storyItems = stories.map((story) => ({
+  title: story.title,
+  url: `/stories/${story.id}/`,
+  type: "Story",
+  summary: limitText(story.hook || story.impact || "", 180),
+  featured: false,
+  external: false,
+  keywords: [story.title, story.eyebrow, story.hook, story.quote, ...(story.body || [])],
+  searchText: makeSearchText(story.title, story.eyebrow, story.hook, story.quote, story.impact, ...(story.body || [])),
+}));
+
 module.exports = [
   ...pageItems,
+  ...storyItems,
   ...eventItems,
   ...resourceItems,
   ...programItems,

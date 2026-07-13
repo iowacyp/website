@@ -5,6 +5,7 @@ description: The State Teen Panel (STP) is Iowa CYP's teen leadership program fo
 permalink: /state-teen-panel/index.html
 ---
 {% set stpQuote = quotes.items | selectattr('id', 'equalto', 'Q007') | list | first %}
+{% set stpStories = storyGallery.items | storiesForAudience('stp') %}
 
 <section class="relative isolate overflow-hidden" data-reveal>
   {% set heroPhoto = requestPhoto({
@@ -121,37 +122,19 @@ permalink: /state-teen-panel/index.html
       <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Pulled from Stories of Impact</h2>
       <p class="text-slate-700 leading-relaxed">These spotlights are pulled from our published Stories of Impact page. They show how State Teen Panel members lead through service, connection, and the everyday moments that shape Guard family life.</p>
     </div>
-    <div class="grid gap-6 lg:grid-cols-3">
-      <article class="content-card overflow-hidden h-full flex flex-col" data-interactive="true">
-        <img src="/content/Media/VeteranPicture.jpeg" alt="State Teen Panel members visiting veterans at Eastern Star Masonic Home in Boone, Iowa" class="h-56 w-full object-cover object-center" loading="lazy" decoding="async">
-        <div class="space-y-4 pt-5">
-          <p class="text-xs uppercase tracking-[0.28em] text-primary/70">Listening across generations</p>
-          <h3 class="text-xl font-semibold text-slate-900">Moments That Stay With Us</h3>
-          <p class="text-sm text-slate-700 leading-relaxed">Seven STP members spent a day listening to veterans share stories of service, sacrifice, and life after uniform. What began as a service project became a bridge between generations.</p>
-          <blockquote class="border-l-4 border-secondary/80 pl-3 text-sm leading-relaxed text-slate-700 italic">&ldquo;I got to learn more about their lives and their insight on different skills - the experiences you gain versus the time spent away from your family.&rdquo;</blockquote>
-          <a class="link-underline w-fit" href="/stories/">Browse more stories</a>
-        </div>
-      </article>
-      <article class="content-card overflow-hidden h-full flex flex-col" data-interactive="true">
-        <img src="/content/Media/size0-full.jpg" alt="Klaryssa Klair Dunwoody volunteering with the State Teen Panel" class="h-56 w-full object-cover object-[center_28%]" loading="lazy" decoding="async">
-        <div class="space-y-4 pt-5">
-          <p class="text-xs uppercase tracking-[0.28em] text-primary/70">Youth spotlight</p>
-          <h3 class="text-xl font-semibold text-slate-900">Youth Spotlight: Klaryssa Klair Dunwoody</h3>
-          <p class="text-sm text-slate-700 leading-relaxed">Klaryssa Klair Dunwoody found her place through STP and turned that experience into reliable support for younger kids and parents. Her service helped shape the Guard family experience for others.</p>
-          <blockquote class="border-l-4 border-secondary/80 pl-3 text-sm leading-relaxed text-slate-700 italic">&ldquo;Service became her way of shaping the Guard family experience for other kids and it shows.&rdquo;</blockquote>
-          <a class="link-underline w-fit" href="/stories/">See the full feature</a>
-        </div>
-      </article>
-      <article class="content-card overflow-hidden h-full flex flex-col" data-interactive="true">
-        <img src="/assets/img/programs/stp_panel_group.jpg" alt="State Teen Panel members gathered together at an Iowa CYP event" class="h-56 w-full object-cover object-center" loading="lazy" decoding="async">
-        <div class="space-y-4 pt-5">
-          <p class="text-xs uppercase tracking-[0.28em] text-primary/70">Peer connection</p>
-          <h3 class="text-xl font-semibold text-slate-900">Iowa Teen Steps Into Statewide Leadership Role as GTP Representative</h3>
-          <p class="text-sm text-slate-700 leading-relaxed">For many members, STP is where connection becomes the reason to keep showing up. Teens build confidence, learn to lead, and leave with a group that understands military life firsthand.</p>
-          <blockquote class="border-l-4 border-secondary/80 pl-3 text-sm leading-relaxed text-slate-700 italic">&ldquo;We always have so much fun and get closer every time. I love everything about the STP—but the people are my favorite part.&rdquo;</blockquote>
-          <a class="link-underline w-fit" href="/stories/">Explore all stories</a>
-        </div>
-      </article>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {% for story in stpStories %}
+        <article class="content-card overflow-hidden h-full flex flex-col" data-interactive="true">
+          <img src="{{ story.thumbnail }}" alt="{{ story.alt }}" class="h-56 w-full object-cover" style="object-position: {{ story.position }};" {{ imageAttrs(story.thumbnail) | safe }} loading="lazy" decoding="async">
+          <div class="flex flex-1 flex-col space-y-4 pt-5">
+            <p class="text-xs uppercase tracking-[0.28em] text-primary/70">{{ story.eyebrow }}</p>
+            <h3 class="text-xl font-semibold text-slate-900">{{ story.title }}</h3>
+            <p class="text-sm text-slate-700 leading-relaxed">{{ story.hook }}</p>
+            <blockquote class="border-l-4 border-secondary/80 pl-3 text-sm leading-relaxed text-slate-700 italic">&ldquo;{{ story.quote }}&rdquo;</blockquote>
+            <a class="link-underline mt-auto w-fit" href="/stories/{{ story.id }}/">Read the full story</a>
+          </div>
+        </article>
+      {% endfor %}
     </div>
   </div>
 </section>

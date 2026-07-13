@@ -1,5 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
+const crypto = require("node:crypto");
 const photoPool = require("./utils/photo-pool");
 
 const imageMetaCache = new Map();
@@ -156,10 +157,47 @@ const jsonStringify = (value) =>
 const getFeaturedEvent = (events) =>
   Array.isArray(events) ? events.find((event) => event?.featured === true) || null : null;
 
+const getStoryOfflineAssets = (stories = []) => {
+  const assets = [
+    "/story-gallery/",
+    "/assets/css/site.css",
+    "/assets/js/story-gallery.js",
+    "/assets/img/branding_symbol.png",
+    "/assets/pwa/icon-192.png",
+  ];
+
+  for (const story of stories) {
+    if (story?.image) assets.push(story.image);
+    if (story?.thumbnail) assets.push(story.thumbnail);
+    for (const image of story?.gallery || []) {
+      if (image?.src) assets.push(image.src);
+    }
+  }
+
+  return [...new Set(assets)];
+};
+
+const getStoryCacheVersion = (stories = []) => {
+  const hash = crypto.createHash("sha256").update(JSON.stringify(stories));
+  for (const asset of getStoryOfflineAssets(stories)) {
+    const filePath = resolveImagePath(asset);
+    if (filePath) hash.update(fs.readFileSync(filePath));
+  }
+  return hash.digest("hex").slice(0, 12);
+};
+
+const storiesForAudience = (stories = [], audience, limit) => {
+  const matches = stories.filter((story) => story?.audiences?.includes(audience));
+  return Number.isInteger(limit) ? matches.slice(0, limit) : matches;
+};
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addNunjucksGlobal("imageAttrs", imageAttrs);
   eleventyConfig.addNunjucksGlobal("jsonStringify", jsonStringify);
   eleventyConfig.addNunjucksGlobal("getFeaturedEvent", getFeaturedEvent);
+  eleventyConfig.addNunjucksGlobal("storyOfflineAssets", getStoryOfflineAssets);
+  eleventyConfig.addNunjucksGlobal("storyCacheVersion", getStoryCacheVersion);
+  eleventyConfig.addFilter("storiesForAudience", storiesForAudience);
   eleventyConfig.addPassthroughCopy({ "src/assets/img": "assets/img" });
   eleventyConfig.addPassthroughCopy({ "src/assets/js": "assets/js" });
   eleventyConfig.addPassthroughCopy({ "src/assets/video": "assets/video" });

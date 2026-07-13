@@ -111,4 +111,60 @@ walkFiles(githubWorkflowsDir, (fullPath) => {
   }
 });
 
+const storyDataPath = path.join(root, "src", "data", "storyGallery.json");
+const storyData = JSON.parse(fs.readFileSync(storyDataPath, "utf8"));
+const stories = storyData.items;
+if (!Array.isArray(stories) || stories.length === 0) {
+  fail("storyGallery.json must contain at least one story");
+}
+
+const requiredStoryFields = [
+  "id", "title", "eyebrow", "published", "image", "thumbnail", "alt",
+  "hook", "quote", "body", "impact",
+];
+const storyIds = new Set();
+const storiesIndex = fs.readFileSync(path.join(distDir, "stories", "index.html"), "utf8");
+const kioskIndex = fs.readFileSync(path.join(distDir, "story-gallery", "index.html"), "utf8");
+const kioskWorker = fs.readFileSync(path.join(distDir, "story-gallery", "sw.js"), "utf8");
+const stpIndex = fs.readFileSync(path.join(distDir, "state-teen-panel", "index.html"), "utf8");
+const sitemap = fs.readFileSync(path.join(distDir, "sitemap.xml"), "utf8");
+
+function sourceAssetPath(asset) {
+  if (asset.startsWith("/assets/")) return path.join(root, "src", asset);
+  if (asset.startsWith("/content/")) return path.join(root, asset);
+  return null;
+}
+
+for (const story of stories) {
+  for (const field of requiredStoryFields) {
+    if (!story[field] || (Array.isArray(story[field]) && story[field].length === 0)) {
+      fail(`story ${story.id || "(missing id)"} is missing required field: ${field}`);
+    }
+  }
+
+  if (storyIds.has(story.id)) fail(`duplicate story id: ${story.id}`);
+  storyIds.add(story.id);
+
+  const storyAssets = [story.image, story.thumbnail, ...(story.gallery || []).map((image) => image.src)];
+  for (const asset of storyAssets) {
+    const assetPath = sourceAssetPath(asset);
+    if (!assetPath || !fs.existsSync(assetPath)) {
+      fail(`story ${story.id} references a missing local asset: ${asset}`);
+    }
+    if (!kioskWorker.includes(JSON.stringify(asset))) {
+      fail(`story ${story.id} asset is missing from the kiosk offline cache: ${asset}`);
+    }
+  }
+
+  const publicStoryPath = path.join(distDir, "stories", story.id, "index.html");
+  if (!fs.existsSync(publicStoryPath)) fail(`public story page was not generated: ${story.id}`);
+  if (!storiesIndex.includes(`/stories/${story.id}/`)) fail(`Stories page is missing: ${story.id}`);
+  if (!kioskIndex.includes(`data-story-id="${story.id}"`)) fail(`kiosk is missing: ${story.id}`);
+  if (!sitemap.includes(`/stories/${story.id}/`)) fail(`sitemap is missing story: ${story.id}`);
+
+  if (story.audiences?.includes("stp") && !stpIndex.includes(`/stories/${story.id}/`)) {
+    fail(`STP-tagged story is missing from the State Teen Panel page: ${story.id}`);
+  }
+}
+
 console.log("Build verification passed.");
