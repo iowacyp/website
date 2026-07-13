@@ -109,9 +109,11 @@
         <img src="${escapeHtml(story.image)}" alt="" class="absolute inset-0 h-full w-full scale-110 object-cover opacity-50 blur-2xl" aria-hidden="true" decoding="async">
         <img src="${escapeHtml(story.image)}" alt="${escapeHtml(story.alt)}" class="absolute inset-0 h-full w-full object-contain" decoding="async">
         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-slate-950/5"></div>
-        <figcaption class="absolute inset-x-0 bottom-0 px-6 pb-7 text-white sm:px-10 lg:px-14">
-          <p class="text-xs font-bold uppercase tracking-[0.25em] text-secondary">${escapeHtml(story.eyebrow)}</p>
-          <h2 id="kiosk-story-title" class="mt-2 max-w-5xl font-heading text-4xl font-bold leading-tight [text-shadow:0_4px_20px_rgba(0,0,0,0.95)] sm:text-6xl">${escapeHtml(story.title)}</h2>
+        <figcaption class="absolute inset-x-0 bottom-0 px-5 pb-5 text-white sm:px-10 sm:pb-7 lg:px-14">
+          <div class="max-w-5xl rounded-[1.5rem] border border-white/15 bg-slate-950/90 px-5 py-4 shadow-2xl backdrop-blur-md sm:px-7 sm:py-5">
+            <p class="text-xs font-bold uppercase tracking-[0.25em] text-secondary">${escapeHtml(story.eyebrow)}</p>
+            <h2 id="kiosk-story-title" class="mt-2 font-heading text-3xl font-bold leading-tight text-white sm:text-5xl">${escapeHtml(story.title)}</h2>
+          </div>
         </figcaption>
       </figure>
       <div class="mx-auto max-w-7xl space-y-10 px-6 py-8 sm:px-10 lg:px-14 lg:py-12">
@@ -307,6 +309,13 @@
   };
 
   if ('serviceWorker' in navigator) {
+    let reloadingForUpdate = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (reloadingForUpdate) return;
+      reloadingForUpdate = true;
+      window.location.reload();
+    });
+
     window.addEventListener('load', async () => {
       try {
         const registration = await navigator.serviceWorker.register('/story-gallery/sw.js', { scope: '/story-gallery/' });

@@ -1217,6 +1217,9 @@ video {
 .rounded-3xl {
   border-radius: 1.5rem;
 }
+.rounded-\[1\.5rem\] {
+  border-radius: 1.5rem;
+}
 .rounded-\[1\.75rem\] {
   border-radius: 1.75rem;
 }
@@ -1434,6 +1437,9 @@ video {
 }
 .bg-slate-950\/85 {
   background-color: rgb(2 6 23 / 0.85);
+}
+.bg-slate-950\/90 {
+  background-color: rgb(2 6 23 / 0.9);
 }
 .bg-white {
   --tw-bg-opacity: 1;
@@ -1729,8 +1735,8 @@ video {
 .pb-4 {
   padding-bottom: 1rem;
 }
-.pb-7 {
-  padding-bottom: 1.75rem;
+.pb-5 {
+  padding-bottom: 1.25rem;
 }
 .pb-8 {
   padding-bottom: 2rem;
@@ -2285,9 +2291,6 @@ video {
 }
 .\[text-shadow\:0_3px_18px_rgba\(0\2c 0\2c 0\2c 0\.75\)\] {
   text-shadow: 0 3px 18px rgba(0,0,0,0.75);
-}
-.\[text-shadow\:0_4px_20px_rgba\(0\2c 0\2c 0\2c 0\.95\)\] {
-  text-shadow: 0 4px 20px rgba(0,0,0,0.95);
 }
 .\[text-shadow\:0_4px_22px_rgba\(0\2c 0\2c 0\2c 0\.95\)\] {
   text-shadow: 0 4px 22px rgba(0,0,0,0.95);
@@ -4410,9 +4413,23 @@ footer a:hover {
     padding-right: 1.5rem;
   }
 
+  .sm\:px-7 {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+
+  .sm\:py-5 {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
   .sm\:py-6 {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
+  }
+
+  .sm\:pb-7 {
+    padding-bottom: 1.75rem;
   }
 
   .sm\:text-2xl {
@@ -4432,11 +4449,6 @@ footer a:hover {
 
   .sm\:text-5xl {
     font-size: 3rem;
-    line-height: 1;
-  }
-
-  .sm\:text-6xl {
-    font-size: 3.75rem;
     line-height: 1;
   }
 
