@@ -318,10 +318,20 @@
 
     window.addEventListener('load', async () => {
       try {
-        const registration = await navigator.serviceWorker.register('/story-gallery/sw.js', { scope: '/story-gallery/' });
+        const registration = await navigator.serviceWorker.register('/story-gallery/sw.js', {
+          scope: '/story-gallery/',
+          updateViaCache: 'none',
+        });
         await registration.update();
         await navigator.serviceWorker.ready;
         setOfflineStatus('ready', navigator.onLine ? 'Offline ready' : 'Offline mode active');
+
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible' && navigator.onLine) registration.update();
+        });
+        window.setInterval(() => {
+          if (navigator.onLine) registration.update();
+        }, 5 * 60 * 1000);
       } catch (error) {
         setOfflineStatus('error', 'Online mode only');
         console.error('Story gallery offline setup failed', error);
