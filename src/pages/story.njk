@@ -48,6 +48,22 @@ eleventyComputed:
     </aside>
   </div>
 
+  {% if story.youtubeId %}
+    <section class="bg-slate-900 py-12 text-white" aria-labelledby="story-video-heading">
+      <div class="container grid gap-8 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:items-center">
+        <div class="space-y-4">
+          <p class="text-xs font-bold uppercase tracking-[0.25em] text-secondary">Watch the story</p>
+          <h2 id="story-video-heading" class="text-2xl font-semibold text-white md:text-3xl">Hear the family perspective</h2>
+          <p class="leading-relaxed text-white/75">Listen to the story in the family's own words.</p>
+          <a class="btn-secondary inline-flex items-center gap-2" href="{{ story.videoUrl }}" target="_blank" rel="noopener noreferrer">Watch on YouTube <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <div class="frame-shell aspect-video overflow-hidden rounded-3xl border border-white/15 bg-black" data-frame-shell>
+          <iframe data-frame-src="https://www.youtube.com/embed/{{ story.youtubeId }}?rel=0&amp;modestbranding=1&amp;playsinline=1" data-frame-eager title="{{ story.title }} video" class="frame-embed h-full w-full" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
   {% if story.gallery and story.gallery.length > 1 %}
     <section class="bg-primary/5 py-12" aria-labelledby="story-gallery-heading">
       <div class="container space-y-6">

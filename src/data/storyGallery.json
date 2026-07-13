@@ -217,6 +217,34 @@
       ]
     },
     {
+      "id": "parent-perspective-finding-friendship",
+      "title": "A Familiar Face Made Iowa Feel Like Home",
+      "eyebrow": "Parent perspective",
+      "published": "October 15, 2025",
+      "image": "/assets/img/story-gallery/parent-perspective-full.jpg",
+      "thumbnail": "/assets/img/story-gallery/parent-perspective-thumb.jpg",
+      "cardFit": "contain",
+      "alt": "A military parent sharing her family's experience with Iowa CYP at horse camp",
+      "position": "center",
+      "hook": "After a cross-country move, one familiar face helped a Guard-connected child feel that she was not starting over alone.",
+      "quote": "That instant camaraderie gave our daughter an anchor and helped Iowa begin to feel like home.",
+      "body": [
+        "When one Guard family relocated from Texas to Iowa, their daughter wondered who would understand what military life felt like in a new place.",
+        "At an Iowa CYP horse camp, a familiar face from another program recognized her. That small moment became instant camaraderie: proof that she was not starting over alone and that military-connected friendships can cross state lines.",
+        "The confidence followed her home. What began as recognition at camp helped the family's new community feel less unfamiliar and gave their daughter a connection she could carry through the transition."
+      ],
+      "impact": "CYP relationships can outlast moves and mobilizations, giving military-connected children a dependable sense of belonging wherever their family lands.",
+      "videoUrl": "https://www.youtube.com/watch?v=rZL1KANrLt4",
+      "youtubeId": "rZL1KANrLt4",
+      "stats": [
+        { "value": "TX to IA", "label": "Family transition" },
+        { "value": "1", "label": "Familiar face" }
+      ],
+      "gallery": [
+        { "src": "/assets/img/story-gallery/parent-perspective-full.jpg", "alt": "A parent describing the connection her child found through Iowa CYP" }
+      ]
+    },
+    {
       "id": "camper-confidence",
       "title": "Chain of Confidence: A Camper's Turnaround",
       "eyebrow": "Camper breakthrough",

@@ -128,6 +128,7 @@
               <p class="text-xs font-bold uppercase tracking-[0.22em] text-primary/60">Why it matters</p>
               <p class="mt-3 leading-relaxed text-slate-700">${escapeHtml(story.impact)}</p>
             </div>
+            ${story.videoUrl ? `<a class="inline-flex min-h-14 items-center gap-2 rounded-full bg-primary px-6 py-3 font-bold text-white shadow-sm" href="${escapeHtml(story.videoUrl)}" target="_blank" rel="noopener noreferrer">Watch the story <span aria-hidden="true">&rarr;</span></a>` : ''}
             ${renderStats(story.stats)}
           </aside>
         </div>

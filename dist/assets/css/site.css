@@ -921,6 +921,9 @@ video {
 .w-\[230px\] {
   width: 230px;
 }
+.w-\[78vw\] {
+  width: 78vw;
+}
 .w-\[min\(22rem\2c 100vw\)\] {
   width: min(22rem,100vw);
 }
@@ -966,6 +969,9 @@ video {
 }
 .max-w-\[320px\] {
   max-width: 320px;
+}
+.max-w-\[340px\] {
+  max-width: 340px;
 }
 .max-w-xl {
   max-width: 36rem;
@@ -1351,6 +1357,10 @@ video {
 .bg-bg {
   --tw-bg-opacity: 1;
   background-color: rgb(250 247 240 / var(--tw-bg-opacity, 1));
+}
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
 }
 .bg-emerald-400 {
   --tw-bg-opacity: 1;
@@ -4419,6 +4429,10 @@ footer a:hover {
     min-height: 25rem;
   }
 
+  .sm\:w-\[340px\] {
+    width: 340px;
+  }
+
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -4742,12 +4756,20 @@ footer a:hover {
     min-height: clamp(34rem,60vw,44rem);
   }
 
+  .lg\:w-\[360px\] {
+    width: 360px;
+  }
+
   .lg\:w-full {
     width: 100%;
   }
 
   .lg\:max-w-\[340px\] {
     max-width: 340px;
+  }
+
+  .lg\:max-w-\[360px\] {
+    max-width: 360px;
   }
 
   .lg\:grid-cols-2 {
@@ -4768,6 +4790,10 @@ footer a:hover {
 
   .lg\:grid-cols-\[1fr_auto\] {
     grid-template-columns: 1fr auto;
+  }
+
+  .lg\:grid-cols-\[minmax\(0\2c 0\.7fr\)_minmax\(0\2c 1\.3fr\)\] {
+    grid-template-columns: minmax(0,0.7fr) minmax(0,1.3fr);
   }
 
   .lg\:grid-cols-\[minmax\(0\2c 1\.05fr\)_minmax\(0\2c 0\.95fr\)\] {
