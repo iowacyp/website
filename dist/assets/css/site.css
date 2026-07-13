@@ -2319,6 +2319,14 @@ section[id] {
 
 body { font-family: var(--font-body); --tw-bg-opacity: 1; background-color: rgb(250 247 240 / var(--tw-bg-opacity, 1)); --tw-text-opacity: 1; color: rgb(33 48 63 / var(--tw-text-opacity, 1)); }
 h1, h2, h3, .font-heading { font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.1em; --tw-text-opacity: 1; color: rgb(33 48 63 / var(--tw-text-opacity, 1)); }
+
+/* The global heading color is intentional on the public site, but kiosk titles
+   always sit on dark imagery and must override it. */
+.story-kiosk .font-heading.text-white,
+[data-attract-title],
+#kiosk-story-title {
+  color: #fff !important;
+}
 h1 {
   font-size: 2.25rem;
   line-height: 2.5rem;
@@ -2739,6 +2747,10 @@ footer a:hover {
   font-size: 3rem;
   line-height: 1;
   font-weight: 900; font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.1em; --tw-text-opacity: 1; color: rgb(33 48 63 / var(--tw-text-opacity, 1));
+}
+
+.story-kiosk .event-card__full-overlay span.text-white {
+  color: #fff;
 }
 
 @media (min-width: 640px) {
@@ -3486,9 +3498,17 @@ footer a:hover {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
+.story-kiosk .font-heading.quote-card--accent {
+  color: #fff;
+}
+
 .quote-card--accent blockquote {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.story-kiosk .font-heading.quote-card--accent blockquote {
+  color: #fff;
 }
 
 .quote-card--accent cite {
@@ -3794,6 +3814,13 @@ footer a:hover {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   --tw-shadow-color: rgb(31 77 122 / 0.35);
   --tw-shadow: var(--tw-shadow-colored);
+}
+
+.story-kiosk .font-heading.btn {
+  color: #fff;
+}
+
+.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -3884,6 +3911,13 @@ footer a:hover {
   padding-bottom: 0.75rem;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.story-kiosk .font-heading.hero-cta-secondary {
+  color: #fff;
+}
+
+.hero-cta-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;

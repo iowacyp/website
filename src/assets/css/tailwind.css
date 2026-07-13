@@ -16,6 +16,14 @@ section[id] {
 
 body { font-family: var(--font-body); @apply text-[#21303f] bg-bg; }
 h1, h2, h3, .font-heading { font-family: var(--font-heading); @apply tracking-[0.1em] uppercase text-[#21303f]; }
+
+/* The global heading color is intentional on the public site, but kiosk titles
+   always sit on dark imagery and must override it. */
+.story-kiosk .font-heading.text-white,
+[data-attract-title],
+#kiosk-story-title {
+  color: #fff !important;
+}
 h1 { @apply text-4xl md:text-5xl leading-tight; }
 h2 { @apply tracking-[0.1em]; }
 h3 { @apply tracking-[0.08em]; }
