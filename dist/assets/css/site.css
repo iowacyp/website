@@ -1432,6 +1432,9 @@ video {
 .bg-slate-950\/50 {
   background-color: rgb(2 6 23 / 0.5);
 }
+.bg-slate-950\/70 {
+  background-color: rgb(2 6 23 / 0.7);
+}
 .bg-slate-950\/75 {
   background-color: rgb(2 6 23 / 0.75);
 }
@@ -1521,28 +1524,25 @@ video {
   --tw-gradient-to: rgb(15 23 42 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), rgb(15 23 42 / 0.4) var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
+.via-slate-950\/10 {
+  --tw-gradient-to: rgb(2 6 23 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), rgb(2 6 23 / 0.1) var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+.via-slate-950\/30 {
+  --tw-gradient-to: rgb(2 6 23 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), rgb(2 6 23 / 0.3) var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
 .via-slate-950\/45 {
   --tw-gradient-to: rgb(2 6 23 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), rgb(2 6 23 / 0.45) var(--tw-gradient-via-position), var(--tw-gradient-to);
-}
-.via-slate-950\/70 {
-  --tw-gradient-to: rgb(2 6 23 / 0)  var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), rgb(2 6 23 / 0.7) var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
 .via-slate-950\/80 {
   --tw-gradient-to: rgb(2 6 23 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), rgb(2 6 23 / 0.8) var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
-.via-slate-950\/85 {
-  --tw-gradient-to: rgb(2 6 23 / 0)  var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), rgb(2 6 23 / 0.85) var(--tw-gradient-via-position), var(--tw-gradient-to);
-}
 .via-slate-950\/90 {
   --tw-gradient-to: rgb(2 6 23 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), rgb(2 6 23 / 0.9) var(--tw-gradient-via-position), var(--tw-gradient-to);
-}
-.to-slate-950\/35 {
-  --tw-gradient-to: rgb(2 6 23 / 0.35) var(--tw-gradient-to-position);
 }
 .to-slate-950\/5 {
   --tw-gradient-to: rgb(2 6 23 / 0.05) var(--tw-gradient-to-position);
@@ -1616,8 +1616,8 @@ video {
 .p-8 {
   padding: 2rem;
 }
-.p-\[max\(2rem\2c env\(safe-area-inset-bottom\)\)\] {
-  padding: max(2rem,env(safe-area-inset-bottom));
+.p-\[max\(1\.25rem\2c env\(safe-area-inset-bottom\)\)\] {
+  padding: max(1.25rem,env(safe-area-inset-bottom));
 }
 .px-0 {
   padding-left: 0px;
@@ -1759,9 +1759,6 @@ video {
 .pl-4 {
   padding-left: 1rem;
 }
-.pl-5 {
-  padding-left: 1.25rem;
-}
 .pl-8 {
   padding-left: 2rem;
 }
@@ -1818,10 +1815,6 @@ video {
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
-}
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
 }
 .text-\[0\.55rem\] {
   font-size: 0.55rem;
@@ -2095,6 +2088,9 @@ video {
 .opacity-55 {
   opacity: 0.55;
 }
+.opacity-70 {
+  opacity: 0.7;
+}
 .opacity-90 {
   opacity: 0.9;
 }
@@ -2292,8 +2288,8 @@ video {
 .\[text-shadow\:0_3px_18px_rgba\(0\2c 0\2c 0\2c 0\.75\)\] {
   text-shadow: 0 3px 18px rgba(0,0,0,0.75);
 }
-.\[text-shadow\:0_4px_22px_rgba\(0\2c 0\2c 0\2c 0\.95\)\] {
-  text-shadow: 0 4px 22px rgba(0,0,0,0.95);
+.\[text-shadow\:0_3px_18px_rgba\(0\2c 0\2c 0\2c 0\.95\)\] {
+  text-shadow: 0 3px 18px rgba(0,0,0,0.95);
 }
 .\[transform\:scaleX\(-1\)\] {
   transform: scaleX(-1);
@@ -4417,16 +4413,8 @@ footer a:hover {
     flex-direction: row;
   }
 
-  .sm\:items-center {
-    align-items: center;
-  }
-
   .sm\:gap-3 {
     gap: 0.75rem;
-  }
-
-  .sm\:p-16 {
-    padding: 4rem;
   }
 
   .sm\:p-6 {
@@ -4435,6 +4423,10 @@ footer a:hover {
 
   .sm\:p-7 {
     padding: 1.75rem;
+  }
+
+  .sm\:p-8 {
+    padding: 2rem;
   }
 
   .sm\:px-10 {
@@ -4486,9 +4478,9 @@ footer a:hover {
     line-height: 1;
   }
 
-  .sm\:text-7xl {
-    font-size: 4.5rem;
-    line-height: 1;
+  .sm\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 
   .sm\:text-xs {
@@ -4800,6 +4792,10 @@ footer a:hover {
     grid-template-columns: minmax(0,1fr) minmax(0,1fr);
   }
 
+  .lg\:grid-cols-\[minmax\(18rem\2c 0\.85fr\)_minmax\(22rem\2c 1\.15fr\)\] {
+    grid-template-columns: minmax(18rem,0.85fr) minmax(22rem,1.15fr);
+  }
+
   .lg\:items-start {
     align-items: flex-start;
   }
@@ -4816,12 +4812,16 @@ footer a:hover {
     align-items: stretch;
   }
 
+  .lg\:gap-10 {
+    gap: 2.5rem;
+  }
+
   .lg\:gap-6 {
     gap: 1.5rem;
   }
 
-  .lg\:p-24 {
-    padding: 6rem;
+  .lg\:p-10 {
+    padding: 2.5rem;
   }
 
   .lg\:p-8 {

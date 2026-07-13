@@ -193,7 +193,7 @@
         attractImage.alt = attractStory.alt;
         if (attractBackdrop) attractBackdrop.src = attractStory.image;
         attractImage.classList.remove('opacity-0');
-        if (attractBackdrop) attractBackdrop.style.opacity = '0.5';
+        if (attractBackdrop) attractBackdrop.style.opacity = '0.7';
       }, reducedMotion ? 0 : 220);
     }
     if (attractEyebrow) attractEyebrow.textContent = attractStory.eyebrow;
