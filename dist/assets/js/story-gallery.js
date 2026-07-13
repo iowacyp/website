@@ -106,10 +106,10 @@
     detailContent.innerHTML = `
       <figure class="relative h-[38vh] min-h-72 overflow-hidden bg-slate-900 sm:h-[48vh]">
         <img src="${escapeHtml(story.image)}" alt="${escapeHtml(story.alt)}" class="h-full w-full object-cover" style="object-position:${escapeHtml(story.position || 'center')}" decoding="async">
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/10 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-slate-950/5"></div>
         <figcaption class="absolute inset-x-0 bottom-0 px-6 pb-7 text-white sm:px-10 lg:px-14">
           <p class="text-xs font-bold uppercase tracking-[0.25em] text-secondary">${escapeHtml(story.eyebrow)}</p>
-          <h2 id="kiosk-story-title" class="mt-2 max-w-5xl font-heading text-4xl font-semibold leading-tight sm:text-6xl">${escapeHtml(story.title)}</h2>
+          <h2 id="kiosk-story-title" class="mt-2 max-w-5xl font-heading text-4xl font-bold leading-tight [text-shadow:0_4px_20px_rgba(0,0,0,0.95)] sm:text-6xl">${escapeHtml(story.title)}</h2>
         </figcaption>
       </figure>
       <div class="mx-auto max-w-7xl space-y-10 px-6 py-8 sm:px-10 lg:px-14 lg:py-12">
