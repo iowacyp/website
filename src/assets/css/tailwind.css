@@ -148,6 +148,15 @@ footer a {
   @apply border-secondary shadow-md bg-white;
 }
 
+.event-card--full {
+  @apply cursor-not-allowed bg-slate-100 border-slate-300 shadow-none;
+}
+
+.event-card--full:hover,
+.event-card--full:focus-within {
+  @apply border-slate-300 shadow-none bg-slate-100;
+}
+
 .event-card .btn {
   @apply mt-2;
 }
@@ -163,6 +172,10 @@ footer a {
   object-fit: cover;
   object-position: center;
   aspect-ratio: 1920 / 1005;
+}
+
+.event-card__image--full {
+  @apply grayscale brightness-90 saturate-0;
 }
 
 .event-card__full-overlay {

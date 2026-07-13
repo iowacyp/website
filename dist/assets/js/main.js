@@ -529,17 +529,23 @@ const groupEventsBySeason = (events) => {
 const renderEventCard = (event, variant = 'upcoming') => {
   const displayDate = event.displayDate || formatEventDate(event.date);
   const datetimeAttr = event.date ? ` datetime="${event.date}"` : '';
-  const hasImage = Boolean(event.image);
+  const hasImage = Boolean(event.image) && !/\/fy27-event-placeholder\.jpg(?:[?#].*)?$/i.test(event.image);
   const eventFull = variant !== 'completed' && isEventFull(event);
 
   const wrapperClass =
     variant === 'completed'
       ? 'content-card h-full flex flex-col overflow-hidden border border-slate-200/80 bg-slate-50/60 p-0'
-      : `event-card rounded-2xl border border-slate-200 bg-white shadow-sm flex flex-col overflow-hidden${hasImage ? ' p-0' : ' p-6'}`;
+      : `event-card rounded-2xl border border-slate-200 bg-white shadow-sm flex flex-col overflow-hidden${hasImage ? ' p-0' : ' p-6'}${eventFull ? ' event-card--full bg-slate-100 border-slate-300' : ''}`;
 
-  const titleClass = variant === 'completed' ? 'text-lg font-semibold text-slate-800' : 'text-xl font-semibold text-primary';
-  const locationClass = variant === 'completed' ? 'text-sm text-slate-600' : 'text-sm text-gray-600';
-  const notesClass = variant === 'completed' ? 'text-sm text-slate-600 leading-relaxed' : 'text-sm text-gray-600';
+  const titleClass = variant === 'completed'
+    ? 'text-lg font-semibold text-slate-800'
+    : `text-xl font-semibold ${eventFull ? 'text-slate-500' : 'text-primary'}`;
+  const locationClass = variant === 'completed'
+    ? 'text-sm text-slate-600'
+    : `text-sm ${eventFull ? 'text-slate-500' : 'text-gray-600'}`;
+  const notesClass = variant === 'completed'
+    ? 'text-sm text-slate-600 leading-relaxed'
+    : `text-sm leading-relaxed ${eventFull ? 'text-slate-500' : 'text-gray-600'}`;
   const featuredBadge = variant !== 'completed' && event.featured
     ? '<span class="inline-flex items-center rounded-full bg-secondary px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-primary">Top event</span>'
     : '';
@@ -549,7 +555,7 @@ const renderEventCard = (event, variant = 'upcoming') => {
 
   const imageBlock = hasImage
     ? `<div class="event-card__image-wrap">
-        <img src="${event.image}" alt="${event.title}" class="${variant === 'completed' ? 'event-banner opacity-90' : 'event-card__image'}" width="1920" height="1005" loading="lazy" decoding="async">
+        <img src="${event.image}" alt="${event.title}" class="${variant === 'completed' ? 'event-banner opacity-90' : `event-card__image${eventFull ? ' event-card__image--full' : ''}`}" width="1920" height="1005" loading="lazy" decoding="async">
         ${eventFull ? '<div class="event-card__full-overlay" aria-label="Event full"><span>Full</span></div>' : ''}
       </div>`
     : '';
@@ -568,10 +574,12 @@ const renderEventCard = (event, variant = 'upcoming') => {
   }
 
   const contentPadding = hasImage ? 'p-5' : '';
-  const wrapperAccent = variant !== 'completed' && event.featured ? ' ring-2 ring-secondary/60 shadow-lg' : '';
+  const wrapperAccent = variant !== 'completed'
+    ? `${event.featured ? ' ring-2 ring-secondary/60 shadow-lg' : ''}${eventFull ? ' shadow-none' : ''}`
+    : '';
 
   return `
-    <article class="${wrapperClass}${wrapperAccent}">
+    <article class="${wrapperClass}${wrapperAccent}"${eventFull ? ' aria-disabled="true"' : ''}>
       ${imageBlock}
       <div class="flex flex-col flex-1 gap-3 ${contentPadding}">
         <div class="space-y-1.5">
@@ -635,7 +643,7 @@ async function renderEvents() {
   }
 
   try {
-    const res = await fetch('/events.json', { headers: { 'Cache-Control': 'no-cache' } });
+    const res = await fetch('/events.json', { cache: 'no-store' });
     if (!res.ok) throw new Error(`Failed to fetch events: ${res.status}`);
 
     const data = await res.json();

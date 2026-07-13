@@ -153,9 +153,13 @@ const jsonStringify = (value) =>
     .replace(/>/g, "\\u003e")
     .replace(/&/g, "\\u0026");
 
+const getFeaturedEvent = (events) =>
+  Array.isArray(events) ? events.find((event) => event?.featured === true) || null : null;
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addNunjucksGlobal("imageAttrs", imageAttrs);
   eleventyConfig.addNunjucksGlobal("jsonStringify", jsonStringify);
+  eleventyConfig.addNunjucksGlobal("getFeaturedEvent", getFeaturedEvent);
   eleventyConfig.addPassthroughCopy({ "src/assets/img": "assets/img" });
   eleventyConfig.addPassthroughCopy({ "src/assets/js": "assets/js" });
   eleventyConfig.addPassthroughCopy({ "src/assets/video": "assets/video" });
