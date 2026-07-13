@@ -11,7 +11,7 @@
       "notes": "One week of summer camp for ages 9-17 featuring outdoor adventures, team-building activities, new friendships, and unforgettable summer memories. $25 registration fee for eligible Iowa Army National Guard youth using promo code GUARD26.",
       "image": "/content/UpcomingEvents/Summer Camp (web).png",
       "featured": true,
-      "full": false,
+      "full": true,
       "registrationCode": "GUARD26",
       "ageRange": "Ages 9-17"
     },
