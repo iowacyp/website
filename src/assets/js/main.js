@@ -1670,9 +1670,17 @@ if (yearTarget) {
 }
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/assets/js/service-worker.js').catch((error) => {
-      console.error('Service worker registration failed', error);
-    });
-  });
+  navigator.serviceWorker.getRegistrations()
+    .then((registrations) => Promise.all(registrations.map((registration) => registration.unregister())))
+    .catch((error) => console.error('Service worker cleanup failed', error));
+}
+
+if ('caches' in window) {
+  caches.keys()
+    .then((keys) => Promise.all(
+      keys
+        .filter((key) => key.startsWith('iowa-cyp-cache-'))
+        .map((key) => caches.delete(key))
+    ))
+    .catch((error) => console.error('Legacy cache cleanup failed', error));
 }
