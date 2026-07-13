@@ -83,6 +83,27 @@ permalink: /stories/index.html
     <div class="max-w-6xl">
       <div class="relative" data-story-carousel>
         <div class="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth lg:gap-6" data-story-track>
+          <article class="flex w-[230px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-lg transition lg:mx-auto lg:w-full lg:max-w-[340px] xl:w-[420px] xl:max-w-[420px]" data-story-slide data-published="2026-07-13">
+            <figure class="relative aspect-[4/5] overflow-hidden rounded-t-[1.75rem]">
+              <img src="/assets/img/stories/charlee-national-2.jpeg" alt="Charlee Cromwell at the Pentagon briefing podium in Washington, D.C." class="h-full w-full object-cover object-center" {{ imageAttrs('/assets/img/stories/charlee-national-2.jpeg') | safe }} loading="lazy" decoding="async">
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent p-3">
+                <p class="text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-secondary">National youth advocacy</p>
+                <p class="mt-1 text-xs font-medium text-white/90">An Iowa teen carries the voices of National Guard youth into national conversations.</p>
+              </div>
+            </figure>
+            <div class="flex flex-1 flex-col space-y-3 p-4 text-left">
+              <span class="inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.28em] text-white/80">Guard Teen Panel</span>
+              <p class="text-[0.55rem] uppercase tracking-[0.28em] text-white/60">Published July 13, 2026</p>
+              <h3 class="sr-only">A Voice Bigger Than One State</h3>
+              <blockquote class="border-l-4 border-secondary/80 pl-3 text-sm leading-relaxed text-white/85">&ldquo;No matter how small you are or what state you are from, your voice can be heard. People want to hear you.&rdquo;</blockquote>
+              <p class="text-xs text-white/75 leading-relaxed">Across two national leadership trips, Charlee helped bring concerns raised by military-connected youth directly to military officials.</p>
+              <div class="pt-1">
+                <button type="button" class="btn-secondary inline-flex items-center gap-2 text-xs" data-modal-open="event-story-charlee-national-advocacy">
+                  <span>Read full story</span>
+                </button>
+              </div>
+            </div>
+          </article>
           <article class="flex w-[230px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-lg transition lg:mx-auto lg:w-full lg:max-w-[340px] xl:w-[420px] xl:max-w-[420px]" data-story-slide data-published="2026-04-29">
             <figure class="relative aspect-[4/5] overflow-hidden rounded-t-[1.75rem]">
               <img src="/content/Media/MFB-Recap.jpg" alt="Families gathered together at the Military Family Ball" class="h-full w-full object-cover" style="object-position: center 30%;" {{ imageAttrs('/content/Media/MFB-Recap.jpg') }} loading="lazy" decoding="async">
@@ -312,6 +333,81 @@ permalink: /stories/index.html
     </div>
   </div>
 </section>
+
+<div class="modal hidden fixed inset-0 z-50 p-4 sm:p-6 lg:p-8" data-modal="event-story-charlee-national-advocacy" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="event-story-charlee-national-advocacy-title" tabindex="-1">
+  <div class="absolute inset-0 bg-slate-900/70" data-modal-overlay></div>
+  <article class="relative mx-auto max-w-6xl w-full overflow-hidden overflow-y-auto rounded-3xl bg-white text-slate-900 shadow-2xl max-h-[calc(100vh-3rem)]">
+    <button type="button" class="absolute top-4 right-4 z-10 rounded-full bg-white/90 p-2 text-slate-600 shadow hover:text-slate-900" data-modal-close aria-label="Close story">
+      <svg class="h-6 w-6" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.707 6.293a1 1 0 00-1.414 0L12 10.586 7.707 6.293a1 1 0 00-1.414 1.414L10.586 12l-4.293 4.293a1 1 0 101.414 1.414L12 13.414l4.293 4.293a1 1 0 001.414-1.414L13.414 12l4.293-4.293a1 1 0 000-1.414z" fill="currentColor"/></svg>
+    </button>
+    <div class="flex h-full flex-col">
+      <figure class="relative h-64 sm:h-96 w-full overflow-hidden bg-slate-900">
+        <img src="/assets/img/stories/charlee-national-3.jpeg" alt="National Guard youth representatives meeting with military officials" class="h-full w-full object-cover object-center" {{ imageAttrs('/assets/img/stories/charlee-national-3.jpeg') | safe }} loading="lazy" decoding="async">
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/95 via-slate-950/45 to-transparent px-6 sm:px-10 py-5">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-primary shadow">National youth advocacy</span>
+        </figcaption>
+      </figure>
+      <div class="flex-1 overflow-y-auto px-6 sm:px-10 py-8 space-y-10">
+        <header class="max-w-4xl space-y-3">
+          <div class="space-y-1">
+            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Charlee Cromwell | Guard Teen Panel</p>
+            <h3 id="event-story-charlee-national-advocacy-title" class="text-3xl sm:text-4xl font-semibold leading-tight text-slate-900">A Voice Bigger Than One State</h3>
+          </div>
+          <p class="text-[0.65rem] uppercase tracking-[0.28em] text-slate-500">Published July 13, 2026</p>
+        </header>
+
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)]">
+          <div class="space-y-6 text-slate-700 leading-relaxed">
+            <p>During two national youth leadership trips, Charlee and other military-connected youth worked together on issues affecting families across the country. At both events, they met directly with military officials to discuss concerns that reached beyond the National Guard and reflected experiences across the military community.</p>
+            <p>Throughout those conversations, Charlee kept the Guard Teen Panel goal in focus: improve the experiences of military-connected youth and empower them to speak up in their communities, states, regions, and country.</p>
+            <p>The experience helped shape the leader she is becoming. It showed her that making a difference matters deeply to her, and that a young person's voice can carry far beyond their hometown or home state.</p>
+            <blockquote class="rounded-3xl border-l-4 border-secondary bg-secondary/10 p-6 text-lg font-medium leading-relaxed text-slate-900">
+              &ldquo;No matter how small you are or what state you are from, your voice can be heard. People want to hear you.&rdquo;
+            </blockquote>
+          </div>
+          <aside class="space-y-5">
+            <div class="content-card rounded-3xl border border-primary/15 bg-primary/5 p-6 sm:p-7 space-y-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Bigger than us</p>
+              <p class="text-sm leading-relaxed text-slate-700">Whether all twelve GTP members were together or only three National Guard youth were in the room, Charlee says their purpose stayed the same.</p>
+              <blockquote class="text-lg font-semibold leading-relaxed text-primary">&ldquo;We are not here just for us. We are here for the 53,600 National Guard teens across the 54 states, territories, and the District of Columbia. This is bigger than us, but we are the voices for National Guard kids.&rdquo;</blockquote>
+            </div>
+            <div class="rounded-3xl border border-secondary/25 bg-secondary/10 p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">The takeaway</p>
+              <p class="mt-3 text-sm leading-relaxed text-slate-700">Youth are not only participants in military family programs. They are informed advocates whose experiences can help leaders build stronger support for the families they serve.</p>
+            </div>
+          </aside>
+        </div>
+
+        <section class="space-y-4" aria-labelledby="charlee-national-gallery-title">
+          <div class="space-y-1">
+            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">In the room and on the journey</p>
+            <h4 id="charlee-national-gallery-title" class="text-2xl font-semibold text-slate-900">Youth leadership in action</h4>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <figure class="overflow-hidden rounded-3xl bg-slate-100 sm:row-span-2">
+              <img src="/assets/img/stories/charlee-national-2.jpeg" alt="Charlee at the Pentagon briefing podium" class="h-full min-h-80 w-full object-cover" {{ imageAttrs('/assets/img/stories/charlee-national-2.jpeg') | safe }} loading="lazy" decoding="async">
+            </figure>
+            <figure class="overflow-hidden rounded-3xl bg-slate-100 lg:col-span-2">
+              <img src="/assets/img/stories/charlee-national-4.jpeg" alt="Joint-service teen leaders gathered together in their purple delegation shirts" class="h-64 w-full object-cover" {{ imageAttrs('/assets/img/stories/charlee-national-4.jpeg') | safe }} loading="lazy" decoding="async">
+            </figure>
+            <figure class="overflow-hidden rounded-3xl bg-slate-100">
+              <img src="/assets/img/stories/charlee-national-3.jpeg" alt="Three National Guard youth representatives meeting Army leaders" class="h-64 w-full object-cover" {{ imageAttrs('/assets/img/stories/charlee-national-3.jpeg') | safe }} loading="lazy" decoding="async">
+            </figure>
+            <figure class="overflow-hidden rounded-3xl bg-slate-100">
+              <img src="/assets/img/stories/charlee-national-1.jpeg" alt="Military-connected youth honoring veterans during a patriotic community event" class="h-64 w-full object-cover" {{ imageAttrs('/assets/img/stories/charlee-national-1.jpeg') | safe }} loading="lazy" decoding="async">
+            </figure>
+            <figure class="overflow-hidden rounded-3xl bg-slate-100 lg:col-span-2">
+              <img src="/assets/img/stories/charlee-national-5.jpeg" alt="Charlee and fellow youth delegates connecting with an adult program leader" class="h-64 w-full object-cover" {{ imageAttrs('/assets/img/stories/charlee-national-5.jpeg') | safe }} loading="lazy" decoding="async">
+            </figure>
+            <figure class="overflow-hidden rounded-3xl bg-slate-100">
+              <img src="/assets/img/stories/charlee-national-6.jpeg" alt="Charlee and fellow youth delegates visiting a red rock landmark" class="h-64 w-full object-cover" {{ imageAttrs('/assets/img/stories/charlee-national-6.jpeg') | safe }} loading="lazy" decoding="async">
+            </figure>
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
+</div>
 
 <div class="modal hidden fixed inset-0 z-50 p-4 sm:p-6 lg:p-8" data-modal="event-story-military-family-ball" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="event-story-military-family-ball-title" tabindex="-1">
   <div class="absolute inset-0 bg-slate-900/70" data-modal-overlay></div>
