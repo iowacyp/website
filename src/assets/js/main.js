@@ -1671,7 +1671,11 @@ if (yearTarget) {
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.getRegistrations()
-    .then((registrations) => Promise.all(registrations.map((registration) => registration.unregister())))
+    .then((registrations) => Promise.all(
+      registrations
+        .filter((registration) => new URL(registration.scope).pathname === '/')
+        .map((registration) => registration.unregister())
+    ))
     .catch((error) => console.error('Service worker cleanup failed', error));
 }
 

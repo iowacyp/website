@@ -68,6 +68,7 @@ const pageItems = pageFiles
     const raw = fs.readFileSync(filePath, "utf8");
     const parsed = matter(raw);
     const data = parsed.data || {};
+    if (data.searchExclude) return null;
     const title = data.title || path.basename(filePath, path.extname(filePath));
     const description = data.description || "";
     const bodyText = stripMarkup(parsed.content);
@@ -85,6 +86,7 @@ const pageItems = pageFiles
       searchText,
     };
   })
+  .filter(Boolean)
   .filter((item) => !["/404/", "/404.html"].includes(item.url));
 
 const events = readJson("events.json").events || [];

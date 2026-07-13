@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="theme-color" content="#102c49">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Iowa CYP Stories">
+  <link rel="icon" href="/assets/pwa/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/pwa/icon-192.png">
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body class="min-h-screen overflow-x-hidden bg-slate-950 text-white antialiased">
+  <a href="#story-gallery-grid" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-white focus:px-5 focus:py-3 focus:text-primary">Skip to stories</a>
+  {{ content | safe }}
+  <script id="story-gallery-data" type="application/json">{{ jsonStringify(storyGallery.items) | safe }}</script>
+  <script src="/assets/js/story-gallery.js" defer></script>
+</body>
+</html>
