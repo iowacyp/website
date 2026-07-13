@@ -648,9 +648,6 @@ video {
 .z-\[70\] {
   z-index: 70;
 }
-.order-last {
-  order: 9999;
-}
 .row-span-2 {
   grid-row: span 2 / span 2;
 }
