@@ -123,6 +123,7 @@ const requiredStoryFields = [
   "hook", "quote", "body", "impact",
 ];
 const storyIds = new Set();
+let previousStoryCardPosition = -1;
 const storiesIndex = fs.readFileSync(path.join(distDir, "stories", "index.html"), "utf8");
 const kioskIndex = fs.readFileSync(path.join(distDir, "story-gallery", "index.html"), "utf8");
 const kioskWorker = fs.readFileSync(path.join(distDir, "story-gallery", "sw.js"), "utf8");
@@ -159,7 +160,12 @@ for (const story of stories) {
   const publicStoryPath = path.join(distDir, "stories", story.id, "index.html");
   if (!fs.existsSync(publicStoryPath)) fail(`public story page was not generated: ${story.id}`);
   const publicStory = fs.readFileSync(publicStoryPath, "utf8");
-  if (!storiesIndex.includes(`/stories/${story.id}/`)) fail(`Stories page is missing: ${story.id}`);
+  const storyCardPosition = storiesIndex.indexOf(`/stories/${story.id}/`);
+  if (storyCardPosition < 0) fail(`Stories page is missing: ${story.id}`);
+  if (storyCardPosition <= previousStoryCardPosition) {
+    fail(`Stories page order does not match storyGallery.json at: ${story.id}`);
+  }
+  previousStoryCardPosition = storyCardPosition;
   if (!kioskIndex.includes(`data-story-id="${story.id}"`)) fail(`kiosk is missing: ${story.id}`);
   if (!sitemap.includes(`/stories/${story.id}/`)) fail(`sitemap is missing story: ${story.id}`);
 

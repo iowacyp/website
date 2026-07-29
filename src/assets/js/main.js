@@ -800,14 +800,6 @@ const initStoryCarousel = () => {
   const nextButton = carousel.querySelector('[data-story-next]');
   if (!slides.length) return;
 
-  slides
-    .sort((left, right) => {
-      const leftDate = left.getAttribute('data-published') || '';
-      const rightDate = right.getAttribute('data-published') || '';
-      return rightDate.localeCompare(leftDate);
-    })
-    .forEach((slide) => track.appendChild(slide));
-
   const scrollAmount = () => {
     const firstSlide = slides[0];
     if (!firstSlide) return 0;
