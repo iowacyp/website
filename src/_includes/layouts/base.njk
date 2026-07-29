@@ -13,14 +13,14 @@
   <link rel="icon" href="/assets/pwa/icon-192.png" type="image/png">
   <meta property="og:title" content="{{ title or site.shortName }}">
   <meta property="og:description" content="{{ description or site.tagline }}">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="{{ ogType or 'website' }}">
   <meta property="og:url" content="{{ site.domain }}{{ page.url }}">
-  <meta property="og:image" content="{{ site.domain }}/assets/img/team/mission-bg.jpg">
+  <meta property="og:image" content="{{ site.domain }}{{ socialImage or '/assets/img/team/mission-bg.jpg' }}">
   <meta property="og:site_name" content="{{ site.shortName }}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ title or site.shortName }}">
   <meta name="twitter:description" content="{{ description or site.tagline }}">
-  <meta name="twitter:image" content="{{ site.domain }}/assets/img/team/mission-bg.jpg">
+  <meta name="twitter:image" content="{{ site.domain }}{{ socialImage or '/assets/img/team/mission-bg.jpg' }}">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",

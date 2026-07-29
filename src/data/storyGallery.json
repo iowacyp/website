@@ -1,11 +1,80 @@
 {
   "items": [
     {
+      "id": "summer-camp-2026",
+      "title": "Iowa Military Youth Build Confidence at Summer Camp",
+      "eyebrow": "2026 Military Youth Summer Camp",
+      "published": "July 25, 2026",
+      "publishedISO": "2026-07-25",
+      "morePhotosUrl": "https://www.facebook.com/share/p/1BfGZwkT7t/",
+      "image": "/assets/img/story-gallery/summer-camp-2026-full.jpg",
+      "thumbnail": "/assets/img/story-gallery/summer-camp-2026-thumb.jpg",
+      "alt": "Military-connected youth and camp staff gathered outdoors during the 2026 Iowa Military Youth Summer Camp",
+      "position": "center 48%",
+      "hook": "Seventy-nine military-connected youth spent a week building courage, serving others, and turning new friendships into a lasting support network.",
+      "quote": "The friendships they built, the confidence they gained, and the memories they made are gifts they will carry with them long after camp ended.",
+      "body": [
+        "From July 19-25, Iowa's Military Youth Summer Camp gave 79 military-connected youth room to try new things, meet peers who understand military life, and grow through a full week away from their usual routines. Team challenges, horseback riding, swimming, climbing, and time with cabinmates helped participants move beyond their comfort zones while building trust and confidence.",
+        "Chaplain Evan Johnson spoke with the group about the curveballs life can throw and how plans do not always unfold the way we expect. His message invited youth to think about resilience as a practical choice: acknowledge the unexpected, lean on the people around you, and decide how to move forward.",
+        "Campers also turned reflection into action. During a service project, they assembled care kits for families of the fallen, connecting the week's lessons about empathy and leadership to families whose sacrifices remain part of the military community.",
+        "In their scrapbooks, youth explored the YMCA's four core values and saved photos from the week alongside the names and contact information of new friends. Part reflection journal and part yearbook, each book gave campers a way to carry the people, lessons, and memories of camp home with them.",
+        "Parent feedback showed why those connections matter. Families described children returning home with new confidence, meaningful friendships, and stories they could not stop sharing. For one child whose father received an unexpected deployment, camp offered a welcome break and a circle of girls who understood what she was facing."
+      ],
+      "impact": "Camp paired challenge with belonging: youth practiced resilience, served military families, and built peer relationships that can continue long after the week ended.",
+      "stats": [
+        { "value": "79", "label": "Youth attended" },
+        { "value": "82", "label": "Youth registered" },
+        { "value": "14", "label": "Volunteers" }
+      ],
+      "gallery": [
+        { "src": "/assets/img/story-gallery/summer-camp-2026-full.jpg", "alt": "Campers and staff wearing their decorated hats during the 2026 summer camp" },
+        { "src": "/assets/img/story-gallery/summer-camp-friendships-full.jpg", "alt": "A cabin group smiling together in the decorated hats they made at camp" },
+        { "src": "/assets/img/story-gallery/summer-camp-hat-pair-full.jpg", "alt": "Two campers showing the colorful hats they decorated during summer camp" },
+        { "src": "/assets/img/story-gallery/summer-camp-ice-cream-group-full.jpg", "alt": "Campers sharing ice cream beside the river during a community visit" },
+        { "src": "/assets/img/story-gallery/summer-camp-ice-cream-smile-full.jpg", "alt": "A smiling camper enjoying ice cream and time with cabinmates" },
+        { "src": "/assets/img/story-gallery/summer-camp-community-full.jpg", "alt": "Community guests and camp leaders speaking with youth during an ice cream gathering" }
+      ]
+    },
+    {
+      "id": "region-7-youth-symposium-2026",
+      "audiences": ["stp"],
+      "title": "Region 7 Teens Turn Leadership Into Action",
+      "eyebrow": "2026 Region 7 Youth Symposium",
+      "published": "July 17, 2026",
+      "publishedISO": "2026-07-17",
+      "morePhotosUrl": "https://www.facebook.com/share/p/195ZJxJtsr/",
+      "image": "/assets/img/story-gallery/region-7-symposium-2026-full.jpg",
+      "thumbnail": "/assets/img/story-gallery/region-7-symposium-2026-thumb.jpg",
+      "alt": "Military-connected teens from Region 7 gathered after volunteering with Meals from the Heartland",
+      "position": "center 42%",
+      "hook": "Ten teens from four states packed thousands of meals, elevated military-youth concerns, and discovered that leadership begins with service and listening.",
+      "quote": "I was really able to grow and make connections with people I've never met before, and we are leaving feeling like a family.",
+      "body": [
+        "Ten military-connected teens from Iowa, Kansas, Missouri, and Nebraska gathered in Des Moines from July 13-17 for the Region 7 Child & Youth Program Youth Symposium. Across the week, they challenged themselves, built friendships, served the community, and practiced using their voices on behalf of other military youth.",
+        "At Meals from the Heartland, participants packed 62,208 nutritious meals in 288 boxes - enough to feed 239 children for an entire year. The project showed how a focused team can create an impact far beyond the few hours its members spend serving together.",
+        "A National Guard Teen Panel representative guided participants through the Army Family Action Plan process. Teens identified issues affecting military-connected youth and developed recommendations that can be elevated to Army leadership. Their most consistent concern was awareness: young people want more opportunities to connect, but many do not know that State Teen Panels and CYP programs exist.",
+        "Master Resilience Training, workforce-readiness workshops, a climbing wall, and collaborative challenges gave participants different ways to practice communication and problem-solving. Those lessons became more effective as the group learned to listen to one another and work across state lines.",
+        "Post-event surveys averaged nearly 9 out of 10, and every participant reported feeling more supported, less stressed, or as though someone had their back. Teens also asked for smaller, more frequent regional gatherings between annual events - a practical idea for carrying the week's momentum into future programming."
+      ],
+      "impact": "The symposium connected service, advocacy, and resilience in one experience, giving military teens both a support network and a pathway for their ideas to reach decision-makers.",
+      "stats": [
+        { "value": "62,208", "label": "Meals packed" },
+        { "value": "10", "label": "Teen participants" },
+        { "value": "4", "label": "States represented" }
+      ],
+      "gallery": [
+        { "src": "/assets/img/story-gallery/region-7-symposium-2026-full.jpg", "alt": "Region 7 teens gathered after packing meals at Meals from the Heartland" },
+        { "src": "/assets/img/story-gallery/region-7-symposium-speaker-full.jpg", "alt": "Military-connected teens listening to a speaker during a Region 7 leadership session" },
+        { "src": "/assets/img/story-gallery/region-7-symposium-workshop-full.jpg", "alt": "Region 7 participants completing a written leadership exercise together" }
+      ]
+    },
+    {
       "id": "charlee-national-advocacy",
       "audiences": ["stp"],
       "title": "A Voice Bigger Than One State",
       "eyebrow": "National youth advocacy",
       "published": "July 13, 2026",
+      "morePhotosUrl": "https://www.facebook.com/share/p/1BSp3bQCX6/",
       "image": "/assets/img/story-gallery/charlee-national-2-full.jpg",
       "thumbnail": "/assets/img/story-gallery/charlee-national-2-thumb.jpg",
       "alt": "Charlee Cromwell at the Pentagon briefing podium in Washington, D.C.",

@@ -10,6 +10,8 @@ searchExclude: true
 eleventyComputed:
   title: "{{ story.title }} | Iowa CYP"
   description: "{{ story.hook }}"
+  socialImage: "{{ story.image }}"
+  ogType: "article"
 ---
 <article class="bg-white">
   <header class="relative min-h-[55vh] overflow-hidden bg-slate-950 text-white">
@@ -79,9 +81,51 @@ eleventyComputed:
     </section>
   {% endif %}
 
+  {% if story.morePhotosUrl %}
+    <section class="border-t border-primary/10 bg-white py-12" aria-labelledby="more-story-photos-heading">
+      <div class="container">
+        <div class="flex flex-col gap-6 rounded-3xl border border-primary/15 bg-primary/5 p-6 shadow-sm md:flex-row md:items-center md:justify-between md:p-8">
+          <div class="max-w-2xl space-y-2">
+            <p class="text-xs font-bold uppercase tracking-[0.22em] text-primary/60">More moments</p>
+            <h2 id="more-story-photos-heading" class="text-2xl font-semibold text-slate-900">See more photos from this story</h2>
+            <p class="leading-relaxed text-slate-700">Continue exploring the event through Iowa CYP's full Facebook photo post.</p>
+          </div>
+          <a class="btn-primary inline-flex shrink-0 items-center justify-center gap-2" href="{{ story.morePhotosUrl }}" target="_blank" rel="noopener noreferrer">
+            View photos on Facebook <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
   <footer class="border-t border-slate-200 py-10">
     <div class="container">
       <a class="btn-primary inline-flex items-center gap-2" href="/stories/"><span aria-hidden="true">&larr;</span> All stories</a>
     </div>
   </footer>
 </article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ story.title | dump | safe }},
+  "description": {{ story.hook | dump | safe }},
+  "image": "{{ site.domain }}{{ story.image }}",
+{% if story.publishedISO %}  "datePublished": "{{ story.publishedISO }}",
+  "dateModified": "{{ story.publishedISO }}",{% endif %}
+  "author": {
+    "@type": "Organization",
+    "name": {{ site.name | dump | safe }}
+  },
+  "mainEntityOfPage": "{{ site.domain }}{{ page.url }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ site.name | dump | safe }},
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.domain }}/assets/img/branding_symbol.png"
+    }
+  }
+}
+</script>

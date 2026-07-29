@@ -92,7 +92,7 @@ permalink: /stories/index.html
       <div class="relative" data-story-carousel>
         <div class="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 scroll-smooth lg:gap-6" data-story-track>
           {% for story in storyGallery.items %}
-            <article class="group flex w-[78vw] max-w-[340px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-lg sm:w-[340px] lg:w-[360px] lg:max-w-[360px]" data-story-slide data-published="{{ 9999 - loop.index }}">
+            <article class="group flex w-[78vw] max-w-[340px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-lg sm:w-[340px] lg:w-[360px] lg:max-w-[360px]" data-story-slide data-published="{{ story.publishedISO or (9999 - loop.index) }}">
               <a class="flex h-full flex-col" href="/stories/{{ story.id }}/">
                 <figure class="relative aspect-[4/3] overflow-hidden bg-slate-950">
                   {% if story.cardFit == 'contain' %}
