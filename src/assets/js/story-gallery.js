@@ -123,12 +123,16 @@
             ${(story.body || []).map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}
           </div>
           <aside class="space-y-5">
-            <blockquote class="rounded-3xl border-l-4 border-secondary bg-secondary/10 p-6 font-heading text-2xl font-semibold leading-snug text-slate-900">&ldquo;${escapeHtml(story.quote)}&rdquo;</blockquote>
+            <blockquote class="rounded-3xl border-l-4 border-secondary bg-secondary/10 p-6 font-heading text-2xl font-semibold leading-snug text-slate-900">
+              <p>&ldquo;${escapeHtml(story.quote)}&rdquo;</p>
+              ${story.quoteAttribution ? `<cite class="mt-4 block font-sans text-sm font-bold not-italic uppercase tracking-[0.16em] text-primary/60">&mdash; ${escapeHtml(story.quoteAttribution)}</cite>` : ''}
+            </blockquote>
             <div class="rounded-3xl border border-primary/15 bg-white p-6 shadow-lg">
               <p class="text-xs font-bold uppercase tracking-[0.22em] text-primary/60">Why it matters</p>
               <p class="mt-3 leading-relaxed text-slate-700">${escapeHtml(story.impact)}</p>
             </div>
             ${story.videoUrl ? `<a class="inline-flex min-h-14 items-center gap-2 rounded-full bg-primary px-6 py-3 font-bold text-white shadow-sm" href="${escapeHtml(story.videoUrl)}" target="_blank" rel="noopener noreferrer">Watch the story <span aria-hidden="true">&rarr;</span></a>` : ''}
+            ${story.morePhotosUrl ? `<a class="inline-flex min-h-14 items-center gap-2 rounded-full bg-primary px-6 py-3 font-bold text-white shadow-sm" href="${escapeHtml(story.morePhotosUrl)}" target="_blank" rel="noopener noreferrer">View photos on Facebook <span aria-hidden="true">&rarr;</span></a>` : ''}
             ${renderStats(story.stats)}
           </aside>
         </div>

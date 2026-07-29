@@ -158,9 +158,19 @@ for (const story of stories) {
 
   const publicStoryPath = path.join(distDir, "stories", story.id, "index.html");
   if (!fs.existsSync(publicStoryPath)) fail(`public story page was not generated: ${story.id}`);
+  const publicStory = fs.readFileSync(publicStoryPath, "utf8");
   if (!storiesIndex.includes(`/stories/${story.id}/`)) fail(`Stories page is missing: ${story.id}`);
   if (!kioskIndex.includes(`data-story-id="${story.id}"`)) fail(`kiosk is missing: ${story.id}`);
   if (!sitemap.includes(`/stories/${story.id}/`)) fail(`sitemap is missing story: ${story.id}`);
+
+  if (story.morePhotosUrl) {
+    if (!publicStory.includes(story.morePhotosUrl)) {
+      fail(`public story page is missing its photo link: ${story.id}`);
+    }
+    if (!kioskIndex.includes(story.morePhotosUrl)) {
+      fail(`story gallery is missing its photo link: ${story.id}`);
+    }
+  }
 
   if (story.audiences?.includes("stp") && !stpIndex.includes(`/stories/${story.id}/`)) {
     fail(`STP-tagged story is missing from the State Teen Panel page: ${story.id}`);
