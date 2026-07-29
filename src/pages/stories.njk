@@ -84,9 +84,9 @@ permalink: /stories/index.html
 <section id="event-stories" class="bg-slate-900 py-16 text-white md:py-24" data-reveal>
   <div class="container space-y-10">
     <div class="max-w-3xl space-y-4">
-      <p class="text-sm uppercase tracking-[0.15em] text-secondary">Event stories</p>
-      <h2 class="text-2xl font-semibold text-white md:text-3xl">Moments that stay with us</h2>
-      <p class="leading-relaxed text-white/80">Highlights from camps, service projects, and gatherings where Iowa CYP youth and families discover their strengths.</p>
+      <p class="text-sm uppercase tracking-[0.15em] text-secondary">Latest stories</p>
+      <h2 class="text-2xl font-semibold text-white md:text-3xl">New stories from across Iowa CYP</h2>
+      <p class="leading-relaxed text-white/80">Start with our newest camp, service, leadership, and family stories. New additions always appear first.</p>
     </div>
     <div class="max-w-6xl">
       <div class="relative" data-story-carousel>
@@ -102,6 +102,7 @@ permalink: /stories/index.html
                     <img src="{{ story.thumbnail }}" alt="{{ story.alt }}" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" style="object-position: {{ story.position }};" {{ imageAttrs(story.thumbnail) | safe }} loading="lazy" decoding="async">
                   {% endif %}
                   <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/10 to-transparent"></div>
+                  {% if loop.index <= 2 %}<span class="absolute right-4 top-4 rounded-full bg-secondary px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-slate-950 shadow-lg">New</span>{% endif %}
                   <p class="absolute inset-x-0 bottom-0 p-5 text-xs font-bold uppercase tracking-[0.22em] text-secondary">{{ story.eyebrow }}</p>
                 </figure>
                 <div class="flex flex-1 flex-col space-y-3 p-5">
