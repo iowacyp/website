@@ -333,6 +333,23 @@
       "registrationCode": "",
       "ageRange": "",
       "showOnWebsite": true
+    },
+    {
+      "adminId": "da077f60-2d98-4f3d-942b-14f17130c0fd",
+      "title": "Military Family Ball",
+      "date": "2027-04-24",
+      "endDate": "2027-04-24",
+      "displayDate": "April 24, 2027",
+      "location": "Camp Dodge - Pool Pavilion",
+      "ctaLabel": "Register",
+      "ctaUrl": "/register/da077f60-2d98-4f3d-942b-14f17130c0fd",
+      "notes": "",
+      "image": "",
+      "featured": false,
+      "full": false,
+      "registrationCode": "",
+      "ageRange": "",
+      "showOnWebsite": true
     }
   ],
   "lastYearEvents": [
