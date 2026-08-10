@@ -293,6 +293,23 @@
       "full": false,
       "registrationCode": "",
       "ageRange": ""
+    },
+    {
+      "adminId": "ae600c2b-e49a-4578-8703-ddac2291d079",
+      "title": "Cookies with Santa",
+      "date": "2026-12-12",
+      "endDate": "2026-12-12",
+      "displayDate": "December 12, 2026",
+      "location": "Camp Dodge - Dodge House",
+      "ctaLabel": "Register",
+      "ctaUrl": "/register/ae600c2b-e49a-4578-8703-ddac2291d079",
+      "notes": "",
+      "image": "",
+      "featured": false,
+      "full": false,
+      "registrationCode": "",
+      "ageRange": "",
+      "showOnWebsite": true
     }
   ],
   "lastYearEvents": [
