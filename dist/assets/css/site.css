@@ -2708,11 +2708,13 @@ footer a:hover {
 
 .event-card__date {
   display: flex;
-  width: 5rem;
+  width: 5.25rem;
   flex-shrink: 0;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 0.25rem;
+  border-bottom-right-radius: 1rem;
   border-right-width: 4px;
   --tw-border-opacity: 1;
   border-color: rgb(244 180 27 / var(--tw-border-opacity, 1));
@@ -2720,8 +2722,8 @@ footer a:hover {
   background-color: rgb(2 6 23 / var(--tw-bg-opacity, 1));
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   text-align: center;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
@@ -2732,39 +2734,24 @@ footer a:hover {
 }
 
 .event-card__date span {
-  font-size: 0.75rem;
-  line-height: 1rem;
+  font-size: 0.7rem;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  line-height: 1;
+  letter-spacing: 0.22em;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
-.story-kiosk .font-heading.event-card__date span {
-  color: #fff;
+  color: rgb(244 180 27 / var(--tw-text-opacity, 1));
 }
 
 .event-card__date strong {
-  font-family: League Spartan, ui-sans-serif, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-size: 2.25rem;
-  line-height: 2.5rem;
+  font-family: var(--font-heading);
+  font-size: 2.65rem;
   font-weight: 900;
   line-height: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1)); font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.1em; --tw-text-opacity: 1; color: rgb(33 48 63 / var(--tw-text-opacity, 1));
-}
-
-.story-kiosk .event-card__date strong.text-white {
+  letter-spacing: -0.03em;
   color: #fff;
-}
-
-.story-kiosk .font-heading.event-card__date strong {
-  color: #fff;
-}
-
-.event-card__date strong {
   opacity: 1;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
 .event-card__body {
