@@ -54,10 +54,9 @@ permalink: /events/
 <section class="bg-slate-50 py-14 md:py-16 border-t border-primary/10" id="upcoming" data-reveal>
   <div class="container space-y-12">
     <div class="max-w-3xl space-y-4">
-      <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Registration alerts</p>
-      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Upcoming events</h2>
-      <p class="text-slate-700 leading-relaxed">We keep this list updated weekly. Bookmark it, share it with your unit, and reach out if you need help registering.</p>
-      <p class="text-sm text-slate-600">Looking for what you missed? Scroll to <a class="text-primary font-semibold hover:underline" href="#completed">completed events</a>.</p>
+      <p class="text-sm uppercase tracking-[0.15em] text-primary/70">2026–27 Program Year</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Plan your year with Iowa CYP</h2>
+      <p class="text-slate-700 leading-relaxed">Find next program year&rsquo;s events organized by fall, spring, and summer. Event details come directly from our registration system and are updated as plans are finalized.</p>
     </div>
     <div id="eventsList" class="space-y-6" aria-live="polite" aria-busy="false">
       <p class="text-gray-600">Loading events...</p>
@@ -65,19 +64,6 @@ permalink: /events/
     <div class="flex flex-wrap gap-3">
       <a class="btn" href="{{ site.links.eventsSubscribe }}">Get event emails</a>
       <a class="btn-secondary" href="/contact/#general-contact">Ask the team</a>
-    </div>
-  </div>
-</section>
-
-<section class="bg-white py-14 md:py-16 border-t border-primary/10" id="completed" data-reveal>
-  <div class="container space-y-8">
-    <div class="max-w-3xl space-y-3">
-      <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Last year</p>
-      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Last year&rsquo;s events</h2>
-      <p class="text-slate-700 leading-relaxed">These gatherings from the previous program year show the momentum Guard families are building all across Iowa.</p>
-    </div>
-    <div id="completedEvents" class="grid gap-4 md:grid-cols-2" aria-live="polite" aria-busy="false">
-      <p class="text-slate-600">Loading last year&rsquo;s events...</p>
     </div>
   </div>
 </section>
@@ -145,40 +131,4 @@ permalink: /events/
   </section>
 {% endfor %}
 
-{% if events.events %}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {% for event in events.events %}
-        {% set eventImage = event.image %}
-        {% if eventImage and eventImage[0] == '/' %}
-          {% set eventImage = site.domain ~ eventImage %}
-        {% endif %}
-        {% set eventUrl = event.ctaUrl %}
-        {% if eventUrl and eventUrl[0] == '/' %}
-          {% set eventUrl = site.domain ~ eventUrl %}
-        {% endif %}
-        {
-          "@type": "Event",
-          "name": "{{ event.title | escape }}",
-          {% if event.date %}"startDate": "{{ event.date }}",{% endif %}
-          {% if event.endDate %}"endDate": "{{ event.endDate }}",{% endif %}
-          {% if event.location %}"location": {
-            "@type": "Place",
-            "name": "{{ event.location | escape }}"
-          },{% endif %}
-          {% if eventImage %}"image": "{{ eventImage }}",{% endif %}
-          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-          {% if eventUrl %}"url": "{{ eventUrl }}",{% endif %}
-          "organizer": {
-            "@type": "Organization",
-            "name": "{{ site.name }}",
-            "url": "{{ site.domain }}"
-          }
-        }{% if not loop.last %},{% endif %}
-      {% endfor %}
-    ]
-  }
-  </script>
-{% endif %}
+<script id="eventStructuredData" type="application/ld+json"></script>

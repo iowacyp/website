@@ -89,7 +89,58 @@ const pageItems = pageFiles
   .filter(Boolean)
   .filter((item) => !["/404/", "/404.html"].includes(item.url));
 
-const events = readJson("events.json").events || [];
+const eventData = readJson("events.json");
+const eventProgramYear = eventData.programYear || {};
+const getRegistrationId = (event) => {
+  if (event.adminId) return String(event.adminId).toLowerCase();
+  const match = String(event.ctaUrl || "").match(/\/register\/([0-9a-f-]{36})(?:[/?#]|$)/i);
+  return match ? match[1].toLowerCase() : "";
+};
+const uniqueEvents = new Map();
+
+(eventData.events || []).forEach((event, index) => {
+  const key = getRegistrationId(event) || `event-${event.date || "undated"}-${event.title || index}`;
+  const normalized = { ...event, title: String(event.title || "").replace(/^MFE\s+/i, "Military Family Event: ") };
+  const existing = uniqueEvents.get(key);
+
+  if (!existing) {
+    uniqueEvents.set(key, normalized);
+    return;
+  }
+
+  const adminRecord = normalized.adminId ? normalized : existing.adminId ? existing : null;
+  const companionRecord = adminRecord === normalized ? existing : normalized;
+  const merged = { ...companionRecord };
+  Object.entries(adminRecord || normalized).forEach(([field, value]) => {
+    if (value !== undefined && value !== null && value !== "") merged[field] = value;
+  });
+  uniqueEvents.set(key, merged);
+});
+
+const eventsByName = new Map();
+Array.from(uniqueEvents.values()).forEach((event, index) => {
+  const nameKey = String(event.title || "").trim().toLowerCase();
+  const existing = eventsByName.get(nameKey);
+
+  if (existing && (existing.adminId || event.adminId)) {
+    const adminRecord = event.adminId ? event : existing;
+    const companionRecord = adminRecord === event ? existing : event;
+    const merged = { ...companionRecord };
+    Object.entries(adminRecord).forEach(([field, value]) => {
+      if (value !== undefined && value !== null && value !== "") merged[field] = value;
+    });
+    eventsByName.set(nameKey, merged);
+    return;
+  }
+
+  eventsByName.set(existing ? `${nameKey}-${event.date || index}` : nameKey, event);
+});
+
+const events = Array.from(eventsByName.values()).filter((event) => (
+  event.date &&
+  (!eventProgramYear.start || event.date >= eventProgramYear.start) &&
+  (!eventProgramYear.end || event.date <= eventProgramYear.end)
+));
 const eventItems = events.map((event) => ({
   title: event.title,
   url: event.ctaUrl && /^https?:/i.test(event.ctaUrl) ? event.ctaUrl : "/events/#upcoming",

@@ -451,13 +451,6 @@ const formatEventDate = (value) => {
   return new Intl.DateTimeFormat('en-US', { dateStyle: 'long' }).format(date);
 };
 
-const todayEventKey = () => {
-  const today = new Date();
-  const month = `${today.getMonth() + 1}`.padStart(2, '0');
-  const day = `${today.getDate()}`.padStart(2, '0');
-  return `${today.getFullYear()}-${month}-${day}`;
-};
-
 const sortEventsByDate = (events, direction = 'asc') =>
   [...events].sort((left, right) => {
     const leftFeatured = Boolean(left.featured);
@@ -476,66 +469,107 @@ const sortEventsByDate = (events, direction = 'asc') =>
 
 const isEventFull = (event) => event.full === true || event.full === 'true';
 
-const getEventSeasonInfo = (dateKey) => {
-  if (!dateKey) return null;
-  const date = new Date(`${dateKey}T00:00:00Z`);
-  if (Number.isNaN(date.getTime())) return null;
-  const month = date.getUTCMonth();
-  const year = date.getUTCFullYear();
-
-  if (month >= 2 && month <= 4) {
-    return { key: `${year}-spring`, label: `Spring ${year}` };
-  }
-
-  if (month >= 5 && month <= 7) {
-    return { key: `${year}-summer`, label: `Summer ${year}` };
-  }
-
-  if (month >= 8 && month <= 10) {
-    return { key: `${year}-fall`, label: `Fall ${year}` };
-  }
-
-  const winterStartYear = month === 11 ? year : year - 1;
-  return {
-    key: `${winterStartYear}-winter`,
-    label: `Winter ${winterStartYear}-${String(winterStartYear + 1).slice(-2)}`,
-  };
+const DEFAULT_PROGRAM_YEAR = {
+  label: '2026–27 Program Year',
+  start: '2026-09-01',
+  end: '2027-08-31',
 };
 
-const formatEventSeasonLabel = (dateKey) => {
-  const info = getEventSeasonInfo(dateKey);
-  if (!info) return dateKey || '';
-  return info.label;
+const escapeEventHtml = (value = '') => String(value)
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;')
+  .replace(/'/g, '&#039;');
+
+const getEventRegistrationId = (event) => {
+  if (event?.adminId) return String(event.adminId).toLowerCase();
+  const match = String(event?.ctaUrl || '').match(/\/register\/([0-9a-f-]{36})(?:[/?#]|$)/i);
+  return match ? match[1].toLowerCase() : '';
 };
 
-const groupEventsBySeason = (events) => {
-  const groups = new Map();
-  for (const event of events) {
-    const dateKey = String(event?.date || '').slice(0, 10);
-    const seasonInfo = getEventSeasonInfo(dateKey);
-    const seasonKey = seasonInfo ? seasonInfo.key : 'undated';
-    if (!groups.has(seasonKey)) {
-      groups.set(seasonKey, []);
+const hasEventValue = (value) => value !== undefined && value !== null && value !== '';
+
+const mergeEventRecords = (existing, incoming) => {
+  const adminRecord = incoming.adminId ? incoming : existing.adminId ? existing : null;
+  if (!adminRecord) return incoming;
+  const companionRecord = adminRecord === incoming ? existing : incoming;
+  const merged = { ...companionRecord };
+
+  Object.entries(adminRecord).forEach(([key, value]) => {
+    if (hasEventValue(value)) merged[key] = value;
+  });
+
+  return merged;
+};
+
+const normalizeEventTitle = (title = '') => String(title).replace(/^MFE\s+/i, 'Military Family Event: ');
+
+const normalizeProgramEvents = (events, programYear) => {
+  const uniqueEvents = new Map();
+
+  events.forEach((event, index) => {
+    const registrationId = getEventRegistrationId(event);
+    const key = registrationId || `event-${event.date || 'undated'}-${event.title || index}`;
+    const normalizedEvent = { ...event, title: normalizeEventTitle(event.title) };
+    const existing = uniqueEvents.get(key);
+    uniqueEvents.set(key, existing ? mergeEventRecords(existing, normalizedEvent) : normalizedEvent);
+  });
+
+  const eventsByName = new Map();
+  Array.from(uniqueEvents.values()).forEach((event, index) => {
+    const nameKey = normalizeEventTitle(event.title).trim().toLowerCase();
+    const existing = eventsByName.get(nameKey);
+
+    if (existing && (existing.adminId || event.adminId)) {
+      eventsByName.set(nameKey, mergeEventRecords(existing, event));
+      return;
     }
-    groups.get(seasonKey).push(event);
-  }
-  return Array.from(groups.entries()).map(([seasonKey, seasonEvents]) => ({
-    seasonKey,
-    label: seasonKey === 'undated' ? 'Undated' : formatEventSeasonLabel(seasonEvents[0]?.date),
-    events: seasonEvents,
-  }));
+
+    eventsByName.set(existing ? `${nameKey}-${event.date || index}` : nameKey, event);
+  });
+
+  return sortEventsByDate(
+    Array.from(eventsByName.values()).filter((event) => (
+      event.date && event.date >= programYear.start && event.date <= programYear.end
+    )),
+    'asc'
+  );
+};
+
+const groupEventsBySeason = (events, programYear) => {
+  const fallYear = Number(programYear.start.slice(0, 4));
+  const springYear = Number(programYear.end.slice(0, 4));
+  const groups = [
+    { key: 'fall', label: `Fall ${fallYear}`, months: 'September–December', events: [] },
+    { key: 'spring', label: `Spring ${springYear}`, months: 'January–May', events: [] },
+    { key: 'summer', label: `Summer ${springYear}`, months: 'June–August', events: [] },
+  ];
+
+  events.forEach((event) => {
+    const month = Number(String(event.date).slice(5, 7));
+    const group = month >= 9 ? groups[0] : month <= 5 ? groups[1] : groups[2];
+    group.events.push(event);
+  });
+
+  return groups;
 };
 
 const renderEventCard = (event, variant = 'upcoming') => {
   const displayDate = event.displayDate || formatEventDate(event.date);
-  const datetimeAttr = event.date ? ` datetime="${event.date}"` : '';
-  const hasImage = Boolean(event.image) && !/\/fy27-event-placeholder\.jpg(?:[?#].*)?$/i.test(event.image);
+  const safeDate = escapeEventHtml(event.date);
+  const datetimeAttr = event.date ? ` datetime="${safeDate}"` : '';
+  const eventDate = event.date ? new Date(`${event.date}T00:00:00Z`) : null;
+  const dateMonth = eventDate && !Number.isNaN(eventDate.getTime())
+    ? new Intl.DateTimeFormat('en-US', { month: 'short', timeZone: 'UTC' }).format(eventDate)
+    : '';
+  const dateDay = eventDate && !Number.isNaN(eventDate.getTime()) ? eventDate.getUTCDate() : '';
   const eventFull = variant !== 'completed' && isEventFull(event);
 
   const wrapperClass =
     variant === 'completed'
       ? 'content-card h-full flex flex-col overflow-hidden border border-slate-200/80 bg-slate-50/60 p-0'
-      : `event-card rounded-2xl border border-slate-200 bg-white shadow-sm flex flex-col overflow-hidden${hasImage ? ' p-0' : ' p-6'}${eventFull ? ' event-card--full bg-slate-100 border-slate-300' : ''}`;
+      : `event-card event-card--uniform${eventFull ? ' event-card--full' : ''}`;
 
   const titleClass = variant === 'completed'
     ? 'text-lg font-semibold text-slate-800'
@@ -553,13 +587,6 @@ const renderEventCard = (event, variant = 'upcoming') => {
     ? '<span class="inline-flex items-center rounded-full bg-red-100 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-red-700">Full</span>'
     : '';
 
-  const imageBlock = hasImage
-    ? `<div class="event-card__image-wrap">
-        <img src="${event.image}" alt="${event.title}" class="${variant === 'completed' ? 'event-banner opacity-90' : `event-card__image${eventFull ? ' event-card__image--full' : ''}`}" width="1920" height="1005" loading="lazy" decoding="async">
-        ${eventFull ? '<div class="event-card__full-overlay" aria-label="Event full"><span>Full</span></div>' : ''}
-      </div>`
-    : '';
-
   let ctaButton = '';
   if (eventFull) {
     ctaButton = '<span class="btn event-card__full-cta w-fit" aria-disabled="true">Event full</span>';
@@ -570,34 +597,36 @@ const renderEventCard = (event, variant = 'upcoming') => {
     const attrs = external ? ' target="_blank" rel="noopener"' : '';
     const label = event.ctaLabel || 'Learn More';
     const externalNote = external ? ' <span class="sr-only">(opens in new tab)</span>' : '';
-    ctaButton = `<a class="btn w-fit" href="${event.ctaUrl}"${attrs}>${label}${externalNote}</a>`;
+    ctaButton = `<a class="btn w-fit" href="${escapeEventHtml(event.ctaUrl)}"${attrs}>${escapeEventHtml(label)}${externalNote}</a>`;
   }
 
-  const contentPadding = hasImage ? 'p-5' : '';
   const wrapperAccent = variant !== 'completed'
     ? `${event.featured ? ' ring-2 ring-secondary/60 shadow-lg' : ''}${eventFull ? ' shadow-none' : ''}`
     : '';
 
   return `
     <article class="${wrapperClass}${wrapperAccent}"${eventFull ? ' aria-disabled="true"' : ''}>
-      ${imageBlock}
-      <div class="flex flex-col flex-1 gap-3 ${contentPadding}">
-        <div class="space-y-1.5">
+      <div class="event-card__date" aria-hidden="true">
+        <span>${escapeEventHtml(dateMonth)}</span>
+        <strong>${escapeEventHtml(dateDay)}</strong>
+      </div>
+      <div class="event-card__body">
+        <div class="space-y-2">
           <div class="flex items-start gap-2 flex-wrap">
-            <h3 class="${titleClass}">${event.title}</h3>
+            <h3 class="${titleClass}">${escapeEventHtml(event.title)}</h3>
             ${variant === 'completed' ? '<span class="inline-flex items-center rounded-full bg-slate-200 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-700">Completed</span>' : `${featuredBadge}${fullBadge}`}
           </div>
           ${
             displayDate || event.time
-              ? `<p class="${variant === 'completed' ? 'text-sm text-slate-600' : 'text-gray-700'}"><time${datetimeAttr}>${displayDate || event.date || ''}</time>${event.time ? ` &middot; ${event.time}` : ''}</p>`
+              ? `<p class="${variant === 'completed' ? 'text-sm text-slate-600' : 'text-gray-700'}"><time${datetimeAttr}>${escapeEventHtml(displayDate || event.date || '')}</time>${event.time ? ` &middot; ${escapeEventHtml(event.time)}` : ''}</p>`
               : ''
           }
-          ${event.location ? `<p class="${locationClass}">${event.location}</p>` : ''}
+          ${event.location ? `<p class="${locationClass}">${escapeEventHtml(event.location)}</p>` : ''}
           ${
             variant === 'completed'
               ? '<p class="text-sm text-slate-600 leading-relaxed">Thanks to all who joined us.</p>'
               : event.notes
-                ? `<p class="${notesClass}">${event.notes}</p>`
+                ? `<p class="${notesClass}">${escapeEventHtml(event.notes)}</p>`
                 : ''
           }
         </div>
@@ -607,40 +636,49 @@ const renderEventCard = (event, variant = 'upcoming') => {
   `;
 };
 
-const renderEventSeasonGroup = (group, index = 0) => {
+const renderEventSeasonGroup = (group) => {
   const eventCount = group.events.length;
-  const dateRange = group.events.length
-    ? `${group.events[0].displayDate || formatEventDate(group.events[0].date)}` +
-      (group.events.length > 1
-        ? ` to ${group.events[group.events.length - 1].displayDate || formatEventDate(group.events[group.events.length - 1].date)}`
-        : '')
-    : '';
   const eventGrid = group.events.map((event) => renderEventCard(event)).join('');
-  const openAttr = index === 0 ? ' open' : '';
 
   return `
-    <details class="event-quarter-group"${openAttr}>
-      <summary class="event-quarter-summary">
-        <span class="event-quarter-title">${group.label}</span>
+    <section class="event-season" aria-labelledby="event-season-${group.key}">
+      <div class="event-season__header">
+        <div>
+          <p class="event-season__months">${group.months}</p>
+          <h3 class="event-season__title" id="event-season-${group.key}">${group.label}</h3>
+        </div>
         <span class="event-quarter-meta">${eventCount} event${eventCount === 1 ? '' : 's'}</span>
-      </summary>
-      ${dateRange ? `<p class="event-quarter-range">${dateRange}</p>` : ''}
-      <div class="event-quarter-grid">
-        ${eventGrid}
       </div>
-    </details>
+      ${eventCount
+        ? `<div class="event-quarter-grid">${eventGrid}</div>`
+        : '<p class="event-season__empty">More events will be added as details are finalized.</p>'}
+    </section>
   `;
+};
+
+const updateEventStructuredData = (events) => {
+  const target = document.getElementById('eventStructuredData');
+  if (!target) return;
+  target.textContent = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': events.map((event) => ({
+      '@type': 'Event',
+      name: event.title,
+      startDate: event.date,
+      ...(event.endDate ? { endDate: event.endDate } : {}),
+      ...(event.location ? { location: { '@type': 'Place', name: event.location } } : {}),
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+      ...(event.ctaUrl ? { url: new URL(event.ctaUrl, window.location.origin).href } : {}),
+      organizer: { '@type': 'Organization', name: 'Iowa Child & Youth Program', url: window.location.origin },
+    })),
+  });
 };
 
 async function renderEvents() {
   const upcomingTarget = document.getElementById('eventsList');
   if (!upcomingTarget) return;
 
-  const completedTarget = document.getElementById('completedEvents');
   upcomingTarget.setAttribute('aria-busy', 'true');
-  if (completedTarget) {
-    completedTarget.setAttribute('aria-busy', 'true');
-  }
 
   try {
     const res = await fetch('/events.json', { cache: 'no-store' });
@@ -648,45 +686,20 @@ async function renderEvents() {
 
     const data = await res.json();
     const eventList = Array.isArray(data.events) ? data.events : [];
-    const lastYearEventList = Array.isArray(data.lastYearEvents) ? data.lastYearEvents : [];
-    const todayKey = todayEventKey();
-    const upcomingEvents = sortEventsByDate(
-      eventList.filter((event) => !event.date || event.date >= todayKey),
-      'asc'
-    );
-    const completedEvents = sortEventsByDate(
-      eventList.filter((event) => event.date && event.date < todayKey),
-      'desc'
-    );
+    const programYear = { ...DEFAULT_PROGRAM_YEAR, ...(data.programYear || {}) };
+    const upcomingEvents = normalizeProgramEvents(eventList, programYear);
 
     upcomingTarget.innerHTML = upcomingEvents.length
-      ? groupEventsBySeason(upcomingEvents).map((group, index) => renderEventSeasonGroup(group, index)).join('')
-      : '<p class="text-gray-600">No upcoming events right now. Check back soon.</p>';
-
-    if (completedTarget) {
-      const displayCompletedEvents = lastYearEventList.length
-        ? sortEventsByDate(lastYearEventList, 'desc')
-        : completedEvents;
-      completedTarget.innerHTML = displayCompletedEvents.length
-        ? displayCompletedEvents.map((event) => renderEventCard(event, 'completed')).join('')
-        : '<p class="text-slate-600">No last year events to show yet.</p>';
-    }
+      ? groupEventsBySeason(upcomingEvents, programYear).map(renderEventSeasonGroup).join('')
+      : `<p class="text-gray-600">No events are listed for ${escapeEventHtml(programYear.label)} yet. Check back soon.</p>`;
 
     scrollReveal.init(upcomingTarget);
-    if (completedTarget) {
-      scrollReveal.init(completedTarget);
-    }
+    updateEventStructuredData(upcomingEvents);
   } catch (error) {
     upcomingTarget.innerHTML = '<p class="text-red-600">Could not load events. Please refresh and try again.</p>';
-    if (completedTarget) {
-      completedTarget.innerHTML = '<p class="text-red-600">Could not load completed events.</p>';
-    }
     console.error(error);
   } finally {
     upcomingTarget.setAttribute('aria-busy', 'false');
-    if (completedTarget) {
-      completedTarget.setAttribute('aria-busy', 'false');
-    }
   }
 }
 renderEvents();
