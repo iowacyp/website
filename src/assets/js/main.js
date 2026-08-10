@@ -1221,7 +1221,24 @@ const initSubscribeForm = () => {
 
   const statusEl = document.getElementById('subscribeStatus');
   const submitBtn = form.querySelector('[data-subscribe-submit]');
+  const virtualContentToggle = form.querySelector('[data-virtual-content-toggle]');
+  const virtualParticipantField = form.querySelector('[data-virtual-participant-field]');
+  const virtualParticipantInput = form.querySelector('[data-virtual-participant-input]');
   let busy = false;
+
+  const syncVirtualParticipantField = () => {
+    const enabled = virtualContentToggle instanceof HTMLInputElement && virtualContentToggle.checked;
+    virtualParticipantField?.classList.toggle('hidden', !enabled);
+    if (virtualParticipantInput instanceof HTMLInputElement) {
+      virtualParticipantInput.disabled = !enabled;
+      virtualParticipantInput.required = enabled;
+      if (!enabled) virtualParticipantInput.value = '';
+    }
+  };
+
+  virtualContentToggle?.addEventListener('change', syncVirtualParticipantField);
+  form.addEventListener('reset', () => window.setTimeout(syncVirtualParticipantField, 0));
+  syncVirtualParticipantField();
 
   const setStatus = (message, tone = 'muted') => {
     if (!statusEl) return;
@@ -1244,6 +1261,8 @@ const initSubscribeForm = () => {
     const email = String(formData.get('email') || '').trim().toLowerCase();
     const affiliation = String(formData.get('affiliation') || '').trim();
     const serviceArea = String(formData.get('service_area') || '').trim();
+    const virtualContent = Boolean(formData.get('virtual_content'));
+    const participantCount = Number.parseInt(String(formData.get('num_participants') || ''), 10);
     const consent = Boolean(formData.get('consent'));
     const botField = String(formData.get('bot-field') || '').trim();
 
@@ -1259,6 +1278,11 @@ const initSubscribeForm = () => {
 
     if (!isAllowedServiceArea(serviceArea)) {
       setStatus('Please select a valid service area / closest city.', 'error');
+      return;
+    }
+
+    if (virtualContent && (!Number.isInteger(participantCount) || participantCount < 1 || participantCount > 25)) {
+      setStatus('Please enter the number of children or youth receiving virtual content (1–25).', 'error');
       return;
     }
 
@@ -1278,6 +1302,8 @@ const initSubscribeForm = () => {
       region: String(formData.get('region') || '').trim() || null,
       service_area: serviceArea,
       affiliation,
+      virtual_content: virtualContent,
+      num_participants: virtualContent ? participantCount : null,
       consent: true,
       source: String(formData.get('source') || '').trim() || 'www.iowacyp.com',
       tags: String(formData.get('tags') || '').trim(),
@@ -1373,14 +1399,17 @@ const initVirtualProgrammingSignupForm = () => {
     if (busy) return;
 
     const formData = new FormData(form);
+    const firstName = String(formData.get('parent_first_name') || '').trim();
+    const lastName = String(formData.get('parent_last_name') || '').trim();
     const email = String(formData.get('email') || '').trim().toLowerCase();
-    const affiliation = String(formData.get('affiliation') || '').trim();
+    const affiliation = String(formData.get('military_affiliation') || '').trim();
     const serviceArea = String(formData.get('service_area') || '').trim();
+    const participantCount = Number.parseInt(String(formData.get('num_participants') || ''), 10);
     const consent = Boolean(formData.get('consent'));
     const botField = String(formData.get('bot-field') || '').trim();
 
-    if (!email) {
-      setStatus('Please enter your email address.', 'error');
+    if (!firstName || !lastName || !email) {
+      setStatus('Please enter the parent/guardian name and email address.', 'error');
       return;
     }
 
@@ -1391,6 +1420,11 @@ const initVirtualProgrammingSignupForm = () => {
 
     if (!isAllowedServiceArea(serviceArea)) {
       setStatus('Please select a valid service area / closest city.', 'error');
+      return;
+    }
+
+    if (!Number.isInteger(participantCount) || participantCount < 1 || participantCount > 25) {
+      setStatus('Please enter the number of children or youth (1–25).', 'error');
       return;
     }
 
@@ -1409,10 +1443,15 @@ const initVirtualProgrammingSignupForm = () => {
     }
 
     const payload = {
+      parent_first_name: firstName,
+      parent_last_name: lastName,
       email,
-      region: String(formData.get('region') || '').trim() || null,
+      phone: String(formData.get('phone') || '').trim() || null,
       service_area: serviceArea,
-      affiliation,
+      military_affiliation: affiliation,
+      num_participants: participantCount,
+      child_youth_ages: String(formData.get('child_youth_ages') || '').trim() || null,
+      comments: String(formData.get('comments') || '').trim() || null,
       consent: true,
       source: String(formData.get('source') || '').trim() || 'www.iowacyp.com',
       tags: String(formData.get('tags') || '').trim(),
@@ -1426,7 +1465,7 @@ const initVirtualProgrammingSignupForm = () => {
     setStatus('Submitting...');
 
     try {
-      const response = await fetch('/.netlify/functions/subscribe-proxy', {
+      const response = await fetch('/.netlify/functions/virtual-programming-signup-proxy', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(payload),

@@ -142,6 +142,8 @@ exports.handler = async (event) => {
 
   const affiliation = normalizeText(body.affiliation || body.program || body.branch || body.military_affiliation);
   const serviceArea = normalizeText(body.service_area || body.serviceArea || body.city);
+  const virtualContent = body.virtual_content === true || ['true', 'yes', 'on', '1'].includes(normalizeLower(body.virtual_content));
+  const participantCount = Number.parseInt(String(body.num_participants ?? body.participant_count ?? ''), 10);
   const consent = String(body.consent || '').toLowerCase();
   if (!affiliation || !serviceArea) {
     return json(400, { ok: false, error: 'Affiliation / program and service area are required.' });
@@ -152,12 +154,17 @@ exports.handler = async (event) => {
   if (!['true', 'yes', 'on', '1'].includes(consent)) {
     return json(400, { ok: false, error: 'Consent is required.' });
   }
+  if (virtualContent && (!Number.isInteger(participantCount) || participantCount < 1 || participantCount > 25)) {
+    return json(400, { ok: false, error: 'Number of children/youth must be between 1 and 25.' });
+  }
 
   const payload = {
     email,
     region: normalizeText(body.region) || null,
     service_area: serviceArea,
     affiliation,
+    virtual_content: virtualContent,
+    num_participants: virtualContent ? participantCount : null,
     source: normalizeText(body.source) || normalizeText(process.env.PUBLIC_SUBSCRIBE_SOURCE) || DEFAULT_SOURCE,
     tags: normalizeTags(body.tags),
     submitted_at: normalizeText(body.submitted_at || body.submittedAt) || new Date().toISOString(),

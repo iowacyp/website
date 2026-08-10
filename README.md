@@ -39,7 +39,7 @@ npx serve dist     # optional static preview after build
 - `scripts/build-snapshot.mjs` is archival only. Do not use it as a deployment path.
 - The verifier also blocks GitHub Pages deployment patterns in `.github/workflows/` and a root `CNAME` file.
 - Subscribe submissions are proxied through `netlify/functions/subscribe-proxy.js` and forwarded to the admin Netlify function endpoint.
-- Virtual programming signups use `netlify/functions/virtual-programming-signup-proxy.js` and the same HMAC-protected admin forwarding pattern.
+- Virtual programming signups use `netlify/functions/virtual-programming-signup-proxy.js` and forward into the same HMAC-protected admin contact endpoint with virtual-content preferences enabled.
 - `npm run deploy` builds the site and publishes the finished `dist/` directory directly to the linked Netlify project, including local functions from `netlify/functions`.
 - Public site Netlify environment variables:
   - `ADMIN_PUBLIC_SUBSCRIBE_URL` (e.g. `https://cyp-admin.netlify.app/.netlify/functions/public-subscribe`)
@@ -47,8 +47,6 @@ npx serve dist     # optional static preview after build
   - `PUBLIC_SUBSCRIBE_SOURCE` (optional, defaults to `www.iowacyp.com`)
   - `PUBLIC_SUBSCRIBE_RATE_LIMIT_WINDOW_MS` (optional, default `600000`)
   - `PUBLIC_SUBSCRIBE_RATE_LIMIT_MAX` (optional, default `20`)
-  - `ADMIN_PUBLIC_VIRTUAL_PROGRAMMING_URL` (e.g. `https://cyp-admin.netlify.app/.netlify/functions/public-virtual-programming-signup`)
-  - `PUBLIC_VIRTUAL_PROGRAMMING_SHARED_SECRET` (optional; falls back to `PUBLIC_SUBSCRIBE_SHARED_SECRET`)
   - `PUBLIC_VIRTUAL_PROGRAMMING_SOURCE` (optional, defaults to `www.iowacyp.com`)
   - `PUBLIC_VIRTUAL_PROGRAMMING_RATE_LIMIT_WINDOW_MS` (optional, default `600000`)
   - `PUBLIC_VIRTUAL_PROGRAMMING_RATE_LIMIT_MAX` (optional, default `20`)

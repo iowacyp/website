@@ -2,17 +2,75 @@
 {% set signupStatusId = signupStatusId or signupFormId ~ 'Status' %}
 {% set signupFieldIdPrefix = signupFieldIdPrefix or signupFormId %}
 {% set signupSource = signupSource or 'www.iowacyp.com' %}
-{% set signupTags = signupTags or 'website-subscribe' %}
-{% set signupSubmitLabel = signupSubmitLabel or 'Submit' %}
-{% set signupFormDataAttr = signupFormDataAttr or 'data-virtual-programming-signup-form' %}
-{% set signupSubmitDataAttr = signupSubmitDataAttr or 'data-vp-signup-submit' %}
-{% set formId = signupFormId %}
-{% set statusId = signupStatusId %}
-{% set fieldIdPrefix = signupFieldIdPrefix %}
-{% set submitLabel = signupSubmitLabel %}
-{% set formDataAttr = signupFormDataAttr %}
-{% set submitDataAttr = signupSubmitDataAttr %}
-{% set statusDataAttr = signupStatusDataAttr or 'data-vp-signup-status' %}
-{% set sourceValue = signupSource %}
-{% set tagsValue = signupTags %}
-{% include "partials/subscribe-form-fields.njk" %}
+{% set signupTags = signupTags or 'virtual-programming,online-adventure-kits' %}
+{% set signupSubmitLabel = signupSubmitLabel or 'Sign up' %}
+{% set serviceAreas = ['Des Moines', 'Sioux City', 'Council Bluffs', 'Waterloo', 'Cedar Rapids', 'Davenport'] %}
+{% set prefix = signupFieldIdPrefix ~ '-' %}
+
+<form id="{{ signupFormId }}" class="content-card space-y-6" data-virtual-programming-signup-form>
+  <p class="hidden">
+    <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+  </p>
+
+  <div class="grid gap-5 md:grid-cols-2">
+    <div class="space-y-2">
+      <label class="block text-sm font-semibold text-slate-800" for="{{ prefix }}parent_first_name">Parent/guardian first name</label>
+      <input id="{{ prefix }}parent_first_name" name="parent_first_name" required autocomplete="given-name" class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
+    </div>
+    <div class="space-y-2">
+      <label class="block text-sm font-semibold text-slate-800" for="{{ prefix }}parent_last_name">Parent/guardian last name</label>
+      <input id="{{ prefix }}parent_last_name" name="parent_last_name" required autocomplete="family-name" class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
+    </div>
+    <div class="space-y-2">
+      <label class="block text-sm font-semibold text-slate-800" for="{{ prefix }}email">Email</label>
+      <input id="{{ prefix }}email" name="email" type="email" required autocomplete="email" class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
+    </div>
+    <div class="space-y-2">
+      <label class="block text-sm font-semibold text-slate-800" for="{{ prefix }}phone">Phone <span class="font-normal text-slate-500">(optional)</span></label>
+      <input id="{{ prefix }}phone" name="phone" type="tel" autocomplete="tel" class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
+    </div>
+    <div class="space-y-2">
+      <label class="block text-sm font-semibold text-slate-800" for="{{ prefix }}service_area">Service area / closest city</label>
+      <select id="{{ prefix }}service_area" name="service_area" required class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
+        <option value="" selected>Select a city</option>
+        {% for city in serviceAreas %}<option>{{ city }}</option>{% endfor %}
+      </select>
+    </div>
+    <div class="space-y-2">
+      <label class="block text-sm font-semibold text-slate-800" for="{{ prefix }}military_affiliation">Affiliation / program</label>
+      <select id="{{ prefix }}military_affiliation" name="military_affiliation" required class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
+        <option value="" selected>Select an option</option>
+        <option>Army National Guard</option>
+        <option>Air National Guard</option>
+        <option>Army Reserve</option>
+        <option>Active Duty</option>
+        <option>Veteran</option>
+        <option>Fallen Family</option>
+        <option>Other / Civilian Partner</option>
+      </select>
+    </div>
+    <div class="space-y-2">
+      <label class="block text-sm font-semibold text-slate-800" for="{{ prefix }}num_participants">Number of children/youth</label>
+      <input id="{{ prefix }}num_participants" name="num_participants" type="number" min="1" max="25" step="1" required class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
+    </div>
+    <div class="space-y-2">
+      <label class="block text-sm font-semibold text-slate-800" for="{{ prefix }}child_youth_ages">Children/youth ages <span class="font-normal text-slate-500">(optional)</span></label>
+      <input id="{{ prefix }}child_youth_ages" name="child_youth_ages" placeholder="Example: 8, 11, 15" class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
+    </div>
+  </div>
+
+  <div class="space-y-2">
+    <label class="block text-sm font-semibold text-slate-800" for="{{ prefix }}comments">Anything you’d like us to know? <span class="font-normal text-slate-500">(optional)</span></label>
+    <textarea id="{{ prefix }}comments" name="comments" rows="3" class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"></textarea>
+  </div>
+
+  <label class="inline-flex items-start gap-3 text-sm text-slate-700">
+    <input type="checkbox" name="consent" required class="mt-1 h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary/50">
+    <span>I agree to receive Iowa CYP virtual programming and Online Adventure Kit emails. I understand I can unsubscribe at any time.</span>
+  </label>
+
+  <input type="hidden" name="source" value="{{ signupSource }}">
+  <input type="hidden" name="tags" value="{{ signupTags }}">
+  <p id="{{ signupStatusId }}" class="text-sm text-slate-600" role="status" aria-live="polite" data-vp-signup-status></p>
+  <button type="submit" class="btn w-full md:w-auto" data-vp-signup-submit>{{ signupSubmitLabel }}</button>
+</form>

@@ -1,6 +1,6 @@
 const crypto = require('node:crypto');
 
-const DEFAULT_ADMIN_URL = 'https://cyp-admin.netlify.app/.netlify/functions/public-virtual-programming-signup';
+const DEFAULT_ADMIN_URL = 'https://cyp-admin.netlify.app/.netlify/functions/public-subscribe';
 const DEFAULT_SOURCE = 'www.iowacyp.com';
 const DEFAULT_RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const DEFAULT_RATE_LIMIT_MAX = 20;
@@ -103,11 +103,9 @@ exports.handler = async (event) => {
     return json(405, { ok: false, error: 'Method not allowed. Use POST.' });
   }
 
-  const sharedSecret =
-    normalizeText(process.env.PUBLIC_VIRTUAL_PROGRAMMING_SHARED_SECRET) ||
-    normalizeText(process.env.PUBLIC_SUBSCRIBE_SHARED_SECRET);
+  const sharedSecret = normalizeText(process.env.PUBLIC_SUBSCRIBE_SHARED_SECRET);
   if (!sharedSecret) {
-    return json(500, { ok: false, error: 'Missing PUBLIC_VIRTUAL_PROGRAMMING_SHARED_SECRET.' });
+    return json(500, { ok: false, error: 'Missing PUBLIC_SUBSCRIBE_SHARED_SECRET.' });
   }
 
   const rateLimitWindowMs = Number.parseInt(
@@ -144,11 +142,23 @@ exports.handler = async (event) => {
   const lastName = normalizeText(body.parent_last_name || body.last_name || body.lastName);
   const email = normalizeLower(body.email);
   const serviceArea = normalizeText(body.service_area || body.serviceArea || body.city);
+  const affiliation = normalizeText(body.military_affiliation || body.affiliation);
+  const participantCount = Number.parseInt(String(body.num_participants || body.participant_count || ''), 10);
+  const consent = String(body.consent || '').toLowerCase();
   if (!firstName || !lastName || !email || !isValidEmail(email)) {
     return json(400, { ok: false, error: 'Parent/guardian first name, last name, and a valid email are required.' });
   }
-  if (serviceArea && !isAllowedServiceArea(serviceArea)) {
+  if (!serviceArea || !isAllowedServiceArea(serviceArea)) {
     return json(400, { ok: false, error: 'Please select a valid service area / closest city.' });
+  }
+  if (!affiliation) {
+    return json(400, { ok: false, error: 'Affiliation / program is required.' });
+  }
+  if (!Number.isInteger(participantCount) || participantCount < 1 || participantCount > 25) {
+    return json(400, { ok: false, error: 'Number of children/youth must be between 1 and 25.' });
+  }
+  if (!['true', 'yes', 'on', '1'].includes(consent)) {
+    return json(400, { ok: false, error: 'Consent is required.' });
   }
 
   const payload = {
@@ -156,18 +166,21 @@ exports.handler = async (event) => {
     parent_last_name: lastName,
     email,
     phone: normalizeText(body.phone) || null,
-    city: serviceArea || null,
-    military_affiliation: normalizeText(body.military_affiliation || body.affiliation) || null,
+    service_area: serviceArea,
+    affiliation,
+    num_participants: participantCount,
     child_youth_names: normalizeText(body.child_youth_names || body.child_names) || null,
     child_youth_ages: normalizeText(body.child_youth_ages || body.child_ages) || null,
     virtual_programming_interest: normalizeText(body.virtual_programming_interest || body.interest) || null,
     comments: normalizeText(body.comments || body.notes) || null,
+    consent: true,
+    is_virtual_programming_signup: true,
     source: normalizeText(body.source) || normalizeText(process.env.PUBLIC_VIRTUAL_PROGRAMMING_SOURCE) || DEFAULT_SOURCE,
     tags: normalizeTags(body.tags),
     submitted_at: normalizeText(body.submitted_at || body.submittedAt) || new Date().toISOString(),
   };
 
-  const adminEndpoint = normalizeText(process.env.ADMIN_PUBLIC_VIRTUAL_PROGRAMMING_URL) || DEFAULT_ADMIN_URL;
+  const adminEndpoint = normalizeText(process.env.ADMIN_PUBLIC_SUBSCRIBE_URL) || DEFAULT_ADMIN_URL;
   const timestamp = String(Date.now());
   const payloadString = JSON.stringify(payload);
   const signature = crypto.createHmac('sha256', sharedSecret).update(`${timestamp}.${payloadString}`).digest('hex');

@@ -25,6 +25,19 @@
     <input id="{{ prefix }}email" name="email" type="email" required autocomplete="email" class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
   </div>
 
+  {% if showVirtualContentOption %}
+  <div class="space-y-2">
+    <label class="inline-flex items-start gap-3 text-sm text-slate-700">
+      <input type="checkbox" name="virtual_content" class="mt-1 h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary/50" data-virtual-content-toggle>
+      <span>Also send me virtual activities and Online Adventure Kits.</span>
+    </label>
+    <div class="hidden space-y-2 pl-7" data-virtual-participant-field>
+      <label class="block text-sm font-semibold text-slate-800" for="{{ prefix }}num_participants">Number of children/youth receiving the content</label>
+      <input id="{{ prefix }}num_participants" name="num_participants" type="number" min="1" max="25" step="1" disabled class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30" data-virtual-participant-input>
+    </div>
+  </div>
+  {% endif %}
+
   <div class="space-y-2">
     <label class="block text-sm font-semibold text-slate-800" for="{{ prefix }}affiliation">Affiliation / Program</label>
     <select id="{{ prefix }}affiliation" name="affiliation" required class="w-full rounded-2xl border border-slate-300 px-4 py-3 bg-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
