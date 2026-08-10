@@ -2713,8 +2713,11 @@ footer a:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-right-width: 4px;
+  --tw-border-opacity: 1;
+  border-color: rgb(244 180 27 / var(--tw-border-opacity, 1));
   --tw-bg-opacity: 1;
-  background-color: rgb(31 77 122 / var(--tw-bg-opacity, 1));
+  background-color: rgb(2 6 23 / var(--tw-bg-opacity, 1));
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 1.5rem;
@@ -2731,22 +2734,37 @@ footer a:hover {
 .event-card__date span {
   font-size: 0.75rem;
   line-height: 1rem;
-  font-weight: 700;
+  font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: rgb(255 255 255 / 0.8);
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.story-kiosk .font-heading.event-card__date span {
+  color: #fff;
 }
 
 .event-card__date strong {
   font-family: League Spartan, ui-sans-serif, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-  font-weight: 600;
-  line-height: 1; font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.1em; --tw-text-opacity: 1; color: rgb(33 48 63 / var(--tw-text-opacity, 1));
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 900;
+  line-height: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1)); font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.1em; --tw-text-opacity: 1; color: rgb(33 48 63 / var(--tw-text-opacity, 1));
 }
 
 .story-kiosk .event-card__date strong.text-white {
   color: #fff;
+}
+
+.story-kiosk .font-heading.event-card__date strong {
+  color: #fff;
+}
+
+.event-card__date strong {
+  opacity: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
 }
 
 .event-card__body {

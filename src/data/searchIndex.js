@@ -137,6 +137,7 @@ Array.from(uniqueEvents.values()).forEach((event, index) => {
 });
 
 const events = Array.from(eventsByName.values()).filter((event) => (
+  event.showOnWebsite !== false &&
   event.date &&
   (!eventProgramYear.start || event.date >= eventProgramYear.start) &&
   (!eventProgramYear.end || event.date <= eventProgramYear.end)

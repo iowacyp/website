@@ -531,6 +531,7 @@ const normalizeProgramEvents = (events, programYear) => {
 
   return sortEventsByDate(
     Array.from(eventsByName.values()).filter((event) => (
+      event.showOnWebsite !== false &&
       event.date && event.date >= programYear.start && event.date <= programYear.end
     )),
     'asc'
