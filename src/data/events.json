@@ -310,6 +310,23 @@
       "registrationCode": "",
       "ageRange": "",
       "showOnWebsite": true
+    },
+    {
+      "adminId": "e80bfe5f-23fc-49e4-86f7-2e61c1c40965",
+      "title": "Fall Family Festival",
+      "date": "2026-10-24",
+      "endDate": "2026-10-24",
+      "displayDate": "October 24, 2026",
+      "location": "Camp Dodge - Pool Pavilion",
+      "ctaLabel": "Register",
+      "ctaUrl": "/register/e80bfe5f-23fc-49e4-86f7-2e61c1c40965",
+      "notes": "",
+      "image": "",
+      "featured": false,
+      "full": false,
+      "registrationCode": "",
+      "ageRange": "",
+      "showOnWebsite": true
     }
   ],
   "lastYearEvents": [
