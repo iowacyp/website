@@ -159,6 +159,10 @@ footer a {
   @apply flex w-[5.25rem] shrink-0 flex-col items-center justify-center gap-1 rounded-br-2xl border-r-4 border-secondary bg-slate-950 px-3 py-4 text-center text-white;
 }
 
+.event-card__date--overlay {
+  @apply absolute left-0 top-0 z-10 shadow-lg;
+}
+
 .event-card__date span {
   @apply text-[0.7rem] font-black uppercase leading-none tracking-[0.22em] text-secondary;
 }
@@ -193,17 +197,13 @@ footer a {
   @apply mt-2;
 }
 
-.event-card__image-wrap {
-  position: relative;
+.event-card__media {
+  @apply relative overflow-hidden bg-slate-200;
+  aspect-ratio: 1200 / 630;
 }
 
 .event-card__image {
-  width: 100%;
-  display: block;
-  border-radius: 0.75rem 0.75rem 0 0;
-  object-fit: cover;
-  object-position: center;
-  aspect-ratio: 1920 / 1005;
+  @apply block h-full w-full object-cover object-center;
 }
 
 .event-card__image--full {

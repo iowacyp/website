@@ -51,8 +51,6 @@
   { "label": "Contact", "url": "/contact/" }
 ] %}
 {% set currentUrl = page.url or '/' %}
-{% set summerCampEvent = getFeaturedEvent(events.events) if events and events.events else null %}
-{% set summerCampFull = summerCampEvent and summerCampEvent.full %}
 
 <header class="nav sticky top-0 z-50 border-b border-white/10 bg-primary shadow-md">
   <div class="container flex items-center justify-between gap-4 px-4 sm:px-6 py-3">
@@ -61,13 +59,6 @@
     <a href="/" class="inline-flex h-12 shrink-0 items-center rounded-full bg-white px-3.5 py-2 text-primary shadow-sm transition hover:-translate-y-px hover:bg-secondary/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary/70" aria-label="{{ site.name }}">
       <img src="/assets/img/branding_symbol.png" alt="" class="h-6 w-auto object-contain" loading="eager" decoding="async" width="495" height="234">
     </a>
-
-    {% if not summerCampFull %}
-      <a href="{{ site.links.summerCampDetails }}" target="_blank" rel="noopener" class="inline-flex min-w-0 items-center gap-1.5 rounded-full border border-secondary/80 bg-white px-2 py-1.5 text-xs font-semibold text-primary shadow-sm transition hover:bg-secondary/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary/70 md:hidden">
-        <span class="shrink-0 rounded-full bg-secondary px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.12em] text-primary">New</span>
-        <span class="truncate">Camp</span>
-      </a>
-    {% endif %}
 
     <!-- Desktop nav -->
     <nav class="hidden md:block" aria-label="Primary">
@@ -139,12 +130,6 @@
           <path d="M16.25 16.25 21 21" stroke-width="1.8" stroke-linecap="round"/>
         </svg>
       </button>
-      {% if not summerCampFull %}
-        <a href="{{ site.links.summerCampDetails }}" target="_blank" rel="noopener" class="hidden md:inline-flex items-center gap-2 rounded-full border border-secondary/80 bg-white px-2.5 py-1.5 text-sm font-semibold text-primary shadow-[0_10px_24px_-16px_rgba(255,214,92,0.9)] transition hover:-translate-y-px hover:bg-secondary/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary/70">
-          <span class="rounded-full bg-secondary px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-primary">New</span>
-          <span>Summer Camp</span>
-        </a>
-      {% endif %}
       <a href="/subscribe/" class="hidden md:inline-flex items-center rounded-full bg-secondary px-4 py-2 text-sm font-semibold text-primary shadow-sm transition hover:bg-[#f7c74a] hover:-translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary/70">
         Subscribe
       </a>
@@ -252,12 +237,6 @@
 
     <!-- Drawer footer CTAs -->
     <div class="shrink-0 border-t border-slate-100 p-4 space-y-2.5">
-      {% if not summerCampFull %}
-        <a href="{{ site.links.summerCampDetails }}" target="_blank" rel="noopener" class="inline-flex w-full items-center justify-center gap-2 rounded-full border border-secondary bg-white px-4 py-3 text-sm font-semibold text-primary shadow-sm transition hover:bg-secondary/10" data-nav-focus>
-          <span class="rounded-full bg-secondary px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-primary">New</span>
-          <span>Summer Camp 2026</span>
-        </a>
-      {% endif %}
       <a href="/subscribe/" class="btn w-full justify-center" data-nav-focus>Subscribe for Updates</a>
       <a href="/contact/" class="btn-secondary w-full justify-center" data-nav-focus>Contact Us</a>
     </div>
