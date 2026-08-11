@@ -2797,6 +2797,17 @@ footer a:hover {
   aspect-ratio: 1200 / 630;
 }
 
+.event-card__media::after {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  inset: 0px;
+  z-index: 1;
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.22) 0%, rgba(15, 23, 42, 0.02) 48%),
+    linear-gradient(to top, rgba(15, 23, 42, 0.3) 0%, transparent 58%);
+}
+
 .event-card__image {
   display: block;
   height: 100%;

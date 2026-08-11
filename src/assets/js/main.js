@@ -557,16 +557,16 @@ const groupEventsBySeason = (events, programYear) => {
 };
 
 const EVENT_IMAGE_BY_ADMIN_ID = Object.freeze({
-  'e80bfe5f-23fc-49e4-86f7-2e61c1c40965': '/assets/img/events/generated/fall-family-festival.webp',
-  'ae600c2b-e49a-4578-8703-ddac2291d079': '/assets/img/events/generated/cookies-with-santa.webp',
-  '0f19c721-953d-4b09-8b94-e3d2f84c3042': '/assets/img/events/generated/mfe-cedar-falls.webp',
-  'f0673f8b-0172-4773-b927-ddc374e44d66': '/assets/img/events/generated/mfe-davenport.webp',
-  '424fb1cd-b67d-4747-8501-3dcf060f3562': '/assets/img/events/generated/mfe-cedar-rapids.webp',
-  '7d4eb844-1979-4ff1-bfb8-9f4c06324dfb': '/assets/img/events/generated/mfe-council-bluffs.webp',
-  'e7de22ae-2e5d-47b1-b30a-ecb4c6107375': '/assets/img/events/generated/mfe-des-moines.webp',
-  '14022ce7-fee7-4bad-a2a2-d18c0b29c380': '/assets/img/events/generated/mfe-sioux-city.webp',
-  'da077f60-2d98-4f3d-942b-14f17130c0fd': '/assets/img/events/generated/military-family-ball.webp',
-  'd96271f7-d8f1-4ad4-bc4a-df337cfc53be': '/assets/img/events/generated/summer-camp.webp',
+  'e80bfe5f-23fc-49e4-86f7-2e61c1c40965': '/assets/img/events/previous-years/fall-family-festival.webp',
+  'ae600c2b-e49a-4578-8703-ddac2291d079': '/assets/img/events/previous-years/cookies-with-santa.webp',
+  '0f19c721-953d-4b09-8b94-e3d2f84c3042': '/assets/img/events/previous-years/mfe-1.webp',
+  'f0673f8b-0172-4773-b927-ddc374e44d66': '/assets/img/events/previous-years/mfe-3.webp',
+  '424fb1cd-b67d-4747-8501-3dcf060f3562': '/assets/img/events/previous-years/mfe-4.webp',
+  '7d4eb844-1979-4ff1-bfb8-9f4c06324dfb': '/assets/img/events/previous-years/mfe.webp',
+  'e7de22ae-2e5d-47b1-b30a-ecb4c6107375': '/assets/img/events/previous-years/mfe-des-moines.webp',
+  '14022ce7-fee7-4bad-a2a2-d18c0b29c380': '/assets/img/events/previous-years/mfe-1.webp',
+  'da077f60-2d98-4f3d-942b-14f17130c0fd': '/assets/img/events/previous-years/military-family-ball.webp',
+  'd96271f7-d8f1-4ad4-bc4a-df337cfc53be': '/assets/img/events/previous-years/summer-camp.webp',
 });
 
 const renderEventCard = (event, variant = 'upcoming') => {
