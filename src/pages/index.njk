@@ -93,7 +93,11 @@ permalink: /
               <h3>{{ program.name }}</h3>
               <p>{{ program.description }}</p>
               {% if program.cta %}
-                <a class="link-underline" href="{{ program.cta.url }}">{{ program.cta.label }}</a>
+                {% if program.cta.disabled %}
+                  <span class="btn w-fit cursor-default" aria-disabled="true">{{ program.cta.label }}</span>
+                {% else %}
+                  <a class="link-underline" href="{{ program.cta.url }}">{{ program.cta.label }}</a>
+                {% endif %}
               {% endif %}
             </div>
           </article>

@@ -611,6 +611,8 @@ const renderEventCard = (event, variant = 'upcoming') => {
   let ctaButton = '';
   if (eventFull) {
     ctaButton = '<span class="btn event-card__full-cta w-fit" aria-disabled="true">Event full</span>';
+  } else if (variant !== 'completed' && event.ctaDisabled && event.ctaLabel) {
+    ctaButton = `<span class="btn w-fit cursor-default" aria-disabled="true">${escapeEventHtml(event.ctaLabel)}</span>`;
   } else if (variant !== 'completed' && event.ctaUrl) {
     const absolute = /^https?:/i.test(event.ctaUrl);
     const currentOrigin = window.location.origin;

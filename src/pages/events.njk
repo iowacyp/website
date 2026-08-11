@@ -120,10 +120,14 @@ permalink: /events/
         {% endif %}
         {% if program.cta %}
           <div class="flex flex-wrap gap-3">
-            <a class="btn" href="{{ program.cta.url }}"{% if ctaExternal %} target="_blank" rel="noopener"{% endif %}>
-              {{ ctaLabel }}
-              {% if ctaExternal %}<span class="sr-only">(opens in new tab)</span>{% endif %}
-            </a>
+            {% if program.cta.disabled %}
+              <span class="btn w-fit cursor-default" aria-disabled="true">{{ ctaLabel }}</span>
+            {% else %}
+              <a class="btn" href="{{ program.cta.url }}"{% if ctaExternal %} target="_blank" rel="noopener"{% endif %}>
+                {{ ctaLabel }}
+                {% if ctaExternal %}<span class="sr-only">(opens in new tab)</span>{% endif %}
+              </a>
+            {% endif %}
           </div>
         {% endif %}
       </div>
