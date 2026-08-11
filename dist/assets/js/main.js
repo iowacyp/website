@@ -564,7 +564,7 @@ const EVENT_IMAGE_BY_ADMIN_ID = Object.freeze({
   '424fb1cd-b67d-4747-8501-3dcf060f3562': '/assets/img/events/previous-years/mfe-4.webp',
   '7d4eb844-1979-4ff1-bfb8-9f4c06324dfb': '/assets/img/events/previous-years/mfe.webp',
   'e7de22ae-2e5d-47b1-b30a-ecb4c6107375': '/assets/img/events/previous-years/mfe-des-moines.webp',
-  '14022ce7-fee7-4bad-a2a2-d18c0b29c380': '/assets/img/events/previous-years/mfe-1.webp',
+  '14022ce7-fee7-4bad-a2a2-d18c0b29c380': '/assets/img/events/previous-years/mfe-sioux-city.webp',
   'da077f60-2d98-4f3d-942b-14f17130c0fd': '/assets/img/events/previous-years/military-family-ball.webp',
   'd96271f7-d8f1-4ad4-bc4a-df337cfc53be': '/assets/img/events/previous-years/summer-camp.webp',
 });
