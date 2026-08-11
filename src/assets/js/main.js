@@ -686,7 +686,9 @@ async function renderEvents() {
     if (!res.ok) throw new Error(`Failed to fetch events: ${res.status}`);
 
     const data = await res.json();
-    const eventList = Array.isArray(data.events) ? data.events : [];
+    const eventList = Array.isArray(data.events)
+      ? data.events.filter((event) => event?.showOnWebsite === true)
+      : [];
     const programYear = { ...DEFAULT_PROGRAM_YEAR, ...(data.programYear || {}) };
     const upcomingEvents = normalizeProgramEvents(eventList, programYear);
 
