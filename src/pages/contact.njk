@@ -64,12 +64,19 @@ permalink: /contact/index.html
     <div class="max-w-3xl space-y-4">
       <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Virtual programming signup</p>
       <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Sign Up for Virtual Programming</h2>
-      <p class="text-slate-700 leading-relaxed">Interested in receiving Iowa Child & Youth Program virtual activities, resources, and seasonal programming? Complete the form below to be added to our virtual programming list.</p>
+      <p class="text-slate-700 leading-relaxed">Use the same Iowa CYP subscription form to receive virtual activities, Online Adventure Kits, resources, and seasonal programming.</p>
     </div>
     <div>
-      {% set signupFormId = 'contactVirtualProgrammingSignupForm' %}
-      {% set signupStatusId = 'contactVirtualProgrammingSignupStatus' %}
-      {% include "partials/virtual-programming-signup-form.njk" %}
+      {% set formId = 'subscribeForm' %}
+      {% set fieldIdPrefix = 'contact-virtual' %}
+      {% set statusId = 'subscribeStatus' %}
+      {% set submitLabel = 'Subscribe for virtual programming' %}
+      {% set submitDataAttr = 'data-subscribe-submit' %}
+      {% set sourceValue = 'www.iowacyp.com/contact' %}
+      {% set tagsValue = 'website-subscribe,virtual-programming,online-adventure-kits' %}
+      {% set showVirtualContentOption = true %}
+      {% set virtualContentChecked = true %}
+      {% include "partials/subscribe-form-fields.njk" %}
     </div>
   </div>
 </section>

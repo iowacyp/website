@@ -39,7 +39,7 @@ npx serve dist     # optional static preview after build
 - `scripts/build-snapshot.mjs` is archival only. Do not use it as a deployment path.
 - The verifier also blocks GitHub Pages deployment patterns in `.github/workflows/` and a root `CNAME` file.
 - Subscribe submissions are proxied through `netlify/functions/subscribe-proxy.js` and forwarded to the admin Netlify function endpoint.
-- Virtual programming signups use `netlify/functions/virtual-programming-signup-proxy.js` and forward into the same HMAC-protected admin contact endpoint with virtual-content preferences enabled.
+- The contact-page virtual programming form uses the same `subscribe-proxy.js` workflow, with virtual-content preferences selected by default.
 - `npm run deploy` builds the site and publishes the finished `dist/` directory directly to the linked Netlify project, including local functions from `netlify/functions`.
 - Public site Netlify environment variables:
   - `ADMIN_PUBLIC_SUBSCRIBE_URL` (e.g. `https://cyp-admin.netlify.app/.netlify/functions/public-subscribe`)
