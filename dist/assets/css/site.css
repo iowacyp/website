@@ -2804,8 +2804,8 @@ footer a:hover {
   inset: 0px;
   z-index: 1;
   background:
-    linear-gradient(135deg, rgba(15, 23, 42, 0.22) 0%, rgba(15, 23, 42, 0.02) 48%),
-    linear-gradient(to top, rgba(15, 23, 42, 0.3) 0%, transparent 58%);
+    linear-gradient(135deg, rgba(15, 23, 42, 0.2) 0%, transparent 42%, rgba(217, 174, 95, 0.08) 100%),
+    linear-gradient(to top, rgba(15, 23, 42, 0.32) 0%, rgba(15, 23, 42, 0.06) 48%, rgba(255, 255, 255, 0.04) 100%);
 }
 
 .event-card__image {
