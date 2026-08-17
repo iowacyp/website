@@ -651,7 +651,7 @@ const renderEventCard = (event, variant = 'upcoming') => {
             variant === 'completed'
               ? '<p class="text-sm text-slate-600 leading-relaxed">Thanks to all who joined us.</p>'
               : event.notes
-                ? `<p class="${notesClass}">${escapeEventHtml(event.notes)}</p>`
+                ? `<p class="${notesClass}"><strong class="font-semibold text-slate-800">What to expect:</strong> ${escapeEventHtml(event.notes)}</p>`
                 : ''
           }
         </div>
