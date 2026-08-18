@@ -1,122 +1,72 @@
 ---
 layout: layouts/base.njk
 title: Rocktober · Fall Family Festival | Iowa CYP
-description: Iowa CYP's Fall Family Festival goes Rocktober this year. Host a trunk, volunteer, or bring an activity as Guard-connected families gather for fall fun at Camp Dodge.
+description: Iowa CYP's Fall Family Festival goes Rocktober this year — Oct 24, 2-4 PM at Camp Dodge. Host a trunk, volunteer, or bring an activity for trunk-or-treat fun, youth bands, a carnival, and candy.
 permalink: /fall-family-festival/
-socialImage: /assets/img/events/generated/fall-family-festival.webp
+socialImage: /assets/img/events/rocktober-2026-flyer.jpg
 ---
 
 <style>
   .rocktober-page {
-    --stage: #140f1e;
-    --stage-2: #1c1533;
-    --ink: #1f1430;
+    --stage: #160f09;
+    --stage-2: #251a10;
+    --ink: #241608;
     --gold: #f4b41b;
-    --pink: #c83b59;
+    --rust: #c8531f;
     --blue: #1f4d7a;
     --paper: #fff8ea;
     position: relative;
     overflow: hidden;
-    color: #f4f0ff;
+    color: #f7efe2;
     background: var(--stage);
   }
 
   .rocktober-hero {
     position: relative;
-    overflow: hidden;
-    isolation: isolate;
-  }
-
-  .rocktober-hero__bg {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-  }
-
-  .rocktober-hero__bg img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: saturate(1.15) contrast(1.08) brightness(0.75);
-  }
-
-  .rocktober-hero__glow {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
+    padding-top: clamp(2.5rem, 6vw, 4rem);
+    padding-bottom: clamp(2.75rem, 6vw, 4.5rem);
     background:
-      radial-gradient(ellipse 55% 60% at 12% 15%, rgba(244, 180, 27, 0.55), transparent 60%),
-      radial-gradient(ellipse 50% 55% at 88% 10%, rgba(200, 59, 89, 0.5), transparent 60%),
-      radial-gradient(ellipse 70% 70% at 50% 100%, rgba(31, 77, 122, 0.65), transparent 65%),
-      linear-gradient(180deg, rgba(20, 15, 30, 0.55) 0%, rgba(20, 15, 30, 0.72) 55%, var(--stage) 100%);
-    mix-blend-mode: normal;
+      radial-gradient(ellipse 70% 55% at 50% 0%, rgba(244, 166, 59, 0.28), transparent 65%),
+      var(--stage);
   }
 
   .rocktober-hero__inner {
     position: relative;
-    padding-top: clamp(4rem, 10vw, 7rem);
-    padding-bottom: clamp(4.5rem, 11vw, 8rem);
-    max-width: 44rem;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: 1.5rem;
+    justify-items: center;
+    gap: 1.75rem;
+    text-align: center;
   }
 
-  .rocktober-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    width: fit-content;
-    border: 1px solid rgba(244, 180, 27, 0.5);
-    background: rgba(20, 15, 30, 0.55);
-    border-radius: 999px;
-    padding: 0.5rem 1.1rem;
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: var(--gold);
-    backdrop-filter: blur(6px);
+  .rocktober-poster {
+    display: block;
+    width: 100%;
+    max-width: 56rem;
+    height: auto;
+    border-radius: 1.1rem;
+    border: 3px solid rgba(244, 180, 27, 0.4);
+    box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(0, 0, 0, 0.25);
   }
 
-  .rocktober-title {
-    font-family: var(--font-heading);
-    text-transform: uppercase;
-    font-weight: 900;
-    line-height: 0.85;
-    letter-spacing: -0.01em;
-    font-size: clamp(2.5rem, 13.5vw, 7.5rem);
-    color: #fff;
-    transform: rotate(-2deg);
-    transform-origin: left center;
-    max-width: 100%;
-    width: fit-content;
-    text-shadow:
-      3px 3px 0 var(--pink),
-      6px 6px 0 rgba(0, 0, 0, 0.35);
-  }
-
-  .rocktober-subtitle {
-    font-family: var(--font-heading);
-    text-transform: none;
-    font-size: clamp(1.25rem, 2.6vw, 1.65rem);
-    font-weight: 600;
-    color: var(--gold);
-    letter-spacing: 0.01em;
-    max-width: 26ch;
+  .rocktober-hero__actions {
+    display: grid;
+    gap: 1.25rem;
+    justify-items: center;
+    max-width: 40rem;
   }
 
   .rocktober-lead {
     font-size: clamp(1.02rem, 1.6vw, 1.15rem);
     line-height: 1.7;
-    color: rgba(244, 240, 255, 0.88);
+    color: rgba(247, 239, 226, 0.88);
     max-width: 40rem;
   }
 
   .rocktober-cta-row {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 0.85rem;
     margin-top: 0.25rem;
   }
@@ -190,7 +140,7 @@ socialImage: /assets/img/events/generated/fall-family-festival.webp
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    color: rgba(244, 240, 255, 0.85);
+    color: rgba(247, 239, 226, 0.85);
     white-space: nowrap;
   }
 
@@ -205,7 +155,7 @@ socialImage: /assets/img/events/generated/fall-family-festival.webp
     padding-top: clamp(3.5rem, 8vw, 5.5rem);
     padding-bottom: clamp(3.5rem, 8vw, 5.5rem);
     background:
-      radial-gradient(ellipse 45% 40% at 90% 0%, rgba(31, 77, 122, 0.35), transparent 60%),
+      radial-gradient(ellipse 45% 40% at 90% 0%, rgba(244, 166, 59, 0.18), transparent 60%),
       var(--stage);
   }
 
@@ -247,11 +197,11 @@ socialImage: /assets/img/events/generated/fall-family-festival.webp
 
   .rocktober-copy {
     line-height: 1.75;
-    color: rgba(244, 240, 255, 0.82);
+    color: rgba(247, 239, 226, 0.82);
   }
 
   .rocktober-copy--dark {
-    color: #4b4560;
+    color: #5a4a38;
   }
 
   .rocktober-acts {
@@ -296,7 +246,7 @@ socialImage: /assets/img/events/generated/fall-family-festival.webp
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.16em;
-    color: var(--pink);
+    color: var(--rust);
     margin-bottom: 0.15rem;
   }
 
@@ -312,14 +262,14 @@ socialImage: /assets/img/events/generated/fall-family-festival.webp
   .rocktober-act p:not(.rocktober-act__tag) {
     font-size: 0.92rem;
     line-height: 1.6;
-    color: rgba(244, 240, 255, 0.78);
+    color: rgba(247, 239, 226, 0.78);
   }
 
   .rocktober-note {
     margin-top: 1.5rem;
     font-size: 0.88rem;
     line-height: 1.6;
-    color: rgba(244, 240, 255, 0.65);
+    color: rgba(247, 239, 226, 0.65);
   }
 
   .rocktober-recap {
@@ -342,7 +292,7 @@ socialImage: /assets/img/events/generated/fall-family-festival.webp
     padding: 0.85rem 1.1rem;
     font-size: 0.82rem;
     letter-spacing: 0.02em;
-    color: rgba(244, 240, 255, 0.65);
+    color: rgba(247, 239, 226, 0.65);
   }
 
   /* Ticket / signup card */
@@ -442,7 +392,7 @@ socialImage: /assets/img/events/generated/fall-family-festival.webp
     gap: 0.75rem;
     font-size: 0.88rem;
     line-height: 1.6;
-    color: #4b4560;
+    color: #5a4a38;
   }
 
   .rocktober-consent input {
@@ -465,14 +415,14 @@ socialImage: /assets/img/events/generated/fall-family-festival.webp
     font-size: 0.95rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    background: var(--pink);
+    background: var(--rust);
     color: #fff;
-    box-shadow: 0 16px 30px -14px rgba(200, 59, 89, 0.55);
+    box-shadow: 0 16px 30px -14px rgba(200, 83, 31, 0.55);
     transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
   }
 
   .rocktober-submit:hover {
-    background: #d84b6a;
+    background: #de6329;
     transform: translateY(-2px);
   }
 
@@ -495,18 +445,15 @@ socialImage: /assets/img/events/generated/fall-family-festival.webp
 <div class="rocktober-page">
 
   <section class="rocktober-hero" data-reveal>
-    <div class="rocktober-hero__bg" aria-hidden="true">
-      <img src="/assets/img/events/generated/fall-family-festival.webp" alt="A family decorates pumpkins together under string lights at a fall festival" {{ imageAttrs('/assets/img/events/generated/fall-family-festival.webp') }} loading="eager" decoding="async">
-    </div>
-    <div class="rocktober-hero__glow" aria-hidden="true"></div>
     <div class="container rocktober-hero__inner">
-      <span class="rocktober-eyebrow"><span aria-hidden="true">🎸</span> October 24, 2026 &middot; Camp Dodge</span>
-      <h1 class="rocktober-title">Rocktober</h1>
-      <p class="rocktober-subtitle">The Fall Family Festival is going Rocktober this year.</p>
-      <p class="rocktober-lead">Host a trunk, bring an activity, or lend a hand as Iowa Guard-connected families gather for an afternoon of trunk-or-treat-style fun, hands-on activities, and fall connection.</p>
-      <div class="rocktober-cta-row">
-        <a class="rocktober-btn rocktober-btn--gold" href="#trunk-signup">Sign up to host a trunk</a>
-        <a class="rocktober-btn rocktober-btn--ghost" href="/register/e80bfe5f-23fc-49e4-86f7-2e61c1c40965">Families: register to attend</a>
+      <h1 class="sr-only">Rocktober &mdash; Fall Family Festival 2026</h1>
+      <img class="rocktober-poster" src="/assets/img/events/rocktober-2026-flyer.jpg" alt="Rocktober, Fall Family Festival poster: October 24th, 2 to 4 PM, at Camp Dodge Pool Pavilion. Trunk or treat, youth bands, carnival, and candy." {{ imageAttrs('/assets/img/events/rocktober-2026-flyer.jpg') }} loading="eager" decoding="async">
+      <div class="rocktober-hero__actions">
+        <p class="rocktober-lead">Host a trunk, bring an activity, or lend a hand as Iowa Guard-connected families gather for trunk-or-treat fun, youth bands, a carnival, and candy.</p>
+        <div class="rocktober-cta-row">
+          <a class="rocktober-btn rocktober-btn--gold" href="#trunk-signup">Sign up to host a trunk</a>
+          <a class="rocktober-btn rocktober-btn--ghost" href="/register/e80bfe5f-23fc-49e4-86f7-2e61c1c40965">Families: register to attend</a>
+        </div>
       </div>
     </div>
   </section>
@@ -515,19 +462,23 @@ socialImage: /assets/img/events/generated/fall-family-festival.webp
     <div class="rocktober-ticker__track">
       <span>🎸 Rocktober 2026</span>
       <span>★</span>
-      <span>🍂 Fall Family Festival</span>
+      <span>🍬 Trunk or treat</span>
       <span>★</span>
-      <span>🥁 Trunk-or-treat-style fun</span>
+      <span>🥁 Youth bands</span>
       <span>★</span>
-      <span>🎃 Camp Dodge &middot; Oct 24</span>
+      <span>🎡 Carnival</span>
+      <span>★</span>
+      <span>🎃 Camp Dodge &middot; Oct 24, 2&ndash;4 PM</span>
       <span>★</span>
       <span>🎸 Rocktober 2026</span>
       <span>★</span>
-      <span>🍂 Fall Family Festival</span>
+      <span>🍬 Trunk or treat</span>
       <span>★</span>
-      <span>🥁 Trunk-or-treat-style fun</span>
+      <span>🥁 Youth bands</span>
       <span>★</span>
-      <span>🎃 Camp Dodge &middot; Oct 24</span>
+      <span>🎡 Carnival</span>
+      <span>★</span>
+      <span>🎃 Camp Dodge &middot; Oct 24, 2&ndash;4 PM</span>
       <span>★</span>
     </div>
   </div>
@@ -570,7 +521,7 @@ socialImage: /assets/img/events/generated/fall-family-festival.webp
 
         <figure class="rocktober-recap">
           <img src="/assets/img/events/previous-years/fall-family-festival.webp" alt="Families and volunteers smiling together at a past Fall Family Festival trunk-or-treat table" {{ imageAttrs('/assets/img/events/previous-years/fall-family-festival.webp') }} loading="lazy" decoding="async">
-          <figcaption>From last year's festival &mdash; real trunks, real fun.</figcaption>
+          <figcaption>From a past Fall Family Festival &mdash; real trunks, real fun.</figcaption>
         </figure>
       </div>
 
