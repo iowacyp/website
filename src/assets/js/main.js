@@ -609,18 +609,28 @@ const renderEventCard = (event, variant = 'upcoming') => {
     : '';
 
   let ctaButton = '';
+  let ctaButtonSecondary = '';
   if (eventFull) {
     ctaButton = '<span class="btn event-card__full-cta w-fit" aria-disabled="true">Event full</span>';
   } else if (variant !== 'completed' && event.ctaDisabled && event.ctaLabel) {
     ctaButton = `<span class="btn w-fit cursor-default" aria-disabled="true">${escapeEventHtml(event.ctaLabel)}</span>`;
   } else if (variant !== 'completed' && event.ctaUrl) {
-    const absolute = /^https?:/i.test(event.ctaUrl);
     const currentOrigin = window.location.origin;
+    const absolute = /^https?:/i.test(event.ctaUrl);
     const external = absolute && !event.ctaUrl.startsWith(currentOrigin);
     const attrs = external ? ' target="_blank" rel="noopener"' : '';
     const label = event.ctaLabel || 'Learn More';
     const externalNote = external ? ' <span class="sr-only">(opens in new tab)</span>' : '';
     ctaButton = `<a class="btn w-fit" href="${escapeEventHtml(event.ctaUrl)}"${attrs}>${escapeEventHtml(label)}${externalNote}</a>`;
+
+    if (event.ctaUrl2) {
+      const absolute2 = /^https?:/i.test(event.ctaUrl2);
+      const external2 = absolute2 && !event.ctaUrl2.startsWith(currentOrigin);
+      const attrs2 = external2 ? ' target="_blank" rel="noopener"' : '';
+      const label2 = event.ctaLabel2 || 'Learn More';
+      const externalNote2 = external2 ? ' <span class="sr-only">(opens in new tab)</span>' : '';
+      ctaButtonSecondary = `<a class="btn-secondary w-fit" href="${escapeEventHtml(event.ctaUrl2)}"${attrs2}>${escapeEventHtml(label2)}${externalNote2}</a>`;
+    }
   }
 
   const wrapperAccent = variant !== 'completed'
@@ -655,7 +665,7 @@ const renderEventCard = (event, variant = 'upcoming') => {
                 : ''
           }
         </div>
-        ${ctaButton}
+        ${ctaButtonSecondary ? `<div class="flex flex-wrap items-center gap-2">${ctaButton}${ctaButtonSecondary}</div>` : ctaButton}
       </div>
     </article>
   `;
