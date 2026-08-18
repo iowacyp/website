@@ -731,6 +731,59 @@ async function renderEvents() {
 }
 renderEvents();
 
+const initFestivalTrunkSignup = () => {
+  const form = document.querySelector('[data-festival-trunk-form]');
+  if (!form) return;
+
+  const statusEl = form.querySelector('[data-festival-trunk-status]');
+  const submitBtn = form.querySelector('[data-festival-trunk-submit]');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const payload = Object.fromEntries(new FormData(form).entries());
+    payload.affiliation = 'Fall Family Festival supporter';
+    payload.service_area = 'Des Moines';
+    payload.event_signup = 'Fall Family Festival 2026';
+    payload.source = 'www.iowacyp.com/fall-family-festival';
+    payload.tags = 'fall-family-festival-trunk,fall-family-festival-2026';
+    payload.submitted_at = new Date().toISOString();
+
+    submitBtn.disabled = true;
+    submitBtn.classList.add('opacity-60', 'cursor-wait');
+    statusEl.textContent = 'Sending your signup…';
+    statusEl.className = 'text-sm text-slate-600';
+
+    try {
+      const response = await fetch('/.netlify/functions/subscribe-proxy', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || result.ok !== true) {
+        throw new Error(result.error || 'Unable to complete your signup right now.');
+      }
+
+      form.reset();
+      statusEl.textContent = 'Thank you! Your festival support signup has been received. We will be in touch with next steps.';
+      statusEl.className = 'text-sm font-medium text-green-700';
+    } catch (error) {
+      statusEl.textContent = error.message || 'Unable to complete your signup right now. Please try again.';
+      statusEl.className = 'text-sm font-medium text-red-700';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('opacity-60', 'cursor-wait');
+    }
+  });
+};
+
+initFestivalTrunkSignup();
+
 const initQuoteCarousels = () => {
   const carousels = document.querySelectorAll('[data-quote-carousel]');
   if (!carousels.length) return;

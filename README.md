@@ -39,6 +39,7 @@ npx serve dist     # optional static preview after build
 - `scripts/build-snapshot.mjs` is archival only. Do not use it as a deployment path.
 - The verifier also blocks GitHub Pages deployment patterns in `.github/workflows/` and a root `CNAME` file.
 - Subscribe submissions are proxied through `netlify/functions/subscribe-proxy.js` and forwarded to the admin Netlify function endpoint.
+- Fall Family Festival trunk/support signups use the same secure proxy. In the admin contact list, filter the `fall-family-festival-trunk` tag to manage the roster and send festival communications. Signup details (name, phone, organization, support role, and notes) are included with each submission.
 - The contact-page virtual programming form uses the same `subscribe-proxy.js` workflow, with virtual-content preferences selected by default.
 - `npm run deploy` builds the site and publishes the finished `dist/` directory directly to the linked Netlify project, including local functions from `netlify/functions`.
 - Public site Netlify environment variables:

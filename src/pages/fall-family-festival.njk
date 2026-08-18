@@ -1,0 +1,91 @@
+---
+layout: layouts/base.njk
+title: Support the Fall Family Festival | Iowa CYP
+description: Help make Iowa CYP's Fall Family Festival special by hosting a trunk, volunteering, or supporting a family-friendly activity.
+permalink: /fall-family-festival/
+socialImage: /assets/img/events/fall-family-festival.jpg
+---
+
+<section class="relative isolate overflow-hidden bg-slate-950 text-white" data-reveal>
+  <img src="/assets/img/events/fall-family-festival.jpg" alt="Families enjoying a Fall Family Festival activity" class="absolute inset-0 h-full w-full object-cover opacity-35" {{ imageAttrs('/assets/img/events/fall-family-festival.jpg') }} decoding="async">
+  <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-primary/70"></div>
+  <div class="container relative py-20 md:py-28">
+    <div class="max-w-3xl space-y-6">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-secondary">October 24, 2026 · Camp Dodge</p>
+      <h1 class="text-4xl font-semibold tracking-tight md:text-6xl">Help make the Fall Family Festival unforgettable.</h1>
+      <p class="max-w-2xl text-lg leading-relaxed text-white/90">Host a trunk, bring an activity, or lend a hand as Iowa Guard-connected families gather for an afternoon of fall fun and connection.</p>
+      <a class="hero-cta" href="#trunk-signup">Sign up to host a trunk</a>
+    </div>
+  </div>
+</section>
+
+<section class="bg-slate-50 py-16 md:py-20" data-reveal>
+  <div class="container grid gap-10 lg:grid-cols-[1fr_1.25fr] lg:items-start">
+    <div class="space-y-6">
+      <div class="space-y-3">
+        <p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">Ways to support</p>
+        <h2 class="text-3xl font-semibold text-slate-900">Bring the fun to life</h2>
+        <p class="leading-relaxed text-slate-700">A decorated trunk is a simple, memorable way to welcome families. You can also volunteer at an activity or tell us how your organization would like to help.</p>
+      </div>
+      <ul class="space-y-3 text-slate-700">
+        <li class="rounded-2xl border border-primary/10 bg-white p-4"><strong class="text-primary">Host a trunk:</strong> decorate, hand out treats, and create a friendly stop for families.</li>
+        <li class="rounded-2xl border border-primary/10 bg-white p-4"><strong class="text-primary">Volunteer:</strong> help with welcome, activities, setup, or cleanup.</li>
+        <li class="rounded-2xl border border-primary/10 bg-white p-4"><strong class="text-primary">Partner:</strong> bring an activity, supplies, or a community resource to share.</li>
+      </ul>
+      <p class="text-sm leading-relaxed text-slate-600">After you sign up, the Iowa CYP team will confirm details and send event updates by email.</p>
+    </div>
+
+    <div id="trunk-signup" class="scroll-mt-24 rounded-[2rem] bg-white p-6 shadow-xl ring-1 ring-slate-200 sm:p-8">
+      <div class="mb-6 space-y-2">
+        <p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary/70">Festival support signup</p>
+        <h2 class="text-2xl font-semibold text-slate-900">Reserve your spot</h2>
+        <p class="text-sm leading-relaxed text-slate-600">Choose how you would like to help. We will use your information only to coordinate the festival and share related updates.</p>
+      </div>
+      <form class="space-y-5" data-festival-trunk-form novalidate>
+        <div class="hidden" aria-hidden="true">
+          <label for="festival-company">Leave this blank</label>
+          <input id="festival-company" name="bot-field" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label class="mb-1.5 block text-sm font-semibold text-slate-800" for="festival-name">Name</label>
+            <input class="w-full rounded-xl border border-slate-300 px-3 py-2.5" id="festival-name" name="name" autocomplete="name" required>
+          </div>
+          <div>
+            <label class="mb-1.5 block text-sm font-semibold text-slate-800" for="festival-organization">Organization (optional)</label>
+            <input class="w-full rounded-xl border border-slate-300 px-3 py-2.5" id="festival-organization" name="organization" autocomplete="organization">
+          </div>
+        </div>
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label class="mb-1.5 block text-sm font-semibold text-slate-800" for="festival-email">Email</label>
+            <input class="w-full rounded-xl border border-slate-300 px-3 py-2.5" id="festival-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div>
+            <label class="mb-1.5 block text-sm font-semibold text-slate-800" for="festival-phone">Phone (optional)</label>
+            <input class="w-full rounded-xl border border-slate-300 px-3 py-2.5" id="festival-phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+        </div>
+        <div>
+          <label class="mb-1.5 block text-sm font-semibold text-slate-800" for="festival-role">How would you like to help?</label>
+          <select class="w-full rounded-xl border border-slate-300 px-3 py-2.5" id="festival-role" name="support_role" required>
+            <option value="">Select one</option>
+            <option value="Host a trunk">Host a trunk</option>
+            <option value="Volunteer">Volunteer</option>
+            <option value="Community partner">Community partner / activity</option>
+          </select>
+        </div>
+        <div>
+          <label class="mb-1.5 block text-sm font-semibold text-slate-800" for="festival-details">Tell us about your trunk or support idea</label>
+          <textarea class="w-full rounded-xl border border-slate-300 px-3 py-2.5" id="festival-details" name="details" rows="4" required></textarea>
+        </div>
+        <label class="flex items-start gap-3 text-sm leading-relaxed text-slate-700" for="festival-consent">
+          <input class="mt-1 h-4 w-4 rounded border-slate-300 text-primary" id="festival-consent" name="consent" type="checkbox" value="true" required>
+          <span>I agree that Iowa CYP may contact me about my Fall Family Festival support signup.</span>
+        </label>
+        <p class="text-sm text-slate-600" role="status" aria-live="polite" data-festival-trunk-status></p>
+        <button class="btn" type="submit" data-festival-trunk-submit>Send signup</button>
+      </form>
+    </div>
+  </div>
+</section>

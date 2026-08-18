@@ -160,6 +160,9 @@ exports.handler = async (event) => {
 
   const payload = {
     email,
+    first_name: normalizeText(body.first_name || body.name) || null,
+    phone: normalizeText(body.phone) || null,
+    organization: normalizeText(body.organization) || null,
     region: normalizeText(body.region) || null,
     service_area: serviceArea,
     affiliation,
@@ -167,6 +170,9 @@ exports.handler = async (event) => {
     num_participants: virtualContent ? participantCount : null,
     source: normalizeText(body.source) || normalizeText(process.env.PUBLIC_SUBSCRIBE_SOURCE) || DEFAULT_SOURCE,
     tags: normalizeTags(body.tags),
+    event_signup: normalizeText(body.event_signup) || null,
+    support_role: normalizeText(body.support_role) || null,
+    details: normalizeText(body.details) || null,
     submitted_at: normalizeText(body.submitted_at || body.submittedAt) || new Date().toISOString(),
   };
 
