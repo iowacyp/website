@@ -760,7 +760,8 @@ const initFestivalTrunkSignup = () => {
     payload.service_area = 'Des Moines';
     payload.event_signup = 'Fall Family Festival 2026';
     payload.source = 'www.iowacyp.com';
-    payload.tags = 'fall-family-festival-trunk,fall-family-festival-2026,event-support,no-background-check-required';
+    payload.tags = 'fall-family-festival-trunk,fall-family-festival-2026,volunteer,festival-volunteer,event-support,no-background-check-required';
+    payload.volunteer_type = 'festival-support';
     payload.submitted_at = new Date().toISOString();
 
     submitBtn.disabled = true;

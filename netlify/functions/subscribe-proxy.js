@@ -172,6 +172,7 @@ exports.handler = async (event) => {
     tags: normalizeTags(body.tags),
     event_signup: normalizeText(body.event_signup) || null,
     support_role: normalizeText(body.support_role) || null,
+    volunteer_type: normalizeText(body.volunteer_type) || null,
     details: normalizeText(body.details) || null,
     submitted_at: normalizeText(body.submitted_at || body.submittedAt) || new Date().toISOString(),
   };
