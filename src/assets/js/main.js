@@ -759,7 +759,7 @@ const initFestivalTrunkSignup = () => {
     payload.affiliation = 'Fall Family Festival supporter';
     payload.service_area = 'Des Moines';
     payload.event_signup = 'Fall Family Festival 2026';
-    payload.source = 'www.iowacyp.com/fall-family-festival';
+    payload.source = 'www.iowacyp.com';
     payload.tags = 'fall-family-festival-trunk,fall-family-festival-2026';
     payload.submitted_at = new Date().toISOString();
 
@@ -1780,7 +1780,7 @@ initAccessGate({
   emailKey: 'lemonade-boss-access-email',
   unlockedMessage: 'Access unlocked. The Lemonade Boss links are now available.',
   successMessage: 'Access unlocked. The Lemonade Boss links are now available.',
-  defaultSource: 'lemonade-boss-page',
+  defaultSource: 'www.iowacyp.com',
   logLabel: 'Lemonade Boss access',
 });
 
