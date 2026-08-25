@@ -1,6 +1,7 @@
 const crypto = require('node:crypto');
 
 const DEFAULT_ADMIN_URL = 'https://cyp-admin.netlify.app/.netlify/functions/public-subscribe';
+const DEFAULT_ADMIN_EVENT_SUPPORT_URL = 'https://cyp-admin.netlify.app/.netlify/functions/public-event-support-intake';
 const DEFAULT_SOURCE = 'www.iowacyp.com';
 const DEFAULT_RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const DEFAULT_RATE_LIMIT_MAX = 20;
@@ -163,6 +164,7 @@ exports.handler = async (event) => {
     first_name: normalizeText(body.first_name || body.name) || null,
     phone: normalizeText(body.phone) || null,
     organization: normalizeText(body.organization) || null,
+    organization: normalizeText(body.organization) || null,
     region: normalizeText(body.region) || null,
     service_area: serviceArea,
     affiliation,
@@ -177,7 +179,9 @@ exports.handler = async (event) => {
     submitted_at: normalizeText(body.submitted_at || body.submittedAt) || new Date().toISOString(),
   };
 
-  const adminEndpoint = normalizeText(process.env.ADMIN_PUBLIC_SUBSCRIBE_URL) || DEFAULT_ADMIN_URL;
+  const adminEndpoint = payload.event_signup && payload.support_role
+    ? normalizeText(process.env.ADMIN_PUBLIC_EVENT_SUPPORT_URL) || DEFAULT_ADMIN_EVENT_SUPPORT_URL
+    : normalizeText(process.env.ADMIN_PUBLIC_SUBSCRIBE_URL) || DEFAULT_ADMIN_URL;
   const timestamp = String(Date.now());
   const payloadString = JSON.stringify(payload);
   const signature = crypto.createHmac('sha256', sharedSecret).update(`${timestamp}.${payloadString}`).digest('hex');

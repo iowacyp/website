@@ -39,12 +39,12 @@ npx serve dist     # optional static preview after build
 - `scripts/build-snapshot.mjs` is archival only. Do not use it as a deployment path.
 - The verifier also blocks GitHub Pages deployment patterns in `.github/workflows/` and a root `CNAME` file.
 - Subscribe submissions are proxied through `netlify/functions/subscribe-proxy.js` and forwarded to the admin Netlify function endpoint.
-- Fall Family Festival trunk/support signups use the same secure proxy. In the admin volunteer list, filter the `fall-family-festival-trunk` and `festival-volunteer` tags to manage the roster and send festival communications. Signup details (name, phone, organization, support role, notes, and `volunteer_type`) are included with each submission.
-- These trunk/event-support signups are also tagged `event-support`, `volunteer`, and `no-background-check-required` because they are day-of event helpers, not classified volunteers. They stay distinct from the admin's `specified`/`non_specified` and STP volunteer groupings so staff can triage them separately in the Volunteers page.
+- Fall Family Festival trunk/support signups use the secure proxy and appear on the event's **Event Support** tab in admin. They remain separate from attendees and the classified volunteer/background-check workflow.
 - The contact-page virtual programming form uses the same `subscribe-proxy.js` workflow, with virtual-content preferences selected by default.
 - `npm run deploy` builds the site and publishes the finished `dist/` directory directly to the linked Netlify project, including local functions from `netlify/functions`.
 - Public site Netlify environment variables:
   - `ADMIN_PUBLIC_SUBSCRIBE_URL` (e.g. `https://cyp-admin.netlify.app/.netlify/functions/public-subscribe`)
+  - `ADMIN_PUBLIC_EVENT_SUPPORT_URL` (e.g. `https://cyp-admin.netlify.app/.netlify/functions/public-event-support-intake`)
   - `PUBLIC_SUBSCRIBE_SHARED_SECRET` (must exactly match admin site's `PUBLIC_SUBSCRIBE_SHARED_SECRET`)
   - `PUBLIC_SUBSCRIBE_SOURCE` (optional, defaults to `www.iowacyp.com`)
   - `PUBLIC_SUBSCRIBE_RATE_LIMIT_WINDOW_MS` (optional, default `600000`)
