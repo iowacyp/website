@@ -48,6 +48,11 @@
   status = 302
 
 [[redirects]]
+  from = "/feedback/:token"
+  to = "/feedback/?token=:token"
+  status = 200
+
+[[redirects]]
   from = "/contact-us"
   to = "/contact"
   status = 301

@@ -1030,6 +1030,9 @@ video {
 .cursor-default {
   cursor: default;
 }
+.cursor-pointer {
+  cursor: pointer;
+}
 .cursor-wait {
   cursor: wait;
 }
@@ -4506,6 +4509,21 @@ footer a:hover {
   color: rgb(31 77 122 / var(--tw-text-opacity, 1));
 }
 
+.peer:checked ~ .peer-checked\:border-primary {
+  --tw-border-opacity: 1;
+  border-color: rgb(31 77 122 / var(--tw-border-opacity, 1));
+}
+
+.peer:checked ~ .peer-checked\:bg-primary {
+  --tw-bg-opacity: 1;
+  background-color: rgb(31 77 122 / var(--tw-bg-opacity, 1));
+}
+
+.peer:checked ~ .peer-checked\:text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
 @media (min-width: 640px) {
 
   .sm\:row-span-2 {
@@ -4554,6 +4572,10 @@ footer a:hover {
 
   .sm\:gap-3 {
     gap: 0.75rem;
+  }
+
+  .sm\:p-10 {
+    padding: 2.5rem;
   }
 
   .sm\:p-6 {
