@@ -8,7 +8,7 @@ pagination:
 permalink: /stories/{{ story.id }}/index.html
 searchExclude: true
 eleventyComputed:
-  title: "{{ story.title }} | Iowa CYP"
+  title: "{{ story.title | safe }} | Iowa CYP"
   description: "{{ story.hook }}"
   socialImage: "{{ story.image }}"
   ogType: "article"

@@ -59,7 +59,26 @@ permalink: /events/
       <p class="text-slate-700 leading-relaxed">Find next program year&rsquo;s events organized by fall, spring, and summer. Event details come directly from our registration system and are updated as plans are finalized.</p>
     </div>
     <div id="eventsList" class="space-y-6" aria-live="polite" aria-busy="false">
-      <p class="text-gray-600">Loading events...</p>
+      {% for event in events.events %}
+        {% if event.showOnWebsite %}
+          <article class="rounded-3xl border border-primary/15 bg-white p-6 shadow-sm">
+            <div class="grid gap-4 md:grid-cols-[12rem_minmax(0,1fr)] md:items-start">
+              <div>
+                <time class="font-semibold text-primary" datetime="{{ event.date }}">{{ event.displayDate }}</time>
+                {% if event.time %}<p class="mt-1 text-sm text-slate-600">{{ event.time }}</p>{% endif %}
+              </div>
+              <div class="space-y-3">
+                <h3 class="text-xl font-semibold text-slate-900">{{ event.title }}</h3>
+                {% if event.location %}<p class="font-medium text-slate-700">{{ event.location }}</p>{% endif %}
+                {% if event.notes %}<p class="leading-relaxed text-slate-700">{{ event.notes }}</p>{% endif %}
+                {% if event.ctaUrl and not event.ctaDisabled %}
+                  <a class="btn inline-flex" href="{{ event.ctaUrl }}">{{ event.ctaLabel or 'View event details' }}</a>
+                {% endif %}
+              </div>
+            </div>
+          </article>
+        {% endif %}
+      {% endfor %}
     </div>
     <div class="flex flex-wrap gap-3">
       <a class="btn" href="{{ site.links.eventsSubscribe }}">Get event emails</a>
@@ -135,4 +154,4 @@ permalink: /events/
   </section>
 {% endfor %}
 
-<script id="eventStructuredData" type="application/ld+json"></script>
+<script id="eventStructuredData" type="application/ld+json">{{ eventStructuredData(events, site) | safe }}</script>

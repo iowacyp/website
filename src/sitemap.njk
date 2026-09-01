@@ -5,7 +5,8 @@ eleventyExcludeFromCollections: true
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {% for page in collections.all %}
-  {% if page.url and page.outputPath and page.outputPath.endsWith('.html') and page.url != '/sitemap.xml' %}
+  {% set pageRobots = page.data.robots or '' %}
+  {% if page.url and page.outputPath and page.outputPath.endsWith('.html') and page.url != '/sitemap.xml' and page.url != '/404.html' and not ('noindex' in pageRobots) %}
   <url>
     <loc>{{ site.domain }}{{ page.url }}</loc>
     {% if page.date %}

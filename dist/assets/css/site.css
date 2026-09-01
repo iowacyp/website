@@ -4751,6 +4751,10 @@ footer a:hover {
     grid-template-columns: 1.2fr 1fr;
   }
 
+  .md\:grid-cols-\[12rem_minmax\(0\2c 1fr\)\] {
+    grid-template-columns: 12rem minmax(0,1fr);
+  }
+
   .md\:grid-cols-\[minmax\(0\2c 1\.1fr\)_minmax\(260px\2c 0\.85fr\)\] {
     grid-template-columns: minmax(0,1.1fr) minmax(260px,0.85fr);
   }
@@ -4761,6 +4765,10 @@ footer a:hover {
 
   .md\:flex-row {
     flex-direction: row;
+  }
+
+  .md\:items-start {
+    align-items: flex-start;
   }
 
   .md\:items-end {

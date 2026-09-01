@@ -191,12 +191,48 @@ const storiesForAudience = (stories = [], audience, limit) => {
   return Number.isInteger(limit) ? matches.slice(0, limit) : matches;
 };
 
+const getEventStructuredData = (eventData = {}, site = {}) => {
+  const domain = String(site.domain || "").replace(/\/$/, "");
+  const absoluteUrl = (url) => {
+    if (!url) return "";
+    if (/^https?:\/\//i.test(url)) return url;
+    return `${domain}${url.startsWith("/") ? url : `/${url}`}`;
+  };
+  const events = Array.isArray(eventData.events)
+    ? eventData.events.filter((event) => event?.showOnWebsite === true)
+    : [];
+
+  return jsonStringify({
+    "@context": "https://schema.org",
+    "@graph": events.map((event) => ({
+      "@type": "Event",
+      name: event.title,
+      startDate: event.date,
+      ...(event.endDate ? { endDate: event.endDate } : {}),
+      ...(event.notes ? { description: event.notes } : {}),
+      ...(event.location
+        ? { location: { "@type": "Place", name: event.location } }
+        : {}),
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      eventStatus: "https://schema.org/EventScheduled",
+      ...(event.ctaUrl ? { url: absoluteUrl(event.ctaUrl) } : {}),
+      organizer: {
+        "@type": "Organization",
+        "@id": `${domain}/#organization`,
+        name: site.name,
+        url: domain,
+      },
+    })),
+  });
+};
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addNunjucksGlobal("imageAttrs", imageAttrs);
   eleventyConfig.addNunjucksGlobal("jsonStringify", jsonStringify);
   eleventyConfig.addNunjucksGlobal("getFeaturedEvent", getFeaturedEvent);
   eleventyConfig.addNunjucksGlobal("storyOfflineAssets", getStoryOfflineAssets);
   eleventyConfig.addNunjucksGlobal("storyCacheVersion", getStoryCacheVersion);
+  eleventyConfig.addNunjucksGlobal("eventStructuredData", getEventStructuredData);
   eleventyConfig.addFilter("storiesForAudience", storiesForAudience);
   eleventyConfig.addPassthroughCopy({ "src/assets/img": "assets/img" });
   eleventyConfig.addPassthroughCopy({ "src/assets/js": "assets/js" });

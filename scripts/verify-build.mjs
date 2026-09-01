@@ -129,6 +129,42 @@ const kioskIndex = fs.readFileSync(path.join(distDir, "story-gallery", "index.ht
 const kioskWorker = fs.readFileSync(path.join(distDir, "story-gallery", "sw.js"), "utf8");
 const stpIndex = fs.readFileSync(path.join(distDir, "state-teen-panel", "index.html"), "utf8");
 const sitemap = fs.readFileSync(path.join(distDir, "sitemap.xml"), "utf8");
+const measurementId = "G-DZBE6MTT1J";
+
+walkFiles(distDir, (fullPath) => {
+  if (path.extname(fullPath).toLowerCase() !== ".html") return;
+
+  const relativePath = path.relative(distDir, fullPath);
+  const content = fs.readFileSync(fullPath, "utf8");
+  const measurementIdCount = content.split(measurementId).length - 1;
+  const expectedMeasurementIdCount = relativePath === path.join("story-gallery", "index.html") ? 0 : 2;
+  if (measurementIdCount !== expectedMeasurementIdCount) {
+    fail(`unexpected GA4 tag count in ${relativePath}: ${measurementIdCount}`);
+  }
+
+  for (const [index, match] of [...content.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)].entries()) {
+    try {
+      JSON.parse(match[1]);
+    } catch (error) {
+      fail(`invalid JSON-LD block ${index + 1} in ${relativePath}: ${error.message}`);
+    }
+  }
+});
+
+for (const excludedUrl of ["/404.html", "/feedback/", "/mental-health-resources/"]) {
+  if (sitemap.includes(excludedUrl)) {
+    fail(`sitemap contains excluded URL: ${excludedUrl}`);
+  }
+}
+
+const eventsIndex = fs.readFileSync(path.join(distDir, "events", "index.html"), "utf8");
+const visibleEvents = JSON.parse(fs.readFileSync(path.join(root, "src", "data", "events.json"), "utf8"))
+  .events.filter((event) => event?.showOnWebsite === true);
+const renderedEventCards = (eventsIndex.match(/<article class="rounded-3xl border border-primary\/15/g) || []).length;
+const renderedEventSchema = (eventsIndex.match(/"@type":"Event"/g) || []).length;
+if (renderedEventCards !== visibleEvents.length || renderedEventSchema !== visibleEvents.length) {
+  fail(`events page must render ${visibleEvents.length} visible cards and Event schema objects`);
+}
 
 function sourceAssetPath(asset) {
   if (asset.startsWith("/assets/")) return path.join(root, "src", asset);

@@ -3,6 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DZBE6MTT1J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DZBE6MTT1J');
+  </script>
   <title>{{ title or site.shortName }}</title>
   <meta name="description" content="{{ description or site.tagline }}">
   {% if robots %}
@@ -25,8 +33,10 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "{{ site.domain }}/#organization",
     "name": "{{ site.name }}",
     "url": "{{ site.domain }}",
+    "description": "{{ site.tagline }}",
     "logo": "{{ site.domain }}/assets/img/branding_symbol.png",
     "sameAs": [
       "{{ site.social.facebook }}",
