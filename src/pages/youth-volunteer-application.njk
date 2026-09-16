@@ -41,6 +41,17 @@ robots: noindex, follow
           <label class="block space-y-2 text-sm font-medium text-slate-800">What interests you about volunteering with STP and Iowa CYP?
             <textarea name="interest" required rows="4" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 font-normal text-slate-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"></textarea>
           </label>
+          <label class="block space-y-2 text-sm font-medium text-slate-800">Availability <span class="font-normal text-slate-500">(days, times, or general schedule)</span>
+            <textarea name="availability" required rows="2" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 font-normal text-slate-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"></textarea>
+          </label>
+          <div class="space-y-2 text-sm font-medium text-slate-800">
+            <span>Does the youth have any current military/ARNG affiliation? <span class="font-normal text-slate-500">(not required for this role)</span></span>
+            <div class="flex flex-wrap gap-4 font-normal">
+              <label class="flex items-center gap-2"><input type="radio" name="militaryAffiliation" value="none" required class="h-4 w-4 border-slate-300 text-primary focus:ring-primary"> No military/ARNG affiliation</label>
+              <label class="flex items-center gap-2"><input type="radio" name="militaryAffiliation" value="yes" required class="h-4 w-4 border-slate-300 text-primary focus:ring-primary"> Yes, has a military/ARNG affiliation</label>
+            </div>
+            <input name="militaryAffiliationDetail" placeholder="If yes, briefly describe the affiliation (optional)" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 font-normal text-slate-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary/20">
+          </div>
         </fieldset>
 
         <fieldset class="space-y-5 border-t border-slate-200 pt-8">
@@ -115,7 +126,7 @@ robots: noindex, follow
       submitButton.textContent = "Submitting…";
       const fields = new FormData(form);
       const payload = {
-        youth: { name: fields.get("youthName"), age: fields.get("youthAge"), email: fields.get("youthEmail"), city: fields.get("city"), interest: fields.get("interest"), typedName: fields.get("youthTypedName") },
+        youth: { name: fields.get("youthName"), age: fields.get("youthAge"), email: fields.get("youthEmail"), city: fields.get("city"), interest: fields.get("interest"), availability: fields.get("availability"), militaryAffiliation: fields.get("militaryAffiliation"), militaryAffiliationDetail: fields.get("militaryAffiliationDetail"), typedName: fields.get("youthTypedName") },
         guardian: { name: fields.get("guardianName"), relationship: fields.get("guardianRelationship"), email: fields.get("guardianEmail"), phone: fields.get("guardianPhone"), typedName: fields.get("guardianTypedName") },
         agreement: { youth: fields.get("youthAgreement") === "on", guardianConsent: fields.get("guardianConsent") === "on", guardian: fields.get("guardianAgreement") === "on" },
         submittedAt: new Date().toISOString(),
