@@ -18,23 +18,6 @@
       }
     },
     {
-      "id": "P002",
-      "name": "Summer Camp",
-      "type": "Camp",
-      "targetAudience": "Middle and high school military youth",
-      "description": "Summer Camp gives Guard teens a week of adventure, growth, and community. Through team challenges, leadership labs, and mentor support, campers build confidence, friendships, and memories that last far beyond the week.",
-      "cta": {
-        "label": "Registration Coming Soon",
-        "disabled": true
-      },
-      "image": "/assets/img/programs/summer_camp_group.jpg",
-      "featured": true,
-      "quote": {
-        "text": "This camp and staff were able to put a light back into my daughter’s eyes… The week was transformative in so many ways.",
-        "attribution": "Guard Parent, 7/13/2021"
-      }
-    },
-    {
       "id": "P003",
       "name": "Month of the Military Child",
       "type": "Campaign",

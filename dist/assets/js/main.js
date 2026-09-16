@@ -621,7 +621,9 @@ const renderEventCard = (event, variant = 'upcoming') => {
     const attrs = external ? ' target="_blank" rel="noopener"' : '';
     const label = event.ctaLabel || 'Learn More';
     const externalNote = external ? ' <span class="sr-only">(opens in new tab)</span>' : '';
-    ctaButton = `<a class="btn w-fit" href="${escapeEventHtml(event.ctaUrl)}"${attrs}>${escapeEventHtml(label)}${externalNote}</a>`;
+    ctaButton = event.registrationInstructionsFile
+      ? `<button class="btn w-fit" type="button" data-modal-open="camp-registration-${escapeEventHtml(event.adminId)}">${escapeEventHtml(label)}</button>`
+      : `<a class="btn w-fit" href="${escapeEventHtml(event.ctaUrl)}"${attrs}>${escapeEventHtml(label)}${externalNote}</a>`;
 
     if (event.ctaUrl2) {
       const absolute2 = /^https?:/i.test(event.ctaUrl2);
@@ -714,6 +716,10 @@ async function renderEvents() {
   if (!upcomingTarget) return;
 
   upcomingTarget.setAttribute('aria-busy', 'true');
+
+  // Event cards are refreshed from events.json. Keep server-rendered modals
+  // outside the replaced region so their instructions remain available.
+  upcomingTarget.querySelectorAll('[data-modal]').forEach((modal) => document.body.appendChild(modal));
 
   try {
     const res = await fetch('/events.json', { cache: 'no-store' });
@@ -930,9 +936,6 @@ const initStoryCarousel = () => {
 };
 
 const initStoryModals = () => {
-  const openButtons = Array.from(document.querySelectorAll('[data-modal-open]'));
-  if (!openButtons.length) return;
-
   let activeModal = null;
   let previousFocus = null;
 
@@ -961,12 +964,12 @@ const initStoryModals = () => {
     (autoFocus instanceof HTMLElement ? autoFocus : firstFocusable || modal).focus();
   };
 
-  openButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const modalName = button.getAttribute('data-modal-open');
-      if (!modalName) return;
-      openModal(document.querySelector(`[data-modal="${modalName}"]`));
-    });
+  document.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-modal-open]');
+    if (!button) return;
+    const modalName = button.getAttribute('data-modal-open');
+    if (!modalName) return;
+    openModal(document.querySelector(`[data-modal="${modalName}"]`));
   });
 
   document.querySelectorAll('[data-modal]').forEach((modal) => {
