@@ -6,22 +6,6 @@
   },
   "events": [
     {
-      "adminId": "e80bfe5f-23fc-49e4-86f7-2e61c1c40965",
-      "title": "Fall Family Festival",
-      "date": "2026-10-24",
-      "endDate": "2026-10-24",
-      "displayDate": "October 24, 2026",
-      "time": "2:00 PM - 4:00 PM",
-      "location": "Camp Dodge - Pool Pavilion",
-      "notes": "Guard-connected families gathered at Camp Dodge for Rocktober, with trunk-or-treat, youth bands, a carnival, mini golf, and family fun.",
-      "image": "",
-      "featured": false,
-      "full": false,
-      "registrationCode": "",
-      "ageRange": "",
-      "showOnWebsite": true
-    },
-    {
       "adminId": "ae600c2b-e49a-4578-8703-ddac2291d079",
       "title": "Cookies with Santa",
       "date": "2026-12-12",
@@ -249,6 +233,24 @@
       "location": "Camp Dodge - Pool Pavilion, 7105 NW 70th Ave, Johnston, IA",
       "notes": "Families kicked off the program year with a fall gathering at Camp Dodge.",
       "image": "/content/UpcomingEvents/Fall Family Festival.jpg"
+    },
+    {
+      "adminId": "e80bfe5f-23fc-49e4-86f7-2e61c1c40965",
+      "title": "Fall Family Festival",
+      "date": "2026-10-24",
+      "endDate": "2026-10-24",
+      "displayDate": "October 24, 2026",
+      "time": "2:00 PM - 4:00 PM",
+      "location": "Camp Dodge - Pool Pavilion",
+      "notes": "Guard-connected families gathered at Camp Dodge for Rocktober, with trunk-or-treat, youth bands, a carnival, mini golf, and family fun.",
+      "image": "",
+      "featured": false,
+      "full": false,
+      "registrationCode": "",
+      "ageRange": "",
+      "showOnWebsite": true,
+      "ctaLabel": "Register",
+      "ctaUrl": "/register/e80bfe5f-23fc-49e4-86f7-2e61c1c40965"
     }
   ]
 }
