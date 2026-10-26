@@ -730,7 +730,15 @@ async function renderEvents() {
       ? data.events.filter((event) => event?.showOnWebsite === true)
       : [];
     const programYear = { ...DEFAULT_PROGRAM_YEAR, ...(data.programYear || {}) };
-    const upcomingEvents = normalizeProgramEvents(eventList, programYear);
+    const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+    const upcomingEvents = normalizeProgramEvents(eventList.filter((event) => (event.endDate || event.date) >= today), programYear);
+    const pastTarget = document.getElementById('pastEventsList');
+    if (pastTarget) {
+      const pastEvents = [...eventList.filter((event) => (event.endDate || event.date) < today), ...(data.lastYearEvents || [])];
+      const uniquePastEvents = [...new Map(pastEvents.map((event) => [`${event.date}-${event.title}`, event])).values()];
+      pastTarget.innerHTML = sortEventsByDate(uniquePastEvents, 'desc').map((event) => renderEventCard(event, 'completed')).join('');
+      scrollReveal.init(pastTarget);
+    }
 
     upcomingTarget.innerHTML = upcomingEvents.length
       ? groupEventsBySeason(upcomingEvents, programYear).map(renderEventSeasonGroup).join('')

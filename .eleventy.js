@@ -199,7 +199,7 @@ const getEventStructuredData = (eventData = {}, site = {}) => {
     return `${domain}${url.startsWith("/") ? url : `/${url}`}`;
   };
   const events = Array.isArray(eventData.events)
-    ? eventData.events.filter((event) => event?.showOnWebsite === true)
+    ? eventData.events.filter((event) => event?.showOnWebsite === true && (event.endDate || event.date) >= new Intl.DateTimeFormat("en-CA", { timeZone: "America/Chicago", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()))
     : [];
 
   return jsonStringify({
@@ -234,6 +234,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addNunjucksGlobal("storyCacheVersion", getStoryCacheVersion);
   eleventyConfig.addNunjucksGlobal("eventStructuredData", getEventStructuredData);
   eleventyConfig.addFilter("storiesForAudience", storiesForAudience);
+  const today = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+  eleventyConfig.addFilter("upcomingEvents", (events = []) => events.filter((event) => event.showOnWebsite === true && (event.endDate || event.date) >= today()));
+  eleventyConfig.addFilter("pastEvents", (data = {}) => [...(data.events || []).filter((event) => event.showOnWebsite === true && (event.endDate || event.date) < today()), ...(data.lastYearEvents || [])].sort((a, b) => b.date.localeCompare(a.date)));
   eleventyConfig.addPassthroughCopy({ "src/assets/img": "assets/img" });
   eleventyConfig.addPassthroughCopy({ "src/assets/js": "assets/js" });
   eleventyConfig.addPassthroughCopy({ "src/assets/video": "assets/video" });

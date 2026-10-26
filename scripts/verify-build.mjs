@@ -159,7 +159,7 @@ for (const excludedUrl of ["/404.html", "/feedback/", "/mental-health-resources/
 
 const eventsIndex = fs.readFileSync(path.join(distDir, "events", "index.html"), "utf8");
 const visibleEvents = JSON.parse(fs.readFileSync(path.join(root, "src", "data", "events.json"), "utf8"))
-  .events.filter((event) => event?.showOnWebsite === true);
+  .events.filter((event) => event?.showOnWebsite === true && (event.endDate || event.date) >= new Intl.DateTimeFormat("en-CA", { timeZone: "America/Chicago", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()));
 const renderedEventCards = (eventsIndex.match(/<article class="rounded-3xl border border-primary\/15/g) || []).length;
 const renderedEventSchema = (eventsIndex.match(/"@type":"Event"/g) || []).length;
 if (renderedEventCards !== visibleEvents.length || renderedEventSchema !== visibleEvents.length) {
