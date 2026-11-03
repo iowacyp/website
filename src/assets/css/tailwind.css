@@ -111,6 +111,28 @@ footer a {
   @apply text-sm text-slate-700;
 }
 
+.resource-topic {
+  @apply rounded-full border border-primary/15 bg-primary/5 px-3 py-1.5 text-sm font-semibold text-primary transition-colors duration-150;
+}
+
+.resource-topic:hover,
+.resource-topic:focus-visible {
+  @apply border-primary bg-primary text-white outline-none;
+}
+
+.resource-directory-card {
+  @apply rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition duration-200;
+}
+
+.resource-directory-card:hover,
+.resource-directory-card:focus-within {
+  @apply border-primary/40 shadow-md;
+}
+
+.resource-initials {
+  @apply inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-xs font-bold tracking-wide text-primary;
+}
+
 .resource-logo-fallback {
   @apply inline-flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl border border-primary/15 bg-primary/5 text-primary;
 }

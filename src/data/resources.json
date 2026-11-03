@@ -5,6 +5,7 @@
       "label": "Scholarship Database",
       "url": "https://onedrive.live.com/:x:/g/personal/78FBADA0C39648B6/QbZIlsOgrfsggHhwAAAAAAAA2mQHBZUkPzVGnQ?resid=78FBADA0C39648B6!112&ithint=file%2Cxlsx&migratedtospo=true&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy83OGZiYWRhMGMzOTY0OGI2L1FiWklsc09ncmZzZ2dIaHdBQUFBQUFBQTJtUUhCWlVrUHpWR25R",
       "summary": "Curated listings of scholarships for Iowa military-connected youth.",
+      "category": "Education & planning",
       "image": "/assets/img/resources/resource_scholarships.svg",
       "notes": "Acknowledgments: Emily Williams (Military Youth & Family Support VISTA) and Kristen Ferullo (Navy School Liaison) for their collaboration."
     },
@@ -13,6 +14,7 @@
       "label": "Iowa National Guard Mobile App (iOS)",
       "url": "https://apps.apple.com/us/app/iowa-national-guard/id6446351421",
       "summary": "Download the Iowa National Guard mobile app for iPhone to access news, events, and resources.",
+      "category": "Guard connection",
       "image": "/content/Media/iaarng.jpg",
       "notes": "Ensure App Store badge follows branding."
     },
@@ -21,6 +23,7 @@
       "label": "Iowa National Guard Mobile App (Android)",
       "url": "https://play.google.com/store/apps/details?id=com.m360mobile.iowa",
       "summary": "Download the Iowa National Guard mobile app for Android to stay connected with updates and tools.",
+      "category": "Guard connection",
       "image": "/content/Media/googleplay.png",
       "notes": "Verify Google Play badge assets are current."
     },
@@ -29,6 +32,7 @@
       "label": "Tutor.com (Military)",
       "url": "https://military.tutor.com/home",
       "summary": "24/7 online tutoring and homework help for military families.",
+      "category": "Education & planning",
       "image": "/assets/img/resources/resource_tutorcom.png",
       "notes": "Note any usage rights for screenshots or logos."
     },
@@ -37,6 +41,7 @@
       "label": "Military OneSource",
       "url": "https://www.militaryonesource.mil/",
       "summary": "Comprehensive support services for military members and families.",
+      "category": "Family support",
       "image": "/assets/img/resources/resource_mos.png",
       "notes": "Check if a youth-program subpage is preferred."
     },
@@ -45,6 +50,7 @@
       "label": "American Red Cross - Military Families",
       "url": "https://www.redcross.org/about-us/our-work/military-families.html",
       "summary": "Programs and services supporting military families through the American Red Cross.",
+      "category": "Family support",
       "image": "/assets/img/resources/resource_redcross.png",
       "notes": "Confirm link anchors correctly on mobile."
     },
@@ -53,6 +59,7 @@
       "label": "BGCA Mission Youth Outreach",
       "url": "https://www.bgca.org/about-us/military/mission-youth-outreach-2025/",
       "summary": "Boys & Girls Clubs programming tailored to military-connected youth.",
+      "category": "Youth activities",
       "image": "/assets/img/partners/partner_bgca.png",
       "notes": "Add primary BGCA military page if needed."
     },
@@ -61,6 +68,7 @@
       "label": "Child Care Aware (Army)",
       "url": "https://www.childcareaware.org/fee-assistancerespite/military-families/army/",
       "summary": "Child care fee assistance and respite programs for Army families.",
+      "category": "Child care",
       "image": "/assets/img/resources/resource_cca.webp",
       "notes": "Monitor for URL updates each fiscal year."
     },
@@ -69,6 +77,7 @@
       "label": "Hy-Vee KidsFit",
       "url": "https://kidsfitwellnessclub.org/",
       "summary": "Wellness challenges and resources for youth and families from Hy-Vee KidsFit.",
+      "category": "Wellness",
       "image": "/assets/img/resources/resource_hyvee.png",
       "notes": "Request partner logo approval if highlighted."
     },
@@ -77,6 +86,7 @@
       "label": "Lemonade Boss Curriculum App",
       "url": "/lemonade-boss/",
       "summary": "Freshly updated kid-friendly web app that guides young entrepreneurs through planning and running their own lemonade stand.",
+      "category": "Education & planning",
       "image": "/assets/img/lemonade-banner.jpg",
       "notes": "Great fit for workshops, family nights, or take-home activities after financial literacy lessons."
     },
@@ -85,6 +95,7 @@
       "label": "Our Military Kids",
       "url": "https://www.ourmilitarykids.org/",
       "summary": "Activity grants supporting children of deployed Guard and Reserve members.",
+      "category": "Family support",
       "image": "/assets/img/resources/resource_omk.svg",
       "notes": "Capture any application deadlines in notes."
     },
@@ -93,6 +104,7 @@
       "label": "ARNG Child & Youth Services",
       "url": "https://arngcys.com/",
       "summary": "National Guard Child & Youth Services hub for programs and resources.",
+      "category": "Guard connection",
       "image": "/content/Media/arngcys.webp",
       "notes": "Confirm regional contacts referenced on site."
     },
@@ -101,6 +113,7 @@
       "label": "Iowa National Guard Warrior & Family Services",
       "url": "https://www.iowanationalguard.com/member-and-family-services/",
       "summary": "Comprehensive services and support for Iowa Guard members and families.",
+      "category": "Guard connection",
       "image": "/content/Media/wfsb.jpg",
       "notes": "Check for deeper links to specific services."
     },
@@ -109,6 +122,7 @@
       "label": "Upwards Drill-Time Child Care",
       "url": "https://upwards.com/",
       "summary": "Pilot program providing no-cost childcare for military families during drill weekends and battle assemblies.",
+      "category": "Child care",
       "image": "/assets/img/resources/resource_upwards.svg",
       "notes": null
     },
@@ -117,8 +131,17 @@
       "label": "Crisis Text Line",
       "url": "https://www.crisistextline.org/",
       "summary": "Free, 24/7, confidential text-based mental health support for anyone in crisis. Text HELLO to 741741 to connect with a trained Crisis Counselor.",
+      "category": "Crisis & safety",
       "image": "/assets/img/resources/resource_crisistextline.png",
       "notes": "Verify inclusion of text number (741741) and ensure ADA-compliant contrast on graphics."
+    },
+    {
+      "id": "R015",
+      "label": "CAASA — Centers Against Abuse & Sexual Assault",
+      "url": "https://www.caasaonline.org/",
+      "summary": "Free, confidential support, advocacy, and a 24/7 HopeLine for survivors of sexual assault or abuse and their loved ones in Northwest Iowa. Call 1-877-362-4612.",
+      "category": "Crisis & safety",
+      "notes": "CAASA serves 19 counties in Northwest Iowa; services are available to people of all ages and genders."
     }
   ]
 }
