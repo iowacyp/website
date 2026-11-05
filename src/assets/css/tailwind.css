@@ -395,6 +395,171 @@ footer a {
   @apply bg-primary/5 border-primary/10 shadow-sm;
 }
 
+/* State Teen Panel member scroll */
+.stp-meet-panel {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(254, 201, 69, 0.24), transparent 20rem),
+    radial-gradient(circle at 92% 36%, rgba(31, 77, 122, 0.13), transparent 25rem),
+    #f8fafc;
+}
+
+.stp-member-scroll {
+  position: relative;
+  overflow: hidden;
+}
+
+.stp-member-scroll::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(31, 77, 122, 0.22) 5%, rgba(31, 77, 122, 0.22) 95%, transparent);
+}
+
+.stp-member {
+  position: relative;
+  min-height: 38rem;
+  padding: 4rem 0;
+}
+
+.stp-member::before {
+  content: "";
+  position: absolute;
+  inset: 1rem max(1rem, calc((100vw - 72rem) / 2)) 1rem;
+  border: 1px solid rgba(31, 77, 122, 0.08);
+  border-radius: 3rem;
+  background: rgba(255, 255, 255, 0.53);
+  box-shadow: 0 18px 50px rgba(31, 77, 122, 0.06);
+}
+
+.stp-member:nth-child(even)::before {
+  background: rgba(226, 237, 248, 0.57);
+}
+
+.stp-member > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.stp-member__portrait-wrap {
+  position: relative;
+  min-height: 24rem;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+
+.stp-member__halo {
+  position: absolute;
+  width: min(25rem, 90%);
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255,255,255,0.98) 0 7%, transparent 7.5%),
+    radial-gradient(circle at 50% 50%, rgba(254, 201, 69, 0.94), rgba(255, 238, 177, 0.55) 45%, rgba(255,255,255,0) 70%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.72), 0 24px 60px rgba(31, 77, 122, 0.13);
+}
+
+.stp-member:nth-child(even) .stp-member__halo {
+  background:
+    radial-gradient(circle at 65% 30%, rgba(255,255,255,0.98) 0 7%, transparent 7.5%),
+    radial-gradient(circle at 50% 50%, rgba(31, 77, 122, 0.88), rgba(153, 191, 221, 0.5) 48%, rgba(255,255,255,0) 71%);
+}
+
+.stp-member__portrait {
+  position: relative;
+  z-index: 1;
+  width: auto;
+  max-width: min(100%, 29rem);
+  max-height: 34rem;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 22px 20px rgba(15, 23, 42, 0.22));
+  transition: transform 800ms cubic-bezier(0.22, 1, 0.36, 1), filter 800ms ease;
+}
+
+.stp-member__year {
+  position: absolute;
+  z-index: 2;
+  right: max(0.25rem, 4%);
+  bottom: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid rgba(255,255,255,0.75);
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.88);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+}
+
+.stp-member__content {
+  position: relative;
+  padding: 1rem 0;
+}
+
+.stp-member__number {
+  position: absolute;
+  right: 0;
+  top: -2.25rem;
+  color: rgba(31, 77, 122, 0.1);
+  font-family: var(--font-heading);
+  font-size: clamp(5rem, 11vw, 9rem);
+  font-weight: 700;
+  letter-spacing: -0.08em;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.stp-member.reveal-on-scroll .stp-member__portrait {
+  opacity: 0;
+  transform: translateY(3rem) rotate(-3deg) scale(0.96);
+  filter: drop-shadow(0 8px 8px rgba(15, 23, 42, 0.1));
+}
+
+.stp-member--reverse.reveal-on-scroll .stp-member__portrait {
+  transform: translateY(3rem) rotate(3deg) scale(0.96);
+}
+
+.stp-member.reveal-visible .stp-member__portrait {
+  opacity: 1;
+  transform: translateY(0) rotate(0) scale(1);
+  filter: drop-shadow(0 22px 20px rgba(15, 23, 42, 0.22));
+  transition-delay: 180ms;
+}
+
+.stp-member-cta {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(254, 201, 69, 0.45);
+  border-radius: 2.5rem;
+  padding: 3rem 1.5rem;
+  background:
+    radial-gradient(circle at 18% 10%, rgba(254, 201, 69, 0.28), transparent 19rem),
+    radial-gradient(circle at 84% 90%, rgba(115, 178, 225, 0.24), transparent 22rem),
+    #102d4a;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+}
+
+@media (min-width: 768px) {
+  .stp-member-cta { padding: 4rem 3rem; }
+}
+
+@media (max-width: 767px) {
+  .stp-member-scroll::before { left: 1.5rem; }
+  .stp-member { min-height: 0; padding: 2.5rem 0; }
+  .stp-member::before { inset: 0.5rem 0.75rem; border-radius: 2rem; }
+  .stp-member__portrait-wrap { min-height: 20rem; }
+  .stp-member__portrait { max-height: 26rem; }
+}
+
 #eventsList .content-card,
 #eventsList .event-card {
   @apply flex flex-col;
@@ -667,6 +832,9 @@ footer a {
   .reveal-on-scroll {
     opacity: 1;
     transform: none;
+    transition: none;
+  }
+  .stp-member__portrait {
     transition: none;
   }
   .frame-shell::before {

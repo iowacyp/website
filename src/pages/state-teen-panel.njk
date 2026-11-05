@@ -31,6 +31,7 @@ permalink: /state-teen-panel/index.html
       <p class="text-white/95 text-base md:text-lg leading-relaxed">STP is Iowa CYP's teen leadership crew for Guard-connected youth ages 13–17. Members plan events, advise program decisions, tell their own stories, and represent Iowa at regional symposiums.</p>
       <div class="flex flex-wrap gap-3">
         <a class="hero-cta" href="#get-involved">Find your way to get involved</a>
+        <a class="hero-cta-secondary" href="#meet-the-panel">Meet the Panel</a>
         <a class="hero-cta-secondary" href="#what-we-do">Learn More</a>
       </div>
     </div>
@@ -57,6 +58,54 @@ permalink: /state-teen-panel/index.html
       </article>
     </div>
     <p class="text-sm text-slate-700">Looking for adult opportunities? <a class="link-underline" href="/support/#volunteers">Explore adult volunteering</a>.</p>
+  </div>
+</section>
+
+<section id="meet-the-panel" class="stp-meet-panel" aria-labelledby="meet-the-panel-title">
+  <div class="container pt-20 md:pt-28">
+    <header class="max-w-3xl space-y-4" data-reveal>
+      <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Meet the leaders</p>
+      <h2 id="meet-the-panel-title" class="text-3xl md:text-4xl font-semibold text-slate-900 leading-tight">Meet the State Teen Panel</h2>
+      <p class="text-lg text-slate-700 leading-relaxed">Nine Guard-connected teens. One team built around service, leadership, and making room for every young person to belong.</p>
+    </header>
+  </div>
+
+  <div class="stp-member-scroll mt-12 md:mt-16">
+    {% for member in stpMembers.items %}
+      <article class="stp-member {% if loop.index0 % 2 %}stp-member--reverse{% endif %}" data-reveal>
+        <div class="container grid gap-8 md:grid-cols-2 md:items-center md:gap-14 lg:gap-24">
+          <div class="stp-member__portrait-wrap {% if loop.index0 % 2 %}md:order-2{% endif %}">
+            <div class="stp-member__halo" aria-hidden="true"></div>
+            <img class="stp-member__portrait" src="{{ member.image }}" alt="{{ member.imageAlt }}" {{ imageAttrs(member.image) | safe }} loading="lazy" decoding="async">
+            <span class="stp-member__year">{{ member.year }}</span>
+          </div>
+          <div class="stp-member__content {% if loop.index0 % 2 %}md:order-1{% endif %}">
+            <p class="stp-member__number" aria-hidden="true">0{{ loop.index }}</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">{{ member.year }} · State Teen Panel</p>
+            <h3 class="mt-3 text-4xl font-semibold text-slate-900 md:text-5xl">{{ member.name }}</h3>
+            <p class="mt-3 font-heading text-xl uppercase tracking-[0.16em] text-primary md:text-2xl">{{ member.trait }}</p>
+            <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-700">{{ member.spotlight }}</p>
+            <dl class="mt-7 grid gap-x-6 gap-y-5 sm:grid-cols-2">
+              {% for detail in member.details %}
+                <div class="border-t border-primary/15 pt-3">
+                  <dt class="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-primary/60">{{ detail.label }}</dt>
+                  <dd class="mt-1 text-base font-semibold text-slate-800">{{ detail.value }}</dd>
+                </div>
+              {% endfor %}
+            </dl>
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+
+    <div class="container pb-20 pt-8 md:pb-28" data-reveal>
+      <div class="stp-member-cta mx-auto max-w-4xl text-center">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-secondary">The next chapter</p>
+        <h3 class="mt-4 text-3xl font-semibold text-white md:text-4xl">They grew up with CYP. Now they help make it feel like home for the next generation.</h3>
+        <p class="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/85">State Teen Panel members turn the connection, confidence, and support they found through Iowa CYP into leadership that welcomes younger military-connected youth. If you are ready to serve, lead, and give back, we would love to meet you.</p>
+        <a class="btn-secondary mt-8 inline-flex bg-secondary text-slate-950 hover:bg-secondary/90" href="{{ site.links.stpApply }}">Apply to join the State Teen Panel</a>
+      </div>
+    </div>
   </div>
 </section>
 

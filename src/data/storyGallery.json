@@ -1,6 +1,42 @@
 {
   "items": [
     {
+      "id": "fall-family-festival-2026",
+      "audiences": ["stp"],
+      "title": "Fall Family Festival Builds Connection and Resilience",
+      "eyebrow": "2026 Fall Family Festival",
+      "published": "November 5, 2026",
+      "publishedISO": "2026-11-05",
+      "image": "/assets/img/story-gallery/fall-family-festival-2026-full.jpg",
+      "thumbnail": "/assets/img/story-gallery/fall-family-festival-2026-thumb.jpg",
+      "alt": "An adult helps a child play mini golf at the 2026 Fall Family Festival",
+      "position": "center 38%",
+      "hook": "At Camp Dodge, 434 Guard family members found a day to play, reconnect, and remember they have a community beside them.",
+      "quote": "Military kids have a unique experience and the CYP helps them feel loved, appreciated and supported.",
+      "quoteAttribution": "Fall Family Festival participant",
+      "body": [
+        "On October 24, Iowa National Guard families gathered at Camp Dodge for the 2026 Fall Family Festival, a day designed for the kind of connection that can be hard to find in the rhythms of military life. Families met new people, caught up with old friends, and shared space with others who understand the experience of Guard service.",
+        "Costumes, games, mini golf, music, and hands-on activities gave children and caregivers easy ways to join in together. One participant especially appreciated the additions of live music and mini golf - small touches that helped turn the day into a shared memory for families.",
+        "State Teen Panel members were central to the experience. Eight of nine members helped with setup and spent the day mentoring younger attendees, putting youth leadership into practice through service, welcome, and encouragement.",
+        "The festival also brought the USO and community organizations alongside Iowa CYP, showing families the broader network ready to support them. Those partnerships turned one event into an invitation: Guard families have people and places to lean on before, during, and after a challenge.",
+        "When families leave an event with new relationships and positive shared experiences, the impact extends beyond a single Saturday. Connection can reduce stress, strengthen resilience over time, and help sustain the readiness of Soldiers and the families who stand behind them."
+      ],
+      "impact": "The festival paired family fun with a stronger support network, helping Guard families feel seen, supported, and connected to the people who understand their experience.",
+      "stats": [
+        { "value": "434", "label": "People attended" },
+        { "value": "73", "label": "Volunteers" },
+        { "value": "8 of 9", "label": "Teen panel members served" }
+      ],
+      "gallery": [
+        { "src": "/assets/img/story-gallery/fall-family-festival-2026-full.jpg", "alt": "An adult helps a child play mini golf at the Fall Family Festival" },
+        { "src": "/assets/img/story-gallery/fall-family-festival-2026-family-full.jpg", "alt": "A Guard family in costumes smiles together at the Fall Family Festival" },
+        { "src": "/assets/img/story-gallery/fall-family-festival-2026-stp-full.jpg", "alt": "State Teen Panel members gathered outdoors at the Fall Family Festival" },
+        { "src": "/assets/img/story-gallery/fall-family-festival-2026-treats-full.jpg", "alt": "Festival volunteers hand out treats to children in costumes" },
+        { "src": "/assets/img/story-gallery/fall-family-festival-2026-costumes-full.jpg", "alt": "Two children in costume smile together at the Fall Family Festival" },
+        { "src": "/assets/img/story-gallery/fall-family-festival-2026-inflatables-full.jpg", "alt": "Young people wearing inflatable costumes enjoy the Fall Family Festival" }
+      ]
+    },
+    {
       "id": "summer-camp-2026",
       "title": "Iowa Military Youth Build Confidence at Summer Camp",
       "eyebrow": "2026 Military Youth Summer Camp",

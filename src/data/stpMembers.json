@@ -1,0 +1,125 @@
+{
+  "items": [
+    {
+      "name": "Logan",
+      "year": "Year 4",
+      "trait": "Outgoing",
+      "image": "/assets/img/stp-members/logan.png",
+      "imageAlt": "Logan, a State Teen Panel member",
+      "details": [
+        { "label": "Spirit animal", "value": "Dog" },
+        { "label": "Favorite movie", "value": "Cars" },
+        { "label": "Favorite event", "value": "STP Retreat" },
+        { "label": "Favorite food", "value": "Cookies" }
+      ],
+      "spotlight": "Loves running, football, and basketball."
+    },
+    {
+      "name": "Charlee",
+      "year": "Year 3",
+      "trait": "Awesome",
+      "image": "/assets/img/stp-members/charlee.png",
+      "imageAlt": "Charlee, a State Teen Panel member and Guard Teen Panel representative",
+      "details": [
+        { "label": "Spirit animal", "value": "Stingray" },
+        { "label": "Favorite event", "value": "STP Retreat" },
+        { "label": "Favorite food", "value": "Alfredo" },
+        { "label": "Role", "value": "Guard Teen Panel representative" }
+      ],
+      "spotlight": "Loves swimming and Phoebe Bridgers. Her dream superpower is mindreading."
+    },
+    {
+      "name": "Suriana",
+      "year": "Year 2",
+      "trait": "Confident",
+      "image": "/assets/img/stp-members/suriana.png",
+      "imageAlt": "Suriana, a State Teen Panel member",
+      "details": [
+        { "label": "Spirit animal", "value": "Cheetah" },
+        { "label": "Favorite event", "value": "Cookies With Santa" },
+        { "label": "Favorite food", "value": "Seafood" }
+      ],
+      "spotlight": "Loves volleyball, photography, baking, and drawing. She is working toward becoming an Air Force pilot."
+    },
+    {
+      "name": "Alala",
+      "year": "Year 1",
+      "trait": "Quiet",
+      "image": "/assets/img/stp-members/alala.png",
+      "imageAlt": "Alala, a State Teen Panel member",
+      "details": [
+        { "label": "Spirit animal", "value": "Fox" },
+        { "label": "Favorite event", "value": "Fall Family Festival" },
+        { "label": "Favorite food", "value": "Anything spicy" }
+      ],
+      "spotlight": "Loves playing guitar and participating in 4-H. She hopes to become a vet tech."
+    },
+    {
+      "name": "Daniel",
+      "year": "Year 1",
+      "trait": "Energetic",
+      "image": "/assets/img/stp-members/daniel.png",
+      "imageAlt": "Daniel, a State Teen Panel member",
+      "details": [
+        { "label": "Spirit animal", "value": "Horned puffin" },
+        { "label": "Favorite event", "value": "Fall Family Festival" },
+        { "label": "Favorite food", "value": "Greek gyro" }
+      ],
+      "spotlight": "Loves football and video games, and he is a fan of Ella and Morgan Wallen."
+    },
+    {
+      "name": "Ellie",
+      "year": "Year 1",
+      "trait": "Creative",
+      "image": "/assets/img/stp-members/ellie.png",
+      "imageAlt": "Ellie, a State Teen Panel member",
+      "details": [
+        { "label": "Spirit animal", "value": "German shepherd" },
+        { "label": "Favorite event", "value": "Summer Camp" },
+        { "label": "Favorite food", "value": "French fries" }
+      ],
+      "spotlight": "Loves crafts, games, basketball, and running, plus Ella and Morgan Wallen."
+    },
+    {
+      "name": "Marki",
+      "year": "Year 1",
+      "trait": "Funny",
+      "image": "/assets/img/stp-members/marki.png",
+      "imageAlt": "Marki, a State Teen Panel member",
+      "details": [
+        { "label": "Spirit animal", "value": "Manatee" },
+        { "label": "Favorite event", "value": "Military Family Ball" },
+        { "label": "Favorite food", "value": "Alfredo" },
+        { "label": "Favorite show", "value": "Dance Moms" }
+      ],
+      "spotlight": "Loves playing volleyball and wishes she could talk with animals."
+    },
+    {
+      "name": "Ryker",
+      "year": "Year 1",
+      "trait": "Unique",
+      "image": "/assets/img/stp-members/ryker.png",
+      "imageAlt": "Ryker, a State Teen Panel member",
+      "details": [
+        { "label": "Spirit animal", "value": "Dog" },
+        { "label": "Favorite event", "value": "Cookies With Santa" },
+        { "label": "Favorite food", "value": "Spaghetti" }
+      ],
+      "spotlight": "Loves hanging out with friends and building Star Wars Legos. His dream superpower is flying."
+    },
+    {
+      "name": "Tiernee",
+      "year": "Year 1",
+      "trait": "Enthusiastic",
+      "image": "/assets/img/stp-members/tiernee.png",
+      "imageAlt": "Tiernee, a State Teen Panel member",
+      "details": [
+        { "label": "Spirit animal", "value": "Ladybug" },
+        { "label": "Favorite event", "value": "All of them" },
+        { "label": "Favorite food", "value": "Pasta" },
+        { "label": "Favorite movie", "value": "Forrest Gump" }
+      ],
+      "spotlight": "Loves swimming and Conan Gray. Her dream superpower is teleportation."
+    }
+  ]
+}
