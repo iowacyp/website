@@ -3429,18 +3429,17 @@ footer a:hover {
   padding: 1rem 0;
 }
 
-.stp-member__number {
+.stp-member__icon {
   position: absolute;
   right: 0;
   top: -2.25rem;
-  color: rgba(31, 77, 122, 0.1);
-  font-family: var(--font-heading);
-  font-size: clamp(5rem, 11vw, 9rem);
-  font-weight: 700;
-  letter-spacing: -0.08em;
-  line-height: 1;
+  width: clamp(5rem, 10vw, 8rem);
+  height: clamp(5rem, 10vw, 8rem);
+  color: rgba(31, 77, 122, 0.13);
   pointer-events: none;
 }
+
+.stp-member__icon svg { width: 100%; height: 100%; }
 
 .stp-member.reveal-on-scroll .stp-member__portrait {
   opacity: 0;

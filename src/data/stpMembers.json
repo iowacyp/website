@@ -2,6 +2,7 @@
   "items": [
     {
       "name": "Logan",
+      "icon": "basketball",
       "year": "Year 4",
       "trait": "Outgoing",
       "image": "/assets/img/stp-members/logan.png",
@@ -16,6 +17,7 @@
     },
     {
       "name": "Charlee",
+      "icon": "waves",
       "year": "Year 3",
       "trait": "Awesome",
       "image": "/assets/img/stp-members/charlee.png",
@@ -30,6 +32,7 @@
     },
     {
       "name": "Suriana",
+      "icon": "plane",
       "year": "Year 2",
       "trait": "Confident",
       "image": "/assets/img/stp-members/suriana.png",
@@ -43,6 +46,7 @@
     },
     {
       "name": "Alala",
+      "icon": "guitar",
       "year": "Year 1",
       "trait": "Quiet",
       "image": "/assets/img/stp-members/alala.png",
@@ -56,6 +60,7 @@
     },
     {
       "name": "Daniel",
+      "icon": "controller",
       "year": "Year 1",
       "trait": "Energetic",
       "image": "/assets/img/stp-members/daniel.png",
@@ -69,6 +74,7 @@
     },
     {
       "name": "Ellie",
+      "icon": "palette",
       "year": "Year 1",
       "trait": "Creative",
       "image": "/assets/img/stp-members/ellie.png",
@@ -82,6 +88,7 @@
     },
     {
       "name": "Marki",
+      "icon": "volleyball",
       "year": "Year 1",
       "trait": "Funny",
       "image": "/assets/img/stp-members/marki.png",
@@ -96,6 +103,7 @@
     },
     {
       "name": "Ryker",
+      "icon": "brick",
       "year": "Year 1",
       "trait": "Unique",
       "image": "/assets/img/stp-members/ryker.png",
@@ -109,6 +117,7 @@
     },
     {
       "name": "Tiernee",
+      "icon": "ladybug",
       "year": "Year 1",
       "trait": "Enthusiastic",
       "image": "/assets/img/stp-members/tiernee.png",
