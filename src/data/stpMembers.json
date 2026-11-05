@@ -74,7 +74,7 @@
     },
     {
       "name": "Ellie",
-      "icon": "palette",
+      "icon": "fries",
       "year": "Year 1",
       "trait": "Creative",
       "image": "/assets/img/stp-members/ellie.png",
@@ -88,7 +88,7 @@
     },
     {
       "name": "Marki",
-      "icon": "volleyball",
+      "icon": "manatee",
       "year": "Year 1",
       "trait": "Funny",
       "image": "/assets/img/stp-members/marki.png",
@@ -103,7 +103,7 @@
     },
     {
       "name": "Ryker",
-      "icon": "brick",
+      "icon": "lightsaber",
       "year": "Year 1",
       "trait": "Unique",
       "image": "/assets/img/stp-members/ryker.png",
