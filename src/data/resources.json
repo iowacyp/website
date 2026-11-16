@@ -132,28 +132,12 @@
       "notes": "Monitor for URL updates each fiscal year."
     },
     {
-      "id": "R009",
-      "label": "Hy-Vee KidsFit",
-      "url": "https://kidsfitwellnessclub.org/",
-      "summary": "Wellness challenges and resources for youth and families from Hy-Vee KidsFit.",
-      "category": "Wellness",
-      "section": "partner",
-      "status": "live",
-      "audience": [
-        "kids"
-      ],
-      "format": "program",
-      "featured": false,
-      "image": "/assets/img/resources/resource_hyvee.png",
-      "notes": "Request partner logo approval if highlighted."
-    },
-    {
       "id": "R009A",
       "label": "Lemonade Boss Curriculum App",
       "url": "/lemonade-boss/",
       "summary": "Freshly updated kid-friendly web app that guides young entrepreneurs through planning and running their own lemonade stand.",
-      "category": "Iowa CYP virtual programs",
-      "section": "virtual",
+      "category": "Iowa CYP programs",
+      "section": "cyp",
       "status": "live",
       "audience": [
         "kids",
@@ -165,15 +149,16 @@
       "image": "/assets/img/lemonade-banner.jpg",
       "notes": "Great fit for workshops, family nights, or take-home activities after financial literacy lessons.",
       "statusLabel": "Available now",
-      "cta": "Open the app"
+      "cta": "Open the app",
+      "delivery": "Virtual"
     },
     {
       "id": "R016",
       "label": "Online Adventure Kits",
       "url": "/adventure-kits/",
       "summary": "Free quarterly kits with hands-on STEM challenges, health tips, and guided videos Guard families can open together anytime, anywhere.",
-      "category": "Iowa CYP virtual programs",
-      "section": "virtual",
+      "category": "Iowa CYP programs",
+      "section": "cyp",
       "status": "seasonal",
       "statusLabel": "New kit every quarter",
       "cta": "Sign up for the next kit",
@@ -184,15 +169,16 @@
       "format": "kit",
       "featured": true,
       "image": "/assets/img/programs/adventure_kits.jpg",
-      "notes": "Update statusLabel each quarter with the current theme, e.g. \"Winter 2026 kit: open now\"."
+      "notes": "Update statusLabel each quarter with the current theme, e.g. \"Winter 2026 kit: open now\".",
+      "delivery": "Virtual"
     },
     {
       "id": "R017",
       "label": "My Guard Family",
       "url": "",
       "summary": "A new virtual resource to help Guard-connected families understand Guard life, stay connected across drill weekends and deployments, and find support when they need it.",
-      "category": "Iowa CYP virtual programs",
-      "section": "virtual",
+      "category": "Iowa CYP programs",
+      "section": "cyp",
       "status": "coming-soon",
       "statusLabel": "Coming soon",
       "cta": "Get notified when it launches",
@@ -204,7 +190,67 @@
       "format": "program",
       "featured": true,
       "image": "",
-      "notes": "Placeholder until launch. Set url and status to \"live\" when ready; summary is a draft for CYP staff to revise."
+      "notes": "Placeholder until launch. Set url and status to \"live\" when ready; summary is a draft for CYP staff to revise.",
+      "delivery": "Virtual"
+    },
+    {
+      "id": "R018",
+      "label": "State Teen Panel",
+      "url": "/state-teen-panel/",
+      "summary": "Iowa Guard teens ages 13–17 build leadership skills, serve their communities, and represent military-connected youth statewide.",
+      "category": "Iowa CYP programs",
+      "section": "cyp",
+      "status": "live",
+      "audience": [
+        "teens"
+      ],
+      "format": "program",
+      "featured": false,
+      "image": "/assets/img/programs/stp_panel_group.jpg",
+      "notes": "",
+      "delivery": "In person",
+      "statusLabel": "Applications open",
+      "cta": "Learn more & apply"
+    },
+    {
+      "id": "R019",
+      "label": "Month of the Military Child classroom kits",
+      "url": "/month-of-the-military-child/",
+      "summary": "Free Purple Up! kits for Iowa classrooms each April so military kids feel seen and celebrated alongside their peers.",
+      "category": "Iowa CYP programs",
+      "section": "cyp",
+      "status": "seasonal",
+      "audience": [
+        "kids",
+        "caregivers"
+      ],
+      "format": "kit",
+      "featured": false,
+      "image": "/assets/img/programs/momc_purple_up.jpg",
+      "notes": "",
+      "delivery": "Classroom",
+      "statusLabel": "Every April",
+      "cta": "Request a kit"
+    },
+    {
+      "id": "R020",
+      "label": "Yellow Ribbon youth workshops",
+      "url": "mailto:benjamin.f.winnike.mil@army.mil",
+      "summary": "Workshops that help kids and teens navigate deployment with peers who understand, practical tools, and shared support.",
+      "category": "Iowa CYP programs",
+      "section": "cyp",
+      "status": "live",
+      "audience": [
+        "kids",
+        "teens"
+      ],
+      "format": "workshop",
+      "featured": false,
+      "image": "/assets/img/programs/yellow_ribbon.jpg",
+      "notes": "",
+      "delivery": "In person",
+      "statusLabel": "During deployments",
+      "cta": "Contact Yellow Ribbon"
     },
     {
       "id": "R010",
@@ -306,6 +352,304 @@
       "featured": false,
       "image": "",
       "notes": "CAASA serves 19 counties in Northwest Iowa; services are available to people of all ages and genders."
+    },
+    {
+      "id": "R021",
+      "label": "Resources for Iowa educators",
+      "url": "/educators/",
+      "summary": "Purple Star School guidance, classroom kits, and tools for teachers and counselors supporting military-connected students.",
+      "category": "Education & planning",
+      "section": "partner",
+      "status": "live",
+      "audience": [
+        "caregivers"
+      ],
+      "format": "guide",
+      "featured": false,
+      "image": "",
+      "notes": ""
+    },
+    {
+      "id": "R022",
+      "label": "Iowa Purple Star School Program",
+      "url": "https://educate.iowa.gov/pk-12/award-exchange-programs/purple-star-school-program",
+      "summary": "Iowa Department of Education designation for schools that commit to supporting military-connected students and families.",
+      "category": "Education & planning",
+      "section": "partner",
+      "status": "live",
+      "audience": [
+        "caregivers"
+      ],
+      "format": "program",
+      "featured": false,
+      "image": "",
+      "notes": ""
+    },
+    {
+      "id": "R023",
+      "label": "Military Child Education Coalition",
+      "url": "https://militarychild.org/",
+      "summary": "Programs, training, and parent resources for military-connected students navigating school moves and transitions.",
+      "category": "Education & planning",
+      "section": "partner",
+      "status": "live",
+      "audience": [
+        "teens",
+        "caregivers"
+      ],
+      "format": "website",
+      "featured": false,
+      "image": "",
+      "notes": ""
+    },
+    {
+      "id": "R024",
+      "label": "Scholarships for Military Children",
+      "url": "https://www.militaryscholar.org/",
+      "summary": "Commissary-funded scholarship program for children of active duty, Guard, Reserve, and retired service members.",
+      "category": "Education & planning",
+      "section": "partner",
+      "status": "live",
+      "audience": [
+        "teens"
+      ],
+      "format": "scholarship",
+      "featured": false,
+      "image": "",
+      "notes": ""
+    },
+    {
+      "id": "R025",
+      "label": "Military Child Care (MCC)",
+      "url": "https://public.militarychildcare.csd.disa.mil/mcc-central/mcchome",
+      "summary": "Official DoD tool to search for and request approved military child care, anywhere in the country.",
+      "category": "Child care",
+      "section": "partner",
+      "status": "live",
+      "audience": [
+        "caregivers"
+      ],
+      "format": "database",
+      "featured": false,
+      "image": "",
+      "notes": ""
+    },
+    {
+      "id": "R026",
+      "label": "Support for Iowa military families",
+      "url": "/military-families/",
+      "summary": "Camps, Adventure Kits, deployment support, financial help, and trusted connections for Guard families, all in one place.",
+      "category": "Family support",
+      "section": "partner",
+      "status": "live",
+      "audience": [
+        "caregivers"
+      ],
+      "format": "guide",
+      "featured": false,
+      "image": "",
+      "notes": ""
+    },
+    {
+      "id": "R027",
+      "label": "Sesame Street for Military Families",
+      "url": "https://sesamestreetformilitaryfamilies.org/",
+      "summary": "Free videos, stories, and activities that help children ages 2–8 through deployments, homecomings, moves, and big feelings.",
+      "category": "Family support",
+      "section": "partner",
+      "status": "live",
+      "audience": [
+        "kids",
+        "caregivers"
+      ],
+      "format": "website",
+      "featured": false,
+      "image": "",
+      "notes": ""
+    },
+    {
+      "id": "R028",
+      "label": "United Through Reading",
+      "url": "https://unitedthroughreading.org/",
+      "summary": "Record yourself reading a storybook so your child can watch it anytime you are away for drill, training, or deployment.",
+      "category": "Family support",
+      "section": "partner",
+      "status": "live",
+      "audience": [
+        "kids",
+        "caregivers"
+      ],
+      "format": "program",
+      "featured": false,
+      "image": "",
+      "notes": ""
+    },
+    {
+      "id": "R029",
+      "label": "Operation Homefront",
+      "url": "https://www.operationhomefront.org/",
+      "summary": "Critical financial assistance, holiday meals, back-to-school supplies, and family programs for military families.",
+      "category": "Family support",
+      "section": "partner",
+      "status": "live",
+      "audience": [
+        "caregivers"
+      ],
+      "format": "program",
+      "featured": false,
+      "image": "",
+      "notes": ""
+    },
+    {
+      "id": "R030",
+      "label": "Blue Star Families",
+      "url": "https://bluestarfam.org/",
+      "summary": "National community of military families with local events, book clubs, career support, and research on military family life.",
+      "category": "Family support",
+      "section": "partner",
+      "status": "live",
+      "audience": [
+        "caregivers"
+      ],
+      "format": "website",
+      "featured": false,
+      "image": "",
+      "notes": ""
+    },
+    {
+      "id": "R031",
+      "label": "Blue Star Mothers of Iowa",
+      "url": "https://www.bluestarmothers.org/bsma-chapters-by-state",
+      "summary": "Iowa chapters of mothers and guardians of service members who support each other and Guard families.",
+      "category": "Family support",
+      "section": "partner",
+      "status": "live",
+      "audience": [
+        "caregivers"
+      ],
+      "format": "website",
+      "featured": false,
+      "image": "",
+      "notes": ""
+    },
+    {
+      "id": "R032",
+      "label": "USO",
+      "url": "https://www.uso.org/",
+      "summary": "Programs, care packages, and events that keep service members connected to family and community, including Iowa CYP partner events.",
+      "category": "Family support",
+      "section": "partner",
+      "status": "live",
+      "audience": [
+        "kids",
+        "teens",
+        "caregivers"
+      ],
+      "format": "website",
+      "featured": false,
+      "image": "",
+      "notes": ""
+    },
+    {
+      "id": "R033",
+      "label": "National Guard Spouse & Family Interest",
+      "url": "https://www.nationalguard.mil/Leadership/Joint-Staff/J-1/Spouse-and-Family-Interest/",
+      "summary": "National Guard Bureau hub for benefits, family programs, and news for Guard spouses and families.",
+      "category": "Guard connection",
+      "section": "partner",
+      "status": "live",
+      "audience": [
+        "caregivers"
+      ],
+      "format": "website",
+      "featured": false,
+      "image": "",
+      "notes": ""
+    },
+    {
+      "id": "R034",
+      "label": "4-H Military Partnerships",
+      "url": "https://4-hmilitarypartnerships.org/",
+      "summary": "4-H clubs, camps, and projects for military-connected youth, delivered through Iowa State University Extension.",
+      "category": "Youth activities",
+      "section": "partner",
+      "status": "live",
+      "audience": [
+        "kids",
+        "teens"
+      ],
+      "format": "program",
+      "featured": false,
+      "image": "",
+      "notes": ""
+    },
+    {
+      "id": "R035",
+      "label": "Operation Purple Camp",
+      "url": "https://www.militaryfamily.org/state-of-the-military-family-programs/operation-purple/operation-purple-camp/",
+      "summary": "Free week-long summer camps for military kids ages 7–17, run by the National Military Family Association.",
+      "category": "Youth activities",
+      "section": "partner",
+      "status": "live",
+      "audience": [
+        "kids",
+        "teens"
+      ],
+      "format": "camp",
+      "featured": false,
+      "image": "",
+      "notes": ""
+    },
+    {
+      "id": "R036",
+      "label": "Bloom: Empowering the Military Teen",
+      "url": "https://www.bloommilitaryteens.org/",
+      "summary": "By teens, for teens: moving tips, peer stories, and a community for military-connected teenagers.",
+      "category": "Youth activities",
+      "section": "partner",
+      "status": "live",
+      "audience": [
+        "teens"
+      ],
+      "format": "website",
+      "featured": false,
+      "image": "",
+      "notes": ""
+    },
+    {
+      "id": "R037",
+      "label": "United Heroes League",
+      "url": "https://unitedheroesleague.org/",
+      "summary": "Free sports equipment, camps, and fee assistance so military kids can stay active in the sports they love.",
+      "category": "Youth activities",
+      "section": "partner",
+      "status": "live",
+      "audience": [
+        "kids",
+        "teens"
+      ],
+      "format": "grant",
+      "featured": false,
+      "image": "",
+      "notes": ""
+    },
+    {
+      "id": "R038",
+      "label": "988 Suicide & Crisis Lifeline",
+      "url": "https://988lifeline.org/",
+      "summary": "Call or text 988 any time for free, confidential support. Veterans and service members press 1.",
+      "category": "Crisis & safety",
+      "section": "partner",
+      "status": "live",
+      "audience": [
+        "kids",
+        "teens",
+        "caregivers"
+      ],
+      "format": "hotline",
+      "featured": false,
+      "image": "",
+      "notes": ""
     }
   ]
 }

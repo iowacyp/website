@@ -154,6 +154,10 @@ footer a {
   @apply absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-semibold shadow-sm;
 }
 
+.virtual-program-delivery {
+  @apply absolute right-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.1em] text-slate-700 shadow-sm;
+}
+
 .virtual-program-badge--live {
   @apply bg-emerald-600 text-white;
 }
