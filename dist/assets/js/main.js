@@ -1052,6 +1052,92 @@ const initResourceLogoFallbacks = () => {
 
 initResourceLogoFallbacks();
 
+const initResourceFilters = () => {
+  const root = document.querySelector('[data-resource-filter]');
+  if (!root) return;
+
+  const items = Array.from(root.querySelectorAll('[data-resource-item]'));
+  const groups = Array.from(root.querySelectorAll('[data-resource-group]'));
+  const categoryButtons = Array.from(root.querySelectorAll('[data-filter-category]'));
+  const audienceButtons = Array.from(root.querySelectorAll('[data-filter-audience]'));
+  const searchInput = root.querySelector('[data-resource-search]');
+  const status = root.querySelector('[data-resource-status]');
+  const empty = root.querySelector('[data-resource-empty]');
+  const total = items.length;
+
+  const state = { category: 'all', audience: 'all', query: '' };
+
+  const setActive = (buttons, attr, value) => {
+    buttons.forEach((button) => {
+      const active = button.dataset[attr] === value;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+  };
+
+  const apply = () => {
+    const query = state.query.trim().toLowerCase();
+    let shown = 0;
+
+    items.forEach((item) => {
+      const matchCategory = state.category === 'all' || item.dataset.category === state.category;
+      const audiences = (item.dataset.audience || '').split(' ');
+      const matchAudience = state.audience === 'all' || audiences.includes(state.audience);
+      const matchQuery = !query || (item.dataset.search || '').includes(query);
+      const visible = matchCategory && matchAudience && matchQuery;
+      item.hidden = !visible;
+      if (visible) shown += 1;
+    });
+
+    groups.forEach((group) => {
+      const anyVisible = Array.from(group.querySelectorAll('[data-resource-item]')).some((item) => !item.hidden);
+      group.hidden = !anyVisible;
+    });
+
+    if (empty) empty.classList.toggle('hidden', shown > 0);
+    if (status) {
+      status.textContent = shown === total
+        ? `Showing all ${total} resources`
+        : `Showing ${shown} of ${total} resources`;
+    }
+  };
+
+  categoryButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      state.category = button.dataset.filterCategory;
+      setActive(categoryButtons, 'filterCategory', state.category);
+      apply();
+    });
+  });
+
+  audienceButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      state.audience = button.dataset.filterAudience;
+      setActive(audienceButtons, 'filterAudience', state.audience);
+      apply();
+    });
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      state.query = searchInput.value;
+      apply();
+    });
+  }
+
+  // Deep links like /resources/#child-care pre-select that topic.
+  const hash = decodeURIComponent(window.location.hash.replace('#', ''));
+  if (hash) {
+    const match = categoryButtons.find((button) => {
+      const slug = button.dataset.filterCategory.toLowerCase().replace(' & ', '-').replace(/ /g, '-');
+      return slug === hash;
+    });
+    if (match) match.click();
+  }
+};
+
+initResourceFilters();
+
 const initSiteSearch = () => {
   const modal = document.querySelector('[data-modal="site-search"]');
   if (!modal) return;

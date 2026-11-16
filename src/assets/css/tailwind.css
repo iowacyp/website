@@ -116,8 +116,54 @@ footer a {
 }
 
 .resource-topic:hover,
-.resource-topic:focus-visible {
+.resource-topic:focus-visible,
+.resource-topic.is-active {
   @apply border-primary bg-primary text-white outline-none;
+}
+
+.resource-topic--small {
+  @apply px-2.5 py-1 text-xs;
+}
+
+.resource-topic__count {
+  @apply ml-1 rounded-full bg-white/60 px-1.5 text-[0.7rem] font-bold text-primary;
+}
+
+.resource-topic.is-active .resource-topic__count {
+  @apply bg-white/25 text-white;
+}
+
+.virtual-program-card {
+  @apply flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-200;
+}
+
+.virtual-program-card:hover,
+.virtual-program-card:focus-within {
+  @apply border-primary/40 shadow-md;
+}
+
+.virtual-program-card--soon {
+  @apply border-dashed border-slate-300 bg-slate-50;
+}
+
+.virtual-program-card__media {
+  @apply relative h-40 w-full overflow-hidden bg-slate-100;
+}
+
+.virtual-program-badge {
+  @apply absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-semibold shadow-sm;
+}
+
+.virtual-program-badge--live {
+  @apply bg-emerald-600 text-white;
+}
+
+.virtual-program-badge--seasonal {
+  @apply bg-amber-400 text-slate-900;
+}
+
+.virtual-program-badge--coming-soon {
+  @apply bg-slate-700 text-white;
 }
 
 .resource-directory-card {

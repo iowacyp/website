@@ -153,7 +153,7 @@ const eventItems = events.map((event) => ({
   searchText: makeSearchText(event.title, event.date, event.displayDate, event.time, event.location, event.notes, event.ctaLabel),
 }));
 
-const resources = readJson("resources.json").items || [];
+const resources = (readJson("resources.json").items || []).filter((resource) => resource.url);
 const resourceItems = resources.map((resource) => ({
   title: resource.label,
   url: resource.url,

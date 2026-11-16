@@ -21,57 +21,154 @@ permalink: /resources/index.html
       <p class="text-sm uppercase tracking-[0.15em] text-secondary">Resource Hub</p>
       <h1 class="text-3xl md:text-4xl font-semibold text-white">Quick support for Guard-connected kids, teens, and caregivers</h1>
       <p class="text-white/95 text-base md:text-lg leading-relaxed">Start with what your family needs today. This directory grows with family feedback, so it stays useful when life changes.</p>
-      <a class="btn-secondary w-fit" href="#resource-directory">Find support</a>
+      <div class="flex flex-wrap gap-3">
+        <a class="btn-secondary w-fit" href="#virtual-programs">Iowa CYP virtual programs</a>
+        <a class="w-fit inline-flex items-center rounded-full border border-white/30 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10" href="#resource-directory">Browse all resources</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% set virtualItems = [] %}
+{% set partnerItems = [] %}
+{% for resource in resources.items %}
+  {% if resource.section == 'virtual' %}
+    {% set virtualItems = (virtualItems.push(resource), virtualItems) %}
+  {% else %}
+    {% set partnerItems = (partnerItems.push(resource), partnerItems) %}
+  {% endif %}
+{% endfor %}
+{% set categoryOrder = ['Crisis & safety', 'Education & planning', 'Child care', 'Family support', 'Guard connection', 'Youth activities', 'Wellness'] %}
+
+<section id="virtual-programs" class="bg-primary/5 py-12 md:py-16" data-reveal>
+  <div class="container space-y-8">
+    <div class="max-w-3xl space-y-3">
+      <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Iowa CYP virtual programs</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Programs you can open from anywhere in Iowa</h2>
+      <p class="text-slate-700 leading-relaxed">Built by Iowa CYP for Guard-connected kids, teens, and caregivers. No travel needed, and new programs are added as they launch.</p>
+    </div>
+    <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      {% for program in virtualItems %}
+        {% set isComingSoon = program.status == 'coming-soon' or not program.url %}
+        <article id="virtual-{{ program.id | lower }}" class="virtual-program-card{% if isComingSoon %} virtual-program-card--soon{% endif %}" data-reveal>
+          <div class="virtual-program-card__media">
+            {% if program.image %}
+              <img
+                src="{{ program.image }}"
+                alt=""
+                class="h-full w-full object-cover"
+                {{ imageAttrs(program.image) }}
+                loading="lazy"
+                decoding="async"
+              >
+            {% else %}
+              <div class="flex h-full w-full items-center justify-center bg-primary/10 text-primary" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="h-12 w-12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.2 2.8 8.1 7 10 4.2-1.9 7-5.8 7-10V6l-7-3Z"/><path d="M9 11a3 3 0 1 0 6 0 3 3 0 0 0-6 0Z"/><path d="M7.5 17a4.5 4.5 0 0 1 9 0"/></svg>
+              </div>
+            {% endif %}
+            <span class="virtual-program-badge virtual-program-badge--{{ program.status }}">{{ program.statusLabel or 'Available now' }}</span>
+          </div>
+          <div class="flex flex-1 flex-col gap-3 p-5">
+            <h3 class="text-lg font-semibold text-slate-900 leading-snug">{{ program.label }}</h3>
+            <p class="text-sm text-slate-700 leading-relaxed">{{ program.summary }}</p>
+            {% if program.audience %}
+              <p class="text-xs text-slate-500">For: {{ program.audience | join(', ') }}</p>
+            {% endif %}
+            {% if isComingSoon %}
+              <a class="btn-secondary w-fit mt-auto" href="mailto:iaarngcyp@gmail.com?subject=Notify%20me%3A%20{{ program.label | urlencode }}">{{ program.cta or 'Get notified' }}</a>
+            {% else %}
+              <a class="btn w-fit mt-auto" href="{{ program.url }}"{% if not program.url.startsWith('/') %} target="_blank" rel="noopener"{% endif %}>{{ program.cta or 'Open' }}</a>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
     </div>
   </div>
 </section>
 
 <section id="top-resources" class="bg-white py-12 md:py-16" data-reveal>
-  <div class="container space-y-8">
+  <div class="container space-y-8" data-resource-filter>
     <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
       <div class="max-w-3xl space-y-3">
-        <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Resource directory</p>
+        <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Partner &amp; community resources</p>
         <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Find the kind of support you need</h2>
-        <p class="text-slate-700 leading-relaxed">Browse a short, practical list of trusted partners by what matters most to your family right now.</p>
+        <p class="text-slate-700 leading-relaxed">Trusted partners, sorted by what matters most to your family right now. Pick a topic, choose who it's for, or search.</p>
       </div>
       <a class="text-sm font-semibold text-primary inline-flex items-center gap-2 whitespace-nowrap" href="#resource-contact">Can’t find it?<span aria-hidden="true">&rarr;</span></a>
     </div>
-    <nav class="flex flex-wrap gap-2" aria-label="Resource topics">
-      <a class="resource-topic" href="#education-planning-r001">Education &amp; planning</a>
-      <a class="resource-topic" href="#child-care-r008">Child care</a>
-      <a class="resource-topic" href="#family-support-r005">Family support</a>
-      <a class="resource-topic" href="#guard-connection-r002">Guard connection</a>
-      <a class="resource-topic" href="#youth-activities-r007">Youth activities</a>
-      <a class="resource-topic" href="#wellness-r009">Wellness</a>
-      <a class="resource-topic" href="#crisis-safety-r014">Crisis &amp; safety</a>
-    </nav>
-    <div id="resource-directory" class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-      {% for resource in resources.items %}
-        <article id="{% if resource.category %}{{ resource.category | lower | replace(' & ', '-') | replace(' ', '-') }}{% else %}resource{% endif %}-{{ resource.id | lower }}" class="resource-directory-card flex gap-3 h-full" data-reveal>
-          {% if resource.image %}
-            <img
-              src="{{ resource.image }}"
-              alt=""
-              class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white"
-              data-resource-logo
-              data-resource-text="{{ (resource.label ~ ' ' ~ resource.summary) | escape }}"
-              {{ imageAttrs(resource.image) }}
-              loading="lazy"
-              decoding="async"
-            >
-          {% else %}
-            <span class="resource-initials" aria-hidden="true">{{ resource.label | truncate(2, true, '') }}</span>
+
+    <div class="space-y-4">
+      <label class="block max-w-md">
+        <span class="sr-only">Search resources</span>
+        <input type="search" data-resource-search placeholder="Search resources (e.g. tutoring, child care, crisis)" class="w-full rounded-full border border-slate-300 px-4 py-2.5 text-sm shadow-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30" autocomplete="off">
+      </label>
+      <div class="flex flex-wrap gap-2" role="group" aria-label="Filter by topic">
+        <button type="button" class="resource-topic is-active" data-filter-category="all" aria-pressed="true">All topics <span class="resource-topic__count">{{ partnerItems | length }}</span></button>
+        {% for cat in categoryOrder %}
+          {% set count = 0 %}
+          {% for r in partnerItems %}{% if r.category == cat %}{% set count = count + 1 %}{% endif %}{% endfor %}
+          {% if count > 0 %}
+            <button type="button" class="resource-topic" data-filter-category="{{ cat }}" aria-pressed="false">{{ cat }} <span class="resource-topic__count">{{ count }}</span></button>
           {% endif %}
-          <div class="min-w-0 space-y-2">
-            {% if resource.category %}<p class="text-[0.68rem] font-semibold uppercase tracking-[0.13em] text-primary/70">{{ resource.category }}</p>{% endif %}
-            <h3 class="text-base font-semibold text-slate-900 leading-snug">
-              <a href="{{ resource.url }}" target="_blank" rel="noopener">{{ resource.label }}</a>
-            </h3>
-            <p class="text-sm text-gray-700 leading-relaxed">{{ resource.summary }}</p>
-            <a class="text-sm font-semibold text-primary inline-flex items-center gap-2" href="{{ resource.url }}"{% if resource.url | slice(0, 1) != '/' %} target="_blank" rel="noopener"{% endif %}>Visit resource<span aria-hidden="true">&rarr;</span></a>
+        {% endfor %}
+      </div>
+      <div class="flex flex-wrap items-center gap-2" role="group" aria-label="Filter by who it's for">
+        <span class="text-xs font-semibold uppercase tracking-[0.13em] text-slate-500 mr-1">For</span>
+        <button type="button" class="resource-topic resource-topic--small is-active" data-filter-audience="all" aria-pressed="true">Everyone</button>
+        <button type="button" class="resource-topic resource-topic--small" data-filter-audience="kids" aria-pressed="false">Kids</button>
+        <button type="button" class="resource-topic resource-topic--small" data-filter-audience="teens" aria-pressed="false">Teens</button>
+        <button type="button" class="resource-topic resource-topic--small" data-filter-audience="caregivers" aria-pressed="false">Parents &amp; caregivers</button>
+      </div>
+      <p class="text-sm text-slate-600" data-resource-status aria-live="polite">Showing all {{ partnerItems | length }} resources</p>
+    </div>
+
+    <div id="resource-directory" class="space-y-10">
+      {% for cat in categoryOrder %}
+        {% set groupItems = [] %}
+        {% for r in partnerItems %}{% if r.category == cat %}{% set groupItems = (groupItems.push(r), groupItems) %}{% endif %}{% endfor %}
+        {% if groupItems | length %}
+          <div class="space-y-4" data-resource-group="{{ cat }}" id="{{ cat | lower | replace(' & ', '-') | replace(' ', '-') }}">
+            <h3 class="text-lg font-semibold text-slate-900 border-b border-slate-200 pb-2">{{ cat }}</h3>
+            <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {% for resource in groupItems %}
+                <article
+                  id="{{ cat | lower | replace(' & ', '-') | replace(' ', '-') }}-{{ resource.id | lower }}"
+                  class="resource-directory-card flex gap-3 h-full"
+                  data-resource-item
+                  data-category="{{ resource.category }}"
+                  data-audience="{{ resource.audience | join(' ') }}"
+                  data-search="{{ (resource.label ~ ' ' ~ resource.summary ~ ' ' ~ resource.category ~ ' ' ~ (resource.format or '')) | lower | escape }}"
+                  data-reveal
+                >
+                  {% if resource.image %}
+                    <img
+                      src="{{ resource.image }}"
+                      alt=""
+                      class="h-14 w-14 flex-shrink-0 object-contain rounded-xl border border-slate-200 bg-white"
+                      data-resource-logo
+                      data-resource-text="{{ (resource.label ~ ' ' ~ resource.summary) | escape }}"
+                      {{ imageAttrs(resource.image) }}
+                      loading="lazy"
+                      decoding="async"
+                    >
+                  {% else %}
+                    <span class="resource-initials" aria-hidden="true">{{ resource.label | truncate(2, true, '') }}</span>
+                  {% endif %}
+                  <div class="min-w-0 space-y-2">
+                    {% if resource.format %}<p class="text-[0.68rem] font-semibold uppercase tracking-[0.13em] text-primary/70">{{ resource.format }}</p>{% endif %}
+                    <h3 class="text-base font-semibold text-slate-900 leading-snug">
+                      <a href="{{ resource.url }}"{% if not resource.url.startsWith('/') %} target="_blank" rel="noopener"{% endif %}>{{ resource.label }}</a>
+                    </h3>
+                    <p class="text-sm text-gray-700 leading-relaxed">{{ resource.summary }}</p>
+                    <a class="text-sm font-semibold text-primary inline-flex items-center gap-2" href="{{ resource.url }}"{% if not resource.url.startsWith('/') %} target="_blank" rel="noopener"{% endif %}>Visit resource<span aria-hidden="true">&rarr;</span></a>
+                  </div>
+                </article>
+              {% endfor %}
+            </div>
           </div>
-        </article>
+        {% endif %}
       {% endfor %}
+      <p class="hidden rounded-2xl border border-dashed border-slate-300 p-6 text-center text-sm text-slate-600" data-resource-empty>No resources match yet. Try a different topic, or <a class="font-semibold text-primary" href="#resource-contact">tell us what you need</a>.</p>
     </div>
   </div>
 </section>
