@@ -350,7 +350,7 @@
       ],
       "format": "hotline",
       "featured": false,
-      "image": "",
+      "image": "/assets/img/resources/resource-caasa-centers-against-abuse-sexual-assault.jpg",
       "notes": "CAASA serves 19 counties in Northwest Iowa; services are available to people of all ages and genders."
     },
     {
@@ -366,7 +366,7 @@
       ],
       "format": "guide",
       "featured": false,
-      "image": "",
+      "image": "/assets/img/branding_symbol.png",
       "notes": ""
     },
     {
@@ -382,7 +382,7 @@
       ],
       "format": "program",
       "featured": false,
-      "image": "",
+      "image": "/assets/img/resources/resource-iowa-purple-star-school-program.ico",
       "notes": ""
     },
     {
@@ -399,7 +399,7 @@
       ],
       "format": "website",
       "featured": false,
-      "image": "",
+      "image": "/assets/img/resources/resource-military-child-education-coalition.png",
       "notes": ""
     },
     {
@@ -415,7 +415,7 @@
       ],
       "format": "scholarship",
       "featured": false,
-      "image": "",
+      "image": "/assets/img/resources/resource-scholarships-for-military-children.ico",
       "notes": ""
     },
     {
@@ -431,7 +431,7 @@
       ],
       "format": "database",
       "featured": false,
-      "image": "",
+      "image": "/assets/img/resources/resource-military-child-care-mcc.png",
       "notes": ""
     },
     {
@@ -447,7 +447,7 @@
       ],
       "format": "guide",
       "featured": false,
-      "image": "",
+      "image": "/assets/img/branding_symbol.png",
       "notes": ""
     },
     {
@@ -464,7 +464,7 @@
       ],
       "format": "website",
       "featured": false,
-      "image": "",
+      "image": "/assets/img/resources/resource-sesame-street-for-military-families.ico",
       "notes": ""
     },
     {
@@ -481,7 +481,7 @@
       ],
       "format": "program",
       "featured": false,
-      "image": "",
+      "image": "/assets/img/resources/resource-united-through-reading.png",
       "notes": ""
     },
     {
@@ -497,7 +497,7 @@
       ],
       "format": "program",
       "featured": false,
-      "image": "",
+      "image": "/assets/img/resources/resource-operation-homefront.png",
       "notes": ""
     },
     {
@@ -513,7 +513,7 @@
       ],
       "format": "website",
       "featured": false,
-      "image": "",
+      "image": "/assets/img/resources/resource-blue-star-families.png",
       "notes": ""
     },
     {
@@ -529,7 +529,7 @@
       ],
       "format": "website",
       "featured": false,
-      "image": "",
+      "image": "/assets/img/resources/resource-blue-star-mothers-of-iowa.ico",
       "notes": ""
     },
     {
@@ -547,7 +547,7 @@
       ],
       "format": "website",
       "featured": false,
-      "image": "",
+      "image": "/assets/img/partners/partner_uso.png",
       "notes": ""
     },
     {
@@ -563,7 +563,7 @@
       ],
       "format": "website",
       "featured": false,
-      "image": "",
+      "image": "/assets/img/resources/resource-national-guard-spouse-family-interest.ico",
       "notes": ""
     },
     {
@@ -580,7 +580,7 @@
       ],
       "format": "program",
       "featured": false,
-      "image": "",
+      "image": "/assets/img/resources/resource-4-h-military-partnerships.ico",
       "notes": ""
     },
     {
@@ -597,7 +597,7 @@
       ],
       "format": "camp",
       "featured": false,
-      "image": "",
+      "image": "/assets/img/resources/resource-operation-purple-camp.jpg",
       "notes": ""
     },
     {
@@ -613,7 +613,7 @@
       ],
       "format": "website",
       "featured": false,
-      "image": "",
+      "image": "/assets/img/resources/resource-bloom-empowering-the-military-teen.png",
       "notes": ""
     },
     {
@@ -630,7 +630,7 @@
       ],
       "format": "grant",
       "featured": false,
-      "image": "",
+      "image": "/assets/img/resources/resource-united-heroes-league.jpg",
       "notes": ""
     },
     {
@@ -648,7 +648,7 @@
       ],
       "format": "hotline",
       "featured": false,
-      "image": "",
+      "image": "/assets/img/resources/resource-988-suicide-crisis-lifeline.png",
       "notes": ""
     }
   ]
