@@ -1719,6 +1719,7 @@ const initAccessGate = ({
   successMessage,
   defaultSource,
   logLabel,
+  keepGateVisible = false,
 }) => {
   const gate = document.querySelector(gateSelector);
   const content = document.querySelector(contentSelector);
@@ -1739,25 +1740,11 @@ const initAccessGate = ({
   };
 
   const unlock = () => {
-    gate.classList.add('hidden');
+    if (!keepGateVisible) {
+      gate.classList.add('hidden');
+    }
     content.hidden = false;
   };
-
-  const reopenForm = () => {
-    content.hidden = true;
-    gate.classList.remove('hidden');
-    window.requestAnimationFrame(() => {
-      gate.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      emailInput?.focus({ preventScroll: true });
-    });
-  };
-
-  content.querySelectorAll('[data-access-gate-reopen]').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      reopenForm();
-    });
-  });
 
   if (canUseStorage() && window.localStorage.getItem(storageKey) === 'true') {
     if (emailInput instanceof HTMLInputElement) {
@@ -1938,6 +1925,7 @@ initAccessGate({
   successMessage: 'You are on the My Guard Family list. We will email the right resource for your family when it is ready.',
   defaultSource: 'www.iowacyp.com',
   logLabel: 'My Guard Family access',
+  keepGateVisible: true,
 });
 // Inject current year in footer
 const yearTarget = document.getElementById('year');
