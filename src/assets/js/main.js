@@ -1743,6 +1743,22 @@ const initAccessGate = ({
     content.hidden = false;
   };
 
+  const reopenForm = () => {
+    content.hidden = true;
+    gate.classList.remove('hidden');
+    window.requestAnimationFrame(() => {
+      gate.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      emailInput?.focus({ preventScroll: true });
+    });
+  };
+
+  content.querySelectorAll('[data-access-gate-reopen]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      reopenForm();
+    });
+  });
+
   if (canUseStorage() && window.localStorage.getItem(storageKey) === 'true') {
     if (emailInput instanceof HTMLInputElement) {
       const rememberedEmail = window.localStorage.getItem(emailKey);
