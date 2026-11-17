@@ -5128,6 +5128,10 @@ footer a:hover {
     order: 2;
   }
 
+  .md\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
   .md\:mx-auto {
     margin-left: auto;
     margin-right: auto;

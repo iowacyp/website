@@ -1462,7 +1462,10 @@ const initSubscribeForm = () => {
     const affiliation = String(formData.get('affiliation') || '').trim();
     const serviceArea = String(formData.get('service_area') || '').trim();
     const virtualContent = Boolean(formData.get('virtual_content'));
-    const participantCount = Number.parseInt(String(formData.get('num_participants') || ''), 10);
+    const age0To5 = Number.parseInt(String(formData.get('age_0_5') || ''), 10);
+    const age6To12 = Number.parseInt(String(formData.get('age_6_12') || ''), 10);
+    const age13To17 = Number.parseInt(String(formData.get('age_13_17') || ''), 10);
+    const participantCount = age0To5 + age6To12 + age13To17;
     const consent = Boolean(formData.get('consent'));
     const botField = String(formData.get('bot-field') || '').trim();
 
@@ -1779,6 +1782,10 @@ const initAccessGate = ({
     const email = String(formData.get('email') || '').trim().toLowerCase();
     const affiliation = String(formData.get('affiliation') || '').trim();
     const serviceArea = String(formData.get('service_area') || '').trim();
+    const firstName = String(formData.get('parent_first_name') || '').trim();
+    const lastName = String(formData.get('parent_last_name') || '').trim();
+    const participantCount = Number.parseInt(String(formData.get('num_participants') || ''), 10);
+    const usesFamilyIntake = Boolean(form.dataset.accessEndpoint);
     const consent = Boolean(formData.get('consent'));
     const botField = String(formData.get('bot-field') || '').trim();
 
@@ -1794,6 +1801,17 @@ const initAccessGate = ({
 
     if (!isAllowedServiceArea(serviceArea)) {
       setStatus('Please select a valid service area / closest city.', 'error');
+      return;
+    }
+
+    if (usesFamilyIntake && (!firstName || !lastName)) {
+      setStatus('Please enter the parent or guardian name.', 'error');
+      return;
+    }
+
+    const ageRangeCounts = [age0To5, age6To12, age13To17];
+    if (usesFamilyIntake && (ageRangeCounts.some((count) => !Number.isInteger(count) || count < 0 || count > 25) || participantCount < 1 || participantCount > 25)) {
+      setStatus('Please enter the number of children or youth in each age range (1–25 total).', 'error');
       return;
     }
 
@@ -1817,6 +1835,17 @@ const initAccessGate = ({
       region: String(formData.get('region') || '').trim() || null,
       service_area: serviceArea,
       affiliation,
+      parent_first_name: usesFamilyIntake ? firstName : undefined,
+      parent_last_name: usesFamilyIntake ? lastName : undefined,
+      num_participants: usesFamilyIntake ? participantCount : undefined,
+      child_youth_ages: usesFamilyIntake ? `Ages 0-5: ${age0To5}; Ages 6-12: ${age6To12}; Ages 13-17: ${age13To17}` : undefined,
+      comments: usesFamilyIntake ? `Reporting age ranges - 0-5: ${age0To5}; 6-12: ${age6To12}; 13-17: ${age13To17}` : undefined,
+      virtual_programming_interest: usesFamilyIntake
+        ? [
+            formData.get('quarterly_programming') ? 'My Guard Family; Quarterly virtual programming and Online Adventure Kits' : 'My Guard Family only',
+            formData.get('mfrs_outreach') ? 'Military Family Readiness Specialist outreach requested' : null,
+          ].filter(Boolean).join('; ')
+        : undefined,
       consent: true,
       source: String(formData.get('source') || '').trim() || defaultSource,
       tags: String(formData.get('tags') || '').trim(),
@@ -1830,7 +1859,7 @@ const initAccessGate = ({
     setStatus('Submitting...');
 
     try {
-      const response = await fetch('/.netlify/functions/subscribe-proxy', {
+      const response = await fetch(form.dataset.accessEndpoint || '/.netlify/functions/subscribe-proxy', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(payload),
@@ -1889,10 +1918,10 @@ initAccessGate({
   submitSelector: '[data-adventure-kits-access-submit]',
   storageKey: 'adventure-kits-access-granted',
   emailKey: 'adventure-kits-access-email',
-  unlockedMessage: 'Access unlocked. The Adventure Kits content is now available.',
-  successMessage: 'Access unlocked. The Adventure Kits content is now available.',
+  unlockedMessage: 'You are on the My Guard Family list. We will email the right resource for your family when it is ready.',
+  successMessage: 'You are on the My Guard Family list. We will email the right resource for your family when it is ready.',
   defaultSource: 'www.iowacyp.com',
-  logLabel: 'Adventure Kits access',
+  logLabel: 'My Guard Family access',
 });
 // Inject current year in footer
 const yearTarget = document.getElementById('year');
