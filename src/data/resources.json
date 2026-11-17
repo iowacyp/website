@@ -298,7 +298,7 @@
       ],
       "format": "website",
       "featured": false,
-      "image": "/content/Media/wfsb.jpg",
+      "image": "/assets/img/resources/resource-iowa-guard-warrior-family-services.png",
       "notes": "Check for deeper links to specific services."
     },
     {
@@ -415,7 +415,7 @@
       ],
       "format": "scholarship",
       "featured": false,
-      "image": "/assets/img/resources/resource-scholarships-for-military-children.ico",
+      "image": "/assets/img/resources/resource-scholarships-military-children.svg",
       "notes": ""
     },
     {
@@ -464,7 +464,7 @@
       ],
       "format": "website",
       "featured": false,
-      "image": "/assets/img/resources/resource-sesame-street-for-military-families.ico",
+      "image": "/assets/img/resources/resource-sesame-street-military-families.png",
       "notes": ""
     },
     {
@@ -529,7 +529,7 @@
       ],
       "format": "website",
       "featured": false,
-      "image": "/assets/img/resources/resource-blue-star-mothers-of-iowa.ico",
+      "image": "/assets/img/resources/resource-blue-star-mothers.png",
       "notes": ""
     },
     {
@@ -580,7 +580,7 @@
       ],
       "format": "program",
       "featured": false,
-      "image": "/assets/img/resources/resource-4-h-military-partnerships.ico",
+      "image": "/assets/img/resources/resource-4-h-military-partnerships.jpg",
       "notes": ""
     },
     {
@@ -597,7 +597,7 @@
       ],
       "format": "camp",
       "featured": false,
-      "image": "/assets/img/resources/resource-operation-purple-camp.jpg",
+      "image": "/assets/img/resources/resource-operation-purple-camp.png",
       "notes": ""
     },
     {
