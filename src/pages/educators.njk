@@ -16,23 +16,31 @@ mainClass: educators-page
   </div>
 {% endmacro %}
 
-{% macro resourceLink(url, label) %}
-  <a class="inline-flex min-h-11 items-center rounded-sm py-2 font-semibold text-primary underline underline-offset-4 hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" href="{{ url | escape }}">{{ label }}</a>
+{% macro resourceLink(url, label, thumbnail) %}
+  <a class="inline-flex min-h-11 items-center gap-3 rounded-sm py-2 font-semibold text-primary underline underline-offset-4 hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" href="{{ url | escape }}">
+    {% if thumbnail %}
+      <img src="{{ thumbnail }}" alt="" width="40" height="40" class="h-10 w-10 shrink-0 rounded-lg border border-slate-200 bg-white object-contain" loading="lazy" decoding="async">
+    {% endif %}
+    <span>{{ label }}</span>
+  </a>
 {% endmacro %}
 
 {% set cardClass = "min-w-0 space-y-4 rounded-2xl border border-slate-200 bg-zinc-50 p-5 sm:p-7" %}
 {% set summaryClass = "min-h-11 cursor-pointer rounded-sm py-3 font-semibold text-primary hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" %}
 
 <section class="border-b border-stone-200 bg-stone-50 py-12 sm:py-16 lg:py-20">
-  <div class="container space-y-5">
-    <p class="text-sm font-semibold tracking-widest text-primary">IOWA CYP · EDUCATOR RESOURCES</p>
-    <h1 class="max-w-3xl text-3xl font-semibold leading-tight text-slate-900 sm:text-5xl">Supporting Iowa's Military-Connected Students</h1>
-    <p class="max-w-2xl text-lg leading-relaxed text-slate-700">Everything schools need to take meaningful steps toward supporting military children and pursuing Purple Star School recognition.</p>
-    <ul class="flex flex-wrap gap-2" role="list">
-      {% for label in ["Designation Guidance", "School Resources", "Family Support"] %}
-        <li class="rounded-full border border-stone-200 bg-stone-100 px-3 py-1 text-sm font-medium text-slate-700">{{ label }}</li>
-      {% endfor %}
-    </ul>
+  <div class="container grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_14rem] lg:gap-10">
+    <div class="min-w-0 space-y-5">
+      <p class="text-sm font-semibold tracking-widest text-primary">IOWA CYP · EDUCATOR RESOURCES</p>
+      <h1 class="max-w-3xl text-3xl font-semibold leading-tight text-slate-900 sm:text-5xl">Supporting Iowa's Military-Connected Students</h1>
+      <p class="max-w-2xl text-lg leading-relaxed text-slate-700">Everything schools need to take meaningful steps toward supporting military children and pursuing Purple Star School recognition.</p>
+      <ul class="flex flex-wrap gap-2" role="list">
+        {% for label in ["Designation Guidance", "School Resources", "Family Support"] %}
+          <li class="rounded-full border border-stone-200 bg-stone-100 px-3 py-1 text-sm font-medium text-slate-700">{{ label }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <img src="/assets/img/resources/teaching.jpg" alt="Educators collaborating on classroom plans" class="aspect-[4/3] w-full max-w-56 rounded-2xl border border-stone-200 object-cover" {{ imageAttrs('/assets/img/resources/teaching.jpg') }} decoding="async">
   </div>
 </section>
 
@@ -79,6 +87,10 @@ mainClass: educators-page
     <article class="{{ cardClass }}">
       {{ cardHeading("Classroom Activities & Kits", "M3 5h5a4 4 0 0 1 4 4v11a5 5 0 0 0-4-2H3V5Zm18 0h-5a4 4 0 0 0-4 4v11a5 5 0 0 1 4-2h5V5Z") }}
       <p>Recognize military-connected students each April. Host a Purple Up day, make a hallway display, or invite military families to share their experiences if they choose.</p>
+      <div class="grid grid-cols-2 gap-3">
+        <img src="/content/Media/ball2.jpg" alt="Families dancing together at the Military Family Ball" class="aspect-[4/3] w-full rounded-xl border border-slate-200 object-cover" {{ imageAttrs('/content/Media/ball2.jpg') }} loading="lazy" decoding="async">
+        <img src="/assets/img/programs/family_ball_dance.jpg" alt="Guard families on the dance floor at the Military Family Ball" class="aspect-[4/3] w-full rounded-xl border border-slate-200 object-cover" {{ imageAttrs('/assets/img/programs/family_ball_dance.jpg') }} loading="lazy" decoding="async">
+      </div>
       <ul>
         <li>{{ resourceLink("/month-of-the-military-child/", "Month of the Military Child activities, classroom kits, and family events") }}</li>
         <li>{{ resourceLink("mailto:iaarngcyp@gmail.com?subject=Purple%20Up%20Highlights", "Email your Purple Up highlights") }}</li>
@@ -89,7 +101,7 @@ mainClass: educators-page
           <li>{{ resourceLink("/assets/files/momc_flyer.png", "Ways to Participate flyer") }}</li>
           <li>{{ resourceLink("/assets/files/purpleup.jpg", "Purple Up profile graphic") }}</li>
           <li>{{ resourceLink("/assets/files/momc_overview.png", "Month of the Military Child overview flyer") }}</li>
-          <li>{{ resourceLink("/lemonade-boss/", "Lemonade Boss youth entrepreneurship curriculum") }}</li>
+          <li>{{ resourceLink("/lemonade-boss/", "Lemonade Boss youth entrepreneurship curriculum", "/assets/img/lemonade-banner.jpg") }}</li>
         </ul>
       </details>
     </article>
@@ -117,9 +129,9 @@ mainClass: educators-page
         <summary class="{{ summaryClass }}">School transitions, tutoring, and enrichment</summary>
         <ul>
           <li>{{ resourceLink("https://mic3.net/state/iowa/", "Iowa Interstate Compact on Educational Opportunity for Military Children") }}</li>
-          <li>{{ resourceLink("https://military.tutor.com/home", "Tutor.com for military families") }}</li>
-          <li>{{ resourceLink("https://www.bgca.org/about-us/military/mission-youth-outreach-2025/", "Boys & Girls Clubs Mission Youth Outreach") }}</li>
-          <li>{{ resourceLink(site.links.scholarshipDatabase, "Scholarship database for military-connected students") }}</li>
+          <li>{{ resourceLink("https://military.tutor.com/home", "Tutor.com for military families", "/content/Media/tutor-square-color.png") }}</li>
+          <li>{{ resourceLink("https://www.bgca.org/about-us/military/mission-youth-outreach-2025/", "Boys & Girls Clubs Mission Youth Outreach", "/assets/img/partners/partner_bgca.png") }}</li>
+          <li>{{ resourceLink(site.links.scholarshipDatabase, "Scholarship database for military-connected students", "/assets/img/resources/resource_scholarships.svg") }}</li>
           <li>{{ resourceLink("https://search.militaryscholar.org/", "Search national scholarships for military families") }}</li>
         </ul>
       </details>
