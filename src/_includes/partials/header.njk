@@ -61,7 +61,7 @@
     </a>
 
     <!-- Desktop nav -->
-    <nav class="hidden md:block" aria-label="Primary">
+    <nav class="hidden lg:block" aria-label="Primary">
       <ul class="flex items-center gap-0.5">
         {% for item in navItems %}
           {% set hasChildren = item.children and item.children.length %}
@@ -130,7 +130,7 @@
           <path d="M16.25 16.25 21 21" stroke-width="1.8" stroke-linecap="round"/>
         </svg>
       </button>
-      <button id="navToggle" class="menu-toggle md:hidden" aria-expanded="false" aria-controls="mobileNav">
+      <button id="navToggle" class="menu-toggle lg:hidden" aria-expanded="false" aria-controls="mobileNav">
         <span class="sr-only">Toggle navigation</span>
         <span class="menu-toggle__lines" aria-hidden="true"></span>
       </button>
@@ -140,12 +140,12 @@
 </header>
 
 <!-- Mobile overlay -->
-<div id="navOverlay" class="fixed inset-0 z-[110] hidden bg-primary/70 backdrop-blur-sm md:hidden" data-nav-overlay aria-hidden="true"></div>
+<div id="navOverlay" class="fixed inset-0 z-[110] hidden bg-primary/70 backdrop-blur-sm lg:hidden" data-nav-overlay aria-hidden="true"></div>
 
 <!-- Mobile drawer -->
 <aside
   id="mobileNav"
-  class="fixed inset-y-0 right-0 z-[120] flex w-[min(22rem,100vw)] translate-x-full flex-col overflow-hidden bg-white text-primary shadow-[0_24px_80px_rgba(15,23,42,0.32)] transition-transform duration-300 ease-out md:hidden"
+  class="fixed inset-y-0 right-0 z-[120] flex w-[min(22rem,100vw)] translate-x-full flex-col overflow-hidden bg-white text-primary shadow-[0_24px_80px_rgba(15,23,42,0.32)] transition-transform duration-300 ease-out lg:hidden"
   data-nav-drawer
   aria-label="Primary"
 >

@@ -32,11 +32,10 @@ permalink: /about/index.html
     </noscript>
   </div>
   <div class="absolute inset-0 bg-gradient-to-r from-slate-950/94 via-slate-950/82 to-slate-950/60"></div>
-  <div class="relative container min-h-[70vh] py-24 flex items-center">
-    <div class="max-w-3xl rounded-[2rem] border border-white/10 bg-slate-950/88 p-6 md:p-10 shadow-2xl backdrop-blur-md space-y-6 text-white" data-reveal>
-      <p class="text-sm uppercase tracking-[0.15em] text-secondary">ABOUT IOWA CYP</p>
-      <h1 class="text-3xl md:text-4xl font-semibold text-white">ABOUT THE IOWA CHILD &amp; YOUTH PROGRAM</h1>
-      <p class="text-base md:text-lg text-white/95 leading-relaxed">Iowa CYP supports Guard families by strengthening youth and reducing the everyday pressures of military life. Through programs, events, and resources, we build connection, resilience, and readiness across Iowa.</p>
+  <div class="relative container flex items-center justify-center py-10 md:min-h-[50vh] md:py-16">
+    <div class="max-w-2xl rounded-[2rem] border border-white/10 bg-slate-950/88 p-5 sm:p-8 shadow-2xl backdrop-blur-md space-y-4 text-white" data-reveal>
+      <h1 class="text-2xl md:text-3xl font-semibold text-white">About Iowa CYP</h1>
+      <p class="text-base text-white/95 leading-relaxed">Iowa Child &amp; Youth Program brings Guard families together at events across the state. Kids make friends, and parents meet other families who understand Guard life.</p>
       <div class="flex flex-wrap gap-4">
         <a class="hero-cta" href="/support/#community-partners">Partner With Us</a>
         <a class="hero-cta-secondary" href="{{ site.links.eventsSubscribe }}">Stay in the Loop</a>
@@ -45,14 +44,13 @@ permalink: /about/index.html
   </div>
 </section>
 
-<section id="mission" class="bg-white py-16" data-reveal>
-  <div class="container space-y-12">
-    <div class="max-w-3xl space-y-4">
-      <p class="text-sm uppercase tracking-[0.15em] text-primary/80">WHO WE ARE</p>
-      <h2 class="text-3xl md:text-4xl font-semibold text-slate-900">BUILT FOR GUARD FAMILIES&mdash;FROM DRILL WEEKEND TO HOMECOMING</h2>
-      <p class="text-slate-800 text-lg leading-relaxed">For more than two decades, we&rsquo;ve invested in Guard-connected youth through trusted mentors, resilient friendships, and experiences that reinforce stability at home.</p>
+<section id="mission" class="bg-white py-12 md:py-16" data-reveal>
+  <div class="container space-y-8 md:space-y-10">
+    <div class="mx-auto max-w-3xl space-y-2">
+      <h2 class="text-2xl font-semibold text-slate-900 md:text-3xl">Who We Are</h2>
+      <p class="text-slate-800 leading-relaxed">For more than 20 years, Iowa CYP has brought Guard families together. At our events, kids make friends and parents meet others who know what it’s like to hold things together when a spouse is away.</p>
     </div>
-    <div class="grid gap-8 md:grid-cols-2">
+    <div class="mx-auto grid max-w-3xl gap-4">
       <article class="content-card content-card--outline-gold space-y-4" data-interactive="true">
         <div class="flex items-center gap-3 text-secondary">
           <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7">
@@ -62,7 +60,7 @@ permalink: /about/index.html
           </svg>
           <h3 class="content-card__title text-slate-800">Our Mission</h3>
         </div>
-        <p class="text-slate-700 leading-relaxed">{{ info.mission }}</p>
+        <p class="text-slate-700 leading-relaxed">We bring Iowa Guard families together through events, help them find resources they can use, and give young people opportunities to lead.</p>
       </article>
       <article class="content-card content-card--outline-gold space-y-4" data-interactive="true">
         <div class="flex items-center gap-3 text-secondary">
@@ -74,44 +72,44 @@ permalink: /about/index.html
           </svg>
           <h3 class="content-card__title text-slate-800">Our Vision</h3>
         </div>
-        <p class="text-slate-700 leading-relaxed">{{ info.vision }}</p>
+        {% for paragraph in info.visionDetails -%}
+          <p class="text-slate-700 leading-relaxed">{{ paragraph }}</p>
+        {%- endfor %}
       </article>
     </div>
   </div>
 </section>
 
-<section id="strategic" class="bg-primary/5 py-20" data-reveal>
-  <div class="container space-y-12">
+<section id="strategic" class="bg-primary/5 py-12 md:py-16" data-reveal>
+  <div class="container space-y-8 md:space-y-10">
     <div class="text-center max-w-3xl mx-auto space-y-4">
-      <p class="text-sm uppercase tracking-[0.15em] text-primary/70">How We Work</p>
-      <h2 class="text-3xl md:text-4xl font-semibold text-slate-900 uppercase tracking-[0.1em]">The foundation behind every event, resource, and connection</h2>
-      <p class="text-slate-800">Behind the scenes, we focus on a set of core priorities that ensure programs run smoothly, resources reach families, and leaders across the state see measurable impact.</p>
+      <h2 class="text-3xl md:text-4xl font-semibold text-slate-900 uppercase tracking-[0.1em]">How We Work</h2>
     </div>
-    <div class="grid gap-6 md:grid-cols-2">
+    <div class="grid gap-5 md:grid-cols-2 md:gap-6">
       {% for pillar in info.strategicInfrastructure %}
         <article class="content-card space-y-2" data-interactive="true" data-reveal>
           <div class="flex items-start gap-3">
             {% if loop.index == 1 %}
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7 text-slate-700">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7 shrink-0 text-slate-700">
                 <circle cx="8" cy="12" r="3.2" fill="currentColor" opacity="0.85"></circle>
                 <circle cx="16" cy="12" r="3.2" fill="currentColor" opacity="0.55"></circle>
                 <path d="M10.2 13.5 14.5 15.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
                 <path d="M14.5 15.8v-2.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
               </svg>
             {% elseif loop.index == 2 %}
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7 text-slate-700">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7 shrink-0 text-slate-700">
                 <path d="M7 16a3 3 0 0 1-3-3v-1a3 3 0 0 1 3-3h1.6l7.4-3.7A1 1 0 0 1 18 6.2v11.6a1 1 0 0 1-1.9.5L8.6 14H7Z" fill="currentColor"></path>
                 <path d="M8.5 14.5 10 17.4A2 2 0 0 0 11.8 18.5H14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
               </svg>
             {% elseif loop.index == 3 %}
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7 text-slate-700">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7 shrink-0 text-slate-700">
                 <rect x="4" y="13" width="4" height="7" rx="1" fill="currentColor" opacity="0.6"></rect>
                 <rect x="10" y="9" width="4" height="11" rx="1" fill="currentColor" opacity="0.8"></rect>
                 <rect x="16" y="5" width="4" height="15" rx="1" fill="currentColor"></rect>
                 <path d="M4 21h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
               </svg>
             {% else %}
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7 text-slate-700">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7 shrink-0 text-slate-700">
                 <circle cx="12" cy="12" r="8" fill="currentColor" opacity="0.15"></circle>
                 <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"></circle>
                 <path d="M12 4a12 12 0 0 1 0 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path>
@@ -122,7 +120,7 @@ permalink: /about/index.html
               <h3 class="text-xl font-semibold text-slate-900">{{ pillar.title }}</h3>
             </div>
           </div>
-          <p class="text-gray-700 text-sm leading-relaxed">{{ pillar.description }}</p>
+          <p class="text-slate-700 leading-relaxed">{{ pillar.description }}</p>
         </article>
       {% endfor %}
     </div>
@@ -132,11 +130,9 @@ permalink: /about/index.html
 <section id="values" class="bg-white py-20" data-reveal>
   <div class="container space-y-8">
     <div class="text-center max-w-3xl mx-auto space-y-4">
-      <p class="text-sm uppercase tracking-[0.15em] text-primary/80">Core Values</p>
-      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">How we show up for Guard families every day.</h2>
-      <p class="text-slate-800">These values guide how we plan, partner, and deliver—whether we’re in a school gym, on the road, or huddled with parents over coffee.</p>
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Our Core Values</h2>
     </div>
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
+    <div class="grid gap-6 md:auto-rows-fr md:grid-cols-2 lg:grid-cols-5">
       {% for value in info.coreValues %}
         <div class="content-card-shell">
           <article class="content-card content-card--shell-inner h-full flex flex-col items-center text-center gap-4" data-interactive="true" data-reveal>
@@ -191,72 +187,69 @@ permalink: /about/index.html
   </div>
 </section>
 
-<section id="team" class="relative isolate overflow-hidden py-24" data-reveal>
-  <div class="absolute inset-0">
-    <img
-      src="/assets/img/team/fun.jpg"
-      alt="Iowa CYP team collaborating at Camp Dodge"
-      class="absolute inset-0 h-full w-full object-cover"
-      {{ imageAttrs('/assets/img/team/fun.jpg') }}
-      loading="lazy"
-      decoding="async"
-    >
+<section id="team" class="stp-meet-panel py-16 md:py-24" aria-labelledby="team-title">
+  <div class="container">
+    <header class="max-w-3xl space-y-5" data-reveal>
+      <h2 id="team-title" class="text-3xl md:text-4xl font-semibold text-slate-900">Meet the Team</h2>
+      <p class="text-lg text-slate-700 leading-relaxed">We’re the people you’ll see checking families in, helping a kid join an activity, and answering questions about what’s coming up. Our team includes coordinators, coaches, and camp leads who know military family life through their own families or through working alongside Guard families.</p>
+      <p class="text-lg text-slate-700 leading-relaxed">If you’re coming to your first event or looking for support while a parent is away, reach out. We’ll help you figure out where to start.</p>
+    </header>
   </div>
-  <div class="absolute inset-0 bg-primary/75"></div>
-  <div class="container relative space-y-12 text-white">
-    <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-      <div class="space-y-5">
-        <p class="text-xs uppercase tracking-[0.15em] text-white/80">Meet the Team</p>
-      <h2 class="text-3xl md:text-4xl font-semibold text-white">Program staff who plan shoulder-to-shoulder with Iowa Guard families.</h2>
-      <p class="text-white/85 leading-relaxed">Our staff includes coordinators, coaches, and camp leads who grew up in military households or have served alongside them. We stay on the road, on the phone, and online so every family has a direct line to someone who understands the rhythm of Guard life.</p>
-      </div>
-      <aside class="bg-white/10 border border-white/25 rounded-[2rem] p-6 backdrop-blur">
-        <h3 class="text-lg font-semibold text-white mb-4">Reach the CYP Office</h3>
-        <ul class="space-y-2 text-sm text-white/85">
-          <li><span class="font-semibold text-white">Office:</span> {{ team.officeLocation }}</li>
-          <li><span class="font-semibold text-white">Main Phone:</span> <a class="text-secondary hover:text-white transition" href="tel:{{ site.contactPhone | replace(' ', '') }}">{{ site.contactPhone }}</a></li>
-          <li><span class="font-semibold text-white">Inbox:</span> <a class="text-secondary hover:text-white transition" href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></li>
-        </ul>
-      </aside>
-    </div>
-    <div class="grid gap-6 md:grid-cols-2">
-      {% for member in team.members %}
-        <article class="content-card bg-white/95 border-white/60 shadow-lg space-y-6" data-reveal>
-          <div class="flex items-start gap-6">
-            {% if member.headshot %}
-              <img src="{{ member.headshot }}" alt="{{ member.name }}" class="h-24 w-24 rounded-full object-cover border border-slate-200" width="96" height="96" loading="lazy" decoding="async">
-            {% endif %}
+
+  <div class="stp-member-scroll mt-10 md:mt-14">
+    {% for member in team.members -%}
+      <article class="stp-member{% if loop.index0 % 2 %} stp-member--reverse{% endif %}" data-reveal>
+        <div class="container grid gap-8 px-8 {% if member.headshot %}md:grid-cols-2 md:items-center md:gap-14 lg:gap-24{% endif %}">
+          {% if member.headshot -%}
+            <div class="stp-member__portrait-wrap {% if loop.index0 % 2 %}md:order-2{% endif %}">
+              <div class="stp-member__halo" aria-hidden="true"></div>
+              <img class="stp-member__portrait rounded-3xl" src="{{ member.headshot }}" alt="{{ member.name }}" {{ imageAttrs(member.headshot) | safe }} loading="lazy" decoding="async">
+            </div>
+          {% endif -%}
+          <div class="stp-member__content min-w-0 space-y-4 {% if member.headshot and loop.index0 % 2 %}md:order-1{% endif %}">
+            <div class="stp-member__icon" aria-hidden="true">{% include "partials/stp-member-icon.njk" %}</div>
+            <h3 class="text-4xl font-semibold text-slate-900 md:text-5xl">{{ member.name }}</h3>
             <div>
-              <h3 class="text-xl font-semibold text-slate-900">{{ member.name }}</h3>
-              <p class="text-sm text-primary font-semibold uppercase tracking-wide">{{ member.title }}</p>
-              <p class="text-sm text-gray-600">{{ member.organization }}</p>
+              <p class="font-semibold text-primary">{{ member.title }}</p>
+              <p class="text-sm text-slate-600">{{ member.organization }}</p>
             </div>
-          </div>
-          <p class="text-gray-700 text-sm leading-relaxed mt-4">{{ member.bio }}</p>
-          <div class="flex flex-wrap items-center gap-3 pt-1">
-            <a class="contact-link" href="mailto:{{ member.email }}">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M20 4H4a2 2 0 00-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18v-9.764l7.382 5.768a1 1 0 001.236 0L20 8.236V18H4z"/>
-              </svg>
-              <span>{{ member.email }}</span>
-            </a>
-            <a class="contact-link" href="tel:{{ member.phone | replace('-', '') }}">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M16.487 15.56l-2.675-.305a1 1 0 00-.85.287l-1.02 1.046a11.055 11.055 0 01-4.53-4.53l1.046-1.02a1 1 0 00.287-.85l-.305-2.675A1.5 1.5 0 007.96 6H5.5A1.5 1.5 0 004 7.5C4 15.032 9.968 21 17.5 21a1.5 1.5 0 001.5-1.5V17.04a1.5 1.5 0 00-1.013-1.48z"/>
-              </svg>
-              <span>{{ member.phone }}</span>
-            </a>
-          </div>
-          {% if member.social %}
-            <div class="flex flex-wrap gap-3 pt-2">
-              {% for social in member.social %}
-                <a class="text-sm font-semibold text-primary hover:underline" href="{{ social.url }}" target="_blank" rel="noopener">{{ social.label }}</a>
-              {% endfor %}
+            <p class="text-lg leading-relaxed text-slate-700">{{ member.bio }}</p>
+            <div class="flex flex-wrap items-center gap-3 pt-1">
+              <a class="contact-link" href="mailto:{{ member.email }}">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M20 4H4a2 2 0 00-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18v-9.764l7.382 5.768a1 1 0 001.236 0L20 8.236V18H4z"/>
+                </svg>
+                <span>{{ member.email }}</span>
+              </a>
+              <a class="contact-link" href="tel:{{ member.phone | replace('-', '') }}">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M16.487 15.56l-2.675-.305a1 1 0 00-.85.287l-1.02 1.046a11.055 11.055 0 01-4.53-4.53l1.046-1.02a1 1 0 00.287-.85l-.305-2.675A1.5 1.5 0 007.96 6H5.5A1.5 1.5 0 004 7.5C4 15.032 9.968 21 17.5 21a1.5 1.5 0 001.5-1.5V17.04a1.5 1.5 0 00-1.013-1.48z"/>
+                </svg>
+                <span>{{ member.phone }}</span>
+              </a>
             </div>
-          {% endif %}
-        </article>
-      {% endfor %}
-    </div>
+            {% if member.social -%}
+              <div class="flex flex-wrap gap-3 pt-2">
+                {% for social in member.social %}
+                  <a class="text-sm font-semibold text-primary hover:underline" href="{{ social.url }}" target="_blank" rel="noopener">{{ social.label }}</a>
+                {% endfor %}
+              </div>
+            {%- endif %}
+          </div>
+        </div>
+      </article>
+    {% endfor -%}
+  </div>
+
+  <div class="container mt-10">
+    <aside class="content-card mx-auto max-w-3xl" data-reveal>
+      <h3 class="mb-4 text-lg font-semibold text-slate-900">Reach the CYP Office</h3>
+      <ul class="space-y-2 text-sm text-slate-700">
+        <li><span class="font-semibold text-slate-900">Office:</span> {{ team.officeLocation }}</li>
+        <li><span class="font-semibold text-slate-900">Main Phone:</span> <a class="contact-link break-all" href="tel:{{ site.contactPhone | replace(' ', '') }}">{{ site.contactPhone }}</a></li>
+        <li><span class="font-semibold text-slate-900">Inbox:</span> <a class="contact-link break-all" href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></li>
+      </ul>
+    </aside>
   </div>
 </section>
 

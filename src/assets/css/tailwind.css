@@ -622,6 +622,21 @@ footer a {
   transition-delay: 180ms;
 }
 
+.story-feature {
+  min-height: 0;
+  padding: 2.5rem 0;
+}
+
+.story-feature .stp-member__portrait-wrap {
+  min-height: 0;
+  align-items: center;
+}
+
+.story-feature .stp-member__portrait {
+  height: auto;
+  max-height: 22rem;
+}
+
 .stp-member-cta {
   position: relative;
   overflow: hidden;
@@ -928,6 +943,10 @@ footer a {
   }
   .stp-member__portrait {
     transition: none;
+  }
+  .story-feature.reveal-on-scroll .stp-member__portrait {
+    opacity: 1;
+    transform: none;
   }
   .frame-shell::before {
     opacity: 0;

@@ -1,70 +1,37 @@
 ---
 layout: layouts/base.njk
 title: Iowa National Guard Family & Youth Stories | Iowa CYP
-description: Read stories from Iowa National Guard children, teens, and caregivers finding confidence, leadership, resilience, and community through Iowa CYP.
+description: Read how Iowa National Guard kids make friends at camp, teens speak up for military youth, and parents meet other Guard families through Iowa CYP.
 permalink: /stories/index.html
 ---
 {% set storyQuoteIds = ['Q006', 'Q007', 'Q008', 'Q009', 'Q010', 'Q011', 'Q012', 'Q013', 'Q014', 'Q015', 'Q016', 'Q017'] %}
 {% set voiceQuotes = quotes.items | selectattr('id', 'in', storyQuoteIds) | list %}
 
-<section class="relative isolate overflow-hidden" data-reveal>
-  <div class="relative min-h-[48vh] md:min-h-[55vh] overflow-hidden">
-    <div class="absolute inset-0" data-video-shell>
-      <img
-        src="/content/Media/stories.png"
-        alt=""
-        class="video-poster"
-        aria-hidden="true"
-        {{ imageAttrs('/content/Media/stories.png') }}
-        decoding="async"
-      >
-      <video
-        class="video-fade w-full h-full min-w-full min-h-full object-cover object-[center_35%] brightness-75 saturate-90 contrast-110"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        data-video-fade
-        data-video-lazy
-        aria-hidden="true"
-      >
-        <source src="/content/Media/stories-hero.mp4" type="video/mp4">
-        <p class="sr-only">Your browser does not support the stories hero video.</p>
-      </video>
-      <noscript>
-        <img
-          src="/content/Media/stories.png"
-          alt="Volunteer cheering alongside Guard-connected youth during a CYP activity"
-          class="absolute inset-0 h-full w-full object-cover"
-          {{ imageAttrs('/content/Media/stories.png') }}
-          loading="lazy"
-          decoding="async"
-        >
-      </noscript>
-    </div>
-    <div class="absolute inset-0 bg-gradient-to-r from-slate-950/94 via-slate-950/82 to-slate-950/60 pointer-events-none"></div>
-    <div class="container relative min-h-[48vh] md:min-h-[55vh] flex items-center justify-center text-center py-12 md:py-16">
-      <div class="max-w-3xl md:max-w-2xl rounded-[2rem] border border-white/10 bg-slate-950/88 p-6 md:p-10 text-white space-y-6 shadow-2xl backdrop-blur-md">
-        <h1 class="text-3xl md:text-4xl font-semibold uppercase tracking-[0.15em] text-white flex flex-col gap-2">
-          <span>Stories</span>
-          <span>Of</span>
-          <span>Impact</span>
-        </h1>
-        <p class="text-white/90 text-base md:text-lg leading-relaxed">
-          Real stories from Iowa National Guard children, teens, and caregivers who found connection and resilience through Iowa CYP.
-        </p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <a class="hero-cta" href="mailto:{{ site.contactEmail }}?subject=Share%20My%20Iowa%20CYP%20Story">Share Your Story</a>
-          <a class="hero-cta-secondary inline-flex items-center gap-2" href="/story-gallery/" aria-label="Open the Stories of Impact slideshow">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-              <rect x="3" y="4" width="18" height="13" rx="2"></rect>
-              <path d="M9 21h6M12 17v4"></path>
-              <path d="m10 8 5 2.5-5 2.5V8Z" fill="currentColor" stroke="none"></path>
-            </svg>
-            <span>View Slideshow</span>
-          </a>
-        </div>
+<section class="relative isolate overflow-hidden">
+  <img
+    src="/content/Media/stories.png"
+    alt=""
+    class="absolute inset-0 h-full w-full object-cover object-[center_35%]"
+    {{ imageAttrs('/content/Media/stories.png') | safe }}
+    fetchpriority="high"
+  >
+  <div class="pointer-events-none absolute inset-0 bg-slate-950/45"></div>
+  <div class="container relative flex min-h-[18rem] items-center justify-center py-8 text-center md:min-h-[21rem] md:py-10">
+    <div class="max-w-2xl space-y-4 rounded-[2rem] border border-white/10 bg-slate-950/90 p-5 text-white shadow-2xl backdrop-blur-md sm:p-7">
+      <h1 class="text-3xl font-semibold text-white md:text-4xl">Stories of Impact</h1>
+      <p class="text-base leading-relaxed text-white/95">
+        At Iowa CYP, Guard kids make friends at camp, teens speak up for military youth, and parents meet families who understand Guard life.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a class="hero-cta" href="mailto:{{ site.contactEmail }}?subject=Share%20My%20Iowa%20CYP%20Story">Share Your Story</a>
+        <a class="hero-cta-secondary inline-flex items-center gap-2" href="/story-gallery/" aria-label="Open the Stories of Impact slideshow">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="13" rx="2"></rect>
+            <path d="M9 21h6M12 17v4"></path>
+            <path d="m10 8 5 2.5-5 2.5V8Z" fill="currentColor" stroke="none"></path>
+          </svg>
+          <span>View Slideshow</span>
+        </a>
       </div>
     </div>
   </div>
@@ -81,42 +48,56 @@ permalink: /stories/index.html
 }
 </script>
 
-<section id="event-stories" class="bg-slate-900 py-16 text-white md:py-24" data-reveal>
-  <div class="container space-y-10">
-    <div class="max-w-3xl space-y-4">
-      <p class="text-sm uppercase tracking-[0.15em] text-secondary">Latest stories</p>
-      <h2 class="text-2xl font-semibold text-white md:text-3xl">New stories from across Iowa CYP</h2>
-      <p class="leading-relaxed text-white/80">Start with our newest camp, service, leadership, and family stories. New additions always appear first.</p>
-    </div>
-    <div class="max-w-6xl">
-      <div class="relative" data-story-carousel>
-        <div class="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 scroll-smooth lg:gap-6" data-story-track>
-          {% for story in storyGallery.items %}
-            <article class="group flex w-[78vw] max-w-[340px] flex-shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-lg sm:w-[340px] lg:w-[360px] lg:max-w-[360px]" data-story-slide{% if story.publishedISO %} data-published="{{ story.publishedISO }}"{% endif %}>
-              <a class="flex h-full flex-col" href="/stories/{{ story.id }}/">
-                <figure class="relative aspect-[4/3] overflow-hidden bg-slate-950">
-                  {% if story.cardFit == 'contain' %}
-                    <img src="{{ story.thumbnail }}" alt="" class="absolute inset-0 h-full w-full scale-110 object-cover opacity-50 blur-xl" aria-hidden="true" loading="lazy" decoding="async">
-                    <img src="{{ story.thumbnail }}" alt="{{ story.alt }}" class="absolute inset-0 h-full w-full object-contain transition duration-700 group-hover:scale-[1.02]" {{ imageAttrs(story.thumbnail) | safe }} loading="lazy" decoding="async">
-                  {% else %}
-                    <img src="{{ story.thumbnail }}" alt="{{ story.alt }}" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" style="object-position: {{ story.position }};" {{ imageAttrs(story.thumbnail) | safe }} loading="lazy" decoding="async">
-                  {% endif %}
-                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/10 to-transparent"></div>
-                  {% if loop.index <= 2 %}<span class="absolute right-4 top-4 rounded-full bg-secondary px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-slate-950 shadow-lg">New</span>{% endif %}
-                  <p class="absolute inset-x-0 bottom-0 p-5 text-xs font-bold uppercase tracking-[0.22em] text-secondary">{{ story.eyebrow }}</p>
-                </figure>
-                <div class="flex flex-1 flex-col space-y-3 p-5">
-                  <p class="text-xs uppercase tracking-[0.18em] text-white/55">{{ story.published }}</p>
-                  <h3 class="text-xl font-semibold leading-tight text-white">{{ story.title }}</h3>
-                  <p class="text-sm leading-relaxed text-white/75">{{ story.hook }}</p>
-                  <span class="mt-auto inline-flex items-center gap-2 pt-2 text-sm font-bold text-secondary">Read full story <span aria-hidden="true">&rarr;</span></span>
-                </div>
-              </a>
-            </article>
-          {% endfor %}
+{% set featuredStories = storyGallery.items.slice(0, 3) %}
+{% set browseStories = storyGallery.items.slice(3) %}
+
+<section id="featured-stories" class="bg-primary/5 py-12 md:py-16" aria-labelledby="featured-stories-title">
+  <div class="container" data-reveal>
+    <h2 id="featured-stories-title" class="text-2xl font-semibold text-slate-900 md:text-3xl">Featured stories</h2>
+  </div>
+  <div class="stp-member-scroll mt-5 md:mt-7">
+    {% for story in featuredStories %}
+      {% set reverse = loop.index0 % 2 %}
+      <article class="stp-member story-feature{% if reverse %} stp-member--reverse{% endif %}" data-reveal>
+        <div class="container grid gap-5 px-8 md:grid-cols-2 md:items-center md:gap-10 lg:gap-16">
+          <figure class="stp-member__portrait-wrap{% if reverse %} md:order-2{% endif %}">
+            <div class="stp-member__halo" aria-hidden="true"></div>
+            <img class="stp-member__portrait rounded-3xl" src="{{ story.image }}" alt="{{ story.alt }}" {{ imageAttrs(story.image) | safe }} loading="lazy" decoding="async">
+          </figure>
+          <div class="stp-member__content space-y-3{% if reverse %} md:order-1{% endif %}">
+            <p class="text-sm font-semibold uppercase tracking-[0.15em] text-primary">{{ story.eyebrow }}</p>
+            <h3 class="text-2xl font-semibold leading-tight text-slate-900 md:text-3xl">{{ story.title }}</h3>
+            <p class="max-w-lg text-base leading-relaxed text-slate-700 md:text-lg">{{ story.cardSummary or story.hook }}</p>
+            <a class="btn-secondary inline-flex" href="/stories/{{ story.id }}/" aria-label="Read {{ story.title }}">Read the story</a>
+          </div>
         </div>
-        <button type="button" class="absolute left-0 top-1/2 hidden h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-primary shadow-lg ring-1 ring-primary/20 transition hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary disabled:cursor-not-allowed disabled:opacity-40 md:flex" data-story-prev aria-label="Previous story"><span aria-hidden="true">&larr;</span></button>
-        <button type="button" class="absolute right-0 top-1/2 hidden h-11 w-11 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-primary shadow-lg ring-1 ring-primary/20 transition hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary disabled:cursor-not-allowed disabled:opacity-40 md:flex" data-story-next aria-label="Next story"><span aria-hidden="true">&rarr;</span></button>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="event-stories" class="bg-slate-900 py-12 text-white md:py-16" data-reveal>
+  <div class="container space-y-10">
+    <h2 class="text-2xl font-semibold text-white md:text-3xl">More recent stories</h2>
+    <div class="max-w-[54rem]" data-story-carousel>
+      <div class="grid auto-cols-[100%] grid-flow-col snap-x snap-mandatory gap-5 overflow-x-auto pb-4 motion-safe:scroll-smooth md:auto-cols-[calc(50%-0.625rem)]" data-story-track>
+        {% set isLatest = true %}
+        {% for story in browseStories.slice(0, 3) %}
+          {% include "partials/story-card.njk" %}
+        {% endfor %}
+      </div>
+      <div class="mt-2 flex justify-end gap-2">
+        <button type="button" class="flex h-11 w-11 items-center justify-center rounded-full bg-white text-primary shadow-lg ring-1 ring-primary/20 transition hover:bg-primary hover:text-white focus-visible:ring-2 focus-visible:ring-secondary disabled:cursor-not-allowed disabled:opacity-40" data-story-prev aria-label="Previous story"><span aria-hidden="true">&larr;</span></button>
+        <button type="button" class="flex h-11 w-11 items-center justify-center rounded-full bg-white text-primary shadow-lg ring-1 ring-primary/20 transition hover:bg-primary hover:text-white focus-visible:ring-2 focus-visible:ring-secondary disabled:cursor-not-allowed disabled:opacity-40" data-story-next aria-label="Next story"><span aria-hidden="true">&rarr;</span></button>
+      </div>
+    </div>
+    <div class="space-y-5">
+      <h2 class="text-2xl font-semibold text-white md:text-3xl">More stories</h2>
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+        {% set isLatest = false %}
+        {% for story in browseStories.slice(3) %}
+          {% include "partials/story-card.njk" %}
+        {% endfor %}
       </div>
     </div>
   </div>
@@ -527,14 +508,8 @@ permalink: /stories/index.html
 <section id="spotlight" class="bg-white py-16 md:py-24" data-reveal>
   <div class="container grid gap-12 lg:grid-cols-[minmax(0,1fr)_0.95fr] lg:items-center">
     <div class="space-y-5">
-      <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Community spotlight</p>
-      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">A community lifts families during deployment</h2>
-      <p class="text-slate-700 leading-relaxed">Program Director Chris Cox sat down with local news to share how partners step in when Guard families face deployments. The feature highlights a free horse camp hosted by Jester Park Equestrian Center that gave military youth room to breathe, laugh, and stay connected while a parent was away.</p>
-      <ul class="list-disc pl-8 space-y-3 text-sm text-slate-700">
-        <li><span class="font-semibold text-slate-900">Why it mattered:</span> Volunteers, donors, and Jester Park covered every cost so Guard kids could simply show up.</li>
-        <li><span class="font-semibold text-slate-900">What families said:</span> Families appreciated having a place where their children could connect with other kids who understood similar experiences.</li>
-        <li><span class="font-semibold text-slate-900">How to use it:</span> Share this clip with civic groups and potential sponsors who want real examples of community impact.</li>
-      </ul>
+      <h2 class="text-2xl font-semibold text-slate-900 md:text-3xl">Horse camp during deployment</h2>
+      <p class="leading-relaxed text-slate-700">When a parent was deployed, Guard kids had a place to spend time with other kids who knew what that felt like. Jester Park Equestrian Center hosted a free horse camp, with help from volunteers and donors.</p>
     </div>
     <article class="content-card shadow-lg space-y-4">
       <div class="aspect-video rounded-3xl overflow-hidden border border-slate-200">
@@ -543,7 +518,7 @@ permalink: /stories/index.html
           Your browser does not support the video tag.
         </video>
       </div>
-      <p class="text-slate-700 text-sm leading-relaxed">Full interview: Chris Cox explains how community partners like Jester Park Equestrian Center rally around Guard families to keep kids grounded during deployment.</p>
+      <p class="text-slate-700 text-sm leading-relaxed">Watch Iowa CYP Program Director Chris Cox talk with local news about the camp and the people who made it possible.</p>
     </article>
   </div>
 </section>
@@ -1059,9 +1034,7 @@ permalink: /stories/index.html
 <section id="voices" class="bg-primary/5 py-14 md:py-16" data-reveal>
   <div class="container space-y-10">
     <div class="max-w-3xl space-y-4">
-      <p class="text-sm uppercase tracking-[0.15em] text-primary/70">Voices you can trust</p>
-      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Why steady support matters statewide</h2>
-      <p class="text-slate-700 leading-relaxed">Parents, teens, youth, and caregivers keep us honest. These quotes show what stays with them long after an event or program ends.</p>
+      <h2 class="text-2xl font-semibold text-slate-900 md:text-3xl">In their own words</h2>
     </div>
     <div class="quote-carousel" data-quote-carousel>
       <div class="content-card quote-carousel__slides" role="region" aria-live="polite">

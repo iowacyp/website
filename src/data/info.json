@@ -3,47 +3,51 @@
   "mission": "Support Guard-connected kids and caregivers with experiences, resources, and trusted relationships that build resilience and stability at home.",
   "strategicInfrastructure": [
     {
-      "title": "Partnership Cultivation",
-      "description": "Build and strengthen local and statewide partnerships that expand capacity, enhance experiences, and extend our reach to more families."
+      "title": "Work with local partners",
+      "description": "We work with organizations across Iowa to bring events closer to families and connect them with resources they can use at home or at school."
     },
     {
-      "title": "Storytelling & Advocacy",
-      "description": "Share real Guard family stories to highlight impact, identify gaps, and inform decision-makers where support matters most."
+      "title": "Help families find their next step",
+      "description": "We share what’s coming up, what to expect, and who to contact with questions. We also help families learn about opportunities beyond our events, including camps and Yellow Ribbon programs."
     },
     {
-      "title": "Data-Driven Decisions",
-      "description": "Track outcomes and trends to demonstrate gains in resilience, connection, and readiness."
+      "title": "Pay attention to what helps",
+      "description": "We track who we’re reaching and ask kids and parents what they got out of an event or what made it hard to attend. We use what we learn to plan future events and decide where families could use more support."
     },
     {
-      "title": "Marketing & Visibility",
-      "description": "Keep families and leaders informed through clear, consistent communication and strong program presence."
+      "title": "Speak up for Guard families",
+      "description": "We share what families tell us with partners and Guard leaders so they can see what’s helping and where families still need support."
     }
+  ],
+  "visionDetails": [
+    "We want every Iowa Guard kid and parent to know they have people in their corner. We hope the kids who grow up with us become teens that younger kids look up to.",
+    "By the time they graduate, we hope they’re proud of growing up in a Guard family, see the opportunities it gave them, and find their own way to honor their parent’s service and give back. We want Guard leaders to see strong, connected families as part of what helps service members stay ready and continue serving."
   ],
   "coreValues": [
     {
-      "title": "Show Up",
-      "description": "We’re consistent and dependable, showing up when families need us and staying present through the full rhythm of Guard life.",
+      "title": "Belonging",
+      "description": "Every Guard kid and parent deserves a place to feel welcome and understood. We want families to leave our events knowing they have people they can turn to.",
       "icon": "show-up"
     },
     {
-      "title": "Build Connection",
-      "description": "Relationships come first. We make space for trust, familiarity, and the kind of belonging that helps families feel less alone.",
+      "title": "Connection",
+      "description": "At camp, Yellow Ribbon, or another event, kids can meet a friend who understands what it’s like when a parent leaves for training or deployment.",
       "icon": "build-connection"
     },
     {
-      "title": "Be Intentional",
-      "description": "Every action has purpose, from the way we plan events to how we use time, energy, and resources to serve families well.",
+      "title": "Leadership",
+      "description": "We ask teens to look out for younger kids and set an example for their peers. Sometimes that means noticing who’s on their own and inviting them in.",
       "icon": "be-intentional"
     },
     {
-      "title": "Earn Trust",
-      "description": "We follow through with clear communication, dependable support, and the kind of consistency people can count on.",
-      "icon": "earn-trust"
+      "title": "Pride",
+      "description": "Growing up in a Guard family can be hard. We hope kids look back with pride in how much they grew and in the service their family was part of.",
+      "icon": "keep-growing"
     },
     {
-      "title": "Keep Growing",
-      "description": "We evolve to serve better by listening, learning, and adjusting so our programs stay relevant to the families we serve.",
-      "icon": "keep-growing"
+      "title": "Service",
+      "description": "We hope kids give back in a way that feels right to them, whether they volunteer with CYP, serve in the military, or speak up for Guard families.",
+      "icon": "earn-trust"
     }
   ]
 }

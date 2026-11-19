@@ -933,7 +933,7 @@ const initStoryCarousel = () => {
   };
 
   const moveTrack = (direction) => {
-    track.scrollBy({ left: direction * scrollAmount(), behavior: 'smooth' });
+    track.scrollBy({ left: direction * scrollAmount() });
   };
 
   prevButton?.addEventListener('click', () => moveTrack(-1));

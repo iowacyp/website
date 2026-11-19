@@ -125,6 +125,9 @@ const requiredStoryFields = [
 const storyIds = new Set();
 let previousStoryCardPosition = -1;
 const storiesIndex = fs.readFileSync(path.join(distDir, "stories", "index.html"), "utf8");
+const featuredStories = storiesIndex.match(/<section id="featured-stories"[^>]*>[\s\S]*?<\/section>/)?.[0];
+const storyCatalog = storiesIndex.match(/<section id="event-stories"[^>]*>[\s\S]*?<\/section>/)?.[0];
+if (!featuredStories || !storyCatalog) fail("Stories page is missing a story section");
 const kioskIndex = fs.readFileSync(path.join(distDir, "story-gallery", "index.html"), "utf8");
 const kioskWorker = fs.readFileSync(path.join(distDir, "story-gallery", "sw.js"), "utf8");
 const stpIndex = fs.readFileSync(path.join(distDir, "state-teen-panel", "index.html"), "utf8");
@@ -196,12 +199,16 @@ for (const story of stories) {
   const publicStoryPath = path.join(distDir, "stories", story.id, "index.html");
   if (!fs.existsSync(publicStoryPath)) fail(`public story page was not generated: ${story.id}`);
   const publicStory = fs.readFileSync(publicStoryPath, "utf8");
-  const storyCardPosition = storiesIndex.indexOf(`/stories/${story.id}/`);
-  if (storyCardPosition < 0) fail(`Stories page is missing: ${story.id}`);
-  if (storyCardPosition <= previousStoryCardPosition) {
-    fail(`Stories page order does not match storyGallery.json at: ${story.id}`);
+  const storyLink = `href="/stories/${story.id}/"`;
+  const linkCount = (featuredStories + storyCatalog).split(storyLink).length - 1;
+  if (linkCount !== 1) fail(`Expected one Stories page link for ${story.id}, found ${linkCount}`);
+  const storyCardPosition = storyCatalog.indexOf(storyLink);
+  if (storyCardPosition >= 0) {
+    if (storyCardPosition <= previousStoryCardPosition) {
+      fail(`Stories page order does not match storyGallery.json at: ${story.id}`);
+    }
+    previousStoryCardPosition = storyCardPosition;
   }
-  previousStoryCardPosition = storyCardPosition;
   if (!kioskIndex.includes(`data-story-id="${story.id}"`)) fail(`kiosk is missing: ${story.id}`);
   if (!sitemap.includes(`/stories/${story.id}/`)) fail(`sitemap is missing story: ${story.id}`);
 
