@@ -37,7 +37,7 @@ permalink: /events/
       <div class="max-w-3xl rounded-[2rem] border border-white/10 bg-slate-950/88 p-6 md:p-8 text-white space-y-5 text-center shadow-2xl backdrop-blur-md">
         <p class="text-sm uppercase tracking-[0.15em] text-secondary">Iowa CYP Events</p>
         <h1 class="text-3xl md:text-4xl font-semibold text-white">Events for Guard families</h1>
-        <p class="text-white/90 text-base md:text-lg leading-relaxed">Be first to know about camps, celebrations, and workshops for Iowa's military-connected youth.</p>
+        <p class="text-white/90 text-base md:text-lg leading-relaxed">Find camps, family events, and workshops for Iowa Guard kids and teens.</p>
         <div class="flex flex-wrap justify-center gap-3">
           <a class="hero-cta" href="#upcoming">Browse upcoming events</a>
           <a class="hero-cta-secondary" href="{{ site.links.eventsSubscribe }}">Subscribe for updates</a>
@@ -52,7 +52,7 @@ permalink: /events/
     <div class="mx-auto max-w-3xl space-y-4 text-center">
       <p class="text-sm uppercase tracking-[0.15em] text-primary/70">2026–27 Program Year</p>
       <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Plan your year with Iowa CYP</h2>
-      <p class="text-slate-700 leading-relaxed">Find next program year&rsquo;s events organized by fall, spring, and summer. Event details come directly from our registration system and are updated as plans are finalized.</p>
+      <p class="text-slate-700 leading-relaxed">Browse events by season. Check each listing for dates and registration details as they’re posted.</p>
     </div>
     <div id="eventsList" class="space-y-6" aria-live="polite" aria-busy="false">
       {% for event in events.events | upcomingEvents %}
@@ -140,7 +140,7 @@ permalink: /events/
   <div class="container space-y-8">
     <header class="max-w-3xl space-y-3">
       <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Past events</h2>
-      <p class="text-slate-700">Look back at previous Iowa CYP gatherings for Guard-connected families.</p>
+      <p class="text-slate-700">See where families have gathered and what they did together.</p>
     </header>
     <div id="pastEventsList" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {% for event in events | pastEvents %}
