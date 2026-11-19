@@ -369,74 +369,23 @@ setupVideoFades();
 const scrollReveal = (() => {
   const SELECTOR = '[data-reveal]';
   const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let observer = null;
-  let globalOrder = 0;
-
-  const makeVisible = (element) => {
-    element.classList.add('reveal-visible');
-    element.classList.remove('reveal-on-scroll');
-  };
-
-  const handleEntries = (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting && entry.intersectionRatio <= 0) {
-        return;
-      }
-      const element = entry.target;
-      observer.unobserve(element);
-      requestAnimationFrame(() => {
-        makeVisible(element);
-      });
-    });
-  };
-
-  const ensureObserver = () => {
-    if (observer) return observer;
-    observer = new IntersectionObserver(handleEntries, {
-      threshold: 0.08,
-      rootMargin: '0px 0px -3% 0px',
-    });
-    return observer;
-  };
+  let observer;
 
   const init = (scope = document) => {
-    const elements = scope.querySelectorAll(SELECTOR);
-    if (!elements.length) return;
+    if (reduceMotionQuery.matches || !('IntersectionObserver' in window)) return;
 
-    if (reduceMotionQuery.matches) {
-      elements.forEach((el) => {
-        if (!el.dataset.revealPrepared) {
-          el.dataset.revealPrepared = 'true';
-        }
-        makeVisible(el);
+    observer ??= new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(entry.target);
+        if (!reduceMotionQuery.matches) entry.target.classList.add('reveal-visible');
       });
-      return;
-    }
+    });
 
-    const obs = ensureObserver();
-    elements.forEach((el) => {
-      if (el.dataset.revealPrepared) return;
-      el.dataset.revealPrepared = 'true';
-      el.classList.add('reveal-on-scroll');
-      el.style.setProperty('--reveal-order', Math.min(globalOrder, 6));
-      globalOrder += 1;
-      obs.observe(el);
+    scope.querySelectorAll(SELECTOR).forEach((element) => {
+      if (!element.classList.contains('reveal-visible')) observer.observe(element);
     });
   };
-
-  if (reduceMotionQuery.addEventListener) {
-    reduceMotionQuery.addEventListener('change', () => {
-      if (reduceMotionQuery.matches) {
-        init();
-      }
-    });
-  } else if (reduceMotionQuery.addListener) {
-    reduceMotionQuery.addListener(() => {
-      if (reduceMotionQuery.matches) {
-        init();
-      }
-    });
-  }
 
   return { init };
 })();
@@ -640,7 +589,7 @@ const renderEventCard = (event, variant = 'upcoming') => {
     : '';
 
   return `
-    <article class="${wrapperClass}${wrapperAccent}"${eventFull ? ' aria-disabled="true"' : ''}>
+    <article class="${wrapperClass}${wrapperAccent}" data-reveal${eventFull ? ' aria-disabled="true"' : ''}>
       ${eventImage
         ? `<div class="event-card__media">
             <img class="event-card__image${eventFull ? ' event-card__image--full' : ''}" src="${escapeEventHtml(eventImage)}" alt="" width="1200" height="630" loading="lazy" decoding="async">
@@ -747,7 +696,6 @@ async function renderEvents() {
     scrollReveal.init(upcomingTarget);
     updateEventStructuredData(upcomingEvents);
   } catch (error) {
-    upcomingTarget.innerHTML = '<p class="text-red-600">Could not load events. Please refresh and try again.</p>';
     console.error(error);
   } finally {
     upcomingTarget.setAttribute('aria-busy', 'false');
