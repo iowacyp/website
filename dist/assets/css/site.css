@@ -1888,9 +1888,6 @@ video {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
-.pb-14 {
-  padding-bottom: 3.5rem;
-}
 .pb-16 {
   padding-bottom: 4rem;
 }
@@ -2486,9 +2483,6 @@ video {
 }
 .ease-out {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-}
-.\[grid-auto-rows\:1fr\] {
-  grid-auto-rows: 1fr;
 }
 .\[text-shadow\:0_3px_16px_rgba\(0\2c 0\2c 0\2c 0\.95\)\] {
   text-shadow: 0 3px 16px rgba(0,0,0,0.95);
@@ -5569,10 +5563,6 @@ footer a:hover {
 
   .md\:pt-0 {
     padding-top: 0px;
-  }
-
-  .md\:pt-10 {
-    padding-top: 2.5rem;
   }
 
   .md\:pt-28 {

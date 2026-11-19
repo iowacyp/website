@@ -108,36 +108,6 @@ permalink: /
   </div>
 </section>
 
-<section class="bg-primary/5 pt-8 pb-14 md:pt-10 md:pb-20" data-reveal>
-  <div class="container space-y-12">
-    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3 [grid-auto-rows:1fr]">
-      {% for program in programs.items %}
-        {% if program.featured %}
-          <article class="feature-card">
-            {% if program.image %}
-              <img src="{{ program.image }}" alt="{{ program.name }}" {{ imageAttrs(program.image) }} loading="lazy" decoding="async">
-            {% endif %}
-            <div class="feature-body">
-              <h3>{{ program.name }}</h3>
-              <p>{{ program.description }}</p>
-              {% if program.cta %}
-                {% if program.cta.disabled %}
-                  <span class="btn w-fit cursor-default" aria-disabled="true">{{ program.cta.label }}</span>
-                {% else %}
-                  <a class="link-underline" href="{{ program.cta.url }}">{{ program.cta.label }}</a>
-                {% endif %}
-              {% endif %}
-            </div>
-          </article>
-        {% endif %}
-      {% endfor %}
-    </div>
-    <div class="text-center">
-      <a class="btn" href="/events/">Browse all programs</a>
-    </div>
-  </div>
-</section>
-
 <section class="parallax section text-white relative" style="background-image: url('/assets/img/team/mission-bg.jpg');" data-reveal>
   <div class="absolute inset-0 bg-primary/60"></div>
   <div class="container relative grid gap-8 md:grid-cols-2 items-stretch py-20">
