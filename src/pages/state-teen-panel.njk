@@ -4,7 +4,7 @@ title: Iowa National Guard State Teen Panel | Iowa CYP
 description: Iowa National Guard teens ages 13–17 can build leadership skills, serve their communities, and represent military-connected youth on the State Teen Panel.
 permalink: /state-teen-panel/index.html
 ---
-{% set stpQuote = quotes.items | selectattr('id', 'equalto', 'Q007') | list | first %}
+{% set advocacyStory = storyGallery.items | selectattr('id', 'equalto', 'charlee-national-advocacy') | list | first %}
 
 <section class="relative isolate overflow-hidden" data-reveal>
   {% set heroPhoto = requestPhoto({
@@ -46,10 +46,10 @@ permalink: /state-teen-panel/index.html
         <p class="text-slate-700 leading-relaxed">Panel members also have opportunities to represent Iowa at regional and national gatherings and hear from teens in other military families.</p>
       </div>
 
-      {% if stpQuote %}
+      {% if advocacyStory.quote %}
         <blockquote class="italic text-primary leading-relaxed bg-primary/5 border border-primary/10 rounded-3xl p-5">
-          &ldquo;{{ stpQuote.text }}&rdquo;
-          <span class="block text-xs uppercase tracking-wide text-primary/70 mt-3 not-italic">{{ stpQuote.role }}</span>
+          &ldquo;{{ advocacyStory.quote }}&rdquo;
+          <a class="link-underline mt-3 block w-fit text-xs uppercase tracking-wide text-primary/70 not-italic" href="/stories/{{ advocacyStory.id }}/">Charlee Cromwell</a>
         </blockquote>
       {% endif %}
 

@@ -1,5 +1,38 @@
 document.documentElement.classList.add('js');
 
+const campPhoto = document.querySelector('.camp-photo-banner > img');
+if (campPhoto) {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let framePending = false;
+
+  const updateCampPhoto = () => {
+    framePending = false;
+    if (reducedMotion.matches) {
+      campPhoto.style.removeProperty('transform');
+      return;
+    }
+
+    const banner = campPhoto.parentElement.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    if (banner.bottom < 0 || banner.top > viewportHeight) return;
+
+    const progress = (viewportHeight - banner.top) / (viewportHeight + banner.height);
+    const offset = (progress - 0.5) * 26;
+    campPhoto.style.transform = `translateY(${offset}%) scale(1.28)`;
+  };
+
+  const scheduleCampPhoto = () => {
+    if (framePending) return;
+    framePending = true;
+    window.requestAnimationFrame(updateCampPhoto);
+  };
+
+  window.addEventListener('scroll', scheduleCampPhoto, { passive: true });
+  window.addEventListener('resize', scheduleCampPhoto);
+  reducedMotion.addEventListener('change', scheduleCampPhoto);
+  scheduleCampPhoto();
+}
+
 // Mobile navigation with focus trap
 const navToggle = document.getElementById('navToggle');
 const mobileNav = document.getElementById('mobileNav');

@@ -919,6 +919,7 @@ footer a {
 
 /* Parallax helper */
 .parallax { background-attachment: fixed; background-size: cover; background-position: center; }
+
 .section { @apply py-16; }
 
 @media (prefers-reduced-motion: reduce) {

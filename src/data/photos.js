@@ -8,10 +8,10 @@
 module.exports = {
   items: [
     {
-      id: "support-hero-summer-camp",
-      src: "/content/Media/patriotic.jpg",
-      alt: "Guard-connected youth and families gathered with patriotic bunting",
-      tags: ["support", "hero", "patriotic", "families", "event"],
+      id: "support-hero-fall-family-festival",
+      src: "/assets/img/story-gallery/fall-family-festival-2026-treats-full.jpg",
+      alt: "Volunteers hand out treats to a child at the Fall Family Festival",
+      tags: ["support", "hero", "volunteers", "families", "event"],
       orientation: "landscape",
       credit: null
     },
@@ -52,6 +52,15 @@ module.exports = {
       src: "/assets/img/programs/family_ball_dance.jpg",
       alt: "Guard families dancing at the Military Family Ball",
       tags: ["momc", "event", "families", "celebration"],
+      orientation: "landscape",
+      credit: null
+    },
+
+    {
+      id: "support-horse-camp-briefing",
+      src: "/assets/img/programs/horse-camp-helmet-briefing.jpg",
+      alt: "An instructor addresses a group of campers wearing riding helmets",
+      tags: ["volunteers", "event", "youth", "camp"],
       orientation: "landscape",
       credit: null
     },

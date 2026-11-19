@@ -136,11 +136,19 @@ permalink: /about/index.html
   </div>
 </section>
 
-<section id="strategic" class="bg-white py-16 md:py-24" data-reveal>
-  <div class="container space-y-10 md:space-y-12">
-    <div class="text-center max-w-3xl mx-auto space-y-4">
-      <h2 class="text-3xl font-semibold text-primary md:text-4xl">How We Work</h2>
-    </div>
+<section id="strategic" class="bg-white" aria-labelledby="strategic-title" data-reveal>
+  <div class="camp-photo-banner relative isolate min-h-[18rem] overflow-hidden bg-primary md:min-h-[28rem]">
+    <img
+      src="/assets/img/team/camp-candlelight.jpg"
+      alt="Campers hold lit candles under the trees after dark"
+      class="absolute inset-0 -z-20 h-full w-full object-cover object-[center_70%]"
+      loading="lazy"
+      decoding="async"
+    >
+    <div class="absolute inset-0 -z-10 bg-gradient-to-t from-black/30 to-transparent" aria-hidden="true"></div>
+  </div>
+  <div class="container space-y-10 py-16 md:space-y-12 md:py-24">
+    <h2 id="strategic-title" class="text-center text-3xl font-semibold text-primary md:text-4xl">How We Work</h2>
     <div class="grid gap-x-10 gap-y-8 md:grid-cols-2">
       {% for pillar in info.strategicInfrastructure %}
         <article class="space-y-3 border-t border-primary/20 pt-5">
