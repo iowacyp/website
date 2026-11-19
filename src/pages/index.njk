@@ -61,27 +61,49 @@ permalink: /
   </div>
 </section>
 
-<section class="bg-primary/5 pt-14 pb-8 md:pt-20 md:pb-10" data-reveal>
-  <div class="container">
-    <div class="home-feature relative overflow-hidden rounded-3xl border border-primary/10 bg-[radial-gradient(circle_at_top_left,rgba(255,214,92,0.34),transparent_32%),radial-gradient(circle_at_top_right,rgba(191,227,139,0.34),transparent_28%),linear-gradient(135deg,rgba(255,251,242,0.98),rgba(255,247,225,0.95))] px-0 py-6 md:py-10 lg:min-h-[clamp(34rem,60vw,44rem)]">
-      <img src="/assets/img/lemonade.png" alt="" class="absolute inset-0 h-full w-full object-cover object-right pointer-events-none select-none" {{ imageAttrs('/assets/img/lemonade.png') }} loading="eager" decoding="async" aria-hidden="true">
-      <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,251,242,0.98)_0%,rgba(255,247,225,0.94)_28%,rgba(255,247,225,0.72)_46%,rgba(255,247,225,0.08)_68%,rgba(255,247,225,0)_100%)]"></div>
-      <div class="relative z-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:min-h-[clamp(34rem,60vw,44rem)] px-6 md:px-10">
-        <div class="space-y-6 max-w-3xl">
-          <span class="inline-flex items-center gap-3 rounded-full bg-white/85 px-5 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#1f4d7a] shadow-sm">
-            <span aria-hidden="true">🍋</span>
-            Major update
-          </span>
-          <div class="space-y-4">
-            <h2 class="max-w-3xl text-4xl md:text-5xl font-semibold normal-case tracking-tight text-slate-950">Teach your child the basics of business.</h2>
-            <p class="max-w-2xl text-lg md:text-xl leading-relaxed text-slate-700">This workbook and app help kids practice idea building, simple budgeting, pricing, marketing, and confidence through a hands-on lemonade stand challenge.</p>
+<section class="border-y border-primary/10 bg-primary/5 py-14 md:py-20" aria-labelledby="event-types-heading" data-reveal>
+  <div class="container space-y-8 md:space-y-10">
+    <div class="mx-auto max-w-2xl space-y-3 text-center">
+      <h2 id="event-types-heading" class="text-3xl font-semibold normal-case tracking-tight md:text-4xl">What We Do Together</h2>
+      <p class="text-lg text-slate-600">See how Iowa Guard kids, teens, and families spend time together throughout the year.</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      {%- set eventTypes = [
+        {
+          title: "Family celebrations",
+          description: "At the Fall Family Festival, kids and grown-ups dress up, play games, and spend time with other Guard families.",
+          image: "/assets/img/story-gallery/fall-family-festival-2026-thumb.jpg",
+          url: "/stories/fall-family-festival-2026/",
+          link: "See the Fall Family Festival"
+        },
+        {
+          title: "Youth camps",
+          description: "At summer camp, Guard kids try new activities and make friends with other military-connected youth.",
+          image: "/assets/img/story-gallery/summer-camp-2026-thumb.jpg",
+          url: "/stories/summer-camp-2026/",
+          link: "See summer camp in action"
+        },
+        {
+          title: "Teen leadership",
+          description: "State Teen Panel members plan service projects, practice leadership, and represent other Guard youth.",
+          image: "/assets/img/programs/stp_panel_group.jpg",
+          url: "/state-teen-panel/",
+          link: "Explore the State Teen Panel"
+        }
+      ] %}
+      {%- for eventType in eventTypes %}
+        <article class="feature-card">
+          <img src="{{ eventType.image }}" alt="" {{ imageAttrs(eventType.image) }} loading="lazy" decoding="async">
+          <div class="feature-body">
+            <h3 class="normal-case tracking-tight">{{ eventType.title }}</h3>
+            <p>{{ eventType.description }}</p>
+            <a class="link-underline mt-auto self-start" href="{{ eventType.url }}">{{ eventType.link }}</a>
           </div>
-          <div class="flex flex-wrap gap-4 pt-2">
-            <a class="inline-flex items-center justify-center rounded-full bg-[#1f4d7a] px-6 py-4 text-base font-semibold text-white shadow-[0_18px_30px_-20px_rgba(31,77,122,0.55)] transition hover:-translate-y-0.5 hover:bg-[#173b5e]" href="/lemonade-boss/">Open the workbook &amp; app</a>
-            <a class="inline-flex items-center justify-center rounded-full border border-[#9cb7da] bg-white/75 px-6 py-4 text-base font-semibold text-[#1f4d7a] shadow-sm transition hover:-translate-y-0.5 hover:bg-white" href="/lemonade-boss/">See what's included</a>
-          </div>
-        </div>
-      </div>
+        </article>
+      {%- endfor %}
+    </div>
+    <div class="text-center">
+      <a class="btn" href="/events/">Explore Iowa CYP events</a>
     </div>
   </div>
 </section>
