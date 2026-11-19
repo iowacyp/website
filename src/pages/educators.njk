@@ -5,15 +5,18 @@ description: Find Purple Star School guidance, Month of the Military Child class
 permalink: /educators/index.html
 mainClass: educators-page
 ---
-{% macro cardHeading(title, icon) %}
-  <div class="flex items-center gap-3">
+{% macro cardHeading(title, icon, number, eyebrow) %}
+  <div class="flex items-center justify-between">
     <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-slate-100 text-primary">
       <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
         <path d="{{ icon }}"/>
       </svg>
     </span>
-    <h2 class="text-xl font-semibold leading-tight text-slate-900">{{ title }}</h2>
+    <span class="text-xs font-medium uppercase tracking-wide text-slate-600">
+      {% if number %}Requirement <span class="ml-1 tabular-nums">{{ number }}</span>{% else %}{{ eyebrow }}{% endif %}
+    </span>
   </div>
+  <h2 class="text-xl font-semibold leading-tight text-slate-900">{{ title }}</h2>
 {% endmacro %}
 
 {% macro resourceLink(url, label, thumbnail) %}
@@ -25,127 +28,186 @@ mainClass: educators-page
   </a>
 {% endmacro %}
 
-{% set cardClass = "min-w-0 space-y-4 rounded-2xl border border-slate-200 bg-zinc-50 p-5 sm:p-7" %}
+{% macro cardPhoto(src, alt) %}
+  <img src="{{ src }}" alt="{{ alt }}" class="aspect-[2/1] w-full rounded-xl object-cover" {{ imageAttrs(src) }} loading="lazy" decoding="async">
+{% endmacro %}
+
+{% set guardResourceUrl = "https://www.iowanationalguard.com/wfsb/purplestar.html" %}
+{% set cardClass = "flex min-w-0 flex-col gap-3 rounded-2xl border border-slate-200 bg-zinc-50 px-5 pb-2 pt-5" %}
 {% set summaryClass = "min-h-11 cursor-pointer rounded-sm py-3 font-semibold text-primary hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" %}
 
-<section class="border-b border-stone-200 bg-stone-50 py-12 sm:py-16 lg:py-20">
-  <div class="container grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_14rem] lg:gap-10">
-    <div class="min-w-0 space-y-5">
-      <p class="text-sm font-semibold tracking-widest text-primary">IOWA CYP · EDUCATOR RESOURCES</p>
-      <h1 class="max-w-3xl text-3xl font-semibold leading-tight text-slate-900 sm:text-5xl">Supporting Iowa's Military-Connected Students</h1>
-      <p class="max-w-2xl text-lg leading-relaxed text-slate-700">Everything schools need to take meaningful steps toward supporting military children and pursuing Purple Star School recognition.</p>
-      <ul class="flex flex-wrap gap-2" role="list">
-        {% for label in ["Designation Guidance", "School Resources", "Family Support"] %}
-          <li class="rounded-full border border-stone-200 bg-stone-100 px-3 py-1 text-sm font-medium text-slate-700">{{ label }}</li>
+<div class="container space-y-4 py-8 sm:py-12">
+  <section class="relative isolate flex min-h-[23rem] items-center overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:min-h-[28rem]">
+    <img src="/assets/img/programs/momc_purple_up.jpg" alt="Children and families applaud at the Iowa Capitol during the Month of the Military Child proclamation" class="absolute inset-0 h-full w-full object-cover object-center" {{ imageAttrs('/assets/img/programs/momc_purple_up.jpg') }} fetchpriority="high" decoding="async">
+    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_28%_50%,rgba(2,6,23,0.74)_0%,rgba(2,6,23,0.60)_32%,rgba(2,6,23,0.08)_88%)]" aria-hidden="true"></div>
+    <div class="relative space-y-4 px-5 py-10 text-white sm:px-10">
+      <p class="text-sm font-semibold tracking-widest text-white">IOWA CYP · FOR SCHOOLS &amp; EDUCATORS</p>
+      <h1 class="max-w-2xl text-3xl font-semibold leading-tight text-white sm:text-4xl">Becoming a Purple Star School may be easier than you think.</h1>
+      <p class="max-w-xl leading-relaxed text-white">Many schools are already doing much of what Purple Star recognition asks for. Start with what you have, use the ideas below to fill the gaps, and reach out to Iowa CYP when you need help.</p>
+      <ul class="flex flex-wrap items-center gap-2" role="list">
+        <li><a href="#requirements" class="inline-flex min-h-11 items-center rounded-full border border-white/30 bg-slate-950/70 px-3 text-sm font-semibold text-white underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">See the four requirements</a></li>
+        {% for label in ["Simple first steps", "We're here to help"] %}
+          <li class="rounded-full border border-white/30 bg-slate-950/70 px-3 py-1 text-sm font-medium text-white">{{ label }}</li>
         {% endfor %}
       </ul>
     </div>
-    <img src="/assets/img/resources/teaching.jpg" alt="Educators collaborating on classroom plans" class="aspect-[4/3] w-full max-w-56 rounded-2xl border border-stone-200 object-cover" {{ imageAttrs('/assets/img/resources/teaching.jpg') }} decoding="async">
+  </section>
+
+  <div id="requirements" tabindex="-1" role="group" aria-label="Four Purple Star requirements" class="grid scroll-mt-28 gap-4 leading-relaxed text-slate-700 md:grid-cols-2">
+    <article class="{{ cardClass }}">
+      {{ cardHeading("Choose a School Liaison", "m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z", "01") }}
+      <p>A counselor, teacher, or administrator who already supports families can be your school’s liaison.</p>
+      <p class="text-slate-900"><strong>First step:</strong> Choose a point of contact.</p>
+      <details class="mt-auto">
+        <summary class="{{ summaryClass }}">Review Iowa’s designation guidance</summary>
+        <div class="space-y-3 border-t border-slate-200 pt-3">
+          {{ resourceLink("https://educate.iowa.gov/pk-12/award-exchange-programs/purple-star-school-program", "Iowa Department of Education guidance") }}
+          <h3 class="font-semibold text-slate-900">Iowa CYP suggestions for preparing</h3>
+          <p class="pb-2">Start with a liaison and a small planning team. Review what your school already offers, decide where to list the military family resource link, and pick an awareness activity and staff training topic. Keep examples of this work on hand when you apply.</p>
+        </div>
+      </details>
+    </article>
+
+    <article class="{{ cardClass }}">
+      {{ cardHeading("Link to Family Resources", "M4 4h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm-1 5h18m-14 4h4m-4 3h9", "02") }}
+      <p>Use the Iowa National Guard’s ready-made resource page for military families.</p>
+      <p class="text-slate-900"><strong>First step:</strong> <a href="{{ guardResourceUrl }}" class="rounded-sm font-semibold text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">Add the link</a> to your school website.</p>
+      <details class="mt-auto">
+        <summary class="{{ summaryClass }}">Copy the link and label</summary>
+        <div class="space-y-3 border-t border-slate-200 pt-3">
+          <p>On your school website, open your existing Families or Enrollment section and add a link using these details.</p>
+          <dl class="space-y-2 rounded-xl border border-slate-200 bg-white p-3">
+            <div><dt class="font-semibold text-slate-900">Link label</dt><dd>Military Student and Family Resources</dd></div>
+            <div><dt class="font-semibold text-slate-900">Link address</dt><dd class="break-all">{{ resourceLink(guardResourceUrl, guardResourceUrl) }}</dd></div>
+          </dl>
+          <p>Example placement: Families → Enrollment Resources → Military Student and Family Resources. You can list your school liaison’s contact information beside the link.</p>
+        </div>
+      </details>
+    </article>
+
+    <article class="{{ cardClass }}">
+      {{ cardHeading("Celebrate Military Kids", "M3 5h5a4 4 0 0 1 4 4v11a5 5 0 0 0-4-2H3V5Zm18 0h-5a4 4 0 0 0-4 4v11a5 5 0 0 1 4-2h5V5Z", "03") }}
+      <p>Recognize military-connected students with Purple Up Day or an activity your school already hosts.</p>
+      <p class="text-slate-900"><strong>First step:</strong> Choose an activity that fits your school.</p>
+      <details class="mt-auto">
+        <summary class="{{ summaryClass }}">See easy activity ideas</summary>
+        <div class="space-y-3 border-t border-slate-200 pt-3">
+          {{ resourceLink("/month-of-the-military-child/", "Explore classroom kits and April activities") }}
+          <h3 class="font-semibold text-slate-900">Flyers and classroom resources</h3>
+          <p>Host a Purple Up day, make a hallway display, or invite military families to share their experiences if they choose.</p>
+          <ul>
+            <li>{{ resourceLink("/assets/files/momc_flyer.png", "Ways to Participate flyer") }}</li>
+            <li>{{ resourceLink("/assets/files/purpleup.jpg", "Purple Up profile graphic") }}</li>
+            <li>{{ resourceLink("/assets/files/momc_overview.png", "Month of the Military Child overview flyer") }}</li>
+            <li>{{ resourceLink("/lemonade-boss/", "Lemonade Boss youth entrepreneurship curriculum", "/assets/img/lemonade-banner.jpg") }}</li>
+            <li>{{ resourceLink("mailto:iaarngcyp@gmail.com?subject=Purple%20Up%20Highlights", "Email your Purple Up highlights") }}</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+
+    <article class="{{ cardClass }}">
+      {{ cardHeading("Help Your Staff Feel Prepared", "M3 8l9-5 9 5-9 5-9-5Zm4 2.2V16c3 2 7 2 10 0v-5.8M21 8v7", "04") }}
+      <p>Build on staff training with practical ways to support military-connected students.</p>
+      <p class="text-slate-900"><strong>First step:</strong> Choose a training opportunity.</p>
+      <details class="mt-auto">
+        <summary class="{{ summaryClass }}">Explore training options</summary>
+        <div class="space-y-3 border-t border-slate-200 pt-3">
+          {{ resourceLink("https://militarychild.org/for-education-professionals/training/", "Military Child Education Coalition training for educators") }}
+          <h3 class="font-semibold text-slate-900">Topics for staff development</h3>
+          <ul class="list-disc space-y-1 pl-5">
+            <li>How military life can shape a student’s experience at school.</li>
+            <li>How to support midyear enrollment, records transfers, course placement, and belonging.</li>
+            <li>When to connect families with the school liaison and local support services.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+
   </div>
-</section>
 
-<div class="bg-white py-8 sm:py-12">
-  <div class="container grid items-start gap-5 leading-relaxed text-slate-700 md:grid-cols-2">
+  <section class="relative isolate flex min-h-44 items-center overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:min-h-52">
+    <img src="/assets/img/resources/classroom-activity-generated.jpg" alt="Teacher and students building a model together at a classroom table" class="absolute inset-0 h-full w-full object-cover object-[65%_46%]" width="1774" height="887" loading="lazy" decoding="async">
+    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_22%_50%,rgba(2,6,23,0.84)_0%,rgba(2,6,23,0.69)_38%,rgba(2,6,23,0.12)_90%)]" aria-hidden="true"></div>
+    <div class="relative px-5 py-6 text-white sm:px-10 sm:py-8">
+      <h2 class="text-2xl font-semibold text-white sm:text-3xl">That’s the foundation.</h2>
+      <p class="mt-2 max-w-lg leading-relaxed">Purple Star recognition centers on these four areas. Iowa CYP can help you find resources, examples, and connections to put them into practice.</p>
+    </div>
+  </section>
+
+  <div role="group" aria-label="Iowa CYP support" class="grid gap-4 leading-relaxed text-slate-700 md:grid-cols-2">
     <article class="{{ cardClass }}">
-      {{ cardHeading("Purple Star Requirements", "m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z") }}
-      <p>Review what the Iowa Department of Education requires and plan how your school will support military-connected students.</p>
-      <h3 class="font-semibold text-slate-900">Official Iowa designation requirements</h3>
-      <ul class="list-disc space-y-1 pl-5">
-        <li>Name a staff member as the military liaison for students and families.</li>
-        <li>Keep a dedicated public webpage with resources for military-connected families.</li>
-        <li>Run programs or events that build awareness and support military-connected students.</li>
-        <li>Offer staff training on the challenges these students face.</li>
-      </ul>
-      <p>Designation lasts three years. Check the state guidance for application dates, sample questions, and renewal information.</p>
-      <ul>
-        <li>{{ resourceLink("https://educate.iowa.gov/pk-12/award-exchange-programs/purple-star-school-program", "Iowa Department of Education guidance") }}</li>
-        <li>{{ resourceLink("mailto:purple.star@iowa.gov", "Email the state designation team") }}</li>
-      </ul>
-      <details class="border-t border-slate-200">
-        <summary class="{{ summaryClass }}">Iowa CYP suggestions for preparing</summary>
-        <p class="pb-2">Start with a liaison and a small planning team. Review what your school already offers, draft your family resource page, and pick an awareness activity and staff training topic. Keep examples of this work on hand when you apply.</p>
+      {{ cardHeading("Find Ready-to-Use Resources", "M20.8 8.7c0 4-4.5 7.3-8.8 11.3C7.7 16 3.2 12.7 3.2 8.7A4.5 4.5 0 0 1 12 7.4a4.5 4.5 0 0 1 8.8 1.3Z", "", "Tools & Resources") }}
+      <p>Find classroom activities, training, and trusted resources for military families.</p>
+      <details class="mt-auto">
+        <summary class="{{ summaryClass }}">Explore resources</summary>
+        <div class="space-y-3 border-t border-slate-200 pt-3">
+          <div class="grid grid-cols-2 gap-3">
+            {{ cardPhoto("/content/Media/ball2.jpg", "Families dancing together at the Military Family Ball") }}
+            {{ cardPhoto("/assets/img/programs/family_ball_dance.jpg", "Guard families on the dance floor at the Military Family Ball") }}
+          </div>
+          <ul>
+            <li>{{ resourceLink("/military-families/", "Iowa military family programs and support contacts") }}</li>
+            <li>{{ resourceLink("/resources/", "Iowa CYP family resource directory") }}</li>
+          </ul>
+          <h3 class="font-semibold text-slate-900">School transitions, tutoring, and enrichment</h3>
+          <ul>
+            <li>{{ resourceLink("https://mic3.net/state/iowa/", "Iowa Interstate Compact on Educational Opportunity for Military Children") }}</li>
+            <li>{{ resourceLink("https://military.tutor.com/home", "Tutor.com for military families", "/content/Media/tutor-square-color.png") }}</li>
+            <li>{{ resourceLink("https://www.bgca.org/about-us/military/mission-youth-outreach-2025/", "Boys & Girls Clubs Mission Youth Outreach", "/assets/img/partners/partner_bgca.png") }}</li>
+            <li>{{ resourceLink(site.links.scholarshipDatabase, "Scholarship database for military-connected students", "/assets/img/resources/resource_scholarships.svg") }}</li>
+            <li>{{ resourceLink("https://search.militaryscholar.org/", "Search national scholarships for military families") }}</li>
+          </ul>
+        </div>
       </details>
     </article>
 
     <article class="{{ cardClass }}">
-      {{ cardHeading("Build Your School Webpage", "M4 4h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm-1 5h18m-14 4h4m-4 3h9") }}
-      <p>Give military families one place to find their school liaison, get help enrolling, and connect with local support. Link to it from a spot families already use, such as your district’s enrollment or family resources menu.</p>
-      <details class="border-t border-slate-200">
-        <summary class="{{ summaryClass }}">Military Family Webpage Starter Kit</summary>
-        <ul class="list-disc space-y-2 pb-2 pl-5">
-          <li><strong>Welcome.</strong> Introduce your school and tell newly arriving families where to start.</li>
-          <li><strong>Military liaison.</strong> List the liaison’s name, role, and school contact information.</li>
-          <li><strong>Enrollment and transitions.</strong> Link to registration, records transfer, and help with course placement.</li>
-          <li><strong>School contacts.</strong> Point families to the registrar, counselors, and student support staff.</li>
-          <li><strong>Military family resources.</strong> Include education and transition resources alongside Iowa CYP programs.</li>
-          <li><strong>Local support.</strong> List nearby military family services and how to contact them.</li>
-        </ul>
-        <p class="pb-2">Ask your liaison to review the page each school year and confirm contacts and links are current.</p>
-      </details>
-    </article>
-
-    <article class="{{ cardClass }}">
-      {{ cardHeading("Classroom Activities & Kits", "M3 5h5a4 4 0 0 1 4 4v11a5 5 0 0 0-4-2H3V5Zm18 0h-5a4 4 0 0 0-4 4v11a5 5 0 0 1 4-2h5V5Z") }}
-      <p>Recognize military-connected students each April. Host a Purple Up day, make a hallway display, or invite military families to share their experiences if they choose.</p>
-      <div class="grid grid-cols-2 gap-3">
-        <img src="/content/Media/ball2.jpg" alt="Families dancing together at the Military Family Ball" class="aspect-[4/3] w-full rounded-xl border border-slate-200 object-cover" {{ imageAttrs('/content/Media/ball2.jpg') }} loading="lazy" decoding="async">
-        <img src="/assets/img/programs/family_ball_dance.jpg" alt="Guard families on the dance floor at the Military Family Ball" class="aspect-[4/3] w-full rounded-xl border border-slate-200 object-cover" {{ imageAttrs('/assets/img/programs/family_ball_dance.jpg') }} loading="lazy" decoding="async">
+      {{ cardHeading("Talk With Iowa CYP", "M5 5h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm-2 2 9 6 9-6", "", "How we can help") }}
+      <p>Get help with resource links, school activities, or support for a military family.</p>
+      <div class="mt-auto">
+        {{ resourceLink("/contact/#general-contact", "Contact Iowa CYP") }}
+        <details>
+          <summary class="{{ summaryClass }}">Meet the team</summary>
+          <div class="space-y-3 border-t border-slate-200 pt-3">
+            <ul class="flex flex-wrap gap-5" role="list">
+              {% for member in team.members %}
+                <li class="space-y-2">
+                  <img src="{{ member.headshot }}" alt="" width="96" height="96" class="h-24 w-24 rounded-xl object-cover" loading="lazy" decoding="async">
+                  <p class="text-sm font-semibold text-slate-900">{{ member.name }}</p>
+                </li>
+              {% endfor %}
+            </ul>
+            <ul>
+              <li>{{ resourceLink("mailto:" + site.contactEmail, "Email Iowa CYP") }}</li>
+              <li>{{ resourceLink("tel:" + (site.contactPhone | replace("-", "")), "Call Iowa CYP at " + site.contactPhone) }}</li>
+            </ul>
+            <h3 class="font-semibold text-slate-900">Other ways Iowa CYP can help</h3>
+            <p>We can share talking points and connect you with Soldier and Family Readiness Support Specialists or designated peer schools.</p>
+          </div>
+        </details>
       </div>
-      <ul>
-        <li>{{ resourceLink("/month-of-the-military-child/", "Month of the Military Child activities, classroom kits, and family events") }}</li>
-        <li>{{ resourceLink("mailto:iaarngcyp@gmail.com?subject=Purple%20Up%20Highlights", "Email your Purple Up highlights") }}</li>
-      </ul>
-      <details class="border-t border-slate-200">
-        <summary class="{{ summaryClass }}">Flyers and classroom resources</summary>
-        <ul>
-          <li>{{ resourceLink("/assets/files/momc_flyer.png", "Ways to Participate flyer") }}</li>
-          <li>{{ resourceLink("/assets/files/purpleup.jpg", "Purple Up profile graphic") }}</li>
-          <li>{{ resourceLink("/assets/files/momc_overview.png", "Month of the Military Child overview flyer") }}</li>
-          <li>{{ resourceLink("/lemonade-boss/", "Lemonade Boss youth entrepreneurship curriculum", "/assets/img/lemonade-banner.jpg") }}</li>
-        </ul>
-      </details>
-    </article>
-
-    <article class="{{ cardClass }}">
-      {{ cardHeading("Staff Training Resources", "M3 8l9-5 9 5-9 5-9-5Zm4 2.2V16c3 2 7 2 10 0v-5.8M21 8v7") }}
-      <p>Help teachers, counselors, administrators, and enrollment staff recognize how moves, deployment, and caregiver absences can affect students.</p>
-      <h3 class="font-semibold text-slate-900">Topics for staff development</h3>
-      <ul class="list-disc space-y-1 pl-5">
-        <li>How the military lifestyle can shape a student’s experience at school.</li>
-        <li>How staff can help with midyear enrollment, records transfers, course placement, and belonging.</li>
-        <li>How to connect students and families with the school liaison and local supports.</li>
-      </ul>
-      {{ resourceLink("https://militarychild.org/for-education-professionals/training/", "Military Child Education Coalition training for educators") }}
-    </article>
-
-    <article class="{{ cardClass }}">
-      {{ cardHeading("Military Family Support", "M20.8 8.7c0 4-4.5 7.3-8.8 11.3C7.7 16 3.2 12.7 3.2 8.7A4.5 4.5 0 0 1 12 7.4a4.5 4.5 0 0 1 8.8 1.3Z") }}
-      <p>Share Iowa CYP programs with families first, then connect them with help for school moves, tutoring, and enrichment.</p>
-      <ul>
-        <li>{{ resourceLink("/military-families/", "Iowa military family programs and support contacts") }}</li>
-        <li>{{ resourceLink("/resources/", "Iowa CYP family resource directory") }}</li>
-      </ul>
-      <details class="border-t border-slate-200">
-        <summary class="{{ summaryClass }}">School transitions, tutoring, and enrichment</summary>
-        <ul>
-          <li>{{ resourceLink("https://mic3.net/state/iowa/", "Iowa Interstate Compact on Educational Opportunity for Military Children") }}</li>
-          <li>{{ resourceLink("https://military.tutor.com/home", "Tutor.com for military families", "/content/Media/tutor-square-color.png") }}</li>
-          <li>{{ resourceLink("https://www.bgca.org/about-us/military/mission-youth-outreach-2025/", "Boys & Girls Clubs Mission Youth Outreach", "/assets/img/partners/partner_bgca.png") }}</li>
-          <li>{{ resourceLink(site.links.scholarshipDatabase, "Scholarship database for military-connected students", "/assets/img/resources/resource_scholarships.svg") }}</li>
-          <li>{{ resourceLink("https://search.militaryscholar.org/", "Search national scholarships for military families") }}</li>
-        </ul>
-      </details>
-    </article>
-
-    <article class="{{ cardClass }}">
-      {{ cardHeading("Contact Iowa CYP", "M5 5h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm-2 2 9 6 9-6") }}
-      <p>Ask Iowa CYP for a school briefing or a planning conversation. We can help you find resources, develop your military family webpage, plan a classroom activity, or identify ways for your school and Iowa CYP to work together.</p>
-      <p>We can also share sample talking points and help connect you with Soldier and Family Readiness Support Specialists or designated peer schools.</p>
-      <ul>
-        <li>{{ resourceLink("/contact/#general-contact", "View Iowa CYP contact information") }}</li>
-        <li>{{ resourceLink("mailto:" + site.contactEmail, "Email Iowa CYP") }}</li>
-        <li>{{ resourceLink("tel:" + (site.contactPhone | replace("-", "")), "Call Iowa CYP at " + site.contactPhone) }}</li>
-      </ul>
     </article>
   </div>
+  <section class="space-y-3 rounded-2xl border border-stone-200 bg-stone-50 p-5 text-slate-700 sm:p-7">
+    <p class="text-sm font-semibold uppercase tracking-widest text-primary">Already doing some of this?</p>
+    <h2 class="text-3xl font-semibold leading-tight text-slate-900 sm:text-4xl">Great. Don’t start over.</h2>
+    <p class="max-w-3xl">Your school may already have people, resources, training, or activities that support military-connected students. Start by identifying what you already have. Then use this guide to fill any gaps.</p>
+    <a class="btn" href="https://engage.iowa.gov/jfe/form/SV_3VmTKziM34hrPKu">View the official application</a>
+    <details>
+      <summary class="{{ summaryClass }} text-sm">See what counts</summary>
+      <div class="space-y-3 border-t border-slate-200 pt-3">
+        <h3 class="font-semibold text-slate-900">Official Iowa designation checklist</h3>
+        <ul class="list-disc space-y-1 pl-5">
+          <li>Name a staff member as the military liaison for students and families.</li>
+          <li>Maintain a dedicated webpage with resources tailored to military-connected families. Include a link to the {{ resourceLink(guardResourceUrl, "Iowa National Guard’s student and family resource page") }}.</li>
+          <li>Run programs or events that build awareness and support military-connected students.</li>
+          <li>Offer staff training on the challenges these students face.</li>
+        </ul>
+        <p class="mt-3">Designation lasts three years. Check the state guidance for application dates, sample questions, and renewal information.</p>
+        {{ resourceLink("mailto:purple.star@iowa.gov", "Email the state designation team") }}
+      </div>
+    </details>
+  </section>
+
 </div>
