@@ -32,12 +32,10 @@ permalink: /
     <div class="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-[#112d49]/75 to-slate-950/85"></div>
     <div class="container relative min-h-[90vh] flex items-center justify-center text-center">
       <div class="max-w-3xl text-white space-y-6 drop-shadow-[0_6px_24px_rgba(0,0,0,0.55)]" data-reveal>
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold uppercase tracking-[0.1em] text-white flex flex-col gap-2">
-          <span>Programs &amp; Support</span>
-          <span>for Iowa National Guard</span>
-          <span>Families</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold uppercase tracking-[0.1em] text-white">
+          Bringing Iowa Guard Families Together
         </h1>
-        <p class="text-base md:text-xl text-white/90 leading-relaxed">Iowa CYP offers free events, camps, resources, and trusted support that help Guard-connected children, teens, and families thrive.</p>
+        <p class="text-base md:text-xl text-white/90 leading-relaxed">Free events, practical resources, and opportunities for young people to lead.</p>
         <div class="flex flex-wrap justify-center gap-4 pt-2">
           <a class="hero-cta" href="{{ site.links.eventsSubscribe }}">Subscribe to Events</a>
           <a class="hero-cta-secondary" href="/events/" aria-label="Find events and programs" title="Find events and programs">
@@ -184,7 +182,7 @@ permalink: /
 <section class="bg-white py-20" data-reveal>
   <div class="container grid gap-12 md:grid-cols-[1.2fr_1fr] items-center">
     <div>
-      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mb-4">Quick Access Resources</h2>
+      <h2 id="quick-access-resources" class="text-2xl md:text-3xl font-semibold text-slate-900 mb-4">Quick Access Resources</h2>
       <p class="text-slate-800 mb-6">Need support fast? These partners offer tutoring help, counseling, deployment prep, and more. You can always explore the full directory for extra options.</p>
       <a class="btn" href="/resources/">Browse all resources</a>
     </div>
@@ -192,9 +190,9 @@ permalink: /
       {% set highlightIds = ['R013', 'R007', 'R008'] %}
       {% for resource in resources.items %}
         {% if resource.id in highlightIds %}
-          <a class="resource-card flex items-center gap-4" href="{{ resource.url }}" target="_blank" rel="noopener">
+          <a class="resource-card flex flex-col gap-4" href="{{ resource.url }}" target="_blank" rel="noopener">
             {% if resource.image %}
-              <img src="{{ resource.image }}" alt="" class="h-12 w-12 object-contain rounded-lg bg-white border border-slate-200" {{ imageAttrs(resource.image) }} loading="lazy" decoding="async">
+              <img src="{{ resource.image }}" alt="" class="h-12 w-12 self-center object-contain rounded-lg bg-white border border-slate-200" {{ imageAttrs(resource.image) }} loading="lazy" decoding="async">
             {% endif %}
             <div>
               <h3 class="font-semibold text-slate-900">{{ resource.label }}</h3>

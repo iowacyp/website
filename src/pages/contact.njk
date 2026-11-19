@@ -91,12 +91,12 @@ permalink: /contact/index.html
     <div class="grid gap-6 md:grid-cols-2">
       {% for member in team.members %}
         <article class="content-card h-full space-y-6" data-reveal>
-          <div class="flex items-center gap-5">
+          <div class="space-y-5">
             {% if member.headshot %}
-              <img src="{{ member.headshot }}" alt="{{ member.name }}" class="h-16 w-16 rounded-full object-cover border border-primary/30" width="64" height="64" loading="lazy" decoding="async">
+              <img src="{{ member.headshot }}" alt="{{ member.name }}" class="mx-auto aspect-[4/5] w-full max-w-md rounded-3xl object-cover object-top shadow-sm" {{ imageAttrs(member.headshot) | safe }} loading="lazy" decoding="async">
             {% endif %}
             <div>
-              <h3 class="text-lg font-semibold text-slate-900">{{ member.name }}</h3>
+              <h3 class="text-2xl font-semibold text-slate-900">{{ member.name }}</h3>
               <p class="text-sm text-primary uppercase tracking-wide">{{ member.title }}</p>
               <p class="text-xs text-gray-600">{{ member.organization }}</p>
             </div>

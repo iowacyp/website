@@ -12,7 +12,7 @@
     },
     {
       "title": "Pay attention to what helps",
-      "description": "We track who we’re reaching and ask kids and parents what they got out of an event or what made it hard to attend. We use what we learn to plan future events and decide where families could use more support."
+      "description": "We pay attention to who we’re reaching and ask families what helped and what made it hard to come. Their answers shape what we plan next."
     },
     {
       "title": "Speak up for Guard families",
@@ -20,33 +20,33 @@
     }
   ],
   "visionDetails": [
-    "We want every Iowa Guard kid and parent to know they have people in their corner. We hope the kids who grow up with us become teens that younger kids look up to.",
-    "By the time they graduate, we hope they’re proud of growing up in a Guard family, see the opportunities it gave them, and find their own way to honor their parent’s service and give back. We want Guard leaders to see strong, connected families as part of what helps service members stay ready and continue serving."
+    "We want the kids who grow up with CYP to become teens that younger kids look up to. By graduation, we hope they’re proud of growing up in a Guard family and have found their own way to honor their parent’s service and give back.",
+    "We want Guard leaders to see what families make possible. When families have people to lean on, it helps service members stay ready and keep serving."
   ],
   "coreValues": [
     {
       "title": "Belonging",
-      "description": "Every Guard kid and parent deserves a place to feel welcome and understood. We want families to leave our events knowing they have people they can turn to.",
+      "description": "There’s a place for every Guard family here. We’ll help you find your way when you walk into your first event.",
       "icon": "show-up"
     },
     {
       "title": "Connection",
-      "description": "At camp, Yellow Ribbon, or another event, kids can meet a friend who understands what it’s like when a parent leaves for training or deployment.",
+      "description": "It helps to know someone who gets it. At camp, a kid can meet a friend who knows what it’s like when a parent leaves for training or deployment.",
       "icon": "build-connection"
     },
     {
       "title": "Leadership",
-      "description": "We ask teens to look out for younger kids and set an example for their peers. Sometimes that means noticing who’s on their own and inviting them in.",
+      "description": "Leadership can start with an invitation. We ask teens to notice who’s on their own and help younger kids join in.",
       "icon": "be-intentional"
     },
     {
       "title": "Pride",
-      "description": "Growing up in a Guard family can be hard. We hope kids look back with pride in how much they grew and in the service their family was part of.",
+      "description": "Guard kids have a story worth telling. We want them to see how much they’ve grown and recognize the part their family plays in serving.",
       "icon": "keep-growing"
     },
     {
       "title": "Service",
-      "description": "We hope kids give back in a way that feels right to them, whether they volunteer with CYP, serve in the military, or speak up for Guard families.",
+      "description": "There are many ways to give back. We want young people to find theirs, whether they volunteer with CYP, speak up for Guard families, or choose to serve in the military.",
       "icon": "earn-trust"
     }
   ]

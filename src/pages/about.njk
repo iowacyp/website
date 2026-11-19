@@ -31,11 +31,11 @@ permalink: /about/index.html
       >
     </noscript>
   </div>
-  <div class="absolute inset-0 bg-gradient-to-r from-slate-950/94 via-slate-950/82 to-slate-950/60"></div>
-  <div class="relative container flex items-center justify-center py-10 md:min-h-[50vh] md:py-16">
-    <div class="max-w-2xl rounded-[2rem] border border-white/10 bg-slate-950/88 p-5 sm:p-8 text-center shadow-2xl backdrop-blur-md space-y-4 text-white" data-reveal>
-      <h1 class="text-2xl md:text-3xl font-semibold text-white">About Iowa CYP</h1>
-      <p class="text-base text-white/95 leading-relaxed">Iowa Child &amp; Youth Program brings Guard families together at events across the state. Kids make friends, and parents meet other families who understand Guard life.</p>
+  <div class="absolute inset-0 bg-gradient-to-b from-slate-950/50 to-slate-950/85"></div>
+  <div class="relative container flex items-center justify-center py-20 md:min-h-[60vh] md:py-24">
+    <div class="max-w-3xl space-y-6 text-center text-white" data-reveal>
+      <h1 class="text-4xl font-semibold text-white sm:text-5xl lg:text-6xl">About Iowa CYP</h1>
+      <p class="mx-auto max-w-2xl text-lg leading-relaxed text-white/95">Life in the Guard can mean time apart and a lot of change. The Iowa Child &amp; Youth Program gives kids, teens, and parents a place to find people who get it.</p>
       <div class="flex flex-wrap justify-center gap-4">
         <a class="hero-cta" href="/support/#community-partners">Partner With Us</a>
         <a class="hero-cta-secondary" href="{{ site.links.eventsSubscribe }}">Stay in the Loop</a>
@@ -44,25 +44,25 @@ permalink: /about/index.html
   </div>
 </section>
 
-<section id="mission" class="bg-white py-12 md:py-16" data-reveal>
-  <div class="container space-y-8 md:space-y-10">
-    <div class="mx-auto max-w-3xl space-y-2">
-      <h2 class="text-2xl font-semibold text-slate-900 md:text-3xl">Who We Are</h2>
-      <p class="text-slate-800 leading-relaxed">For more than 20 years, Iowa CYP has brought Guard families together. At our events, kids make friends and parents meet others who know what it’s like to hold things together when a spouse is away.</p>
+<section id="mission" class="bg-bg py-16 md:py-24" data-reveal>
+  <div class="container space-y-10 md:space-y-12">
+    <div class="mx-auto max-w-3xl space-y-4 text-center">
+      <h2 class="text-3xl font-semibold text-primary md:text-4xl">Who We Are</h2>
+      <p class="text-slate-800 leading-relaxed">For more than 20 years, we’ve been showing up for Iowa Guard families. You’ll find us at camp, at family events, and at Yellow Ribbon programs. Come meet us and see where your family might want to jump in.</p>
     </div>
-    <div class="mx-auto grid max-w-3xl gap-4">
-      <article class="content-card content-card--outline-gold space-y-4" data-interactive="true">
+    <div class="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
+      <article class="space-y-4 border-t-4 border-secondary bg-white p-6 md:p-8">
         <div class="flex items-center gap-3 text-secondary">
           <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7">
             <rect x="5" y="3" width="2" height="18" rx="1" fill="currentColor"></rect>
             <rect x="7.5" y="4" width="9" height="5.5" rx="1.2" fill="currentColor"></rect>
             <rect x="7.5" y="10.5" width="9" height="5.5" rx="1.2" fill="currentColor" opacity="0.7"></rect>
           </svg>
-          <h3 class="content-card__title text-slate-800">Our Mission</h3>
+          <h3 class="text-xl font-semibold text-primary">Our Mission</h3>
         </div>
-        <p class="text-slate-700 leading-relaxed">We bring Iowa Guard families together through events, help them find resources they can use, and give young people opportunities to lead.</p>
+        <p class="text-slate-700 leading-relaxed">We help Guard kids grow up with friends who understand military life, chances to lead, and adults they can count on. We bring families together and help parents find support they can use at home and at school.</p>
       </article>
-      <article class="content-card content-card--outline-gold space-y-4" data-interactive="true">
+      <article class="space-y-4 border-t-4 border-secondary bg-white p-6 md:p-8">
         <div class="flex items-center gap-3 text-secondary">
           <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7">
             <circle cx="12" cy="12" r="9" fill="currentColor" opacity="0.15"></circle>
@@ -70,7 +70,7 @@ permalink: /about/index.html
             <path d="M12 8.5l2.4 4-4.8 2.2L12 8.5Z" fill="currentColor"></path>
             <circle cx="12" cy="12" r="1" fill="white"></circle>
           </svg>
-          <h3 class="content-card__title text-slate-800">Our Vision</h3>
+          <h3 class="text-xl font-semibold text-primary">Our Vision</h3>
         </div>
         {% for paragraph in info.visionDetails -%}
           <p class="text-slate-700 leading-relaxed">{{ paragraph }}</p>
@@ -80,36 +80,92 @@ permalink: /about/index.html
   </div>
 </section>
 
-<section id="strategic" class="bg-primary/5 py-12 md:py-16" data-reveal>
-  <div class="container space-y-8 md:space-y-10">
-    <div class="text-center max-w-3xl mx-auto space-y-4">
-      <h2 class="text-3xl md:text-4xl font-semibold text-slate-900 uppercase tracking-[0.1em]">How We Work</h2>
+<section id="values" class="bg-primary py-16 text-white md:py-24" data-reveal>
+  <div class="container space-y-12">
+    <h2 class="text-center text-3xl font-semibold text-white md:text-4xl">Our Core Values</h2>
+    <div class="flex flex-wrap justify-center gap-y-10">
+      {%- for value in info.coreValues %}
+        <article class="flex w-full flex-col items-center gap-4 px-4 text-center sm:w-1/2 lg:w-1/5">
+          <div class="flex h-16 w-16 items-center justify-center rounded-full bg-secondary text-primary">
+          {%- set iconClasses = 'h-9 w-9' %}
+          {%- if value.icon == 'show-up' %}
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="{{ iconClasses }}">
+              <path d="M12 3 19 6v5.2c0 4.4-2.8 8-7 10-4.2-2-7-5.6-7-10V6Z" fill="currentColor" opacity="0.9"></path>
+              <path d="M9.2 12.1 11.1 14l3.8-4" fill="none" class="stroke-secondary" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          {%- elseif value.icon == 'build-connection' %}
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="{{ iconClasses }}">
+              <circle cx="7" cy="8" r="2.2" fill="currentColor" opacity="0.9"></circle>
+              <circle cx="17" cy="8" r="2.2" fill="currentColor" opacity="0.9"></circle>
+              <circle cx="12" cy="16" r="2.2" fill="currentColor"></circle>
+              <path d="M8.7 9.2 10.8 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+              <path d="M15.3 9.2 13.2 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+            </svg>
+          {%- elseif value.icon == 'be-intentional' %}
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="{{ iconClasses }}">
+              <circle cx="12" cy="12" r="7.5" fill="none" stroke="currentColor" stroke-width="2"></circle>
+              <circle cx="12" cy="12" r="2" fill="currentColor"></circle>
+              <path d="M12 4.5v2.2M12 17.3v2.2M4.5 12h2.2M17.3 12h2.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+            </svg>
+          {%- elseif value.icon == 'earn-trust' %}
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="{{ iconClasses }}">
+              <path d="M15 11.5 10.8 7.4a2.8 2.8 0 0 1 4-4l.2.2.2-.2a2.8 2.8 0 0 1 4 4Z" fill="currentColor"></path>
+              <path d="M6 14h3.5l2.1 1.6h3.1a1.5 1.5 0 0 1 0 3H11m5.2-2.1 3-2.5a1.5 1.5 0 0 1 2 2.2l-4.7 4a3 3 0 0 1-2 .8H9l-3-1.5M3 13.5h3V21H3z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          {%- elseif value.icon == 'keep-growing' %}
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="{{ iconClasses }}">
+              <path d="M12 19.5V10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              <path d="M12 10c0-3.2 2.3-5.8 5.5-6.3-.1 3.2-2.8 5.9-5.5 6.3Z" fill="currentColor"></path>
+              <path d="M12 12.2c-2.8 0-5.1-2.1-5.5-4.9 2.8.1 5.4 2.1 5.5 4.9Z" fill="currentColor" opacity="0.7"></path>
+              <path d="M7 20h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+            </svg>
+          {%- else %}
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="{{ iconClasses }}">
+              <circle cx="12" cy="12" r="8" fill="currentColor" opacity="0.15"></circle>
+              <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"></circle>
+              <path d="M12 5v14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+              <path d="M8 9.5 12 5l4 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          {%- endif %}
+          </div>
+          <h3 class="text-xl font-semibold text-white">{{ value.title }}</h3>
+          <p class="max-w-xs text-sm leading-relaxed text-white/90">{{ value.description }}</p>
+        </article>
+      {%- endfor %}
     </div>
-    <div class="grid gap-5 md:grid-cols-2 md:gap-6">
+  </div>
+</section>
+
+<section id="strategic" class="bg-white py-16 md:py-24" data-reveal>
+  <div class="container space-y-10 md:space-y-12">
+    <div class="text-center max-w-3xl mx-auto space-y-4">
+      <h2 class="text-3xl font-semibold text-primary md:text-4xl">How We Work</h2>
+    </div>
+    <div class="grid gap-x-10 gap-y-8 md:grid-cols-2">
       {% for pillar in info.strategicInfrastructure %}
-        <article class="content-card space-y-2" data-interactive="true" data-reveal>
+        <article class="space-y-3 border-t border-primary/20 pt-5">
           <div class="flex items-start gap-3">
             {% if loop.index == 1 %}
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7 shrink-0 text-slate-700">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7 shrink-0 text-primary">
                 <circle cx="8" cy="12" r="3.2" fill="currentColor" opacity="0.85"></circle>
                 <circle cx="16" cy="12" r="3.2" fill="currentColor" opacity="0.55"></circle>
                 <path d="M10.2 13.5 14.5 15.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
                 <path d="M14.5 15.8v-2.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
               </svg>
             {% elseif loop.index == 2 %}
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7 shrink-0 text-slate-700">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7 shrink-0 text-primary">
                 <path d="M7 16a3 3 0 0 1-3-3v-1a3 3 0 0 1 3-3h1.6l7.4-3.7A1 1 0 0 1 18 6.2v11.6a1 1 0 0 1-1.9.5L8.6 14H7Z" fill="currentColor"></path>
                 <path d="M8.5 14.5 10 17.4A2 2 0 0 0 11.8 18.5H14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
               </svg>
             {% elseif loop.index == 3 %}
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7 shrink-0 text-slate-700">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7 shrink-0 text-primary">
                 <rect x="4" y="13" width="4" height="7" rx="1" fill="currentColor" opacity="0.6"></rect>
                 <rect x="10" y="9" width="4" height="11" rx="1" fill="currentColor" opacity="0.8"></rect>
                 <rect x="16" y="5" width="4" height="15" rx="1" fill="currentColor"></rect>
                 <path d="M4 21h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
               </svg>
             {% else %}
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7 shrink-0 text-slate-700">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-7 w-7 shrink-0 text-primary">
                 <path d="M6 4.5h12a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3h-7.5L5 19.5v-4.2a3 3 0 0 1-2-2.8v-5a3 3 0 0 1 3-3Z" fill="currentColor"></path>
                 <path d="M7.5 8.5h9m-9 3h6" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round"></path>
               </svg>
@@ -125,72 +181,12 @@ permalink: /about/index.html
   </div>
 </section>
 
-<section id="values" class="bg-white py-20" data-reveal>
-  <div class="container space-y-8">
-    <div class="text-center max-w-3xl mx-auto space-y-4">
-      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Our Core Values</h2>
-    </div>
-    <div class="grid gap-6 md:auto-rows-fr md:grid-cols-2 lg:grid-cols-5">
-      {% for value in info.coreValues %}
-        <div class="content-card-shell">
-          <article class="content-card content-card--shell-inner h-full flex flex-col items-center text-center gap-4" data-interactive="true" data-reveal>
-            <div class="flex flex-col items-center gap-3">
-              {% set iconClasses = 'h-10 w-10 text-slate-700' %}
-              {% if value.icon == 'show-up' %}
-                <svg viewBox="0 0 24 24" aria-hidden="true" class="{{ iconClasses }}">
-                  <path d="M12 3 19 6v5.2c0 4.4-2.8 8-7 10-4.2-2-7-5.6-7-10V6Z" fill="currentColor" opacity="0.9"></path>
-                  <path d="M9.2 12.1 11.1 14l3.8-4" fill="none" stroke="white" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-              {% elseif value.icon == 'build-connection' %}
-                <svg viewBox="0 0 24 24" aria-hidden="true" class="{{ iconClasses }}">
-                  <circle cx="7" cy="8" r="2.2" fill="currentColor" opacity="0.9"></circle>
-                  <circle cx="17" cy="8" r="2.2" fill="currentColor" opacity="0.9"></circle>
-                  <circle cx="12" cy="16" r="2.2" fill="currentColor"></circle>
-                  <path d="M8.7 9.2 10.8 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
-                  <path d="M15.3 9.2 13.2 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
-                </svg>
-              {% elseif value.icon == 'be-intentional' %}
-                <svg viewBox="0 0 24 24" aria-hidden="true" class="{{ iconClasses }}">
-                  <circle cx="12" cy="12" r="7.5" fill="none" stroke="currentColor" stroke-width="2"></circle>
-                  <circle cx="12" cy="12" r="2" fill="currentColor"></circle>
-                  <path d="M12 4.5v2.2M12 17.3v2.2M4.5 12h2.2M17.3 12h2.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
-                </svg>
-              {% elseif value.icon == 'earn-trust' %}
-                <svg viewBox="0 0 24 24" aria-hidden="true" class="{{ iconClasses }}">
-                  <path d="M15 11.5 10.8 7.4a2.8 2.8 0 0 1 4-4l.2.2.2-.2a2.8 2.8 0 0 1 4 4Z" fill="currentColor"></path>
-                  <path d="M6 14h3.5l2.1 1.6h3.1a1.5 1.5 0 0 1 0 3H11m5.2-2.1 3-2.5a1.5 1.5 0 0 1 2 2.2l-4.7 4a3 3 0 0 1-2 .8H9l-3-1.5M3 13.5h3V21H3z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-              {% elseif value.icon == 'keep-growing' %}
-                <svg viewBox="0 0 24 24" aria-hidden="true" class="{{ iconClasses }}">
-                  <path d="M12 19.5V10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                  <path d="M12 10c0-3.2 2.3-5.8 5.5-6.3-.1 3.2-2.8 5.9-5.5 6.3Z" fill="currentColor"></path>
-                  <path d="M12 12.2c-2.8 0-5.1-2.1-5.5-4.9 2.8.1 5.4 2.1 5.5 4.9Z" fill="currentColor" opacity="0.7"></path>
-                  <path d="M7 20h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
-                </svg>
-              {% else %}
-                <svg viewBox="0 0 24 24" aria-hidden="true" class="{{ iconClasses }}">
-                  <circle cx="12" cy="12" r="8" fill="currentColor" opacity="0.15"></circle>
-                  <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"></circle>
-                  <path d="M12 5v14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
-                  <path d="M8 9.5 12 5l4 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-              {% endif %}
-              <h3 class="text-lg font-semibold text-primary">{{ value.title }}</h3>
-            </div>
-            <p class="text-sm text-gray-700 leading-relaxed">{{ value.description }}</p>
-          </article>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<section id="team" class="stp-meet-panel py-16 md:py-24" aria-labelledby="team-title">
+<section id="team" class="bg-white py-16 md:py-24" aria-labelledby="team-title">
   <div class="container">
-    <header class="max-w-3xl space-y-5" data-reveal>
-      <h2 id="team-title" class="text-3xl md:text-4xl font-semibold text-slate-900">Meet the Team</h2>
-      <p class="text-lg text-slate-700 leading-relaxed">We’re the people you’ll see checking families in, helping a kid join an activity, and answering questions about what’s coming up. Our team includes coordinators, coaches, and camp leads who know military family life through their own families or through working alongside Guard families.</p>
-      <p class="text-lg text-slate-700 leading-relaxed">If you’re coming to your first event or looking for support while a parent is away, reach out. We’ll help you figure out where to start.</p>
+    <header class="mx-auto max-w-3xl space-y-4 text-center" data-reveal>
+      <h2 id="team-title" class="text-3xl font-semibold text-primary md:text-4xl">Meet the Team</h2>
+      <p class="text-lg text-slate-700 leading-relaxed">You’ll see our coordinators, coaches, and camp leads checking families in and helping kids find their way into an activity. We know Guard life through our own families and through years of working alongside yours.</p>
+      <p class="text-lg text-slate-700 leading-relaxed">If it’s your first event or you’re looking for support while a parent is away, give us a call or send us a note. We’ll help you figure out where to start.</p>
     </header>
   </div>
 
@@ -240,7 +236,7 @@ permalink: /about/index.html
   </div>
 
   <div class="container mt-10">
-    <aside class="content-card mx-auto max-w-3xl" data-reveal>
+    <aside class="mx-auto max-w-3xl border-t-4 border-secondary bg-bg p-6 text-center md:p-8" data-reveal>
       <h3 class="mb-4 text-lg font-semibold text-slate-900">Reach the CYP Office</h3>
       <ul class="space-y-2 text-sm text-slate-700">
         <li><span class="font-semibold text-slate-900">Office:</span> {{ team.officeLocation }}</li>
@@ -251,15 +247,15 @@ permalink: /about/index.html
   </div>
 </section>
 
-<section class="bg-white py-20" data-reveal>
+<section class="bg-primary py-16 text-white md:py-20" data-reveal>
   <div class="container">
-    <div class="content-card md:flex md:items-center md:justify-between md:gap-10" data-interactive="true">
+    <div class="mx-auto max-w-3xl space-y-6 text-center">
       <div class="space-y-4">
-        <p class="text-sm uppercase tracking-[0.15em] text-primary/80">Stay Connected</p>
-        <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Get the Iowa National Guard mobile app.</h2>
-        <p class="text-gray-700">Turn on push alerts for new CYP events, quick access to resources, and reminders that keep your family synced with Guard updates.</p>
+        <p class="text-sm uppercase tracking-[0.15em] text-secondary">Stay Connected</p>
+        <h2 class="text-3xl font-semibold text-white md:text-4xl">Get the Iowa National Guard mobile app.</h2>
+        <p class="text-white/90">Turn on notifications to hear about upcoming CYP events and find family resources when you need them.</p>
       </div>
-      <div class="flex flex-wrap gap-4 items-center pt-6 md:pt-0">
+      <div class="flex flex-wrap items-center justify-center gap-4">
         {% if site.links.appStore %}
           <a class="app-badge" href="{{ site.links.appStore }}" target="_blank" rel="noopener">
             <img src="/assets/img/badges/app-store-badge.svg" alt="Download on the App Store" loading="lazy" decoding="async" width="180" height="60">
@@ -271,7 +267,7 @@ permalink: /about/index.html
           </a>
         {% endif %}
         {% if not site.links.appStore and not site.links.googlePlay %}
-          <p class="text-sm text-gray-600">Mobile app download links coming soon. <a class="text-primary" href="mailto:{{ site.contactEmail }}?subject=IANG%20App%20Updates">Email us to be notified.</a></p>
+          <p class="text-sm text-white/90">Mobile app download links coming soon. <a class="text-secondary underline" href="mailto:{{ site.contactEmail }}?subject=IANG%20App%20Updates">Email us to be notified.</a></p>
         {% endif %}
       </div>
     </div>
