@@ -924,6 +924,18 @@ footer a {
 }
 
 /* Desktop dropdown hover-intent (controlled via JS data-open + CSS focus-within) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  body:has(.educators-page) .nav-item > a {
+    padding-inline: 0.5rem;
+  }
+
+  /* Keep the dropdowns near the right edge within the educator page viewport. */
+  body:has(.educators-page) .nav-item:has(> a:is([href="/support/"], [href="/resources/"])) > div {
+    left: auto;
+    right: 0;
+  }
+}
+
 .nav-dd {
   pointer-events: none;
   opacity: 0;
